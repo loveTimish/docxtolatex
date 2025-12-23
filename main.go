@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"github.com/urfave/cli"
 	"github.com/zhexiao/mtef-go/docx"
@@ -11,12 +12,12 @@ import (
 )
 
 func main() {
-	var filepath, docxDocument string
+	var filepath, docxDocument, output string
 
 	app := cli.NewApp()
 	app.Name = "Mtef"
-	app.Usage = "Convert MSDocx Mathtype Ole object to Latex code"
-	app.Version = "2.0"
+	app.Usage = "Convert MSDocx Mathtype Ole object to Latex code or extract docx equations into a .tex document"
+	app.Version = "3.0"
 	app.EnableBashCompletion = true
 
 	app.Flags = []cli.Flag{
@@ -30,6 +31,11 @@ func main() {
 			Usage:       "Office word docx documents",
 			Destination: &docxDocument,
 		},
+		cli.StringFlag{
+			Name:        "output, o",
+			Usage:       "Target output folder (defaults to <docx name>)",
+			Destination: &output,
+		},
 	}
 
 	app.Action = func(c *cli.Context) error {
@@ -39,7 +45,6 @@ func main() {
 				return nil
 			}
 
-			//转换数据
 			latex := eqn.Convert(filepath)
 			fmt.Println(latex)
 			return nil
@@ -51,32 +56,26 @@ func main() {
 				return nil
 			}
 
-			dw := docx.DocxWord{
-				Filename: docxDocument,
-				Target:   fmt.Sprintf("/tmp/%v", time.Now().UnixNano()),
+			converter := docx.Converter{
+				Source: docxDocument,
+				Output: output,
 			}
 
-			//转换数据
-			err := dw.ParseDocx()
+			start := time.Now()
+			count, err := converter.Convert()
 			if err != nil {
 				return err
 			}
+
+			fmt.Printf("Converted %d equations to %s in %s\n", count, converter.Output, time.Since(start))
+			return nil
 		}
 
-		return nil
+		return errors.New("please specify either --filepath for a single OLE object or --wordDocx for a .docx file")
 	}
 
 	err := app.Run(os.Args)
 	if err != nil {
 		log.Panic(err)
 	}
-
-	//转换数据,测试开发使用，需要注释上面的所有代码
-	//startEqn := 1
-	//endEqn := 2
-	//for i := startEqn; i <= endEqn; i++ {
-	//	pathName := fmt.Sprintf("F:/workspace/goproj/src/mtef-go/test/oleObject%v.bin", i)
-	//	latex := eqn.Convert(pathName)
-	//	fmt.Println("num:", i, "latex:", latex)
-	//}
 }
