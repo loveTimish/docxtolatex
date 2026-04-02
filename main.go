@@ -12,23 +12,24 @@ import (
 )
 
 func main() {
-	var filepath, docxDocument, output string
+	var filepath, docxDocument, output, configPath string
+	var writeReport bool
 
 	app := cli.NewApp()
 	app.Name = "Mtef"
 	app.Usage = "Convert MSDocx Mathtype Ole object to Latex code or extract docx equations into a .tex document"
-	app.Version = "3.0"
+	app.Version = "3.1"
 	app.EnableBashCompletion = true
 
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:        "filepath, f",
-			Usage:       "Mathtype Ole object filepath",
+			Usage:       "Mathtype OLE object filepath",
 			Destination: &filepath,
 		},
 		cli.StringFlag{
 			Name:        "wordDocx, w",
-			Usage:       "Office word docx documents",
+			Usage:       "Office Word .docx document",
 			Destination: &docxDocument,
 		},
 		cli.StringFlag{
@@ -36,29 +37,47 @@ func main() {
 			Usage:       "Target output folder (defaults to <docx name>)",
 			Destination: &output,
 		},
+		cli.StringFlag{
+			Name:        "config, c",
+			Usage:       "Optional JSON config file for document styles, image rendering, and report settings",
+			Destination: &configPath,
+		},
+		cli.BoolFlag{
+			Name:        "report, r",
+			Usage:       "Write a JSON conversion report alongside the generated .tex output",
+			Destination: &writeReport,
+		},
 	}
 
 	app.Action = func(c *cli.Context) error {
 		if filepath != "" {
 			if _, err := os.Stat(filepath); os.IsNotExist(err) {
-				fmt.Println("File not exist!!!!")
-				return nil
+				return fmt.Errorf("file does not exist: %s", filepath)
 			}
 
-			latex := eqn.Convert(filepath)
+			latex, err := eqn.ConvertFile(filepath)
+			if err != nil {
+				return err
+			}
 			fmt.Println(latex)
 			return nil
 		}
 
 		if docxDocument != "" {
 			if _, err := os.Stat(docxDocument); os.IsNotExist(err) {
-				fmt.Println("File not exist!!!!")
-				return nil
+				return fmt.Errorf("file does not exist: %s", docxDocument)
+			}
+
+			cfg, err := docx.LoadConfig(configPath)
+			if err != nil {
+				return err
 			}
 
 			converter := docx.Converter{
-				Source: docxDocument,
-				Output: output,
+				Source:      docxDocument,
+				Output:      output,
+				Config:      cfg,
+				WriteReport: writeReport,
 			}
 
 			start := time.Now()
@@ -74,8 +93,7 @@ func main() {
 		return errors.New("please specify either --filepath for a single OLE object or --wordDocx for a .docx file")
 	}
 
-	err := app.Run(os.Args)
-	if err != nil {
+	if err := app.Run(os.Args); err != nil {
 		log.Panic(err)
 	}
 }

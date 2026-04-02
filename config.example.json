@@ -1,0 +1,24 @@
+{
+  "document": {
+    "class": "article",
+    "packages": [
+      "[T1]{fontenc}",
+      "[utf8]{inputenc}",
+      "amsmath",
+      "amssymb",
+      "graphicx"
+    ]
+  },
+  "styles": {
+    "Heading 1": "\\section{%s}",
+    "Heading 2": "\\subsection{%s}",
+    "Quote": "\\begin{quote}\n%s\n\\end{quote}"
+  },
+  "image": {
+    "mode": "includegraphics"
+  },
+  "report": {
+    "enabled": true,
+    "file": ""
+  }
+}

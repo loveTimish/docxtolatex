@@ -16,6 +16,9 @@
 - 按正文顺序输出普通文本、公式和图片
 - 自动提取文档中的图片资源
 - 对明显损坏的公式结果做图片回退，减少错误 LaTeX
+- 基于段落样式做基础结构映射（如标题、引用）
+- 支持 JSON 配置文档类、包、样式映射和图片渲染方式
+- 可选输出 JSON 转换报告，便于排查失败公式和回退原因
 
 ## 环境要求
 
@@ -48,6 +51,18 @@ go run main.go --wordDocx sample.docx
 go run main.go --wordDocx sample.docx --output sample_out
 ```
 
+输出 JSON 转换报告：
+
+```bash
+go run main.go --wordDocx sample.docx --report
+```
+
+使用自定义配置：
+
+```bash
+go run main.go --wordDocx sample.docx --config config.example.json
+```
+
 ## 输出说明
 
 当使用 `--wordDocx` 时：
@@ -56,6 +71,7 @@ go run main.go --wordDocx sample.docx --output sample_out
 - 程序会在该目录下生成：
   - `<目录名>.tex`
   - `img/` 图片目录
+  - 可选的 `<目录名>.report.json` 转换报告（启用 `--report` 或配置文件中的 `report.enabled` 时）
 
 例如：
 
@@ -82,6 +98,10 @@ xuekewang/
   - 转换整份 Word `.docx`
 - `--output, -o`
   - 指定输出目录
+- `--config, -c`
+  - 指定 JSON 配置文件，用于自定义样式映射、文档类、包和图片输出策略
+- `--report, -r`
+  - 输出 JSON 转换报告
 
 ## 目录结构
 
@@ -100,8 +120,29 @@ xuekewang/
 
 - OLE 公式按 `word/embeddings/` 关系解析
 - OMML 公式按 `word/document.xml` 中出现顺序直接写入输出
-- 普通图片会提取到 `img/` 并在文本中以占位形式保留位置
+- 常见标题样式（如 `Heading 1/2/3`）会映射为基础 LaTeX 结构
+- 普通图片默认提取到 `img/` 并以占位形式保留位置，也可通过配置改成 `\includegraphics{}`
+- 图片文件名会附加哈希，避免同名资源相互覆盖
 - 如果某个 OLE 公式转换结果明显异常，程序会优先回退到其预览图，而不是输出误导性的 LaTeX
+
+## 配置文件说明
+
+可参考仓库中的 `config.example.json`。当前支持：
+
+- `document.class`
+  - 输出文档类，如 `article`、`report`
+- `document.packages`
+  - 需要注入的 LaTeX 包列表
+- `styles`
+  - 段落样式名到 LaTeX 模板的映射，模板必须包含 `%s`
+- `image.mode`
+  - `placeholder` / `includegraphics` / `template`
+- `image.template`
+  - 当 `image.mode=template` 时使用的模板
+- `report.enabled`
+  - 是否默认输出转换报告
+- `report.file`
+  - 自定义报告路径
 
 ## 常见问题
 

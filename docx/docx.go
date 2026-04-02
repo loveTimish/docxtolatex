@@ -3,6 +3,7 @@ package docx
 import (
 	"archive/zip"
 	"bytes"
+	"crypto/sha1"
 	"encoding/xml"
 	"fmt"
 	"io"
@@ -19,8 +20,10 @@ import (
 )
 
 type Converter struct {
-	Source string
-	Output string
+	Source      string
+	Output      string
+	Config      Config
+	WriteReport bool
 }
 
 type relInfo struct {
@@ -28,9 +31,17 @@ type relInfo struct {
 	relType string
 }
 
-// Convert walks the docx body in order and writes a minimal UTF-8 LaTeX file
-// with plain text, converted MathType OLE objects, and extracted images.
+var (
+	badFracRe     = regexp.MustCompile(`\\frac\{[^}]*\}\{\s*[\+\-*/]\s*\}|\\frac\{\s*[\+\-*/]\s*\}\{[^}]*\}`)
+	repeatedOpsRe = regexp.MustCompile(`[\+\-]{3,}`)
+	tinyBraceRe   = regexp.MustCompile(`\{\s*\d+\s*\+\s*\}`)
+)
+
+// Convert walks the docx body in order and writes a UTF-8 LaTeX document
+// with plain text, converted MathType OLE objects, OMML formulas, and extracted images.
 func (c *Converter) Convert() (int, error) {
+	cfg := c.Config.withDefaults()
+
 	reader, err := zip.OpenReader(c.Source)
 	if err != nil {
 		return 0, fmt.Errorf("open docx: %w", err)
@@ -75,92 +86,46 @@ func (c *Converter) Convert() (int, error) {
 	}
 	texPath := filepath.Join(outDir, baseName+".tex")
 
+	report := newReport(c.Source)
 	var buf bytes.Buffer
 	buf.WriteString("% Auto-generated from ")
 	buf.WriteString(filepath.Base(c.Source))
-	buf.WriteString("\n\\documentclass{article}\n")
-	buf.WriteString("\\usepackage[T1]{fontenc}\n\\usepackage[utf8]{inputenc}\n")
-	buf.WriteString("\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{graphicx}\n")
+	buf.WriteString("\n")
+	buf.WriteString("\\documentclass{")
+	buf.WriteString(cfg.Document.Class)
+	buf.WriteString("}\n")
+	for _, pkg := range cfg.Document.Packages {
+		pkg = strings.TrimSpace(pkg)
+		if pkg == "" {
+			continue
+		}
+		buf.WriteString(renderUsePackage(pkg))
+		buf.WriteString("\n")
+	}
 	buf.WriteString("\\begin{document}\n\n")
 
 	dec := xml.NewDecoder(docReader)
 
 	var para strings.Builder
+	currentParagraphStyle := ""
 	eqnCache := make(map[string]string)
 	imgCache := make(map[string]string)
 	equationCount := 0
+	paragraphCount := 0
 	var imgBuf []string
 	inObject := false
 	pendingOlePreviewRid := ""
-
-	isBadLatex := func(latex string) bool {
-		s := strings.TrimSpace(latex)
-		if s == "" {
-			return true
-		}
-		inner := s
-		if strings.HasPrefix(inner, "$$") && strings.HasSuffix(inner, "$$") && len(inner) >= 4 {
-			inner = strings.TrimSpace(inner[2 : len(inner)-2])
-		} else if strings.HasPrefix(inner, "$") && strings.HasSuffix(inner, "$") && len(inner) >= 2 {
-			inner = strings.TrimSpace(inner[1 : len(inner)-1])
-		}
-		if inner == "" {
-			return true
-		}
-		if strings.ContainsRune(inner, '\uFFFD') {
-			return true
-		}
-		// Treat common "unknown glyph" placeholders as failure as well.
-		if strings.ContainsRune(inner, '□') {
-			return true
-		}
-		// If there are non-printable runes in the math content, it's usually garbage and
-		// will render as tofu/boxes in editors. Prefer image fallback.
-		for _, r := range inner {
-			if r == '\n' || r == '\r' || r == '\t' {
-				continue
-			}
-			if !unicode.IsPrint(r) && !unicode.IsSpace(r) {
-				return true
-			}
-		}
-		// If the result is just a tiny non-LaTeX blob (e.g. "$$ Ȁ $$"), treat it as failed.
-		if !strings.Contains(inner, "\\") && utf8.RuneCountInString(inner) <= 2 {
-			for _, r := range inner {
-				if r > 127 && (unicode.IsLetter(r) || unicode.IsSymbol(r) || unicode.IsMark(r)) {
-					return true
-				}
-			}
-		}
-		// Heuristics for "obviously broken" conversions that would lose meaning.
-		// Prefer image fallback instead of outputting misleading TeX.
-		// - \frac{1}{+} or \frac{+}{1}
-		badFrac := regexp.MustCompile(`\\frac\{[^}]*\}\{\s*[\+\-*/]\s*\}|\\frac\{\s*[\+\-*/]\s*\}\{[^}]*\}`)
-		if badFrac.MatchString(inner) {
-			return true
-		}
-		// - Repeated operators like "+++" or "---" (not common in valid TeX here)
-		if regexp.MustCompile(`[\+\-]{3,}`).MatchString(inner) {
-			return true
-		}
-		// - Tiny brace groups that end with '+' like "{ 1+ }" (often truncated parse)
-		if regexp.MustCompile(`\{\s*\d+\s*\+\s*\}`).MatchString(inner) {
-			return true
-		}
-		// - Arrow-only formulas (usually a broken template expansion)
-		arrowOnly := strings.TrimSpace(strings.ReplaceAll(inner, `\rightarrow`, ""))
-		if arrowOnly == "" && strings.Contains(inner, `\rightarrow`) {
-			return true
-		}
-		return false
-	}
 
 	flushImages := func() {
 		if len(imgBuf) == 0 {
 			return
 		}
-		para.WriteString("beginPic{" + strings.Join(imgBuf, ",") + "}endPic")
+		para.WriteString(renderImageRefs(imgBuf, cfg.Image))
 		imgBuf = imgBuf[:0]
+	}
+
+	appendWarning := func(msg string) {
+		report.Warnings = append(report.Warnings, msg)
 	}
 
 	for {
@@ -176,13 +141,13 @@ func (c *Converter) Convert() (int, error) {
 		case xml.StartElement:
 			switch el.Name.Local {
 			case "object":
-				// A Word OLE object (e.g., MathType) often has a preview image (imagedata/blip)
-				// plus the OLEObject relationship. We defer emitting the preview image until we
-				// know whether the OLE->LaTeX conversion succeeded.
 				inObject = true
 				pendingOlePreviewRid = ""
 			case "p":
 				para.Reset()
+				currentParagraphStyle = ""
+			case "pStyle":
+				currentParagraphStyle = normalizeStyleName(getAttr(el.Attr, "val"))
 			case "t":
 				flushImages()
 				var txt string
@@ -200,47 +165,79 @@ func (c *Converter) Convert() (int, error) {
 				flushImages()
 				rid := getAttr(el.Attr, "id")
 				if rid == "" {
+					appendWarning("OLEObject without relationship id")
 					continue
 				}
+
+				rel, hasRel := rels[rid]
 				latex, err := resolveEquation(rid, rels, files, eqnCache)
 				if err != nil {
 					return 0, err
 				}
-				// Fallback: if LaTeX conversion failed/looks broken, use the preview image
-				// captured inside the same w:object (if any).
-				if latex == "" || isBadLatex(latex) {
+
+				entry := EquationReport{
+					Index:     len(report.Equations) + 1,
+					Kind:      "ole",
+					Paragraph: paragraphCount + 1,
+				}
+				if hasRel {
+					entry.Source = rel.target
+				}
+
+				if bad, reason := isBadLatex(latex); latex == "" || bad {
+					entry.Status = "skipped"
+					entry.Reason = reason
+					if latex == "" {
+						entry.Reason = "empty-output"
+					}
 					if pendingOlePreviewRid != "" && isImage(relType(rels, pendingOlePreviewRid)) {
-						rel := rels[pendingOlePreviewRid]
-						name, err := extractImage(assetRoot, rel.target, files, imgCache)
+						previewRel := rels[pendingOlePreviewRid]
+						name, err := extractImage(assetRoot, previewRel.target, files, imgCache)
 						if err != nil {
 							return 0, err
 						}
 						if name != "" {
-							para.WriteString("beginPic{" + name + "}endPic")
+							para.WriteString(renderImageRefs([]string{name}, cfg.Image))
+							entry.Status = "fallback-image"
+							entry.Output = name
 							equationCount++
+							report.Summary.FallbackImages++
 						}
 					}
-					// either way, don't emit the (bad) latex
+					report.Equations = append(report.Equations, entry)
 					continue
 				}
-				if latex != "" {
-					para.WriteString(addCommandSpacing(latex))
-					equationCount++
-				}
+
+				para.WriteString(addCommandSpacing(latex))
+				equationCount++
+				entry.Status = "converted"
+				entry.Output = latex
+				report.Equations = append(report.Equations, entry)
+				report.Summary.ConvertedOLE++
 			case "oMath", "oMathPara":
 				flushImages()
 				latex, err := omml.ConvertElement(el, dec)
 				if err != nil {
 					return 0, fmt.Errorf("convert OMML: %w", err)
 				}
-				if latex != "" {
-					latex = addCommandSpacing(latex)
-					display := el.Name.Local == "oMathPara"
-					para.WriteString(wrapMath(latex, display))
-					equationCount++
+				if latex == "" {
+					appendWarning(fmt.Sprintf("empty OMML formula in paragraph %d", paragraphCount+1))
+					continue
 				}
+				latex = addCommandSpacing(latex)
+				display := el.Name.Local == "oMathPara"
+				wrapped := wrapMath(latex, display)
+				para.WriteString(wrapped)
+				equationCount++
+				report.Equations = append(report.Equations, EquationReport{
+					Index:     len(report.Equations) + 1,
+					Kind:      map[bool]string{true: "omml-display", false: "omml-inline"}[display],
+					Paragraph: paragraphCount + 1,
+					Status:    "converted",
+					Output:    latex,
+				})
+				report.Summary.ConvertedOMML++
 			case "imagedata", "blip":
-				// a:blip uses r:embed; v:imagedata uses r:id
 				rid := getAttr(el.Attr, "embed")
 				if rid == "" {
 					rid = getAttr(el.Attr, "id")
@@ -254,12 +251,18 @@ func (c *Converter) Convert() (int, error) {
 						return 0, err
 					}
 					if latex != "" {
-						para.WriteString(latex)
+						para.WriteString(addCommandSpacing(latex))
 						equationCount++
+						report.Equations = append(report.Equations, EquationReport{
+							Index:     len(report.Equations) + 1,
+							Kind:      "ole-inline",
+							Paragraph: paragraphCount + 1,
+							Status:    "converted",
+							Output:    latex,
+						})
+						report.Summary.ConvertedOLE++
 					}
 				} else if isImage(relType(rels, rid)) {
-					// If we're inside an OLE object, this image is usually just a preview for the OLE equation.
-					// Defer emitting it until we see whether OLE conversion works.
 					if inObject {
 						pendingOlePreviewRid = rid
 					} else {
@@ -270,6 +273,7 @@ func (c *Converter) Convert() (int, error) {
 						}
 						if name != "" {
 							imgBuf = append(imgBuf, name)
+							report.Summary.ExtractedImages++
 						}
 					}
 				}
@@ -281,26 +285,32 @@ func (c *Converter) Convert() (int, error) {
 			}
 			if el.Name.Local == "p" {
 				flushImages()
-				content := para.String()
-				if strings.Contains(content, "==end") {
-					// 视为分隔符行：只保留分隔符本身
-					buf.WriteString("==end\n\n")
-				} else {
-					para.WriteString("\n\n")
-					buf.WriteString(para.String())
-				}
+				paragraphCount++
+				report.Summary.Paragraphs = paragraphCount
+				buf.WriteString(renderParagraph(para.String(), currentParagraphStyle, cfg))
 			}
 		}
 	}
 
 	buf.WriteString("\\end{document}\n")
 
-	outBytes := []byte(addCommandSpacing(buf.String()))
+	outBytes := []byte(buf.String())
 	if err := os.WriteFile(texPath, outBytes, 0644); err != nil {
 		return 0, fmt.Errorf("write %s: %w", texPath, err)
 	}
 
 	c.Output = texPath
+	report.Output = texPath
+	report.Summary.Equations = equationCount
+	if (c.WriteReport || cfg.Report.Enabled) && texPath != "" {
+		reportPath := cfg.Report.File
+		if strings.TrimSpace(reportPath) == "" {
+			reportPath = filepath.Join(outDir, baseName+".report.json")
+		}
+		if err := writeReport(report, reportPath); err != nil {
+			return 0, err
+		}
+	}
 	return equationCount, nil
 }
 
@@ -330,7 +340,6 @@ func loadRels(files map[string]*zip.File) (map[string]relInfo, error) {
 		return nil, fmt.Errorf("decode relationships: %w", err)
 	}
 
-	// Stable order not required, but sort for determinism in tests.
 	sort.Slice(relDoc.Relationships, func(i, j int) bool {
 		return relDoc.Relationships[i].ID < relDoc.Relationships[j].ID
 	})
@@ -403,13 +412,6 @@ func extractImage(assetRoot, target string, files map[string]*zip.File, cache ma
 		return "", fmt.Errorf("image %s not found", srcPath)
 	}
 
-	dstPath := filepath.Join(assetRoot, target)
-	filename := filepath.Base(target)
-	dstPath = filepath.Join(assetRoot, filename)
-	if err := os.MkdirAll(filepath.Dir(dstPath), 0755); err != nil {
-		return "", fmt.Errorf("mkdir %s: %w", filepath.Dir(dstPath), err)
-	}
-
 	rc, err := f.Open()
 	if err != nil {
 		return "", fmt.Errorf("open image %s: %w", srcPath, err)
@@ -421,22 +423,23 @@ func extractImage(assetRoot, target string, files map[string]*zip.File, cache ma
 		return "", fmt.Errorf("read image %s: %w", srcPath, err)
 	}
 
-	// Some MathType OLE preview images can be essentially "empty" placeholders.
-	// If such a tiny WMF/EMF is used for equation fallback, it should be treated as
-	// an empty formula (emit nothing) rather than a confusing beginPic marker.
+	filename := uniqueAssetName(target, data)
 	ext := strings.ToLower(filepath.Ext(filename))
 	if (ext == ".wmf" || ext == ".emf") && len(data) > 0 && len(data) < 512 {
 		cache[target] = ""
 		return "", nil
 	}
 
+	dstPath := filepath.Join(assetRoot, filename)
+	if err := os.MkdirAll(filepath.Dir(dstPath), 0755); err != nil {
+		return "", fmt.Errorf("mkdir %s: %w", filepath.Dir(dstPath), err)
+	}
 	if err := os.WriteFile(dstPath, data, 0644); err != nil {
 		return "", fmt.Errorf("write image %s: %w", dstPath, err)
 	}
 
-	rel := filename
-	cache[target] = rel
-	return rel, nil
+	cache[target] = filename
+	return filename, nil
 }
 
 func getAttr(attrs []xml.Attr, local string) string {
@@ -464,6 +467,57 @@ func escapeLatex(s string) string {
 	return replacer.Replace(s)
 }
 
+func isBadLatex(latex string) (bool, string) {
+	s := strings.TrimSpace(latex)
+	if s == "" {
+		return true, "empty-output"
+	}
+	inner := s
+	if strings.HasPrefix(inner, "$$") && strings.HasSuffix(inner, "$$") && len(inner) >= 4 {
+		inner = strings.TrimSpace(inner[2 : len(inner)-2])
+	} else if strings.HasPrefix(inner, "$") && strings.HasSuffix(inner, "$") && len(inner) >= 2 {
+		inner = strings.TrimSpace(inner[1 : len(inner)-1])
+	}
+	if inner == "" {
+		return true, "empty-math-body"
+	}
+	if strings.ContainsRune(inner, '\uFFFD') {
+		return true, "replacement-char"
+	}
+	if strings.ContainsRune(inner, '□') {
+		return true, "placeholder-box"
+	}
+	for _, r := range inner {
+		if r == '\n' || r == '\r' || r == '\t' {
+			continue
+		}
+		if !unicode.IsPrint(r) && !unicode.IsSpace(r) {
+			return true, "non-printable-rune"
+		}
+	}
+	if !strings.Contains(inner, "\\") && utf8.RuneCountInString(inner) <= 2 {
+		for _, r := range inner {
+			if r > 127 && (unicode.IsLetter(r) || unicode.IsSymbol(r) || unicode.IsMark(r)) {
+				return true, "tiny-nonlatex-fragment"
+			}
+		}
+	}
+	if badFracRe.MatchString(inner) {
+		return true, "broken-frac"
+	}
+	if repeatedOpsRe.MatchString(inner) {
+		return true, "repeated-operators"
+	}
+	if tinyBraceRe.MatchString(inner) {
+		return true, "truncated-brace-group"
+	}
+	arrowOnly := strings.TrimSpace(strings.ReplaceAll(inner, `\rightarrow`, ""))
+	if arrowOnly == "" && strings.Contains(inner, `\rightarrow`) {
+		return true, "arrow-only"
+	}
+	return false, ""
+}
+
 // addCommandSpacing inserts a space after a backslash-led command when it is immediately
 // followed by a letter/number/backslash so symbols do not stick to operands (e.g. \cdotB -> \cdot B).
 func addCommandSpacing(s string) string {
@@ -483,10 +537,9 @@ func addCommandSpacing(s string) string {
 				b.WriteRune(' ')
 			} else {
 				next := runes[i]
-				// Don't break TeX linebreak command: "\\" should stay as-is (no inserted space).
 				cmdLen := i - cmdStart
 				if cmdLen == 0 && next == '\\' {
-					// no-op
+					// keep LaTeX line breaks as-is
 				} else if next != ' ' && (unicode.IsLetter(next) || unicode.IsDigit(next) || next == '\\' || next == '×') {
 					b.WriteRune(' ')
 				}
@@ -518,11 +571,92 @@ func normalizeMathSpaces(latex string) string {
 	return strings.ReplaceAll(latex, "\u3000", " ")
 }
 
-func readAll(f *zip.File) ([]byte, error) {
-	rc, err := f.Open()
-	if err != nil {
-		return nil, err
+func renderParagraph(content string, style string, cfg Config) string {
+	trimmed := strings.TrimSpace(content)
+	if trimmed == "" {
+		return "\n"
 	}
-	defer rc.Close()
-	return io.ReadAll(rc)
+	if strings.Contains(trimmed, "==end") {
+		return "==end\n\n"
+	}
+	if format, ok := cfg.Styles[normalizeStyleName(style)]; ok && strings.Contains(format, "%s") {
+		return fmt.Sprintf(format, trimmed) + "\n\n"
+	}
+	return trimmed + "\n\n"
+}
+
+func normalizeStyleName(style string) string {
+	return strings.ToLower(strings.TrimSpace(style))
+}
+
+func renderUsePackage(pkg string) string {
+	pkg = strings.TrimSpace(pkg)
+	if pkg == "" {
+		return ""
+	}
+	if strings.HasPrefix(pkg, "[") || strings.HasPrefix(pkg, "{") {
+		return `\usepackage` + pkg
+	}
+	return `\usepackage{` + pkg + `}`
+}
+
+func renderImageRefs(names []string, cfg ImageConfig) string {
+	if len(names) == 0 {
+		return ""
+	}
+	mode := strings.ToLower(strings.TrimSpace(cfg.Mode))
+	if mode == "" {
+		mode = "placeholder"
+	}
+
+	parts := make([]string, 0, len(names))
+	for _, name := range names {
+		switch mode {
+		case "includegraphics":
+			parts = append(parts, fmt.Sprintf(`\includegraphics{%s}`, name))
+		case "template":
+			tpl := cfg.Template
+			if tpl == "" {
+				tpl = `beginPic{%s}endPic`
+			}
+			parts = append(parts, fmt.Sprintf(tpl, name))
+		default:
+			parts = append(parts, fmt.Sprintf(`beginPic{%s}endPic`, name))
+		}
+	}
+
+	if mode == "includegraphics" {
+		return strings.Join(parts, "\n")
+	}
+	return strings.Join(parts, "")
+}
+
+func uniqueAssetName(target string, data []byte) string {
+	ext := strings.ToLower(filepath.Ext(target))
+	base := strings.TrimSuffix(filepath.Base(target), filepath.Ext(target))
+	base = sanitizeFileStem(base)
+	if base == "" {
+		base = "asset"
+	}
+	sum := sha1.Sum(append([]byte(target), data...))
+	return fmt.Sprintf("%s-%x%s", base, sum[:4], ext)
+}
+
+func sanitizeFileStem(s string) string {
+	s = strings.TrimSpace(strings.ToLower(s))
+	if s == "" {
+		return ""
+	}
+	var b strings.Builder
+	for _, r := range s {
+		switch {
+		case unicode.IsLetter(r), unicode.IsDigit(r):
+			b.WriteRune(r)
+		case r == '-', r == '_':
+			b.WriteRune(r)
+		default:
+			b.WriteRune('-')
+		}
+	}
+	return strings.Trim(b.String(), "-")
 }
