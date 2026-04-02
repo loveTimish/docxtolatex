@@ -28,13 +28,13 @@ type ReportSummary struct {
 }
 
 type EquationReport struct {
-	Index    int    `json:"index"`
-	Kind     string `json:"kind"`
-	Source   string `json:"source,omitempty"`
-	Status   string `json:"status"`
-	Reason   string `json:"reason,omitempty"`
-	Output   string `json:"output,omitempty"`
-	Paragraph int   `json:"paragraph,omitempty"`
+	Index     int    `json:"index"`
+	Kind      string `json:"kind"`
+	Source    string `json:"source,omitempty"`
+	Status    string `json:"status"`
+	Reason    string `json:"reason,omitempty"`
+	Output    string `json:"output,omitempty"`
+	Paragraph int    `json:"paragraph,omitempty"`
 }
 
 func newReport(source string) ConversionReport {

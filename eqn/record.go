@@ -208,7 +208,7 @@ func (ast *MtAST) debug(indent int) {
 
 type SelectorType uint8
 
-//Template selectors and variations:
+// Template selectors and variations:
 const (
 	//Fences (parentheses, etc.):
 	//selector	symbol	description	class

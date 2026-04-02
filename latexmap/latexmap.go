@@ -117,5 +117,3 @@ func ReplaceEqnChars(s string) string {
 	}
 	return b.String()
 }
-
-

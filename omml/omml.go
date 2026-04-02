@@ -348,16 +348,16 @@ func walk(buf *bytes.Buffer, start xml.StartElement, dec *xml.Decoder) error {
 		if len(rows) == 0 {
 			return nil
 		}
-	for i, r := range rows {
-		if i > 0 {
-			buf.WriteString(`\\`)
+		for i, r := range rows {
+			if i > 0 {
+				buf.WriteString(`\\`)
+			}
+			if len(r) == 2 {
+				buf.WriteString(r[0] + " = " + r[1])
+			} else {
+				buf.WriteString(strings.Join(r, " "))
+			}
 		}
-		if len(r) == 2 {
-			buf.WriteString(r[0] + " = " + r[1])
-		} else {
-			buf.WriteString(strings.Join(r, " "))
-		}
-	}
 	default:
 		// Skip unknown subtree for robustness.
 		if err := dec.Skip(); err != nil {

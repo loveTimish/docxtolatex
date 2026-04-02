@@ -811,8 +811,8 @@ var Chars = map[string]string{
 	"char/0xed01/mathmode": "\\Game ",
 	"char/0xed02/mathmode": "\\jmath ",
 	// Differential d in upright/roman.
-	"char/0xed10":          "\\mathrm{d} ",
-	"char/0xed11":          " e ",
+	"char/0xed10": "\\mathrm{d} ",
+	"char/0xed11": " e ",
 	// Imaginary unit i in upright/roman.
 	"char/0xed12":          "\\mathrm{i} ",
 	"char/0xed13":          " j ",
@@ -938,9 +938,9 @@ var Chars = map[string]string{
 	"char/0xec07":          "|",
 	"char/0xec08":          "|",
 	// Fallback non-mathmode mapping; still prefer \lt for safety in HTML contexts.
-	"char/0x003c":          "\\lt ",
-	"char/0x0302":          "\\widehat ",
-	"char/0x86e0":          "\\prime ",
+	"char/0x003c": "\\lt ",
+	"char/0x0302": "\\widehat ",
+	"char/0x86e0": "\\prime ",
 }
 
 // LookupChar looks up a character mapping by key (e.g., "char/0x222b/mathmode").

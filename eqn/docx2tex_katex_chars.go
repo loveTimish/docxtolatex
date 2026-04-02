@@ -5,3210 +5,3208 @@ package eqn
 // DocxTexKatexChars contains KaTeX-compatible character mappings extracted from docx2tex.
 // These supplement the base Chars and ExtendedChars maps with additional symbols.
 var DocxTexKatexChars = map[string]string{
-	"char/0x0021/textmode": "!", // Unicode U+0021
-	"char/0x0022/mathmode": "\\text{\"{}}", // Unicode U+0022
-	"char/0x0023/mathmode": "\\#", // Unicode U+0023
-	"char/0x0024/mathmode": "\\$", // Unicode U+0024
-	"char/0x0025/mathmode": "\\%", // Unicode U+0025
-	"char/0x0026/mathmode": "\\&", // Unicode U+0026
-	"char/0x0027/mathmode": "\\text{'\\vphantom{A}}", // Unicode U+0027
-	"char/0x0028/mathmode": "(", // Unicode U+0028
-	"char/0x0029/mathmode": ")", // Unicode U+0029
-	"char/0x002a/mathmode": "\\ast", // Unicode U+002A
-	"char/0x002b/mathmode": "+", // Unicode U+002B
-	"char/0x002c/mathmode": "\\text{,}", // Unicode U+002C
-	"char/0x002e/mathmode": "\\text{.}", // Unicode U+002E
-	"char/0x002f/mathmode": "/", // Unicode U+002F
-	"char/0x003a/textmode": "\\colon", // Unicode U+003A
-	"char/0x003b/mathmode": "\\text{;}", // Unicode U+003B
-	"char/0x003c/textmode": "{\\textless}", // Unicode U+003C
-	"char/0x003d/mathmode": "=", // Unicode U+003D
-	"char/0x003e/textmode": "{\\textgreater}", // Unicode U+003E
-	"char/0x003f/mathmode": "\\text{?}", // Unicode U+003F
-	"char/0x0040/mathmode": "\\text{@}", // Unicode U+0040
-	"char/0x005b/mathmode": "[", // Unicode U+005B
-	"char/0x005c/mathmode": "\\backslash", // Unicode U+005C
-	"char/0x005d/mathmode": "]", // Unicode U+005D
-	"char/0x005e/textmode": "\\textasciicircum{}", // Unicode U+005E
-	"char/0x005f/mathmode": "\\_", // Unicode U+005F
-	"char/0x0060/mathmode": "\\grave{}", // Unicode U+0060
-	"char/0x007c/textmode": "{\\textbar}", // Unicode U+007C
-	"char/0x007e/textmode": "\\textasciitilde{}", // Unicode U+007E
-	"char/0x00a0/textmode": "~", // Unicode U+00A0
-	"char/0x00a1/textmode": "{\\textexclamdown}", // Unicode U+00A1
-	"char/0x00a2/textmode": "{\\cent}", // Unicode U+00A2
-	"char/0x00a3/textmode": "{\\pounds}", // Unicode U+00A3
-	"char/0x00a4/mathmode": "{\u00a4\\vphantom{A}}", // Unicode U+00A4
-	"char/0x00a5/textmode": "{\\yen}", // Unicode U+00A5
-	"char/0x00a6/mathmode": "{\u00a6\\vphantom{A}}", // Unicode U+00A6
-	"char/0x00a7/textmode": "{\\S}", // Unicode U+00A7
-	"char/0x00a8/mathmode": "\\ddot{}", // Unicode U+00A8
-	"char/0x00a9/textmode": "{\\textcopyright}", // Unicode U+00A9
-	"char/0x00aa/mathmode": "{{}^{\\rm a}}", // Unicode U+00AA
-	"char/0x00ab/textmode": "\"<", // Unicode U+00AB
-	"char/0x00ac/textmode": "{\\neg}", // Unicode U+00AC
-	"char/0x00ad/textmode": "\\-", // Unicode U+00AD
-	"char/0x00ae/textmode": "{\\textregistered}", // Unicode U+00AE
-	"char/0x00af/mathmode": "\\bar", // Unicode U+00AF
-	"char/0x00b0/textmode": "^{\\circ}", // Unicode U+00B0
-	"char/0x00b1/textmode": "{\\pm}", // Unicode U+00B1
-	"char/0x00b2/textmode": "^{2}", // Unicode U+00B2
-	"char/0x00b3/textmode": "^{3}", // Unicode U+00B3
-	"char/0x00b4/mathmode": "\\acute{}", // Unicode U+00B4
-	"char/0x00b5/textmode": "{\\mathrm{\\mu}}", // Unicode U+00B5
-	"char/0x00b6/textmode": "\\P", // Unicode U+00B6
-	"char/0x00b7/mathmode": "\\cdot", // Unicode U+00B7
-	"char/0x00b9/textmode": "^{1}", // Unicode U+00B9
-	"char/0x00ba/textmode": "^{\\circ}", // Unicode U+00BA
-	"char/0x00bb/textmode": "\">", // Unicode U+00BB
-	"char/0x00bc/mathmode": "{\u00bc\\vphantom{\\frac12}}", // Unicode U+00BC
-	"char/0x00bd/mathmode": "{\u00bd\\vphantom{\\frac12}}", // Unicode U+00BD
-	"char/0x00be/mathmode": "{\u00be\\vphantom{\\frac12}}", // Unicode U+00BE
-	"char/0x00bf/textmode": "{\\textquestiondown}", // Unicode U+00BF
-	"char/0x00c0/mathmode": "\\grave{A}", // Unicode U+00C0
-	"char/0x00c1/mathmode": "\\acute{A}", // Unicode U+00C1
-	"char/0x00c2/mathmode": "\\hat{A}", // Unicode U+00C2
-	"char/0x00c3/mathmode": "\\tilde{A}", // Unicode U+00C3
-	"char/0x00c4/textmode": "\u00c4", // Unicode U+00C4
-	"char/0x00c5/textmode": "\\AA{}", // Unicode U+00C5
-	"char/0x00c6/textmode": "\\AE{}", // Unicode U+00C6
-	"char/0x00c7/mathmode": "{\u00c7\\vphantom{A}}", // Unicode U+00C7
-	"char/0x00c8/mathmode": "\\grave{E}", // Unicode U+00C8
-	"char/0x00c9/mathmode": "\\acute{E}", // Unicode U+00C9
-	"char/0x00ca/mathmode": "\\hat{E}", // Unicode U+00CA
-	"char/0x00cb/mathmode": "\\ddot{E}", // Unicode U+00CB
-	"char/0x00cc/mathmode": "\\grave{I}", // Unicode U+00CC
-	"char/0x00cd/mathmode": "\\acute{I}", // Unicode U+00CD
-	"char/0x00ce/mathmode": "\\hat{I}", // Unicode U+00CE
-	"char/0x00cf/mathmode": "\\ddot{I}", // Unicode U+00CF
-	"char/0x00d0/mathmode": "{\u00d0\\vphantom{A}}", // Unicode U+00D0
-	"char/0x00d1/mathmode": "\\tilde{N}", // Unicode U+00D1
-	"char/0x00d2/mathmode": "\\grave{O}", // Unicode U+00D2
-	"char/0x00d3/mathmode": "\\acute{O}", // Unicode U+00D3
-	"char/0x00d4/mathmode": "\\hat{O}", // Unicode U+00D4
-	"char/0x00d5/mathmode": "\\tilde{O}", // Unicode U+00D5
-	"char/0x00d6/textmode": "\u00d6", // Unicode U+00D6
-	"char/0x00d7/textmode": "\\times", // Unicode U+00D7
-	"char/0x00d8/textmode": "\\O{}", // Unicode U+00D8
-	"char/0x00d9/mathmode": "\\grave{U}", // Unicode U+00D9
-	"char/0x00da/mathmode": "\\acute{U}", // Unicode U+00DA
-	"char/0x00db/mathmode": "\\hat{U}", // Unicode U+00DB
-	"char/0x00dc/textmode": "\u00dc", // Unicode U+00DC
-	"char/0x00dd/mathmode": "\\acute{Y}", // Unicode U+00DD
-	"char/0x00de/mathmode": "{\u00de\\vphantom{A}}", // Unicode U+00DE
-	"char/0x00df/textmode": "\"z", // Unicode U+00DF
-	"char/0x00e0/mathmode": "\\grave{a}", // Unicode U+00E0
-	"char/0x00e1/mathmode": "\\acute{a}", // Unicode U+00E1
-	"char/0x00e2/mathmode": "\\hat{a}", // Unicode U+00E2
-	"char/0x00e3/mathmode": "\\tilde{a}", // Unicode U+00E3
-	"char/0x00e4/textmode": "\u00e4", // Unicode U+00E4
-	"char/0x00e5/textmode": "\\aa{}", // Unicode U+00E5
-	"char/0x00e6/textmode": "\\ae{}", // Unicode U+00E6
-	"char/0x00e7/mathmode": "{\u00e7\\vphantom{A}}", // Unicode U+00E7
-	"char/0x00e8/mathmode": "\\grave{e}", // Unicode U+00E8
-	"char/0x00e9/mathmode": "\\acute{e}", // Unicode U+00E9
-	"char/0x00ea/mathmode": "\\hat{e}", // Unicode U+00EA
-	"char/0x00eb/mathmode": "\\ddot{e}", // Unicode U+00EB
-	"char/0x00ec/mathmode": "\\grave{\\imath}", // Unicode U+00EC
-	"char/0x00ed/mathmode": "\\acute{\\imath}", // Unicode U+00ED
-	"char/0x00ee/mathmode": "\\hat{\\imath}", // Unicode U+00EE
-	"char/0x00ef/mathmode": "\\ddot{\\imath}", // Unicode U+00EF
-	"char/0x00f0/textmode": "{\\eth}", // Unicode U+00F0
-	"char/0x00f1/mathmode": "\\tilde{n}", // Unicode U+00F1
-	"char/0x00f2/mathmode": "\\grave{o}", // Unicode U+00F2
-	"char/0x00f3/mathmode": "\\acute{o}", // Unicode U+00F3
-	"char/0x00f4/mathmode": "\\hat{o}", // Unicode U+00F4
-	"char/0x00f5/mathmode": "\\tilde{o}", // Unicode U+00F5
-	"char/0x00f6/textmode": "\u00f6", // Unicode U+00F6
-	"char/0x00f7/textmode": "\\div", // Unicode U+00F7
-	"char/0x00f8/textmode": "\\o{}", // Unicode U+00F8
-	"char/0x00f9/mathmode": "\\grave{u}", // Unicode U+00F9
-	"char/0x00fa/mathmode": "\\acute{u}", // Unicode U+00FA
-	"char/0x00fb/mathmode": "\\hat{u}", // Unicode U+00FB
-	"char/0x00fc/textmode": "\u00fc", // Unicode U+00FC
-	"char/0x00fd/mathmode": "\\acute{y}", // Unicode U+00FD
-	"char/0x00fe/mathmode": "{\u00fe\\vphantom{A}}", // Unicode U+00FE
-	"char/0x00ff/mathmode": "\\ddot{y}", // Unicode U+00FF
-	"char/0x0100/mathmode": "{\u0100\\vphantom{\\bar{A}}}", // Unicode U+0100
-	"char/0x0101/mathmode": "{\u0101\\vphantom{\\bar{a}}}", // Unicode U+0101
-	"char/0x0102/mathmode": "\\breve{A}", // Unicode U+0102
-	"char/0x0103/mathmode": "\\breve{a}", // Unicode U+0103
-	"char/0x0104/mathmode": "{\u0104\\vphantom{A}}", // Unicode U+0104
-	"char/0x0105/mathmode": "{\u0105\\vphantom{A}}", // Unicode U+0105
-	"char/0x0106/mathmode": "\\acute{C}", // Unicode U+0106
-	"char/0x0107/mathmode": "\\acute{c}", // Unicode U+0107
-	"char/0x0108/mathmode": "\\hat{C}", // Unicode U+0108
-	"char/0x0109/mathmode": "\\hat{c}", // Unicode U+0109
-	"char/0x010a/mathmode": "\\dot{C}", // Unicode U+010A
-	"char/0x010b/mathmode": "\\dot{c}", // Unicode U+010B
-	"char/0x010c/mathmode": "\\check{C}", // Unicode U+010C
-	"char/0x010d/mathmode": "\\check{c}", // Unicode U+010D
-	"char/0x010e/mathmode": "\\check{D}", // Unicode U+010E
-	"char/0x010f/mathmode": "\\check{d}", // Unicode U+010F
-	"char/0x0110/mathmode": "{\u0110\\vphantom{A}}", // Unicode U+0110
-	"char/0x0111/mathmode": "{\u0111\\vphantom{A}}", // Unicode U+0111
-	"char/0x0112/mathmode": "{\u0112\\vphantom{\\bar{E}}}", // Unicode U+0112
-	"char/0x0113/mathmode": "{\u0113\\vphantom{\\bar{e}}}", // Unicode U+0113
-	"char/0x0116/mathmode": "\\dot{E}", // Unicode U+0116
-	"char/0x0117/mathmode": "\\dot{e}", // Unicode U+0117
-	"char/0x0118/mathmode": "{\u0118\\vphantom{A}}", // Unicode U+0118
-	"char/0x0119/mathmode": "{\u0119\\vphantom{A}}", // Unicode U+0119
-	"char/0x011a/mathmode": "\\check{E}", // Unicode U+011A
-	"char/0x011b/mathmode": "\\check{e}", // Unicode U+011B
-	"char/0x011c/mathmode": "\\hat{G}", // Unicode U+011C
-	"char/0x011d/mathmode": "\\hat{g}", // Unicode U+011D
-	"char/0x011e/mathmode": "\\breve{G}", // Unicode U+011E
-	"char/0x011f/mathmode": "\\breve{g}", // Unicode U+011F
-	"char/0x0120/mathmode": "\\dot{G}", // Unicode U+0120
-	"char/0x0121/mathmode": "\\dot{g}", // Unicode U+0121
-	"char/0x0122/mathmode": "{\u0122\\vphantom{A}}", // Unicode U+0122
-	"char/0x0124/mathmode": "\\hat{H}", // Unicode U+0124
-	"char/0x0125/mathmode": "\\hat{h}", // Unicode U+0125
-	"char/0x0126/mathmode": "{\u0126\\vphantom{A}}", // Unicode U+0126
-	"char/0x0127/textmode": "\\textcrh{}", // Unicode U+0127
-	"char/0x0128/mathmode": "\\tilde{I}", // Unicode U+0128
-	"char/0x0129/mathmode": "\\tilde{\\imath}", // Unicode U+0129
-	"char/0x012a/mathmode": "{\u012a\\vphantom{\\bar{I}}}", // Unicode U+012A
-	"char/0x012b/mathmode": "{\u012b\\vphantom{\\bar{i}}}", // Unicode U+012B
-	"char/0x012e/mathmode": "{\u012e\\vphantom{A}}", // Unicode U+012E
-	"char/0x012f/mathmode": "{\u012f\\vphantom{A}}", // Unicode U+012F
-	"char/0x0130/mathmode": "\\dot{I}", // Unicode U+0130
-	"char/0x0131/textmode": "\\i{}", // Unicode U+0131
-	"char/0x0132/mathmode": "{IJ}", // Unicode U+0132
-	"char/0x0133/mathmode": "{ij}", // Unicode U+0133
-	"char/0x0134/mathmode": "\\hat{J}", // Unicode U+0134
-	"char/0x0135/mathmode": "\\hat{\\jmath}", // Unicode U+0135
-	"char/0x0136/mathmode": "{\u0136\\vphantom{A}}", // Unicode U+0136
-	"char/0x0137/mathmode": "{\u0137\\vphantom{A}}", // Unicode U+0137
-	"char/0x0138/mathmode": "{\u0138\\vphantom{A}}", // Unicode U+0138
-	"char/0x0139/mathmode": "\\acute{L}", // Unicode U+0139
-	"char/0x013a/mathmode": "\\acute{l}", // Unicode U+013A
-	"char/0x013b/mathmode": "{\u013b\\vphantom{A}}", // Unicode U+013B
-	"char/0x013c/mathmode": "{\u013c\\vphantom{A}}", // Unicode U+013C
-	"char/0x013d/mathmode": "\\check{L}", // Unicode U+013D
-	"char/0x013e/mathmode": "\\check{l}", // Unicode U+013E
-	"char/0x013f/mathmode": "{L\\cdot}", // Unicode U+013F
-	"char/0x0140/mathmode": "{l\\cdot}", // Unicode U+0140
-	"char/0x0141/textmode": "\\L{}", // Unicode U+0141
-	"char/0x0142/textmode": "\\l{}", // Unicode U+0142
-	"char/0x0143/mathmode": "\\acute{N}", // Unicode U+0143
-	"char/0x0144/mathmode": "\\acute{n}", // Unicode U+0144
-	"char/0x0145/mathmode": "{\u0145\\vphantom{A}}", // Unicode U+0145
-	"char/0x0146/mathmode": "{\u0146\\vphantom{A}}", // Unicode U+0146
-	"char/0x0147/mathmode": "\\check{N}", // Unicode U+0147
-	"char/0x0148/mathmode": "\\check{n}", // Unicode U+0148
-	"char/0x0149/mathmode": "{\\text{'}n}", // Unicode U+0149
-	"char/0x014a/mathmode": "{\u014a\\vphantom{A}}", // Unicode U+014A
-	"char/0x014b/mathmode": "{\u014b\\vphantom{A}}", // Unicode U+014B
-	"char/0x014c/mathmode": "{\u014c\\vphantom{\\bar{O}}}", // Unicode U+014C
-	"char/0x014d/mathmode": "{\u014d\\vphantom{\\bar{o}}}", // Unicode U+014D
-	"char/0x0150/mathmode": "\\text{\\H O}", // Unicode U+0150
-	"char/0x0151/mathmode": "\\text{\\H o}", // Unicode U+0151
-	"char/0x0152/textmode": "\\OE{}", // Unicode U+0152
-	"char/0x0153/textmode": "\\oe{}", // Unicode U+0153
-	"char/0x0154/mathmode": "\\acute{R}", // Unicode U+0154
-	"char/0x0155/mathmode": "\\acute{r}", // Unicode U+0155
-	"char/0x0156/mathmode": "{\u0156\\vphantom{A}}", // Unicode U+0156
-	"char/0x0157/mathmode": "{\u0157\\vphantom{A}}", // Unicode U+0157
-	"char/0x0158/mathmode": "\\check{R}", // Unicode U+0158
-	"char/0x0159/mathmode": "\\check{r}", // Unicode U+0159
-	"char/0x015a/mathmode": "\\acute{S}", // Unicode U+015A
-	"char/0x015b/mathmode": "\\acute{s}", // Unicode U+015B
-	"char/0x015c/mathmode": "\\hat{S}", // Unicode U+015C
-	"char/0x015d/mathmode": "\\hat{s}", // Unicode U+015D
-	"char/0x015e/mathmode": "{\u015e\\vphantom{A}}", // Unicode U+015E
-	"char/0x015f/mathmode": "{\u015f\\vphantom{A}}", // Unicode U+015F
-	"char/0x0160/mathmode": "\\check{S}", // Unicode U+0160
-	"char/0x0161/mathmode": "\\check{s}", // Unicode U+0161
-	"char/0x0162/mathmode": "{\u0162\\vphantom{A}}", // Unicode U+0162
-	"char/0x0163/mathmode": "{\u0163\\vphantom{A}}", // Unicode U+0163
-	"char/0x0164/mathmode": "\\check{T}", // Unicode U+0164
-	"char/0x0165/mathmode": "\\check{t}", // Unicode U+0165
-	"char/0x0166/mathmode": "{\u0166\\vphantom{A}}", // Unicode U+0166
-	"char/0x0167/mathmode": "{\u0167\\vphantom{A}}", // Unicode U+0167
-	"char/0x0168/mathmode": "\\tilde{U}", // Unicode U+0168
-	"char/0x0169/mathmode": "\\tilde{u}", // Unicode U+0169
-	"char/0x016a/mathmode": "{\u016a\\vphantom{\\bar{U}}}", // Unicode U+016A
-	"char/0x016b/mathmode": "{\u016b\\vphantom{\\bar{u}}}", // Unicode U+016B
-	"char/0x016c/mathmode": "\\breve{U}", // Unicode U+016C
-	"char/0x016d/mathmode": "\\breve{u}", // Unicode U+016D
-	"char/0x016e/mathmode": "{\u016e\\vphantom{A}}", // Unicode U+016E
-	"char/0x016f/mathmode": "{\u016f\\vphantom{A}}", // Unicode U+016F
-	"char/0x0170/mathmode": "\\text{\\H U}", // Unicode U+0170
-	"char/0x0171/mathmode": "\\text{\\H u}", // Unicode U+0171
-	"char/0x0172/mathmode": "{\u0172\\vphantom{A}}", // Unicode U+0172
-	"char/0x0173/mathmode": "{\u0173\\vphantom{A}}", // Unicode U+0173
-	"char/0x0174/mathmode": "\\hat{W}", // Unicode U+0174
-	"char/0x0175/mathmode": "\\hat{w}", // Unicode U+0175
-	"char/0x0176/mathmode": "\\hat{Y}", // Unicode U+0176
-	"char/0x0177/mathmode": "\\hat{y}", // Unicode U+0177
-	"char/0x0178/mathmode": "\\ddot{Y}", // Unicode U+0178
-	"char/0x0179/mathmode": "\\acute{Z}", // Unicode U+0179
-	"char/0x017a/mathmode": "\\acute{z}", // Unicode U+017A
-	"char/0x017b/mathmode": "\\dot{Z}", // Unicode U+017B
-	"char/0x017c/mathmode": "\\dot{z}", // Unicode U+017C
-	"char/0x017d/mathmode": "\\check{Z}", // Unicode U+017D
-	"char/0x017e/mathmode": "\\check{z}", // Unicode U+017E
-	"char/0x0192/textmode": "{\\mathit{f}}", // Unicode U+0192
-	"char/0x01b5/mathmode": "{\u01b5\\vphantom{A}}", // Unicode U+01B5
-	"char/0x01c0/textmode": "{\\textbar}", // Unicode U+01C0
-	"char/0x01f5/mathmode": "\\acute{g}", // Unicode U+01F5
-	"char/0x0237/textmode": "{\\jmath}", // Unicode U+0237
-	"char/0x0250/textmode": "\\textturna{}", // Unicode U+0250
-	"char/0x0251/textmode": "\\textscripta{}", // Unicode U+0251
-	"char/0x0252/textmode": "\\textturnscripta{}", // Unicode U+0252
-	"char/0x0253/textmode": "\\texthtb{}", // Unicode U+0253
-	"char/0x0254/textmode": "\\textopeno{}", // Unicode U+0254
-	"char/0x0255/textmode": "\\textctc{}", // Unicode U+0255
-	"char/0x0256/textmode": "\\textrtaild{}", // Unicode U+0256
-	"char/0x0257/textmode": "\\texthtd{}", // Unicode U+0257
-	"char/0x0258/textmode": "\\textreve{}", // Unicode U+0258
-	"char/0x0259/textmode": "\\textschwa{}", // Unicode U+0259
-	"char/0x025a/textmode": "\\textrhookschwa{}", // Unicode U+025A
-	"char/0x025b/textmode": "\\textepsilon{}", // Unicode U+025B
-	"char/0x025c/textmode": "\\textrevepsilon{}", // Unicode U+025C
-	"char/0x025d/textmode": "\\textrhookrevepsilon{}", // Unicode U+025D
-	"char/0x025e/textmode": "\\textcloserevepsilon{}", // Unicode U+025E
-	"char/0x025f/textmode": "\\textbardotlessj{}", // Unicode U+025F
-	"char/0x0260/textmode": "\\texthtg{}", // Unicode U+0260
-	"char/0x0261/textmode": "\\textg{}", // Unicode U+0261
-	"char/0x0262/textmode": "\\textscg{}", // Unicode U+0262
-	"char/0x0263/textmode": "\\textbabygamma{}", // Unicode U+0263
-	"char/0x0264/textmode": "textramshorns{}", // Unicode U+0264
-	"char/0x0265/textmode": "\\textturnh{}", // Unicode U+0265
-	"char/0x0266/textmode": "\\texthth{}", // Unicode U+0266
-	"char/0x0267/textmode": "\\texththeng{}", // Unicode U+0267
-	"char/0x0268/textmode": "\\textbari{}", // Unicode U+0268
-	"char/0x0269/textmode": "\\textiota{}", // Unicode U+0269
-	"char/0x026a/textmode": "\\textsci{}", // Unicode U+026A
-	"char/0x026b/textmode": "\\textltilde{}", // Unicode U+026B
-	"char/0x026c/textmode": "\\textbeltl{}", // Unicode U+026C
-	"char/0x026d/textmode": "\\textrtaill{}", // Unicode U+026D
-	"char/0x026e/textmode": "\\textlyoghlig{}", // Unicode U+026E
-	"char/0x026f/textmode": "\\textturnm{}", // Unicode U+026F
-	"char/0x0270/textmode": "\\textturnmrleg{}", // Unicode U+0270
-	"char/0x0271/textmode": "\\textltailm{}", // Unicode U+0271
-	"char/0x0272/textmode": "\\textltailn{}", // Unicode U+0272
-	"char/0x0273/textmode": "\\textnrleg{}", // Unicode U+0273
-	"char/0x0274/textmode": "\\textscn{}", // Unicode U+0274
-	"char/0x0275/textmode": "\\textbaro{}", // Unicode U+0275
-	"char/0x0276/textmode": "\\textscoelig{}", // Unicode U+0276
-	"char/0x0277/textmode": "\\textcloseomega{}", // Unicode U+0277
-	"char/0x0278/textmode": "\\textphi{}", // Unicode U+0278
-	"char/0x0279/textmode": "\\textturnr{}", // Unicode U+0279
-	"char/0x027a/textmode": "\\textturnlonglegr{}", // Unicode U+027A
-	"char/0x027b/textmode": "\\textturnrrtail{}", // Unicode U+027B
-	"char/0x027c/textmode": "\\textlonglegr{}", // Unicode U+027C
-	"char/0x027d/textmode": "\\textrtailr{}", // Unicode U+027D
-	"char/0x027e/textmode": "\\textfishhookr{}", // Unicode U+027E
-	"char/0x0280/textmode": "\\textscr{}", // Unicode U+0280
-	"char/0x0281/textmode": "\\textinvscr{}", // Unicode U+0281
-	"char/0x0282/textmode": "\\textrtails{}", // Unicode U+0282
-	"char/0x0283/textmode": "\\textesh{}", // Unicode U+0283
-	"char/0x0284/textmode": "\\texthtbardotlessj{}", // Unicode U+0284
-	"char/0x0286/textmode": "\\textctesh{}", // Unicode U+0286
-	"char/0x0287/textmode": "\\textturnt{}", // Unicode U+0287
-	"char/0x0288/textmode": "\\textrtailt{}", // Unicode U+0288
-	"char/0x0289/textmode": "\\textbaru{}", // Unicode U+0289
-	"char/0x028a/textmode": "\\textupsilon{}", // Unicode U+028A
-	"char/0x028b/textmode": "\\textscriptv{}", // Unicode U+028B
-	"char/0x028c/textmode": "\\textturnv{}", // Unicode U+028C
-	"char/0x028d/textmode": "\\textturnw{}", // Unicode U+028D
-	"char/0x028e/textmode": "\\textturny{}", // Unicode U+028E
-	"char/0x028f/textmode": "\\textscy{}", // Unicode U+028F
-	"char/0x0290/textmode": "\\textrtailz{}", // Unicode U+0290
-	"char/0x0291/textmode": "\\textctz{}", // Unicode U+0291
-	"char/0x0292/textmode": "\\textyogh{}", // Unicode U+0292
-	"char/0x0293/textmode": "\\textctyogh{}", // Unicode U+0293
-	"char/0x0294/textmode": "\\textglotstop{}", // Unicode U+0294
-	"char/0x0295/textmode": "\\textrevglotstop{}", // Unicode U+0295
-	"char/0x0296/textmode": "\\textinvglotstop{}", // Unicode U+0296
-	"char/0x0297/textmode": "\\textstretchc{}", // Unicode U+0297
-	"char/0x0298/textmode": "\\textbullseye{}", // Unicode U+0298
-	"char/0x0299/textmode": "\\textscb{}", // Unicode U+0299
-	"char/0x029a/textmode": "\\textcloseepsilon{}", // Unicode U+029A
-	"char/0x029b/textmode": "\\texthtscg{}", // Unicode U+029B
-	"char/0x029c/textmode": "\\textsch{}", // Unicode U+029C
-	"char/0x029d/textmode": "\\textctj{}", // Unicode U+029D
-	"char/0x029e/textmode": "\\textturnk{}", // Unicode U+029E
-	"char/0x029f/textmode": "\\textscl{}", // Unicode U+029F
-	"char/0x02a0/textmode": "\\texthtq{}", // Unicode U+02A0
-	"char/0x02a1/textmode": "\\textbarglotstop{}", // Unicode U+02A1
-	"char/0x02a2/textmode": "\\textbarrevglotstop{}", // Unicode U+02A2
-	"char/0x02a3/textmode": "\\textdzlig{}", // Unicode U+02A3
-	"char/0x02a4/textmode": "\\textdyoghlig{}", // Unicode U+02A4
-	"char/0x02a5/textmode": "\\textdctzlig{}", // Unicode U+02A5
-	"char/0x02a6/textmode": "\\texttslig{}", // Unicode U+02A6
-	"char/0x02a7/textmode": "\\textteshlig{}", // Unicode U+02A7
-	"char/0x02a8/textmode": "\\texttctclig{}", // Unicode U+02A8
-	"char/0x02c6/mathmode": "\\hat{}", // Unicode U+02C6
-	"char/0x02c7/mathmode": "\\check{}", // Unicode U+02C7
-	"char/0x02d8/mathmode": "\\breve{}", // Unicode U+02D8
-	"char/0x02d9/mathmode": "\\dot{}", // Unicode U+02D9
-	"char/0x02da/mathmode": "\\mathring{}", // Unicode U+02DA
-	"char/0x02dc/textmode": "\u02dc", // Unicode U+02DC
-	"char/0x0300/textmode": "\u0300", // Unicode U+0300
-	"char/0x0301/textmode": "\u0301", // Unicode U+0301
-	"char/0x0302/textmode": "\u0302", // Unicode U+0302
-	"char/0x0303/textmode": "\u0303", // Unicode U+0303
-	"char/0x0304/textmode": "\u0304", // Unicode U+0304
-	"char/0x0305/textmode": "\u0305", // Unicode U+0305
-	"char/0x0306/textmode": "\u0306", // Unicode U+0306
-	"char/0x0307/textmode": "\u0307", // Unicode U+0307
-	"char/0x0308/textmode": "\u0308", // Unicode U+0308
-	"char/0x030a/textmode": "\u030a", // Unicode U+030A
-	"char/0x030c/textmode": "\u030c", // Unicode U+030C
-	"char/0x0330/textmode": "\u0330", // Unicode U+0330
-	"char/0x0331/textmode": "\u0331", // Unicode U+0331
-	"char/0x0332/textmode": "\u0332", // Unicode U+0332
-	"char/0x0338/textmode": "\u0338", // Unicode U+0338
-	"char/0x0386/mathmode": "{\u0386\\vphantom{\\bar{A}}}", // Unicode U+0386
-	"char/0x0388/mathmode": "{\u0388\\vphantom{\\bar{A}}}", // Unicode U+0388
-	"char/0x0389/mathmode": "{\u0389\\vphantom{\\bar{A}}}", // Unicode U+0389
-	"char/0x038a/mathmode": "{\u038a\\vphantom{\\bar{A}}}", // Unicode U+038A
-	"char/0x038c/mathmode": "{\u038c\\vphantom{\\bar{A}}}", // Unicode U+038C
-	"char/0x038e/mathmode": "{\u038e\\vphantom{\\bar{A}}}", // Unicode U+038E
-	"char/0x038f/mathmode": "{\u038f\\vphantom{\\bar{A}}}", // Unicode U+038F
-	"char/0x0390/mathmode": "{\u0390\\vphantom{\\bar{A}}}", // Unicode U+0390
-	"char/0x0391/textmode": "A", // Unicode U+0391
-	"char/0x0392/textmode": "B", // Unicode U+0392
-	"char/0x0393/textmode": "{\\Gamma}", // Unicode U+0393
-	"char/0x0394/textmode": "{\\Delta}", // Unicode U+0394
-	"char/0x0395/textmode": "E", // Unicode U+0395
-	"char/0x0396/textmode": "\u0396", // Unicode U+0396
-	"char/0x0397/textmode": "H", // Unicode U+0397
-	"char/0x0398/textmode": "{\\Theta}", // Unicode U+0398
-	"char/0x0399/textmode": "I", // Unicode U+0399
-	"char/0x039a/textmode": "K", // Unicode U+039A
-	"char/0x039b/textmode": "{\\Lambda}", // Unicode U+039B
-	"char/0x039c/textmode": "M", // Unicode U+039C
-	"char/0x039d/textmode": "N", // Unicode U+039D
-	"char/0x039e/textmode": "{\\Xi}", // Unicode U+039E
-	"char/0x039f/textmode": "O", // Unicode U+039F
-	"char/0x03a0/textmode": "{\\Pi}", // Unicode U+03A0
-	"char/0x03a1/textmode": "P", // Unicode U+03A1
-	"char/0x03a3/textmode": "{\\Sigma}", // Unicode U+03A3
-	"char/0x03a4/textmode": "T", // Unicode U+03A4
-	"char/0x03a5/textmode": "{\\Upsilon}", // Unicode U+03A5
-	"char/0x03a6/textmode": "{\\Phi}", // Unicode U+03A6
-	"char/0x03a7/textmode": "\u03a7", // Unicode U+03A7
-	"char/0x03a8/textmode": "{\\Psi}", // Unicode U+03A8
-	"char/0x03a9/textmode": "{\\Omega}", // Unicode U+03A9
-	"char/0x03aa/mathmode": "{\u03aa\\vphantom{\\bar{A}}}", // Unicode U+03AA
-	"char/0x03ab/mathmode": "{\u03ab\\vphantom{\\bar{A}}}", // Unicode U+03AB
-	"char/0x03ac/mathmode": "{\u03ac\\vphantom{\\bar{A}}}", // Unicode U+03AC
-	"char/0x03ad/mathmode": "{\u03ad\\vphantom{\\bar{A}}}", // Unicode U+03AD
-	"char/0x03ae/mathmode": "{\u03ae\\vphantom{\\bar{A}}}", // Unicode U+03AE
-	"char/0x03af/mathmode": "{\u03af\\vphantom{\\bar{A}}}", // Unicode U+03AF
-	"char/0x03b0/mathmode": "{\u03b0\\vphantom{\\bar{A}}}", // Unicode U+03B0
-	"char/0x03b1/textmode": "{\\alpha}", // Unicode U+03B1
-	"char/0x03b2/textmode": "{\\beta}", // Unicode U+03B2
-	"char/0x03b3/textmode": "{\\gamma}", // Unicode U+03B3
-	"char/0x03b4/textmode": "{\\delta}", // Unicode U+03B4
-	"char/0x03b5/textmode": "{\\varepsilon}", // Unicode U+03B5
-	"char/0x03b6/textmode": "{\\zeta}", // Unicode U+03B6
-	"char/0x03b7/textmode": "{\\eta}", // Unicode U+03B7
-	"char/0x03b8/textmode": "{\\theta}", // Unicode U+03B8
-	"char/0x03b9/textmode": "{\\iota}", // Unicode U+03B9
-	"char/0x03ba/textmode": "{\\kappa}", // Unicode U+03BA
-	"char/0x03bb/textmode": "{\\lambda}", // Unicode U+03BB
-	"char/0x03bc/textmode": "{\\mu}", // Unicode U+03BC
-	"char/0x03bd/textmode": "{\\nu}", // Unicode U+03BD
-	"char/0x03be/textmode": "{\\xi}", // Unicode U+03BE
-	"char/0x03bf/textmode": "o", // Unicode U+03BF
-	"char/0x03c0/textmode": "{\\pi}", // Unicode U+03C0
-	"char/0x03c1/textmode": "{\\rho}", // Unicode U+03C1
-	"char/0x03c2/textmode": "{\\varsigma}", // Unicode U+03C2
-	"char/0x03c3/textmode": "{\\sigma}", // Unicode U+03C3
-	"char/0x03c4/textmode": "{\\tau}", // Unicode U+03C4
-	"char/0x03c5/textmode": "{\\upsilon}", // Unicode U+03C5
-	"char/0x03c6/textmode": "{\\varphi}", // Unicode U+03C6
-	"char/0x03c7/textmode": "{\\chi}", // Unicode U+03C7
-	"char/0x03c8/textmode": "{\\psi}", // Unicode U+03C8
-	"char/0x03c9/textmode": "{\\omega}", // Unicode U+03C9
-	"char/0x03ca/mathmode": "{\u03ca\\vphantom{\\bar{A}}}", // Unicode U+03CA
-	"char/0x03cb/mathmode": "{\u03cb\\vphantom{\\bar{A}}}", // Unicode U+03CB
-	"char/0x03cc/mathmode": "{\u03cc\\vphantom{\\bar{A}}}", // Unicode U+03CC
-	"char/0x03cd/mathmode": "{\u03cd\\vphantom{\\bar{A}}}", // Unicode U+03CD
-	"char/0x03ce/mathmode": "{\u03ce\\vphantom{\\bar{A}}}", // Unicode U+03CE
-	"char/0x03d0/textmode": "{\\varbeta}", // Unicode U+03D0
-	"char/0x03d1/textmode": "{\\vartheta}", // Unicode U+03D1
-	"char/0x03d2/mathmode": "\\Upsilon", // Unicode U+03D2
-	"char/0x03d5/textmode": "{\\phi}", // Unicode U+03D5
-	"char/0x03d6/textmode": "{\\varpi}", // Unicode U+03D6
-	"char/0x03d8/textmode": "\\boldsymbol{\\Koppa}", // Unicode U+03D8
-	"char/0x03d9/textmode": "\\boldsymbol{\\koppa}", // Unicode U+03D9
-	"char/0x03da/textmode": "\\boldsymbol{\\Stigma}", // Unicode U+03DA
-	"char/0x03db/textmode": "\\boldsymbol{\\stigma}", // Unicode U+03DB
-	"char/0x03dc/textmode": "\\boldsymbol{\\Digamma}", // Unicode U+03DC
-	"char/0x03dd/textmode": "\\boldsymbol{\\digamma}", // Unicode U+03DD
-	"char/0x03de/textmode": "\\boldsymbol{\\Koppa}", // Unicode U+03DE
-	"char/0x03df/textmode": "\\boldsymbol{\\koppa}", // Unicode U+03DF
-	"char/0x03e0/textmode": "\\boldsymbol{\\Sampi}", // Unicode U+03E0
-	"char/0x03e1/textmode": "\\boldsymbol{\\sampi}", // Unicode U+03E1
-	"char/0x03f0/mathmode": "\\varkappa", // Unicode U+03F0
-	"char/0x03f1/textmode": "\\boldsymbol{\\varrho}", // Unicode U+03F1
-	"char/0x03f4/textmode": "{\\Theta}", // Unicode U+03F4
-	"char/0x03f5/textmode": "\\boldsymbol{\\epsilon}", // Unicode U+03F5
-	"char/0x03f6/textmode": "\\boldsymbol{\\backepsilon}", // Unicode U+03F6
-	"char/0x0400/mathmode": "{\u0400\\vphantom{A}}", // Unicode U+0400
-	"char/0x0401/mathmode": "{\u0401\\vphantom{A}}", // Unicode U+0401
-	"char/0x0402/mathmode": "{\u0402\\vphantom{A}}", // Unicode U+0402
-	"char/0x0403/mathmode": "{\u0403\\vphantom{A}}", // Unicode U+0403
-	"char/0x0404/mathmode": "{\u0404\\vphantom{E}}", // Unicode U+0404
-	"char/0x0405/mathmode": "{\u0405\\vphantom{A}}", // Unicode U+0405
-	"char/0x0406/mathmode": "{\u0406\\vphantom{I}}", // Unicode U+0406
-	"char/0x0407/mathmode": "{\u0407\\vphantom{A}}", // Unicode U+0407
-	"char/0x0408/mathmode": "{\u0408\\vphantom{J}}", // Unicode U+0408
-	"char/0x0409/mathmode": "{\u0409\\vphantom{A}}", // Unicode U+0409
-	"char/0x040a/mathmode": "{\u040a\\vphantom{A}}", // Unicode U+040A
-	"char/0x040b/mathmode": "{\u040b\\vphantom{A}}", // Unicode U+040B
-	"char/0x040c/mathmode": "{\u040c\\vphantom{K}}", // Unicode U+040C
-	"char/0x040d/mathmode": "{\u040d\\vphantom{A}}", // Unicode U+040D
-	"char/0x040e/mathmode": "{\u040e\\vphantom{A}}", // Unicode U+040E
-	"char/0x040f/mathmode": "{\u040f\\vphantom{A}}", // Unicode U+040F
-	"char/0x0410/mathmode": "{\u0410\\vphantom{A}}", // Unicode U+0410
-	"char/0x0411/mathmode": "{\u0411\\vphantom{A}}", // Unicode U+0411
-	"char/0x0412/mathmode": "{\u0412\\vphantom{A}}", // Unicode U+0412
-	"char/0x0413/mathmode": "{\u0413\\vphantom{A}}", // Unicode U+0413
-	"char/0x0414/mathmode": "{\u0414\\vphantom{A}}", // Unicode U+0414
-	"char/0x0415/mathmode": "{\u0415\\vphantom{A}}", // Unicode U+0415
-	"char/0x0416/mathmode": "{\u0416\\vphantom{A}}", // Unicode U+0416
-	"char/0x0417/mathmode": "{\u0417\\vphantom{A}}", // Unicode U+0417
-	"char/0x0418/mathmode": "{\u0418\\vphantom{A}}", // Unicode U+0418
-	"char/0x0419/mathmode": "{\u0419\\vphantom{A}}", // Unicode U+0419
-	"char/0x041a/mathmode": "{\u041a\\vphantom{A}}", // Unicode U+041A
-	"char/0x041b/mathmode": "{\u041b\\vphantom{A}}", // Unicode U+041B
-	"char/0x041c/mathmode": "{\u041c\\vphantom{A}}", // Unicode U+041C
-	"char/0x041d/mathmode": "{\u041d\\vphantom{A}}", // Unicode U+041D
-	"char/0x041e/mathmode": "{\u041e\\vphantom{A}}", // Unicode U+041E
-	"char/0x041f/mathmode": "{\u041f\\vphantom{A}}", // Unicode U+041F
-	"char/0x0420/mathmode": "{\u0420\\vphantom{A}}", // Unicode U+0420
-	"char/0x0421/mathmode": "{\u0421\\vphantom{A}}", // Unicode U+0421
-	"char/0x0422/mathmode": "{\u0422\\vphantom{A}}", // Unicode U+0422
-	"char/0x0423/mathmode": "{\u0423\\vphantom{A}}", // Unicode U+0423
-	"char/0x0424/mathmode": "{\u0424\\vphantom{A}}", // Unicode U+0424
-	"char/0x0425/mathmode": "{\u0425\\vphantom{A}}", // Unicode U+0425
-	"char/0x0426/mathmode": "{\u0426\\vphantom{A}}", // Unicode U+0426
-	"char/0x0427/mathmode": "{\u0427\\vphantom{A}}", // Unicode U+0427
-	"char/0x0428/mathmode": "{\u0428\\vphantom{A}}", // Unicode U+0428
-	"char/0x0429/mathmode": "{\u0429\\vphantom{A}}", // Unicode U+0429
-	"char/0x042a/mathmode": "{\u042a\\vphantom{A}}", // Unicode U+042A
-	"char/0x042b/mathmode": "{\u042b\\vphantom{A}}", // Unicode U+042B
-	"char/0x042c/mathmode": "{\u042c\\vphantom{A}}", // Unicode U+042C
-	"char/0x042d/mathmode": "{\u042d\\vphantom{A}}", // Unicode U+042D
-	"char/0x042e/mathmode": "{\u042e\\vphantom{A}}", // Unicode U+042E
-	"char/0x042f/mathmode": "{\u042f\\vphantom{A}}", // Unicode U+042F
-	"char/0x0430/mathmode": "{\u0430\\vphantom{A}}", // Unicode U+0430
-	"char/0x0431/mathmode": "{\u0431\\vphantom{A}}", // Unicode U+0431
-	"char/0x0432/mathmode": "{\u0432\\vphantom{A}}", // Unicode U+0432
-	"char/0x0433/mathmode": "{\u0433\\vphantom{A}}", // Unicode U+0433
-	"char/0x0434/mathmode": "{\u0434\\vphantom{A}}", // Unicode U+0434
-	"char/0x0435/mathmode": "{\u0435\\vphantom{A}}", // Unicode U+0435
-	"char/0x0436/mathmode": "{\u0436\\vphantom{A}}", // Unicode U+0436
-	"char/0x0437/mathmode": "{\u0437\\vphantom{A}}", // Unicode U+0437
-	"char/0x0438/mathmode": "{\u0438\\vphantom{A}}", // Unicode U+0438
-	"char/0x0439/mathmode": "{\u0439\\vphantom{A}}", // Unicode U+0439
-	"char/0x043a/mathmode": "{\u043a\\vphantom{A}}", // Unicode U+043A
-	"char/0x043b/mathmode": "{\u043b\\vphantom{A}}", // Unicode U+043B
-	"char/0x043c/mathmode": "{\u043c\\vphantom{A}}", // Unicode U+043C
-	"char/0x043d/mathmode": "{\u043d\\vphantom{A}}", // Unicode U+043D
-	"char/0x043e/mathmode": "{\u043e\\vphantom{A}}", // Unicode U+043E
-	"char/0x043f/mathmode": "{\u043f\\vphantom{A}}", // Unicode U+043F
-	"char/0x0440/mathmode": "{\u0440\\vphantom{A}}", // Unicode U+0440
-	"char/0x0441/mathmode": "{\u0441\\vphantom{A}}", // Unicode U+0441
-	"char/0x0442/mathmode": "{\u0442\\vphantom{A}}", // Unicode U+0442
-	"char/0x0443/mathmode": "{\u0443\\vphantom{A}}", // Unicode U+0443
-	"char/0x0444/mathmode": "{\u0444\\vphantom{A}}", // Unicode U+0444
-	"char/0x0445/mathmode": "{\u0445\\vphantom{A}}", // Unicode U+0445
-	"char/0x0446/mathmode": "{\u0446\\vphantom{A}}", // Unicode U+0446
-	"char/0x0447/mathmode": "{\u0447\\vphantom{A}}", // Unicode U+0447
-	"char/0x0448/mathmode": "{\u0448\\vphantom{A}}", // Unicode U+0448
-	"char/0x0449/mathmode": "{\u0449\\vphantom{A}}", // Unicode U+0449
-	"char/0x044a/mathmode": "{\u044a\\vphantom{A}}", // Unicode U+044A
-	"char/0x044b/mathmode": "{\u044b\\vphantom{A}}", // Unicode U+044B
-	"char/0x044c/mathmode": "{\u044c\\vphantom{A}}", // Unicode U+044C
-	"char/0x044d/mathmode": "{\u044d\\vphantom{A}}", // Unicode U+044D
-	"char/0x044e/mathmode": "{\u044e\\vphantom{A}}", // Unicode U+044E
-	"char/0x044f/mathmode": "{\u044f\\vphantom{A}}", // Unicode U+044F
-	"char/0x0450/mathmode": "{\u0450\\vphantom{A}}", // Unicode U+0450
-	"char/0x0451/mathmode": "{\u0451\\vphantom{A}}", // Unicode U+0451
-	"char/0x0452/mathmode": "{\u0452\\vphantom{A}}", // Unicode U+0452
-	"char/0x0453/mathmode": "{\u0453\\vphantom{i}}", // Unicode U+0453
-	"char/0x0454/mathmode": "{\u0454\\vphantom{a}}", // Unicode U+0454
-	"char/0x0455/mathmode": "{\u0455\\vphantom{a}}", // Unicode U+0455
-	"char/0x0456/mathmode": "{\u0456\\vphantom{i}}", // Unicode U+0456
-	"char/0x0457/mathmode": "{\u0457\\vphantom{i}}", // Unicode U+0457
-	"char/0x0458/mathmode": "{\u0458\\vphantom{j}}", // Unicode U+0458
-	"char/0x0459/mathmode": "{\u0459\\vphantom{A}}", // Unicode U+0459
-	"char/0x045a/mathmode": "{\u045a\\vphantom{a}}", // Unicode U+045A
-	"char/0x045b/mathmode": "{\u045b\\vphantom{A}}", // Unicode U+045B
-	"char/0x045c/mathmode": "{\u045c\\vphantom{A}}", // Unicode U+045C
-	"char/0x045d/mathmode": "{\u045d\\vphantom{A}}", // Unicode U+045D
-	"char/0x045e/mathmode": "{\u045e\\vphantom{j}}", // Unicode U+045E
-	"char/0x045f/mathmode": "{\u045f\\vphantom{a}}", // Unicode U+045F
-	"char/0x0460/mathmode": "{\u0460\\vphantom{A}}", // Unicode U+0460
-	"char/0x0461/mathmode": "{\u0461\\vphantom{A}}", // Unicode U+0461
-	"char/0x0462/mathmode": "{\u0462\\vphantom{A}}", // Unicode U+0462
-	"char/0x0463/mathmode": "{\u0463\\vphantom{A}}", // Unicode U+0463
-	"char/0x0464/mathmode": "{\u0464\\vphantom{A}}", // Unicode U+0464
-	"char/0x0465/mathmode": "{\u0465\\vphantom{A}}", // Unicode U+0465
-	"char/0x0466/mathmode": "{\u0466\\vphantom{A}}", // Unicode U+0466
-	"char/0x0467/mathmode": "{\u0467\\vphantom{A}}", // Unicode U+0467
-	"char/0x0468/mathmode": "{\u0468\\vphantom{A}}", // Unicode U+0468
-	"char/0x0469/mathmode": "{\u0469\\vphantom{A}}", // Unicode U+0469
-	"char/0x046a/mathmode": "{\u046a\\vphantom{A}}", // Unicode U+046A
-	"char/0x046b/mathmode": "{\u046b\\vphantom{A}}", // Unicode U+046B
-	"char/0x046c/mathmode": "{\u046c\\vphantom{A}}", // Unicode U+046C
-	"char/0x046d/mathmode": "{\u046d\\vphantom{A}}", // Unicode U+046D
-	"char/0x046e/mathmode": "{\u046e\\vphantom{A}}", // Unicode U+046E
-	"char/0x046f/mathmode": "{\u046f\\vphantom{A}}", // Unicode U+046F
-	"char/0x0470/mathmode": "{\u0470\\vphantom{A}}", // Unicode U+0470
-	"char/0x0471/mathmode": "{\u0471\\vphantom{A}}", // Unicode U+0471
-	"char/0x0474/mathmode": "{\u0474\\vphantom{A}}", // Unicode U+0474
-	"char/0x0475/mathmode": "{\u0475\\vphantom{A}}", // Unicode U+0475
-	"char/0x0478/mathmode": "{\u0478\\vphantom{A}}", // Unicode U+0478
-	"char/0x0479/mathmode": "{\u0479\\vphantom{A}}", // Unicode U+0479
-	"char/0x0490/mathmode": "{\u0490\\vphantom{A}}", // Unicode U+0490
-	"char/0x0491/mathmode": "{\u0491\\vphantom{A}}", // Unicode U+0491
-	"char/0x04e8/mathmode": "{\u04e8\\vphantom{A}}", // Unicode U+04E8
-	"char/0x04e9/mathmode": "{\u04e9\\vphantom{A}}", // Unicode U+04E9
-	"char/0x1e9e/mathmode": "{\u1e9e\\vphantom{A}}", // Unicode U+1E9E
-	"char/0x2001/textmode": "{\\quad}", // Unicode U+2001
-	"char/0x2002/textmode": "{\\enspace}", // Unicode U+2002
-	"char/0x2003/textmode": "{\\quad}", // Unicode U+2003
-	"char/0x2004/textmode": "\\,", // Unicode U+2004
-	"char/0x2005/textmode": "\\,", // Unicode U+2005
-	"char/0x2006/textmode": "\\,", // Unicode U+2006
-	"char/0x2007/textmode": "\\,", // Unicode U+2007
-	"char/0x2008/textmode": "\\,", // Unicode U+2008
-	"char/0x2009/textmode": "\\,", // Unicode U+2009
-	"char/0x200a/textmode": "\\,", // Unicode U+200A
-	"char/0x200b/textmode": "\\hspace{0pt}", // Unicode U+200B
-	"char/0x2010/mathmode": "\\text{-}", // Unicode U+2010
-	"char/0x2011/textmode": "\\hbox{-}", // Unicode U+2011
-	"char/0x2012/textmode": "-", // Unicode U+2012
-	"char/0x2013/mathmode": "\\text{--}", // Unicode U+2013
-	"char/0x2014/mathmode": "\\text{---}", // Unicode U+2014
-	"char/0x2015/mathmode": "\\text{---}", // Unicode U+2015
-	"char/0x2016/textmode": "{\\|}", // Unicode U+2016
-	"char/0x2018/textmode": "`", // Unicode U+2018
-	"char/0x2019/textmode": "'", // Unicode U+2019
-	"char/0x201a/textmode": ",", // Unicode U+201A
-	"char/0x201b/textmode": "`", // Unicode U+201B
-	"char/0x201c/textmode": "``", // Unicode U+201C
-	"char/0x201d/textmode": "''", // Unicode U+201D
-	"char/0x201e/textmode": "\"`", // Unicode U+201E
-	"char/0x2020/textmode": "{\\dag}", // Unicode U+2020
-	"char/0x2021/textmode": "{\\ddag}", // Unicode U+2021
-	"char/0x2022/textmode": "{\\textbullet}", // Unicode U+2022
-	"char/0x2023/textmode": "{\\blacktriangleright}", // Unicode U+2023
-	"char/0x2024/textmode": "{\\ldotp}", // Unicode U+2024
-	"char/0x2025/textmode": "{\\ldotp\\ldotp}", // Unicode U+2025
-	"char/0x2026/textmode": "{\\ldots}", // Unicode U+2026
-	"char/0x2027/textmode": "{\\textbullet}", // Unicode U+2027
-	"char/0x202f/textmode": "\\,", // Unicode U+202F
-	"char/0x2030/textmode": "{\\textperthousand}", // Unicode U+2030
-	"char/0x2031/textmode": "{\\textpertenthousand}", // Unicode U+2031
-	"char/0x2032/textmode": "^{\\prime}", // Unicode U+2032
-	"char/0x2033/textmode": "^{\\prime\\prime}", // Unicode U+2033
-	"char/0x2034/textmode": "^{\\prime\\prime\\prime}", // Unicode U+2034
-	"char/0x2035/textmode": "{\\backprime}", // Unicode U+2035
-	"char/0x2036/textmode": "{\\backdprime}", // Unicode U+2036
-	"char/0x2037/textmode": "{\\backtrprime}", // Unicode U+2037
-	"char/0x2038/textmode": "\\caretinsert", // Unicode U+2038
-	"char/0x2039/textmode": "{\\flq}", // Unicode U+2039
-	"char/0x203a/textmode": "{\\frq}", // Unicode U+203A
-	"char/0x203c/textmode": "{\\Exclam}", // Unicode U+203C
-	"char/0x2040/textmode": "{\\cat}", // Unicode U+2040
-	"char/0x2041/mathmode": "{\u2041\\vphantom{A}}", // Unicode U+2041
-	"char/0x2043/textmode": "{\\hyphenbullet}", // Unicode U+2043
-	"char/0x2047/textmode": "{\\Question}", // Unicode U+2047
-	"char/0x204f/mathmode": "{\u204f\\vphantom{A}}", // Unicode U+204F
-	"char/0x2057/textmode": "{\\qprime}", // Unicode U+2057
-	"char/0x205f/textmode": "{\\:}", // Unicode U+205F
-	"char/0x2061/textmode": " ", // Unicode U+2061
-	"char/0x2062/textmode": " ", // Unicode U+2062
-	"char/0x2063/textmode": " ", // Unicode U+2063
-	"char/0x2064/textmode": " ", // Unicode U+2064
-	"char/0x2074/textmode": "^{4}", // Unicode U+2074
-	"char/0x2075/textmode": "^{5}", // Unicode U+2075
-	"char/0x2076/textmode": "^{6}", // Unicode U+2076
-	"char/0x2077/textmode": "^{7}", // Unicode U+2077
-	"char/0x2078/textmode": "^{8}", // Unicode U+2078
-	"char/0x2079/textmode": "^{9}", // Unicode U+2079
-	"char/0x207a/textmode": "^{+}", // Unicode U+207A
-	"char/0x207b/textmode": "^{-}", // Unicode U+207B
-	"char/0x207c/textmode": "^{=}", // Unicode U+207C
-	"char/0x207d/textmode": "^{(}", // Unicode U+207D
-	"char/0x207e/textmode": "^{)}", // Unicode U+207E
-	"char/0x207f/textmode": "^{n}", // Unicode U+207F
-	"char/0x2080/textmode": "_{0}", // Unicode U+2080
-	"char/0x2081/textmode": "_{1}", // Unicode U+2081
-	"char/0x2082/textmode": "_{2}", // Unicode U+2082
-	"char/0x2083/textmode": "_{3}", // Unicode U+2083
-	"char/0x2084/textmode": "_{4}", // Unicode U+2084
-	"char/0x2085/textmode": "_{5}", // Unicode U+2085
-	"char/0x2086/textmode": "_{6}", // Unicode U+2086
-	"char/0x2087/textmode": "_{7}", // Unicode U+2087
-	"char/0x2088/textmode": "_{8}", // Unicode U+2088
-	"char/0x2089/textmode": "_{9}", // Unicode U+2089
-	"char/0x208a/textmode": "_{+}", // Unicode U+208A
-	"char/0x208b/textmode": "_{-}", // Unicode U+208B
-	"char/0x208c/textmode": "_{=}", // Unicode U+208C
-	"char/0x208d/textmode": "_{(}", // Unicode U+208D
-	"char/0x208e/textmode": "_{)}", // Unicode U+208E
-	"char/0x2090/textmode": "_{a}", // Unicode U+2090
-	"char/0x2091/textmode": "_{e}", // Unicode U+2091
-	"char/0x2092/textmode": "_{o}", // Unicode U+2092
-	"char/0x2093/textmode": "_{x}", // Unicode U+2093
-	"char/0x2094/textmode": "_{\\text{\\textschwa}}", // Unicode U+2094
-	"char/0x2095/textmode": "_{h}", // Unicode U+2095
-	"char/0x2096/textmode": "_{k}", // Unicode U+2096
-	"char/0x2097/textmode": "_{l}", // Unicode U+2097
-	"char/0x2098/textmode": "_{m}", // Unicode U+2098
-	"char/0x2099/textmode": "_{n}", // Unicode U+2099
-	"char/0x209a/textmode": "_{p}", // Unicode U+209A
-	"char/0x209b/textmode": "_{s}", // Unicode U+209B
-	"char/0x209c/textmode": "_{t}", // Unicode U+209C
-	"char/0x20a1/textmode": "{\\textcolonmonetary}", // Unicode U+20A1
-	"char/0x20a4/textmode": "{\\textlira}", // Unicode U+20A4
-	"char/0x20a6/textmode": "{\\textnaira}", // Unicode U+20A6
-	"char/0x20a7/textmode": "Pt", // Unicode U+20A7
-	"char/0x20a8/textmode": "Rs", // Unicode U+20A8
-	"char/0x20a9/textmode": "{\\textwon}", // Unicode U+20A9
-	"char/0x20ab/textmode": "{\\textdong}", // Unicode U+20AB
-	"char/0x20ac/textmode": "{\\texteuro}", // Unicode U+20AC
-	"char/0x20b1/textmode": "{\\textpeso}", // Unicode U+20B1
-	"char/0x20b2/textmode": "{\\textguarani}", // Unicode U+20B2
-	"char/0x20d0/textmode": "{\\lvec}", // Unicode U+20D0
-	"char/0x20d1/textmode": "{\\vec}", // Unicode U+20D1
-	"char/0x20d6/textmode": "{\\LVec}", // Unicode U+20D6
-	"char/0x20d7/textmode": "{\\vec}", // Unicode U+20D7
-	"char/0x20db/textmode": "\u20db", // Unicode U+20DB
-	"char/0x20dc/textmode": "{\\ddddot}", // Unicode U+20DC
-	"char/0x20dd/textmode": "{\\enclosesquare}", // Unicode U+20DD
-	"char/0x20de/textmode": "{\\enclosediamond}", // Unicode U+20DE
-	"char/0x20e1/textmode": "{\\overleftrightarrow}", // Unicode U+20E1
-	"char/0x20e4/textmode": "{\\enclosetriangle}", // Unicode U+20E4
-	"char/0x20ee/textmode": "{\\underleftarrow}", // Unicode U+20EE
-	"char/0x20ef/textmode": "{\\underrightarrow}", // Unicode U+20EF
-	"char/0x2102/textmode": "{\\mathbb{C}}", // Unicode U+2102
-	"char/0x2105/mathmode": "{\u2105\\vphantom{A}}", // Unicode U+2105
-	"char/0x2107/textmode": "{\\Euler}", // Unicode U+2107
-	"char/0x210a/textmode": "{\\mathcal{g}}", // Unicode U+210A
-	"char/0x210b/textmode": "{\\mathcal{H}}", // Unicode U+210B
-	"char/0x210c/textmode": "{\\mathfrak{H}}", // Unicode U+210C
-	"char/0x210d/textmode": "{\\mathbb{H}}", // Unicode U+210D
-	"char/0x210e/textmode": "{\\mathit{h}}", // Unicode U+210E
-	"char/0x210f/textmode": "{\\hslash}", // Unicode U+210F
-	"char/0x2110/textmode": "{\\mathcal{I}}", // Unicode U+2110
-	"char/0x2111/textmode": "{\\Im}", // Unicode U+2111
-	"char/0x2112/textmode": "{\\mathcal{L}}", // Unicode U+2112
-	"char/0x2113/textmode": "{\\ell}", // Unicode U+2113
-	"char/0x2115/textmode": "{\\mathbb{N}}", // Unicode U+2115
-	"char/0x2116/mathmode": "{\u2116\\vphantom{A}}", // Unicode U+2116
-	"char/0x2117/mathmode": "{\u2117\\vphantom{A}}", // Unicode U+2117
-	"char/0x2118/textmode": "{\\wp}", // Unicode U+2118
-	"char/0x2119/textmode": "{\\mathbb{P}}", // Unicode U+2119
-	"char/0x211a/textmode": "{\\mathbb{Q}}", // Unicode U+211A
-	"char/0x211b/textmode": "{\\mathcal{R}}", // Unicode U+211B
-	"char/0x211c/textmode": "{\\Re}", // Unicode U+211C
-	"char/0x211d/textmode": "{\\mathbb{R}}", // Unicode U+211D
-	"char/0x211e/mathmode": "{\u211e\\vphantom{A}}", // Unicode U+211E
-	"char/0x2120/textmode": "{\\textservicemark}", // Unicode U+2120
-	"char/0x2122/textmode": "{\\texttrademark}", // Unicode U+2122
-	"char/0x2124/textmode": "{\\mathbb{Z}}", // Unicode U+2124
-	"char/0x2126/textmode": "{\\tcohm}", // Unicode U+2126
-	"char/0x2127/textmode": "{\\mho}", // Unicode U+2127
-	"char/0x2128/textmode": "{\\mathfrak{Z}}", // Unicode U+2128
-	"char/0x2129/mathmode": "{\u2129\\vphantom{A}}", // Unicode U+2129
-	"char/0x212b/textmode": "{\\Angstroem}", // Unicode U+212B
-	"char/0x212c/textmode": "{\\mathcal{B}}", // Unicode U+212C
-	"char/0x212d/textmode": "{\\mathfrak{C}}", // Unicode U+212D
-	"char/0x212f/textmode": "{\\mathcal{e}}", // Unicode U+212F
-	"char/0x2130/textmode": "{\\mathcal{E}}", // Unicode U+2130
-	"char/0x2131/textmode": "{\\mathcal{F}}", // Unicode U+2131
-	"char/0x2132/textmode": "{\\Finv}", // Unicode U+2132
-	"char/0x2133/textmode": "{\\mathcal{M}}", // Unicode U+2133
-	"char/0x2134/textmode": "{\\mathcal{o}}", // Unicode U+2134
-	"char/0x2135/textmode": "{\\aleph}", // Unicode U+2135
-	"char/0x2136/textmode": "{\\beth}", // Unicode U+2136
-	"char/0x2137/textmode": "{\\gimel}", // Unicode U+2137
-	"char/0x2138/textmode": "{\\daleth}", // Unicode U+2138
-	"char/0x213c/textmode": "{\\mathbb{pi}}", // Unicode U+213C
-	"char/0x213d/textmode": "{\\mathbb{gamma}}", // Unicode U+213D
-	"char/0x213e/textmode": "{\\mathbb{Gamma}}", // Unicode U+213E
-	"char/0x213f/textmode": "{\\mathbb{Pi}}", // Unicode U+213F
-	"char/0x2140/textmode": "{\\mathbb{Sigma}}", // Unicode U+2140
-	"char/0x2141/textmode": "{\\Game}", // Unicode U+2141
-	"char/0x2142/textmode": "{\\sansLturned}", // Unicode U+2142
-	"char/0x2143/textmode": "{\\sansLmirrored}", // Unicode U+2143
-	"char/0x2144/textmode": "{\\Yup}", // Unicode U+2144
-	"char/0x2145/textmode": "{\\CapitalDifferentialD}", // Unicode U+2145
-	"char/0x2146/textmode": "{\\DifferentialD}", // Unicode U+2146
-	"char/0x2147/textmode": "{\\ExponetialE}", // Unicode U+2147
-	"char/0x2148/textmode": "{\\ComplexI}", // Unicode U+2148
-	"char/0x2149/textmode": "{\\ComplexJ}", // Unicode U+2149
-	"char/0x214a/textmode": "{\\PropertyLine}", // Unicode U+214A
-	"char/0x214b/textmode": "{\\invamp}", // Unicode U+214B
-	"char/0x2153/mathmode": "{\u2153\\vphantom{\\frac12}}", // Unicode U+2153
-	"char/0x2154/mathmode": "{\u2154\\vphantom{\\frac12}}", // Unicode U+2154
-	"char/0x2155/mathmode": "{\u2155\\vphantom{\\frac12}}", // Unicode U+2155
-	"char/0x2156/mathmode": "{\u2156\\vphantom{\\frac12}}", // Unicode U+2156
-	"char/0x2157/mathmode": "{\u2157\\vphantom{\\frac12}}", // Unicode U+2157
-	"char/0x2158/mathmode": "{\u2158\\vphantom{\\frac12}}", // Unicode U+2158
-	"char/0x2159/mathmode": "{\u2159\\vphantom{\\frac12}}", // Unicode U+2159
-	"char/0x215a/mathmode": "{\u215a\\vphantom{\\frac12}}", // Unicode U+215A
-	"char/0x215b/mathmode": "{\u215b\\vphantom{\\frac12}}", // Unicode U+215B
-	"char/0x215c/mathmode": "{\u215c\\vphantom{\\frac12}}", // Unicode U+215C
-	"char/0x215d/mathmode": "{\u215d\\vphantom{\\frac12}}", // Unicode U+215D
-	"char/0x215e/mathmode": "{\u215e\\vphantom{\\frac12}}", // Unicode U+215E
-	"char/0x2190/textmode": "{\\leftarrow}", // Unicode U+2190
-	"char/0x2191/textmode": "{\\uparrow}", // Unicode U+2191
-	"char/0x2192/textmode": "{\\rightarrow}", // Unicode U+2192
-	"char/0x2193/textmode": "{\\downarrow}", // Unicode U+2193
-	"char/0x2194/textmode": "{\\leftrightarrow}", // Unicode U+2194
-	"char/0x2195/textmode": "{\\updownarrow}", // Unicode U+2195
-	"char/0x2196/textmode": "{\\nwarrow}", // Unicode U+2196
-	"char/0x2197/textmode": "{\\nearrow}", // Unicode U+2197
-	"char/0x2198/textmode": "{\\searrow}", // Unicode U+2198
-	"char/0x2199/textmode": "{\\swarrow}", // Unicode U+2199
-	"char/0x219a/textmode": "{\\nleftarrow}", // Unicode U+219A
-	"char/0x219b/textmode": "{\\nrightarrow}", // Unicode U+219B
-	"char/0x219d/mathmode": "\\rightsquigarrow", // Unicode U+219D
-	"char/0x219e/textmode": "{\\twoheadleftarrow}", // Unicode U+219E
-	"char/0x219f/mathmode": "\\mathrel{\u219f\\vphantom{A}}", // Unicode U+219F
-	"char/0x21a0/textmode": "{\\twoheadrightarrow}", // Unicode U+21A0
-	"char/0x21a1/mathmode": "\\mathrel{\u21a1\\vphantom{A}}", // Unicode U+21A1
-	"char/0x21a2/textmode": "{\\leftarrowtail}", // Unicode U+21A2
-	"char/0x21a3/textmode": "{\\rightarrowtail}", // Unicode U+21A3
-	"char/0x21a4/textmode": "{\\mapsfrom}", // Unicode U+21A4
-	"char/0x21a5/textmode": "{\\MapsUp}", // Unicode U+21A5
-	"char/0x21a6/textmode": "{\\mapsto}", // Unicode U+21A6
-	"char/0x21a7/textmode": "{\\MapsDown}", // Unicode U+21A7
-	"char/0x21a8/textmode": "{\\updownarrowbar}", // Unicode U+21A8
-	"char/0x21a9/textmode": "{\\hookleftarrow}", // Unicode U+21A9
-	"char/0x21aa/textmode": "{\\hookrightarrow}", // Unicode U+21AA
-	"char/0x21ab/textmode": "{\\looparrowleft}", // Unicode U+21AB
-	"char/0x21ac/textmode": "{\\looparrowright}", // Unicode U+21AC
-	"char/0x21ad/textmode": "{\\leftrightsquigarrow}", // Unicode U+21AD
-	"char/0x21ae/textmode": "{\\nleftrightarrow}", // Unicode U+21AE
-	"char/0x21af/textmode": "{\\lightning}", // Unicode U+21AF
-	"char/0x21b0/textmode": "{\\Lsh}", // Unicode U+21B0
-	"char/0x21b1/textmode": "{\\Rsh}", // Unicode U+21B1
-	"char/0x21b2/textmode": "{\\dlsh}", // Unicode U+21B2
-	"char/0x21b3/textmode": "{\\drsh}", // Unicode U+21B3
-	"char/0x21b6/textmode": "{\\curvearrowleft}", // Unicode U+21B6
-	"char/0x21b7/textmode": "{\\curvearrowright}", // Unicode U+21B7
-	"char/0x21ba/textmode": "{\\circlearrowleft}", // Unicode U+21BA
-	"char/0x21bb/textmode": "{\\circlearrowright}", // Unicode U+21BB
-	"char/0x21bc/textmode": "{\\leftharpoonup}", // Unicode U+21BC
-	"char/0x21bd/textmode": "{\\leftharpoondown}", // Unicode U+21BD
-	"char/0x21be/textmode": "{\\upharpoonright}", // Unicode U+21BE
-	"char/0x21bf/textmode": "{\\upharpoonleft}", // Unicode U+21BF
-	"char/0x21c0/textmode": "{\\rightharpoonup}", // Unicode U+21C0
-	"char/0x21c1/textmode": "{\\rightharpoondown}", // Unicode U+21C1
-	"char/0x21c2/textmode": "{\\downharpoonright}", // Unicode U+21C2
-	"char/0x21c3/textmode": "{\\downharpoonleft}", // Unicode U+21C3
-	"char/0x21c4/textmode": "{\\rightleftarrows}", // Unicode U+21C4
-	"char/0x21c5/textmode": "{\\updownarrows}", // Unicode U+21C5
-	"char/0x21c6/textmode": "{\\leftrightarrows}", // Unicode U+21C6
-	"char/0x21c7/textmode": "{\\leftleftarrows}", // Unicode U+21C7
-	"char/0x21c8/textmode": "{\\upuparrows}", // Unicode U+21C8
-	"char/0x21c9/textmode": "{\\rightrightarrows}", // Unicode U+21C9
-	"char/0x21ca/textmode": "{\\downdownarrows}", // Unicode U+21CA
-	"char/0x21cb/textmode": "{\\leftrightharpoons}", // Unicode U+21CB
-	"char/0x21cc/textmode": "{\\rightleftharpoons}", // Unicode U+21CC
-	"char/0x21cd/textmode": "{\\nLeftarrow}", // Unicode U+21CD
-	"char/0x21ce/textmode": "{\\nLeftrightarrow}", // Unicode U+21CE
-	"char/0x21cf/textmode": "{\\nRightarrow}", // Unicode U+21CF
-	"char/0x21d0/textmode": "{\\Leftarrow}", // Unicode U+21D0
-	"char/0x21d1/textmode": "{\\Uparrow}", // Unicode U+21D1
-	"char/0x21d2/textmode": "{\\Rightarrow}", // Unicode U+21D2
-	"char/0x21d3/textmode": "{\\Downarrow}", // Unicode U+21D3
-	"char/0x21d4/textmode": "{\\Leftrightarrow}", // Unicode U+21D4
-	"char/0x21d5/textmode": "{\\Updownarrow}", // Unicode U+21D5
-	"char/0x21d6/textmode": "{\\Nwarrow}", // Unicode U+21D6
-	"char/0x21d7/textmode": "{\\Nearrow}", // Unicode U+21D7
-	"char/0x21d8/textmode": "{\\Searrow}", // Unicode U+21D8
-	"char/0x21d9/textmode": "{\\Swarrow}", // Unicode U+21D9
-	"char/0x21da/textmode": "{\\Lleftarrow}", // Unicode U+21DA
-	"char/0x21db/textmode": "{\\Rrightarrow}", // Unicode U+21DB
-	"char/0x21dc/textmode": "{\\leftsquigarrow}", // Unicode U+21DC
-	"char/0x21dd/textmode": "{\\rightsquigarrow}", // Unicode U+21DD
-	"char/0x21e0/textmode": "{\\dashleftarrow}", // Unicode U+21E0
-	"char/0x21e2/textmode": "{\\dashrightarrow}", // Unicode U+21E2
-	"char/0x21e4/textmode": "{\\LeftArrowBar}", // Unicode U+21E4
-	"char/0x21e5/textmode": "{\\RightArrowBar}", // Unicode U+21E5
-	"char/0x21f5/textmode": "{\\downuparrows}", // Unicode U+21F5
-	"char/0x21f8/textmode": "{\\pfun}", // Unicode U+21F8
-	"char/0x21fb/textmode": "{\\ffun}", // Unicode U+21FB
-	"char/0x21fd/textmode": "{\\leftarrowtriangle}", // Unicode U+21FD
-	"char/0x21fe/textmode": "{\\rightarrowtriangle}", // Unicode U+21FE
-	"char/0x21ff/textmode": "{\\leftrightarrowtriangle}", // Unicode U+21FF
-	"char/0x2200/textmode": "{\\forall}", // Unicode U+2200
-	"char/0x2201/textmode": "{\\complement}", // Unicode U+2201
-	"char/0x2202/textmode": "{\\partial}", // Unicode U+2202
-	"char/0x2203/textmode": "{\\exists}", // Unicode U+2203
-	"char/0x2204/textmode": "{\\nexists}", // Unicode U+2204
-	"char/0x2205/textmode": "{\\varnothing}", // Unicode U+2205
-	"char/0x2206/textmode": "{\\Updelta}", // Unicode U+2206
-	"char/0x2207/textmode": "{\\nabla}", // Unicode U+2207
-	"char/0x2208/textmode": "{\\in}", // Unicode U+2208
-	"char/0x2209/textmode": "{\\notin}", // Unicode U+2209
-	"char/0x220a/textmode": "{\\in}", // Unicode U+220A
-	"char/0x220b/textmode": "{\\ni}", // Unicode U+220B
-	"char/0x220c/textmode": "{\\notni}", // Unicode U+220C
-	"char/0x220d/textmode": "{\\ni}", // Unicode U+220D
-	"char/0x220e/textmode": "{\\blacksquare}", // Unicode U+220E
-	"char/0x220f/textmode": "{\\prod}", // Unicode U+220F
-	"char/0x2210/textmode": "{\\coprod}", // Unicode U+2210
-	"char/0x2211/textmode": "{\\sum}", // Unicode U+2211
-	"char/0x2212/textmode": "{-}", // Unicode U+2212
-	"char/0x2213/textmode": "{\\mp}", // Unicode U+2213
-	"char/0x2214/textmode": "{\\dotplus}", // Unicode U+2214
-	"char/0x2215/textmode": "{\\slash}", // Unicode U+2215
-	"char/0x2216/textmode": "{\\smallsetminus}", // Unicode U+2216
-	"char/0x2217/textmode": "{\\ast}", // Unicode U+2217
-	"char/0x2218/textmode": "{\\circ}", // Unicode U+2218
-	"char/0x2219/textmode": "{\\cdot}", // Unicode U+2219
-	"char/0x221a/textmode": "{\\sqrt{}}", // Unicode U+221A
-	"char/0x221b/textmode": "{\\sqrt[3]{}}", // Unicode U+221B
-	"char/0x221c/textmode": "{\\sqrt[4]{}}", // Unicode U+221C
-	"char/0x221d/textmode": "{\\propto}", // Unicode U+221D
-	"char/0x221e/textmode": "{\\infty}", // Unicode U+221E
-	"char/0x221f/textmode": "{\\llcorner}", // Unicode U+221F
-	"char/0x2220/textmode": "{\\angle}", // Unicode U+2220
-	"char/0x2221/textmode": "{\\measuredangle}", // Unicode U+2221
-	"char/0x2222/textmode": "{\\sphericalangle}", // Unicode U+2222
-	"char/0x2223/textmode": "{\\mid}", // Unicode U+2223
-	"char/0x2224/textmode": "{\\nmid}", // Unicode U+2224
-	"char/0x2225/textmode": "{\\parallel}", // Unicode U+2225
-	"char/0x2226/textmode": "{\\nparallel}", // Unicode U+2226
-	"char/0x2227/textmode": "{\\wedge}", // Unicode U+2227
-	"char/0x2228/textmode": "{\\vee}", // Unicode U+2228
-	"char/0x2229/textmode": "{\\cap}", // Unicode U+2229
-	"char/0x222a/textmode": "{\\cup}", // Unicode U+222A
-	"char/0x222b/textmode": "{\\int}", // Unicode U+222B
-	"char/0x222c/textmode": "{\\iint}", // Unicode U+222C
-	"char/0x222d/textmode": "{\\iiint}", // Unicode U+222D
-	"char/0x222e/textmode": "{\\oint}", // Unicode U+222E
-	"char/0x222f/textmode": "{\\oiint}", // Unicode U+222F
-	"char/0x2230/textmode": "{\\oiiint}", // Unicode U+2230
-	"char/0x2231/mathmode": "\\mathop{\\LARGE \u2231\\vphantom{\\int}}", // Unicode U+2231
-	"char/0x2232/textmode": "{\\varointclockwise}", // Unicode U+2232
-	"char/0x2233/textmode": "{\\ointctrclockwise}", // Unicode U+2233
-	"char/0x2234/textmode": "{\\therefore}", // Unicode U+2234
-	"char/0x2235/textmode": "{\\because}", // Unicode U+2235
-	"char/0x2236/textmode": "{:}", // Unicode U+2236
-	"char/0x2237/textmode": "{::}", // Unicode U+2237
-	"char/0x2238/textmode": "{\\dot{-}}", // Unicode U+2238
-	"char/0x2239/textmode": "{\\eqcolon}", // Unicode U+2239
-	"char/0x223a/mathmode": "\\mathrel{\u223a\\vphantom{A}}", // Unicode U+223A
-	"char/0x223b/mathmode": "\\mathrel{\u223b\\vphantom{A}}", // Unicode U+223B
-	"char/0x223c/textmode": "{\\sim}", // Unicode U+223C
-	"char/0x223d/textmode": "{\\backsim}", // Unicode U+223D
-	"char/0x223e/mathmode": "\\mathrel{\u223e\\vphantom{A}}", // Unicode U+223E
-	"char/0x223f/textmode": "{\\AC}", // Unicode U+223F
-	"char/0x2240/textmode": "{\\wr}", // Unicode U+2240
-	"char/0x2241/textmode": "{\\nsim}", // Unicode U+2241
-	"char/0x2242/textmode": "{\\eqsim}", // Unicode U+2242
-	"char/0x2243/textmode": "{\\simeq}", // Unicode U+2243
-	"char/0x2244/textmode": "{\\nsimeq}", // Unicode U+2244
-	"char/0x2245/textmode": "{\\cong}", // Unicode U+2245
-	"char/0x2246/mathmode": "\\mathrel{\u2246\\vphantom{A}}", // Unicode U+2246
-	"char/0x2247/textmode": "{\\ncong}", // Unicode U+2247
-	"char/0x2248/textmode": "{\\approx}", // Unicode U+2248
-	"char/0x2249/textmode": "{\\napprox}", // Unicode U+2249
-	"char/0x224a/textmode": "{\\approxeq}", // Unicode U+224A
-	"char/0x224b/mathmode": "\\mathrel{\\not \u224b}", // Unicode U+224B
-	"char/0x224c/mathmode": "\\mathbin{\\overset{\u223d}{\\=}}", // Unicode U+224C
-	"char/0x224d/textmode": "{\\asymp}", // Unicode U+224D
-	"char/0x224e/textmode": "{\\Bumpeq}", // Unicode U+224E
-	"char/0x224f/textmode": "{\\bumpeq}", // Unicode U+224F
-	"char/0x2250/textmode": "{\\doteq}", // Unicode U+2250
-	"char/0x2251/textmode": "{\\Doteq}", // Unicode U+2251
-	"char/0x2252/textmode": "{\\fallingdotseq}", // Unicode U+2252
-	"char/0x2253/textmode": "{\\risingdotseq}", // Unicode U+2253
-	"char/0x2254/textmode": "{\\coloneqq}", // Unicode U+2254
-	"char/0x2255/textmode": "{\\eqqcolon}", // Unicode U+2255
-	"char/0x2256/textmode": "{\\eqcirc}", // Unicode U+2256
-	"char/0x2257/textmode": "{\\circeq}", // Unicode U+2257
-	"char/0x2259/textmode": "{\\corresponds}", // Unicode U+2259
-	"char/0x225a/mathmode": "\\mathrel{\\check{\\=}}", // Unicode U+225A
-	"char/0x225c/textmode": "{\\triangleq}", // Unicode U+225C
-	"char/0x225f/mathmode": "\\mathrel{\u225f\\vphantom{A}}", // Unicode U+225F
-	"char/0x2260/textmode": "{\\neq}", // Unicode U+2260
-	"char/0x2261/textmode": "{\\equiv}", // Unicode U+2261
-	"char/0x2262/textmode": "{\\nequiv}", // Unicode U+2262
-	"char/0x2264/textmode": "{\\leq}", // Unicode U+2264
-	"char/0x2265/textmode": "{\\geq}", // Unicode U+2265
-	"char/0x2266/textmode": "{\\leqq}", // Unicode U+2266
-	"char/0x2267/textmode": "{\\geqq}", // Unicode U+2267
-	"char/0x2268/textmode": "{\\lneqq}", // Unicode U+2268
-	"char/0x2269/textmode": "{\\gneqq}", // Unicode U+2269
-	"char/0x226a/textmode": "{\\ll}", // Unicode U+226A
-	"char/0x226b/textmode": "{\\gg}", // Unicode U+226B
-	"char/0x226c/textmode": "{\\between}", // Unicode U+226C
-	"char/0x226d/textmode": "{\\notasymp}", // Unicode U+226D
-	"char/0x226e/textmode": "{\\nless}", // Unicode U+226E
-	"char/0x226f/textmode": "{\\ngtr}", // Unicode U+226F
-	"char/0x2270/textmode": "{\\nleq}", // Unicode U+2270
-	"char/0x2271/textmode": "{\\ngeq}", // Unicode U+2271
-	"char/0x2272/textmode": "{\\lesssim}", // Unicode U+2272
-	"char/0x2273/textmode": "{\\gtrsim}", // Unicode U+2273
-	"char/0x2274/textmode": "{\\NotLessTilde}", // Unicode U+2274
-	"char/0x2275/textmode": "{\\NotGreaterTilde}", // Unicode U+2275
-	"char/0x2276/textmode": "{\\lessgtr}", // Unicode U+2276
-	"char/0x2277/textmode": "{\\gtrless}", // Unicode U+2277
-	"char/0x2278/mathmode": "\\mathrel{\u2278\\vphantom{A}}", // Unicode U+2278
-	"char/0x2279/textmode": "{\\NotGreaterLess}", // Unicode U+2279
-	"char/0x227a/textmode": "{\\prec}", // Unicode U+227A
-	"char/0x227b/textmode": "{\\succ}", // Unicode U+227B
-	"char/0x227c/textmode": "{\\preccurlyeq}", // Unicode U+227C
-	"char/0x227d/textmode": "{\\succcurlyeq}", // Unicode U+227D
-	"char/0x227e/textmode": "{\\precsim}", // Unicode U+227E
-	"char/0x227f/textmode": "{\\succsim}", // Unicode U+227F
-	"char/0x2280/textmode": "{\\nprec}", // Unicode U+2280
-	"char/0x2281/textmode": "{\\nsucc}", // Unicode U+2281
-	"char/0x2282/textmode": "{\\subset}", // Unicode U+2282
-	"char/0x2283/textmode": "{\\supset}", // Unicode U+2283
-	"char/0x2284/textmode": "{\\nsubset}", // Unicode U+2284
-	"char/0x2285/textmode": "{\\nsupset}", // Unicode U+2285
-	"char/0x2286/textmode": "{\\subseteq}", // Unicode U+2286
-	"char/0x2287/textmode": "{\\supseteq}", // Unicode U+2287
-	"char/0x2288/textmode": "{\\nsubseteq}", // Unicode U+2288
-	"char/0x2289/textmode": "{\\nsupseteq}", // Unicode U+2289
-	"char/0x228a/textmode": "{\\subsetneq}", // Unicode U+228A
-	"char/0x228b/textmode": "{\\supsetneq}", // Unicode U+228B
-	"char/0x228d/mathmode": "\\mathbin{\u228d\\vphantom{A}}", // Unicode U+228D
-	"char/0x228e/textmode": "{\\uplus}", // Unicode U+228E
-	"char/0x228f/textmode": "{\\sqsubset}", // Unicode U+228F
-	"char/0x2290/textmode": "{\\sqsupset}", // Unicode U+2290
-	"char/0x2291/textmode": "{\\sqsubseteq}", // Unicode U+2291
-	"char/0x2292/textmode": "{\\sqsupseteq}", // Unicode U+2292
-	"char/0x2293/textmode": "{\\sqcap}", // Unicode U+2293
-	"char/0x2294/textmode": "{\\sqcup}", // Unicode U+2294
-	"char/0x2295/textmode": "{\\oplus}", // Unicode U+2295
-	"char/0x2296/textmode": "{\\ominus}", // Unicode U+2296
-	"char/0x2297/textmode": "{\\otimes}", // Unicode U+2297
-	"char/0x2298/textmode": "{\\oslash}", // Unicode U+2298
-	"char/0x2299/textmode": "{\\odot}", // Unicode U+2299
-	"char/0x229a/textmode": "{\\circledcirc}", // Unicode U+229A
-	"char/0x229b/textmode": "{\\circledast}", // Unicode U+229B
-	"char/0x229d/textmode": "{\\circleddash}", // Unicode U+229D
-	"char/0x229e/textmode": "{\\boxplus}", // Unicode U+229E
-	"char/0x229f/textmode": "{\\boxminus}", // Unicode U+229F
-	"char/0x22a0/textmode": "{\\boxtimes}", // Unicode U+22A0
-	"char/0x22a1/textmode": "{\\boxdot}", // Unicode U+22A1
-	"char/0x22a2/textmode": "{\\vdash}", // Unicode U+22A2
-	"char/0x22a3/textmode": "{\\dashv}", // Unicode U+22A3
-	"char/0x22a4/textmode": "{\\top}", // Unicode U+22A4
-	"char/0x22a5/textmode": "{\\bot}", // Unicode U+22A5
-	"char/0x22a7/textmode": "{\\models}", // Unicode U+22A7
-	"char/0x22a8/textmode": "{\\vDash}", // Unicode U+22A8
-	"char/0x22a9/textmode": "{\\Vdash}", // Unicode U+22A9
-	"char/0x22aa/textmode": "{\\Vvdash}", // Unicode U+22AA
-	"char/0x22ab/textmode": "{\\VDash}", // Unicode U+22AB
-	"char/0x22ac/textmode": "{\\nvdash}", // Unicode U+22AC
-	"char/0x22ad/textmode": "{\\nvDash}", // Unicode U+22AD
-	"char/0x22ae/textmode": "{\\nVdash}", // Unicode U+22AE
-	"char/0x22af/textmode": "{\\nVDash}", // Unicode U+22AF
-	"char/0x22b0/mathmode": "\\mathrel{\u22b0\\vphantom{A}}", // Unicode U+22B0
-	"char/0x22b2/textmode": "{\\vartriangleleft}", // Unicode U+22B2
-	"char/0x22b3/textmode": "{\\vartriangleright}", // Unicode U+22B3
-	"char/0x22b4/textmode": "{\\trianglelefteq}", // Unicode U+22B4
-	"char/0x22b5/textmode": "{\\trianglerighteq}", // Unicode U+22B5
-	"char/0x22b6/textmode": "{\\multimapdotbothA}", // Unicode U+22B6
-	"char/0x22b7/textmode": "{\\multimapdotbothB}", // Unicode U+22B7
-	"char/0x22b8/textmode": "{\\multimap}", // Unicode U+22B8
-	"char/0x22b9/mathmode": "\\mathbin{\u22b9\\vphantom{A}}", // Unicode U+22B9
-	"char/0x22ba/textmode": "{\\intercal}", // Unicode U+22BA
-	"char/0x22bb/textmode": "{\\veebar}", // Unicode U+22BB
-	"char/0x22bc/textmode": "{\\barwedge}", // Unicode U+22BC
-	"char/0x22bd/mathmode": "\\bar{\\vee}", // Unicode U+22BD
-	"char/0x22be/mathmode": "{\u22be\\vphantom{A}}", // Unicode U+22BE
-	"char/0x22bf/mathmode": "{\u22bf\\vphantom{A}}", // Unicode U+22BF
-	"char/0x22c0/textmode": "{\\bigwedge}", // Unicode U+22C0
-	"char/0x22c1/textmode": "{\\bigvee}", // Unicode U+22C1
-	"char/0x22c2/textmode": "{\\bigcap}", // Unicode U+22C2
-	"char/0x22c3/textmode": "{\\bigcup}", // Unicode U+22C3
-	"char/0x22c4/textmode": "{\\diamond}", // Unicode U+22C4
-	"char/0x22c5/textmode": "{\\cdot}", // Unicode U+22C5
-	"char/0x22c6/textmode": "{\\star}", // Unicode U+22C6
-	"char/0x22c7/textmode": "{\\divideontimes}", // Unicode U+22C7
-	"char/0x22c8/textmode": "{\\bowtie}", // Unicode U+22C8
-	"char/0x22c9/textmode": "{\\ltimes}", // Unicode U+22C9
-	"char/0x22ca/textmode": "{\\rtimes}", // Unicode U+22CA
-	"char/0x22cb/textmode": "{\\leftthreetimes}", // Unicode U+22CB
-	"char/0x22cc/textmode": "{\\rightthreetimes}", // Unicode U+22CC
-	"char/0x22cd/textmode": "{\\backsimeq}", // Unicode U+22CD
-	"char/0x22ce/textmode": "{\\curlyvee}", // Unicode U+22CE
-	"char/0x22cf/textmode": "{\\curlywedge}", // Unicode U+22CF
-	"char/0x22d0/textmode": "{\\Subset}", // Unicode U+22D0
-	"char/0x22d1/textmode": "{\\Supset}", // Unicode U+22D1
-	"char/0x22d2/textmode": "{\\Cap}", // Unicode U+22D2
-	"char/0x22d3/textmode": "{\\Cup}", // Unicode U+22D3
-	"char/0x22d4/textmode": "{\\pitchfork}", // Unicode U+22D4
-	"char/0x22d5/textmode": "{\\hash}", // Unicode U+22D5
-	"char/0x22d6/textmode": "{\\lessdot}", // Unicode U+22D6
-	"char/0x22d7/textmode": "{\\gtrdot}", // Unicode U+22D7
-	"char/0x22d8/textmode": "{\\lll}", // Unicode U+22D8
-	"char/0x22d9/textmode": "{\\ggg}", // Unicode U+22D9
-	"char/0x22da/textmode": "{\\lesseqgtr}", // Unicode U+22DA
-	"char/0x22db/textmode": "{\\gtreqless}", // Unicode U+22DB
-	"char/0x22de/textmode": "{\\curlyeqprec}", // Unicode U+22DE
-	"char/0x22df/textmode": "{\\curlyeqsucc}", // Unicode U+22DF
-	"char/0x22e0/textmode": "{\\npreceq}", // Unicode U+22E0
-	"char/0x22e1/textmode": "{\\nsucceq}", // Unicode U+22E1
-	"char/0x22e2/textmode": "{\\nsqsubseteq}", // Unicode U+22E2
-	"char/0x22e3/textmode": "{\\nsqsupseteq}", // Unicode U+22E3
-	"char/0x22e6/textmode": "{\\lnsim}", // Unicode U+22E6
-	"char/0x22e7/textmode": "{\\gnsim}", // Unicode U+22E7
-	"char/0x22e8/textmode": "{\\precnsim}", // Unicode U+22E8
-	"char/0x22e9/textmode": "{\\succnsim}", // Unicode U+22E9
-	"char/0x22ea/textmode": "{\\ntriangleleft}", // Unicode U+22EA
-	"char/0x22eb/textmode": "{\\ntriangleright}", // Unicode U+22EB
-	"char/0x22ec/textmode": "{\\ntrianglelefteq}", // Unicode U+22EC
-	"char/0x22ed/textmode": "{\\ntrianglerighteq}", // Unicode U+22ED
-	"char/0x22ee/textmode": "{\\vdots}", // Unicode U+22EE
-	"char/0x22ef/textmode": "{\\cdots}", // Unicode U+22EF
-	"char/0x22f0/textmode": "{\\adots}", // Unicode U+22F0
-	"char/0x22f1/textmode": "{\\ddots}", // Unicode U+22F1
-	"char/0x22f2/mathmode": "\\mathrel{\u22f2\\vphantom{A}}", // Unicode U+22F2
-	"char/0x22f3/mathmode": "\\mathrel{\u22f3\\vphantom{A}}", // Unicode U+22F3
-	"char/0x22f4/mathmode": "\\mathrel{\u22f4\\vphantom{A}}", // Unicode U+22F4
-	"char/0x22f5/mathmode": "\\mathrel{\u22f5\\vphantom{A}}", // Unicode U+22F5
-	"char/0x22f6/textmode": "{\\barin}", // Unicode U+22F6
-	"char/0x22f7/mathmode": "\\mathrel{\\bar{\\in}}", // Unicode U+22F7
-	"char/0x22f9/mathmode": "\\mathrel{\u22f9\\vphantom{A}}", // Unicode U+22F9
-	"char/0x22fa/mathmode": "\\mathrel{\u22fa\\vphantom{A}}", // Unicode U+22FA
-	"char/0x22fb/mathmode": "{\u22fb\\vphantom{A}}", // Unicode U+22FB
-	"char/0x22fc/mathmode": "\\mathrel{\u22fc\\vphantom{A}}", // Unicode U+22FC
-	"char/0x22fd/mathmode": "\\mathrel{\u22fd\\vphantom{A}}", // Unicode U+22FD
-	"char/0x22fe/mathmode": "\\mathrel{\\bar{\\not\\in}}", // Unicode U+22FE
-	"char/0x2300/textmode": "{\\diameter}", // Unicode U+2300
-	"char/0x2302/textmode": "{\\house}", // Unicode U+2302
-	"char/0x2305/mathmode": "\\barwedge", // Unicode U+2305
-	"char/0x2306/mathmode": "\\mathbin{\u2a5e\\vphantom{A}}", // Unicode U+2306
-	"char/0x2308/textmode": "{\\lceil}", // Unicode U+2308
-	"char/0x2309/textmode": "{\\rceil}", // Unicode U+2309
-	"char/0x230a/textmode": "{\\lfloor}", // Unicode U+230A
-	"char/0x230b/textmode": "{\\rfloor}", // Unicode U+230B
-	"char/0x230c/mathmode": "{\u230c\\vphantom{A}}", // Unicode U+230C
-	"char/0x230d/mathmode": "{\u230d\\vphantom{A}}", // Unicode U+230D
-	"char/0x230e/mathmode": "{\u230e\\vphantom{A}}", // Unicode U+230E
-	"char/0x230f/mathmode": "{\u230f\\vphantom{A}}", // Unicode U+230F
-	"char/0x2310/textmode": "{\\invneg}", // Unicode U+2310
-	"char/0x2311/textmode": "{\\wasylozenge}", // Unicode U+2311
-	"char/0x2312/textmode": "{\\profline}", // Unicode U+2312
-	"char/0x2313/textmode": "{\\profsurf}", // Unicode U+2313
-	"char/0x2315/mathmode": "{\u2315\\vphantom{A}}", // Unicode U+2315
-	"char/0x2316/mathmode": "{\u2316\\vphantom{A}}", // Unicode U+2316
-	"char/0x2317/textmode": "{\\viewdata}", // Unicode U+2317
-	"char/0x2319/textmode": "{\\turnednot}", // Unicode U+2319
-	"char/0x231c/textmode": "{\\ulcorner}", // Unicode U+231C
-	"char/0x231d/textmode": "{\\urcorner}", // Unicode U+231D
-	"char/0x231e/textmode": "{\\llcorner}", // Unicode U+231E
-	"char/0x231f/textmode": "{\\lrcorner}", // Unicode U+231F
-	"char/0x2320/textmode": "{\\inttop}", // Unicode U+2320
-	"char/0x2321/textmode": "{\\intbottom}", // Unicode U+2321
-	"char/0x2322/textmode": "{\\frown}", // Unicode U+2322
-	"char/0x2323/textmode": "{\\smile}", // Unicode U+2323
-	"char/0x2329/textmode": "{\\langle}", // Unicode U+2329
-	"char/0x232a/textmode": "{\\rangle}", // Unicode U+232A
-	"char/0x232c/textmode": "{\\varhexagonlrbonds}", // Unicode U+232C
-	"char/0x232d/mathmode": "{\u232d\\vphantom{A}}", // Unicode U+232D
-	"char/0x232e/mathmode": "{\u232e\\vphantom{A}}", // Unicode U+232E
-	"char/0x2332/textmode": "{\\conictaper}", // Unicode U+2332
-	"char/0x2336/textmode": "{\\topbot}", // Unicode U+2336
-	"char/0x2339/textmode": "{\\APLinv}", // Unicode U+2339
-	"char/0x233d/mathmode": "\\mathbin{\u233d\\vphantom{A}}", // Unicode U+233D
-	"char/0x233f/textmode": "{\\notslash}", // Unicode U+233F
-	"char/0x2340/textmode": "{\\notbackslash}", // Unicode U+2340
-	"char/0x2347/textmode": "{\\APLleftarrowbox}", // Unicode U+2347
-	"char/0x2348/textmode": "{\\APLrightarrowbox}", // Unicode U+2348
-	"char/0x2350/textmode": "{\\APLuparrowbox}", // Unicode U+2350
-	"char/0x2353/textmode": "{\\APLboxupcaret}", // Unicode U+2353
-	"char/0x2357/textmode": "{\\APLdownarrowbox}", // Unicode U+2357
-	"char/0x235d/textmode": "{\\APLcomment}", // Unicode U+235D
-	"char/0x235e/textmode": "{\\APLinput}", // Unicode U+235E
-	"char/0x235f/textmode": "{\\APLlog}", // Unicode U+235F
-	"char/0x2370/textmode": "{\\APLboxquestion}", // Unicode U+2370
-	"char/0x237a/textmode": "\u237a", // Unicode U+237A
-	"char/0x237c/textmode": "{\\rangledownzigzagarrow}", // Unicode U+237C
-	"char/0x2394/textmode": "{\\hexagon}", // Unicode U+2394
-	"char/0x2396/mathmode": "\u2396", // Unicode U+2396
-	"char/0x23b0/mathmode": "\\lmoustache", // Unicode U+23B0
-	"char/0x23b1/mathmode": "\\rmoustache", // Unicode U+23B1
-	"char/0x23b4/mathmode": "{\u23b4\\vphantom{A}}", // Unicode U+23B4
-	"char/0x23b5/mathmode": "{\u23b5\\vphantom{A}}", // Unicode U+23B5
-	"char/0x23b6/mathmode": "{\u23b6\\vphantom{A}}", // Unicode U+23B6
-	"char/0x23d0/mathmode": "|", // Unicode U+23D0
-	"char/0x23dc/textmode": "{\\overparen}", // Unicode U+23DC
-	"char/0x23dd/textmode": "{\\underparen}", // Unicode U+23DD
-	"char/0x23de/textmode": "{\\overbrace}", // Unicode U+23DE
-	"char/0x23df/textmode": "{\\underbrace}", // Unicode U+23DF
-	"char/0x23e2/mathmode": "{\u23e2\\vphantom{A}}", // Unicode U+23E2
-	"char/0x23e4/mathmode": "-", // Unicode U+23E4
-	"char/0x2423/textmode": "{\\textvisiblespace}", // Unicode U+2423
-	"char/0x2460/textmode": "\\ding{172}", // Unicode U+2460
-	"char/0x2461/textmode": "\\ding{173}", // Unicode U+2461
-	"char/0x2462/textmode": "\\ding{174}", // Unicode U+2462
-	"char/0x2463/textmode": "\\ding{175}", // Unicode U+2463
-	"char/0x2464/textmode": "\\ding{176}", // Unicode U+2464
-	"char/0x2465/textmode": "\\ding{177}", // Unicode U+2465
-	"char/0x2466/textmode": "\\ding{178}", // Unicode U+2466
-	"char/0x2467/textmode": "\\ding{179}", // Unicode U+2467
-	"char/0x2468/textmode": "\\ding{180}", // Unicode U+2468
-	"char/0x2469/textmode": "\\ding{181}", // Unicode U+2469
-	"char/0x246a/textmode": "\\ding{172}\\ding{172}", // Unicode U+246A
-	"char/0x246b/textmode": "\\ding{172}\\ding{173}", // Unicode U+246B
-	"char/0x246c/textmode": "\\ding{172}\\ding{174}", // Unicode U+246C
-	"char/0x246d/textmode": "\\ding{172}\\ding{175}", // Unicode U+246D
-	"char/0x246e/textmode": "\\ding{172}\\ding{176}", // Unicode U+246E
-	"char/0x246f/textmode": "\\ding{172}\\ding{177}", // Unicode U+246F
-	"char/0x2470/textmode": "\\ding{172}\\ding{178}", // Unicode U+2470
-	"char/0x2471/textmode": "\\ding{172}\\ding{179}", // Unicode U+2471
-	"char/0x2472/textmode": "\\ding{172}\\ding{180}", // Unicode U+2472
-	"char/0x2473/textmode": "\\ding{173}\\ding{173}", // Unicode U+2473
-	"char/0x2474/textmode": "(1)", // Unicode U+2474
-	"char/0x2475/textmode": "(2)", // Unicode U+2475
-	"char/0x2476/textmode": "(3)", // Unicode U+2476
-	"char/0x2477/textmode": "(4)", // Unicode U+2477
-	"char/0x2478/textmode": "(5)", // Unicode U+2478
-	"char/0x2479/textmode": "(6)", // Unicode U+2479
-	"char/0x247a/textmode": "(7)", // Unicode U+247A
-	"char/0x247b/textmode": "(8)", // Unicode U+247B
-	"char/0x247c/textmode": "(9)", // Unicode U+247C
-	"char/0x247d/textmode": "(10)", // Unicode U+247D
-	"char/0x247e/textmode": "(11)", // Unicode U+247E
-	"char/0x247f/textmode": "(12)", // Unicode U+247F
-	"char/0x2480/textmode": "(13)", // Unicode U+2480
-	"char/0x2481/textmode": "(14)", // Unicode U+2481
-	"char/0x2482/textmode": "(15)", // Unicode U+2482
-	"char/0x2483/textmode": "(16)", // Unicode U+2483
-	"char/0x2484/textmode": "(17)", // Unicode U+2484
-	"char/0x2485/textmode": "(18)", // Unicode U+2485
-	"char/0x2486/textmode": "(19)", // Unicode U+2486
-	"char/0x2487/textmode": "(20)", // Unicode U+2487
-	"char/0x2488/textmode": "1.", // Unicode U+2488
-	"char/0x2489/textmode": "2.", // Unicode U+2489
-	"char/0x248a/textmode": "3.", // Unicode U+248A
-	"char/0x248b/textmode": "4.", // Unicode U+248B
-	"char/0x248c/textmode": "5.", // Unicode U+248C
-	"char/0x248d/textmode": "6.", // Unicode U+248D
-	"char/0x248e/textmode": "7.", // Unicode U+248E
-	"char/0x248f/textmode": "8.", // Unicode U+248F
-	"char/0x2490/textmode": "9.", // Unicode U+2490
-	"char/0x2491/textmode": "10.", // Unicode U+2491
-	"char/0x2492/textmode": "11.", // Unicode U+2492
-	"char/0x2493/textmode": "12.", // Unicode U+2493
-	"char/0x2494/textmode": "13.", // Unicode U+2494
-	"char/0x2495/textmode": "14.", // Unicode U+2495
-	"char/0x2496/textmode": "15.", // Unicode U+2496
-	"char/0x2497/textmode": "16.", // Unicode U+2497
-	"char/0x2498/textmode": "17.", // Unicode U+2498
-	"char/0x2499/textmode": "18.", // Unicode U+2499
-	"char/0x249a/textmode": "19.", // Unicode U+249A
-	"char/0x249b/textmode": "20.", // Unicode U+249B
-	"char/0x249c/textmode": "(a)", // Unicode U+249C
-	"char/0x249d/textmode": "(b)", // Unicode U+249D
-	"char/0x249e/textmode": "(c)", // Unicode U+249E
-	"char/0x249f/textmode": "(d)", // Unicode U+249F
-	"char/0x24a0/textmode": "(e)", // Unicode U+24A0
-	"char/0x24a1/textmode": "(f)", // Unicode U+24A1
-	"char/0x24a2/textmode": "(g)", // Unicode U+24A2
-	"char/0x24a3/textmode": "(h)", // Unicode U+24A3
-	"char/0x24a4/textmode": "(i)", // Unicode U+24A4
-	"char/0x24a5/textmode": "(j)", // Unicode U+24A5
-	"char/0x24a6/textmode": "(k)", // Unicode U+24A6
-	"char/0x24a7/textmode": "(l)", // Unicode U+24A7
-	"char/0x24a8/textmode": "(m)", // Unicode U+24A8
-	"char/0x24a9/textmode": "(n)", // Unicode U+24A9
-	"char/0x24aa/textmode": "(o)", // Unicode U+24AA
-	"char/0x24ab/textmode": "(p)", // Unicode U+24AB
-	"char/0x24ac/textmode": "(q)", // Unicode U+24AC
-	"char/0x24ad/textmode": "(r)", // Unicode U+24AD
-	"char/0x24ae/textmode": "(s)", // Unicode U+24AE
-	"char/0x24af/textmode": "(t)", // Unicode U+24AF
-	"char/0x24b0/textmode": "(u)", // Unicode U+24B0
-	"char/0x24b1/textmode": "(v)", // Unicode U+24B1
-	"char/0x24b2/textmode": "(w)", // Unicode U+24B2
-	"char/0x24b3/textmode": "(x)", // Unicode U+24B3
-	"char/0x24b4/textmode": "(y)", // Unicode U+24B4
-	"char/0x24b5/textmode": "(z)", // Unicode U+24B5
-	"char/0x24b6/textmode": "\\textcircled(A)", // Unicode U+24B6
-	"char/0x24b7/textmode": "\\textcircled(B)", // Unicode U+24B7
-	"char/0x24b8/textmode": "\\textcircled(C)", // Unicode U+24B8
-	"char/0x24b9/textmode": "\\textcircled(D)", // Unicode U+24B9
-	"char/0x24ba/textmode": "\\textcircled(E)", // Unicode U+24BA
-	"char/0x24bb/textmode": "\\textcircled(F)", // Unicode U+24BB
-	"char/0x24bc/textmode": "\\textcircled(G)", // Unicode U+24BC
-	"char/0x24bd/textmode": "\\textcircled(H)", // Unicode U+24BD
-	"char/0x24be/textmode": "\\textcircled(I)", // Unicode U+24BE
-	"char/0x24bf/textmode": "\\textcircled(J)", // Unicode U+24BF
-	"char/0x24c0/textmode": "\\textcircled(K)", // Unicode U+24C0
-	"char/0x24c1/textmode": "\\textcircled(L)", // Unicode U+24C1
-	"char/0x24c2/textmode": "\\textcircled(M)", // Unicode U+24C2
-	"char/0x24c3/textmode": "\\textcircled(N)", // Unicode U+24C3
-	"char/0x24c4/textmode": "\\textcircled(O)", // Unicode U+24C4
-	"char/0x24c5/textmode": "\\textcircled(P)", // Unicode U+24C5
-	"char/0x24c6/textmode": "\\textcircled(Q)", // Unicode U+24C6
-	"char/0x24c7/textmode": "\\textcircled(R)", // Unicode U+24C7
-	"char/0x24c8/textmode": "\\textcircled(S)", // Unicode U+24C8
-	"char/0x24c9/textmode": "\\textcircled(T)", // Unicode U+24C9
-	"char/0x24ca/textmode": "\\textcircled(U)", // Unicode U+24CA
-	"char/0x24cb/textmode": "\\textcircled(V)", // Unicode U+24CB
-	"char/0x24cc/textmode": "\\textcircled(W)", // Unicode U+24CC
-	"char/0x24cd/textmode": "\\textcircled(X)", // Unicode U+24CD
-	"char/0x24ce/textmode": "\\textcircled(Y)", // Unicode U+24CE
-	"char/0x24cf/textmode": "\\textcircled(Z)", // Unicode U+24CF
-	"char/0x24d0/textmode": "\\textcircled(a)", // Unicode U+24D0
-	"char/0x24d1/textmode": "\\textcircled(b)", // Unicode U+24D1
-	"char/0x24d2/textmode": "\\textcircled(c)", // Unicode U+24D2
-	"char/0x24d3/textmode": "\\textcircled(d)", // Unicode U+24D3
-	"char/0x24d4/textmode": "\\textcircled(e)", // Unicode U+24D4
-	"char/0x24d5/textmode": "\\textcircled(f)", // Unicode U+24D5
-	"char/0x24d6/textmode": "\\textcircled(g)", // Unicode U+24D6
-	"char/0x24d7/textmode": "\\textcircled(h)", // Unicode U+24D7
-	"char/0x24d8/textmode": "\\textcircled(i)", // Unicode U+24D8
-	"char/0x24d9/textmode": "\\textcircled(j)", // Unicode U+24D9
-	"char/0x24da/textmode": "\\textcircled(k)", // Unicode U+24DA
-	"char/0x24db/textmode": "\\textcircled(l)", // Unicode U+24DB
-	"char/0x24dc/textmode": "\\textcircled(m)", // Unicode U+24DC
-	"char/0x24dd/textmode": "\\textcircled(b)", // Unicode U+24DD
-	"char/0x24de/textmode": "\\textcircled(o)", // Unicode U+24DE
-	"char/0x24df/textmode": "\\textcircled(p)", // Unicode U+24DF
-	"char/0x24e0/textmode": "\\textcircled(q)", // Unicode U+24E0
-	"char/0x24e1/textmode": "\\textcircled(r)", // Unicode U+24E1
-	"char/0x24e2/textmode": "\\textcircled(s)", // Unicode U+24E2
-	"char/0x24e3/textmode": "\\textcircled(t)", // Unicode U+24E3
-	"char/0x24e4/textmode": "\\textcircled(u)", // Unicode U+24E4
-	"char/0x24e5/textmode": "\\textcircled(v)", // Unicode U+24E5
-	"char/0x24e6/textmode": "\\textcircled(w)", // Unicode U+24E6
-	"char/0x24e7/textmode": "\\textcircled(x)", // Unicode U+24E7
-	"char/0x24e8/textmode": "\\textcircled(y)", // Unicode U+24E8
-	"char/0x24e9/textmode": "\\textcircled(z)", // Unicode U+24E9
-	"char/0x24ea/textmode": "\\textcircled(0)", // Unicode U+24EA
-	"char/0x24eb/textmode": "\\ding{182}\\ding{182}", // Unicode U+24EB
-	"char/0x24ec/textmode": "\\ding{182}\\ding{183}", // Unicode U+24EC
-	"char/0x24ed/textmode": "\\ding{182}\\ding{184}", // Unicode U+24ED
-	"char/0x24ee/textmode": "\\ding{182}\\ding{185}", // Unicode U+24EE
-	"char/0x24ef/textmode": "\\ding{182}\\ding{186}", // Unicode U+24EF
-	"char/0x24f0/textmode": "\\ding{182}\\ding{187}", // Unicode U+24F0
-	"char/0x24f1/textmode": "\\ding{182}\\ding{188}", // Unicode U+24F1
-	"char/0x24f2/textmode": "\\ding{182}\\ding{189}", // Unicode U+24F2
-	"char/0x24f3/textmode": "\\ding{182}\\ding{190}", // Unicode U+24F3
-	"char/0x24f4/textmode": "\\ding{183}\\ding{183}", // Unicode U+24F4
-	"char/0x24f5/textmode": "\\ding{172}", // Unicode U+24F5
-	"char/0x24f6/textmode": "\\ding{173}", // Unicode U+24F6
-	"char/0x24f7/textmode": "\\ding{174}", // Unicode U+24F7
-	"char/0x24f8/textmode": "\\ding{175}", // Unicode U+24F8
-	"char/0x24f9/textmode": "\\ding{176}", // Unicode U+24F9
-	"char/0x24fa/textmode": "\\ding{177}", // Unicode U+24FA
-	"char/0x24fb/textmode": "\\ding{178}", // Unicode U+24FB
-	"char/0x24fc/textmode": "\\ding{179}", // Unicode U+24FC
-	"char/0x24fd/textmode": "\\ding{180}", // Unicode U+24FD
-	"char/0x24fe/textmode": "\\ding{181}", // Unicode U+24FE
-	"char/0x24ff/textmode": "\\textcircled{0}", // Unicode U+24FF
-	"char/0x2502/textmode": "{\\textbar}", // Unicode U+2502
-	"char/0x2580/mathmode": "{\u2580\\vphantom{A}}", // Unicode U+2580
-	"char/0x2584/mathmode": "{\u2584\\vphantom{A}}", // Unicode U+2584
-	"char/0x2588/mathmode": "{\u2588\\vphantom{A}}", // Unicode U+2588
-	"char/0x2591/mathmode": "{\u2591\\vphantom{A}}", // Unicode U+2591
-	"char/0x2592/mathmode": "{\u2592\\vphantom{A}}", // Unicode U+2592
-	"char/0x2593/mathmode": "{\u2593\\vphantom{A}}", // Unicode U+2593
-	"char/0x25a0/textmode": "{\\blacksquare}", // Unicode U+25A0
-	"char/0x25a1/textmode": "{\\square}", // Unicode U+25A1
-	"char/0x25aa/textmode": "{\\blacksquare}", // Unicode U+25AA
-	"char/0x25ad/mathmode": "{\u25ad\\vphantom{A}}", // Unicode U+25AD
-	"char/0x25ae/mathmode": "{\u25ae\\vphantom{A}}", // Unicode U+25AE
-	"char/0x25b1/mathmode": "{\u25b1\\vphantom{A}}", // Unicode U+25B1
-	"char/0x25b3/textmode": "{\\bigtriangleup}", // Unicode U+25B3
-	"char/0x25b4/textmode": "{\\blacktriangleup}", // Unicode U+25B4
-	"char/0x25b5/textmode": "{\\smalltriangleup}", // Unicode U+25B5
-	"char/0x25b6/textmode": "{\\RHD}", // Unicode U+25B6
-	"char/0x25b7/textmode": "{\\rhd}", // Unicode U+25B7
-	"char/0x25b8/textmode": "{\\blacktriangleright}", // Unicode U+25B8
-	"char/0x25b9/textmode": "{\\smalltriangleright}", // Unicode U+25B9
-	"char/0x25bd/textmode": "{\\bigtriangledown}", // Unicode U+25BD
-	"char/0x25be/textmode": "{\\blacktriangledown}", // Unicode U+25BE
-	"char/0x25bf/textmode": "{\\smalltriangledown}", // Unicode U+25BF
-	"char/0x25c0/textmode": "{\\LHD}", // Unicode U+25C0
-	"char/0x25c1/textmode": "{\\lhd}", // Unicode U+25C1
-	"char/0x25c2/textmode": "{\\blacktriangleleft}", // Unicode U+25C2
-	"char/0x25c3/textmode": "{\\smalltriangleleft}", // Unicode U+25C3
-	"char/0x25c6/textmode": "{\\Diamondblack}", // Unicode U+25C6
-	"char/0x25c7/textmode": "{\\Diamond}", // Unicode U+25C7
-	"char/0x25ca/textmode": "{\\lozenge}", // Unicode U+25CA
-	"char/0x25cb/textmode": "{\\Circle}", // Unicode U+25CB
-	"char/0x25cf/textmode": "{\\CIRCLE}", // Unicode U+25CF
-	"char/0x25d0/textmode": "{\\LEFTcircle}", // Unicode U+25D0
-	"char/0x25d1/textmode": "{\\RIGHTcircle}", // Unicode U+25D1
-	"char/0x25d6/textmode": "{\\LEFTCIRCLE}", // Unicode U+25D6
-	"char/0x25d7/textmode": "{\\RIGHTCIRCLE}", // Unicode U+25D7
-	"char/0x25eb/textmode": "{\\boxbar}", // Unicode U+25EB
-	"char/0x25ec/mathmode": "\\mathbin{\u25ec\\vphantom{A}}", // Unicode U+25EC
-	"char/0x25ef/mathmode": "\\bigcirc", // Unicode U+25EF
-	"char/0x25f8/mathmode": "{\u25f8\\vphantom{A}}", // Unicode U+25F8
-	"char/0x25f9/mathmode": "{\u25f9\\vphantom{A}}", // Unicode U+25F9
-	"char/0x25fa/mathmode": "{\u25fa\\vphantom{A}}", // Unicode U+25FA
-	"char/0x25fb/textmode": "{\\square}", // Unicode U+25FB
-	"char/0x25fc/textmode": "{\\blacksquare}", // Unicode U+25FC
-	"char/0x2605/textmode": "{\\bigstar}", // Unicode U+2605
-	"char/0x2606/mathmode": "{\u2606\\vphantom{A}}", // Unicode U+2606
-	"char/0x2609/textmode": "{\\Sun}", // Unicode U+2609
-	"char/0x260e/textmode": "\\ding{37}", // Unicode U+260E
-	"char/0x260f/textmode": "\\ding{37}", // Unicode U+260F
-	"char/0x2610/textmode": "{\\Square}", // Unicode U+2610
-	"char/0x2611/textmode": "{\\CheckedBox}", // Unicode U+2611
-	"char/0x2612/textmode": "{\\XBox}", // Unicode U+2612
-	"char/0x2615/textmode": "{\\steaming}", // Unicode U+2615
-	"char/0x261e/textmode": "{\\pointright}", // Unicode U+261E
-	"char/0x2620/textmode": "{\\skull}", // Unicode U+2620
-	"char/0x2622/textmode": "{\\radiation}", // Unicode U+2622
-	"char/0x2623/textmode": "{\\biohazard}", // Unicode U+2623
-	"char/0x262f/textmode": "{\\yinyang}", // Unicode U+262F
-	"char/0x2639/textmode": "{\\frownie}", // Unicode U+2639
-	"char/0x263a/textmode": "{\\smiley}", // Unicode U+263A
-	"char/0x263b/textmode": "{\\blacksmiley}", // Unicode U+263B
-	"char/0x263c/textmode": "{\\sun}", // Unicode U+263C
-	"char/0x263d/textmode": "{\\rightmoon}", // Unicode U+263D
-	"char/0x263e/textmode": "{\\leftmoon}", // Unicode U+263E
-	"char/0x263f/textmode": "{\\mercury}", // Unicode U+263F
-	"char/0x2640/textmode": "{\\female}", // Unicode U+2640
-	"char/0x2641/textmode": "{\\earth}", // Unicode U+2641
-	"char/0x2642/textmode": "{\\male}", // Unicode U+2642
-	"char/0x2643/textmode": "{\\jupiter}", // Unicode U+2643
-	"char/0x2644/textmode": "{\\saturn}", // Unicode U+2644
-	"char/0x2645/textmode": "{\\uranus}", // Unicode U+2645
-	"char/0x2646/textmode": "{\\neptune}", // Unicode U+2646
-	"char/0x2647/textmode": "{\\pluto}", // Unicode U+2647
-	"char/0x2648/textmode": "{\\aries}", // Unicode U+2648
-	"char/0x2649/textmode": "{\\taurus}", // Unicode U+2649
-	"char/0x264a/textmode": "{\\gemini}", // Unicode U+264A
-	"char/0x264b/textmode": "{\\cancer}", // Unicode U+264B
-	"char/0x264c/textmode": "{\\leo}", // Unicode U+264C
-	"char/0x264d/textmode": "{\\virgo}", // Unicode U+264D
-	"char/0x264e/textmode": "{\\libra}", // Unicode U+264E
-	"char/0x264f/textmode": "{\\scorpio}", // Unicode U+264F
-	"char/0x2650/textmode": "{\\sagittarius}", // Unicode U+2650
-	"char/0x2651/textmode": "{\\capricornus}", // Unicode U+2651
-	"char/0x2652/textmode": "{\\aquarius}", // Unicode U+2652
-	"char/0x2653/textmode": "{\\pisces}", // Unicode U+2653
-	"char/0x2660/textmode": "{\\spadesuit}", // Unicode U+2660
-	"char/0x2661/textmode": "{\\heartsuit}", // Unicode U+2661
-	"char/0x2662/textmode": "{\\diamondsuit}", // Unicode U+2662
-	"char/0x2663/textmode": "{\\clubsuit}", // Unicode U+2663
-	"char/0x2664/textmode": "{\\varspadesuit}", // Unicode U+2664
-	"char/0x2665/textmode": "{\\varheartsuit}", // Unicode U+2665
-	"char/0x2666/textmode": "{\\blacklozenge}", // Unicode U+2666
-	"char/0x2667/textmode": "{\\varclubsuit}", // Unicode U+2667
-	"char/0x2669/textmode": "{\\quarternote}", // Unicode U+2669
-	"char/0x266a/textmode": "{\\eighthnote}", // Unicode U+266A
-	"char/0x266b/textmode": "{\\twonotes}", // Unicode U+266B
-	"char/0x266c/textmode": "{\\sixteenthnote}", // Unicode U+266C
-	"char/0x266d/textmode": "{\\flat}", // Unicode U+266D
-	"char/0x266e/textmode": "{\\natural}", // Unicode U+266E
-	"char/0x266f/textmode": "{\\sharp}", // Unicode U+266F
-	"char/0x267b/textmode": "{\\recycle}", // Unicode U+267B
-	"char/0x2693/textmode": "{\\anchor}", // Unicode U+2693
-	"char/0x2694/textmode": "{\\swords}", // Unicode U+2694
-	"char/0x26a0/textmode": "{\\warning}", // Unicode U+26A0
-	"char/0x26aa/textmode": "{\\medcirc}", // Unicode U+26AA
-	"char/0x26ab/textmode": "{\\medbullet}", // Unicode U+26AB
-	"char/0x2700/textmode": "\\ding{34}", // Unicode U+2700
-	"char/0x2701/textmode": "\\ding{33}", // Unicode U+2701
-	"char/0x2702/textmode": "\\ding{34}", // Unicode U+2702
-	"char/0x2703/textmode": "\\ding{35}", // Unicode U+2703
-	"char/0x2704/textmode": "\\ding{36}", // Unicode U+2704
-	"char/0x2705/textmode": "\\ding{52}", // Unicode U+2705
-	"char/0x2706/textmode": "\\ding{38}", // Unicode U+2706
-	"char/0x2707/textmode": "\\ding{39}", // Unicode U+2707
-	"char/0x2708/textmode": "\\ding{40}", // Unicode U+2708
-	"char/0x2709/textmode": "\\ding{41}", // Unicode U+2709
-	"char/0x270a/textmode": "\\ding{42}", // Unicode U+270A
-	"char/0x270b/textmode": "\\ding{43}", // Unicode U+270B
-	"char/0x270c/textmode": "\\ding{44}", // Unicode U+270C
-	"char/0x270d/textmode": "\\ding{45}", // Unicode U+270D
-	"char/0x270e/textmode": "\\ding{46}", // Unicode U+270E
-	"char/0x270f/textmode": "\\ding{47}", // Unicode U+270F
-	"char/0x2710/textmode": "\\ding{48}", // Unicode U+2710
-	"char/0x2711/textmode": "\\ding{49}", // Unicode U+2711
-	"char/0x2712/textmode": "\\ding{50}", // Unicode U+2712
-	"char/0x2713/textmode": "\\ding{51}", // Unicode U+2713
-	"char/0x2714/textmode": "\\ding{52}", // Unicode U+2714
-	"char/0x2715/textmode": "\\ding{53}", // Unicode U+2715
-	"char/0x2716/textmode": "\\ding{54}", // Unicode U+2716
-	"char/0x2717/textmode": "\\ding{55}", // Unicode U+2717
-	"char/0x2718/textmode": "\\ding{56}", // Unicode U+2718
-	"char/0x2719/textmode": "\\ding{57}", // Unicode U+2719
-	"char/0x271a/textmode": "\\ding{58}", // Unicode U+271A
-	"char/0x271b/textmode": "\\ding{59}", // Unicode U+271B
-	"char/0x271c/textmode": "\\ding{60}", // Unicode U+271C
-	"char/0x271d/textmode": "\\ding{61}", // Unicode U+271D
-	"char/0x271e/textmode": "\\ding{62}", // Unicode U+271E
-	"char/0x271f/textmode": "\\ding{63}", // Unicode U+271F
-	"char/0x2720/textmode": "\\ding{64}", // Unicode U+2720
-	"char/0x2721/textmode": "\\ding{65}", // Unicode U+2721
-	"char/0x2722/textmode": "\\ding{66}", // Unicode U+2722
-	"char/0x2723/textmode": "\\ding{67}", // Unicode U+2723
-	"char/0x2724/textmode": "\\ding{68}", // Unicode U+2724
-	"char/0x2725/textmode": "\\ding{69}", // Unicode U+2725
-	"char/0x2726/textmode": "\\ding{70}", // Unicode U+2726
-	"char/0x2727/textmode": "\\ding{71}", // Unicode U+2727
-	"char/0x2728/textmode": "\\ding{72}", // Unicode U+2728
-	"char/0x2729/textmode": "\\ding{73}", // Unicode U+2729
-	"char/0x272a/textmode": "\\ding{74}", // Unicode U+272A
-	"char/0x272b/textmode": "\\ding{75}", // Unicode U+272B
-	"char/0x272c/textmode": "\\ding{76}", // Unicode U+272C
-	"char/0x272d/textmode": "\\ding{77}", // Unicode U+272D
-	"char/0x272e/textmode": "\\ding{78}", // Unicode U+272E
-	"char/0x272f/textmode": "\\ding{79}", // Unicode U+272F
-	"char/0x2730/textmode": "\\ding{80}", // Unicode U+2730
-	"char/0x2731/textmode": "\\ding{81}", // Unicode U+2731
-	"char/0x2732/textmode": "\\ding{82}", // Unicode U+2732
-	"char/0x2733/textmode": "\\ding{83}", // Unicode U+2733
-	"char/0x2734/textmode": "\\ding{84}", // Unicode U+2734
-	"char/0x2735/textmode": "\\ding{85}", // Unicode U+2735
-	"char/0x2736/textmode": "\\ding{86}", // Unicode U+2736
-	"char/0x2737/textmode": "\\ding{87}", // Unicode U+2737
-	"char/0x2738/textmode": "\\ding{88}", // Unicode U+2738
-	"char/0x2739/textmode": "\\ding{89}", // Unicode U+2739
-	"char/0x273a/textmode": "\\ding{90}", // Unicode U+273A
-	"char/0x273b/textmode": "\\ding{91}", // Unicode U+273B
-	"char/0x273c/textmode": "\\ding{92}", // Unicode U+273C
-	"char/0x273d/textmode": "\\ding{93}", // Unicode U+273D
-	"char/0x273e/textmode": "\\ding{94}", // Unicode U+273E
-	"char/0x273f/textmode": "\\ding{95}", // Unicode U+273F
-	"char/0x2740/textmode": "\\ding{96}", // Unicode U+2740
-	"char/0x2741/textmode": "\\ding{97}", // Unicode U+2741
-	"char/0x2742/textmode": "\\ding{98}", // Unicode U+2742
-	"char/0x2743/textmode": "\\ding{99}", // Unicode U+2743
-	"char/0x2744/textmode": "\\ding{100}", // Unicode U+2744
-	"char/0x2745/textmode": "\\ding{101}", // Unicode U+2745
-	"char/0x2746/textmode": "\\ding{102}", // Unicode U+2746
-	"char/0x2747/textmode": "\\ding{103}", // Unicode U+2747
-	"char/0x2748/textmode": "\\ding{104}", // Unicode U+2748
-	"char/0x2749/textmode": "\\ding{105}", // Unicode U+2749
-	"char/0x274a/textmode": "\\ding{106}", // Unicode U+274A
-	"char/0x274b/textmode": "\\ding{107}", // Unicode U+274B
-	"char/0x274c/textmode": "\\ding{53}", // Unicode U+274C
-	"char/0x274d/textmode": "\\ding{109}", // Unicode U+274D
-	"char/0x274e/textmode": "\\ding{53}", // Unicode U+274E
-	"char/0x274f/textmode": "\\ding{111}", // Unicode U+274F
-	"char/0x2750/textmode": "\\ding{112}", // Unicode U+2750
-	"char/0x2751/textmode": "\\ding{113}", // Unicode U+2751
-	"char/0x2752/textmode": "\\ding{114}", // Unicode U+2752
-	"char/0x2753/textmode": "?", // Unicode U+2753
-	"char/0x2754/textmode": "?", // Unicode U+2754
-	"char/0x2755/textmode": "!", // Unicode U+2755
-	"char/0x2756/textmode": "\\ding{118}", // Unicode U+2756
-	"char/0x2757/textmode": "!", // Unicode U+2757
-	"char/0x2758/textmode": "\\ding{120}", // Unicode U+2758
-	"char/0x2759/textmode": "\\ding{121}", // Unicode U+2759
-	"char/0x275a/textmode": "\\ding{122}", // Unicode U+275A
-	"char/0x275b/textmode": "\\ding{123}", // Unicode U+275B
-	"char/0x275c/textmode": "\\ding{124}", // Unicode U+275C
-	"char/0x275d/textmode": "\\ding{125}", // Unicode U+275D
-	"char/0x275e/textmode": "\\ding{126}", // Unicode U+275E
-	"char/0x275f/textmode": "\\raisebox{-1ex}{\\ding{124}}", // Unicode U+275F
-	"char/0x2760/textmode": "\\raisebox{-1ex}{\\ding{126}}", // Unicode U+2760
-	"char/0x2761/textmode": "\\ding{161}", // Unicode U+2761
-	"char/0x2762/textmode": "\\ding{162}", // Unicode U+2762
-	"char/0x2763/textmode": "\\ding{163}", // Unicode U+2763
-	"char/0x2764/textmode": "\\ding{164}", // Unicode U+2764
-	"char/0x2765/textmode": "\\ding{165}", // Unicode U+2765
-	"char/0x2766/textmode": "\\ding{166}", // Unicode U+2766
-	"char/0x2767/textmode": "\\ding{167}", // Unicode U+2767
-	"char/0x2768/textmode": "\\(", // Unicode U+2768
-	"char/0x2769/textmode": "\\)", // Unicode U+2769
-	"char/0x276a/textmode": "\\(", // Unicode U+276A
-	"char/0x276b/textmode": "\\)", // Unicode U+276B
-	"char/0x276c/textmode": "\\(", // Unicode U+276C
-	"char/0x276d/textmode": "\\)", // Unicode U+276D
-	"char/0x2770/textmode": "{\\flq}", // Unicode U+2770
-	"char/0x2771/textmode": "{\\frq}", // Unicode U+2771
-	"char/0x2772/textmode": "\\[", // Unicode U+2772
-	"char/0x2773/textmode": "\\]", // Unicode U+2773
-	"char/0x2776/textmode": "\\ding{182}", // Unicode U+2776
-	"char/0x2777/textmode": "\\ding{183}", // Unicode U+2777
-	"char/0x2778/textmode": "\\ding{184}", // Unicode U+2778
-	"char/0x2779/textmode": "\\ding{185}", // Unicode U+2779
-	"char/0x277a/textmode": "\\ding{186}", // Unicode U+277A
-	"char/0x277b/textmode": "\\ding{187}", // Unicode U+277B
-	"char/0x277c/textmode": "\\ding{188}", // Unicode U+277C
-	"char/0x277d/textmode": "\\ding{189}", // Unicode U+277D
-	"char/0x277e/textmode": "\\ding{190}", // Unicode U+277E
-	"char/0x277f/textmode": "\\ding{191}", // Unicode U+277F
-	"char/0x2780/textmode": "\\ding{192}", // Unicode U+2780
-	"char/0x2781/textmode": "\\ding{193}", // Unicode U+2781
-	"char/0x2782/textmode": "\\ding{194}", // Unicode U+2782
-	"char/0x2783/textmode": "\\ding{195}", // Unicode U+2783
-	"char/0x2784/textmode": "\\ding{196}", // Unicode U+2784
-	"char/0x2785/textmode": "\\ding{197}", // Unicode U+2785
-	"char/0x2786/textmode": "\\ding{198}", // Unicode U+2786
-	"char/0x2787/textmode": "\\ding{199}", // Unicode U+2787
-	"char/0x2788/textmode": "\\ding{200}", // Unicode U+2788
-	"char/0x2789/textmode": "\\ding{201}", // Unicode U+2789
-	"char/0x278a/textmode": "\\ding{202}", // Unicode U+278A
-	"char/0x278b/textmode": "\\ding{203}", // Unicode U+278B
-	"char/0x278c/textmode": "\\ding{204}", // Unicode U+278C
-	"char/0x278d/textmode": "\\ding{205}", // Unicode U+278D
-	"char/0x278e/textmode": "\\ding{206}", // Unicode U+278E
-	"char/0x278f/textmode": "\\ding{207}", // Unicode U+278F
-	"char/0x2790/textmode": "\\ding{208}", // Unicode U+2790
-	"char/0x2791/textmode": "\\ding{209}", // Unicode U+2791
-	"char/0x2792/textmode": "\\ding{210}", // Unicode U+2792
-	"char/0x2793/textmode": "\\ding{211}", // Unicode U+2793
-	"char/0x2794/textmode": "\\ding{212}", // Unicode U+2794
-	"char/0x2795/textmode": "+", // Unicode U+2795
-	"char/0x2796/textmode": "-", // Unicode U+2796
-	"char/0x2797/textmode": "\\div", // Unicode U+2797
-	"char/0x2798/textmode": "\\ding{216}", // Unicode U+2798
-	"char/0x2799/textmode": "\\ding{217}", // Unicode U+2799
-	"char/0x279a/textmode": "\\ding{218}", // Unicode U+279A
-	"char/0x279b/textmode": "\\ding{219}", // Unicode U+279B
-	"char/0x279c/textmode": "\\ding{220}", // Unicode U+279C
-	"char/0x279d/textmode": "\\ding{221}", // Unicode U+279D
-	"char/0x279e/textmode": "\\ding{222}", // Unicode U+279E
-	"char/0x279f/textmode": "\\ding{223}", // Unicode U+279F
-	"char/0x27a0/textmode": "\\ding{224}", // Unicode U+27A0
-	"char/0x27a1/textmode": "\\ding{225}", // Unicode U+27A1
-	"char/0x27a2/textmode": "\\ding{226}", // Unicode U+27A2
-	"char/0x27a3/textmode": "\\ding{227}", // Unicode U+27A3
-	"char/0x27a4/textmode": "\\ding{228}", // Unicode U+27A4
-	"char/0x27a5/textmode": "\\ding{229}", // Unicode U+27A5
-	"char/0x27a6/textmode": "\\ding{230}", // Unicode U+27A6
-	"char/0x27a7/textmode": "\\ding{231}", // Unicode U+27A7
-	"char/0x27a8/textmode": "\\ding{232}", // Unicode U+27A8
-	"char/0x27a9/textmode": "\\ding{233}", // Unicode U+27A9
-	"char/0x27aa/textmode": "\\ding{234}", // Unicode U+27AA
-	"char/0x27ab/textmode": "\\ding{235}", // Unicode U+27AB
-	"char/0x27ac/textmode": "\\ding{236}", // Unicode U+27AC
-	"char/0x27ad/textmode": "\\ding{237}", // Unicode U+27AD
-	"char/0x27ae/textmode": "\\ding{238}", // Unicode U+27AE
-	"char/0x27af/textmode": "\\ding{239}", // Unicode U+27AF
-	"char/0x27b1/textmode": "\\ding{241}", // Unicode U+27B1
-	"char/0x27b2/textmode": "\\ding{242}", // Unicode U+27B2
-	"char/0x27b3/textmode": "\\ding{243}", // Unicode U+27B3
-	"char/0x27b4/textmode": "\\ding{244}", // Unicode U+27B4
-	"char/0x27b5/textmode": "\\ding{245}", // Unicode U+27B5
-	"char/0x27b6/textmode": "\\ding{246}", // Unicode U+27B6
-	"char/0x27b7/textmode": "\\ding{247}", // Unicode U+27B7
-	"char/0x27b8/textmode": "\\ding{248}", // Unicode U+27B8
-	"char/0x27b9/textmode": "\\ding{249}", // Unicode U+27B9
-	"char/0x27ba/textmode": "\\ding{250}", // Unicode U+27BA
-	"char/0x27bb/textmode": "\\ding{251}", // Unicode U+27BB
-	"char/0x27bc/textmode": "\\ding{252}", // Unicode U+27BC
-	"char/0x27bd/textmode": "\\ding{253}", // Unicode U+27BD
-	"char/0x27be/textmode": "\\ding{254}", // Unicode U+27BE
-	"char/0x27c2/textmode": "{\\perp}", // Unicode U+27C2
-	"char/0x27c5/textmode": "{\\Lbag}", // Unicode U+27C5
-	"char/0x27c6/textmode": "{\\Rbag}", // Unicode U+27C6
-	"char/0x27c8/mathmode": "\\bcancel{\\subset}", // Unicode U+27C8
-	"char/0x27c9/mathmode": "\\bcancel{\\supset}", // Unicode U+27C9
-	"char/0x27d0/textmode": "{\\Diamonddot}", // Unicode U+27D0
-	"char/0x27dc/textmode": "{\\multimapinv}", // Unicode U+27DC
-	"char/0x27e6/textmode": "{\\llbracket}", // Unicode U+27E6
-	"char/0x27e7/textmode": "{\\rrbracket}", // Unicode U+27E7
-	"char/0x27e8/textmode": "{\\langle}", // Unicode U+27E8
-	"char/0x27e9/textmode": "{\\rangle}", // Unicode U+27E9
-	"char/0x27ea/textmode": "{\\lang}", // Unicode U+27EA
-	"char/0x27eb/textmode": "{\\rang}", // Unicode U+27EB
-	"char/0x27ee/textmode": "{\\lgroup}", // Unicode U+27EE
-	"char/0x27ef/textmode": "{\\rgroup}", // Unicode U+27EF
-	"char/0x27f5/textmode": "{\\longleftarrow}", // Unicode U+27F5
-	"char/0x27f6/textmode": "{\\longrightarrow}", // Unicode U+27F6
-	"char/0x27f7/textmode": "{\\longleftrightarrow}", // Unicode U+27F7
-	"char/0x27f8/textmode": "{\\Longleftarrow}", // Unicode U+27F8
-	"char/0x27f9/textmode": "{\\Longrightarrow}", // Unicode U+27F9
-	"char/0x27fa/textmode": "{\\Longleftrightarrow}", // Unicode U+27FA
-	"char/0x27fb/textmode": "{\\longmapsfrom}", // Unicode U+27FB
-	"char/0x27fc/textmode": "{\\longmapsto}", // Unicode U+27FC
-	"char/0x27fd/textmode": "{\\Longmapsfrom}", // Unicode U+27FD
-	"char/0x27fe/textmode": "{\\Longmapsto}", // Unicode U+27FE
-	"char/0x27ff/mathmode": "\\mathrel{\u27ff\\vphantom{A}}", // Unicode U+27FF
-	"char/0x2900/textmode": "{\\psur}", // Unicode U+2900
-	"char/0x2902/mathmode": "\\mathrel{\u2902\\vphantom{A}}", // Unicode U+2902
-	"char/0x2903/mathmode": "\\mathrel{\u2903\\vphantom{A}}", // Unicode U+2903
-	"char/0x2904/mathmode": "\\mathrel{\u2904\\vphantom{A}}", // Unicode U+2904
-	"char/0x2905/mathmode": "\\mathrel{\u2905\\vphantom{A}}", // Unicode U+2905
-	"char/0x2906/textmode": "{\\Mapsfrom}", // Unicode U+2906
-	"char/0x2907/textmode": "{\\Mapsto}", // Unicode U+2907
-	"char/0x290c/mathmode": "\\mathrel{\u290c\\vphantom{A}}", // Unicode U+290C
-	"char/0x290d/mathmode": "\\dashrightarrow", // Unicode U+290D
-	"char/0x290e/mathmode": "\\mathrel{\u290e\\vphantom{A}}", // Unicode U+290E
-	"char/0x290f/mathmode": "\\mathrel{\u290f\\vphantom{A}}", // Unicode U+290F
-	"char/0x2910/mathmode": "\\mathrel{\u2910\\vphantom{A}}", // Unicode U+2910
-	"char/0x2911/mathmode": "\\mathrel{\u2911\\vphantom{A}}", // Unicode U+2911
-	"char/0x2912/textmode": "{\\UpArrowBar}", // Unicode U+2912
-	"char/0x2913/textmode": "{\\DownArrowBar}", // Unicode U+2913
-	"char/0x2914/textmode": "{\\pinj}", // Unicode U+2914
-	"char/0x2915/textmode": "{\\finj}", // Unicode U+2915
-	"char/0x2916/textmode": "{\\bij}", // Unicode U+2916
-	"char/0x2919/mathmode": "\\mathrel{\u2919\\vphantom{A}}", // Unicode U+2919
-	"char/0x291a/mathmode": "\\mathrel{\u291a\\vphantom{A}}", // Unicode U+291A
-	"char/0x291b/mathmode": "\\mathrel{\u291b\\vphantom{A}}", // Unicode U+291B
-	"char/0x291c/mathmode": "\\mathrel{\u291c\\vphantom{A}}", // Unicode U+291C
-	"char/0x291d/mathmode": "\\mathrel{\u291d\\vphantom{A}}", // Unicode U+291D
-	"char/0x291e/mathmode": "\\mathrel{\u291e\\vphantom{A}}", // Unicode U+291E
-	"char/0x291f/mathmode": "\\mathrel{\u291f\\vphantom{A}}", // Unicode U+291F
-	"char/0x2920/mathmode": "\\mathrel{\u2920\\vphantom{A}}", // Unicode U+2920
-	"char/0x2923/mathmode": "\\mathrel{\u2923\\vphantom{A}}", // Unicode U+2923
-	"char/0x2924/mathmode": "\\mathrel{\u2924\\vphantom{A}}", // Unicode U+2924
-	"char/0x2925/mathmode": "\\mathrel{\u2925\\vphantom{A}}", // Unicode U+2925
-	"char/0x2926/mathmode": "\\mathrel{\u2926\\vphantom{A}}", // Unicode U+2926
-	"char/0x2927/mathmode": "\\mathrel{\u2927\\vphantom{A}}", // Unicode U+2927
-	"char/0x2928/mathmode": "\\mathrel{\u2928\\vphantom{A}}", // Unicode U+2928
-	"char/0x2929/mathmode": "\\mathrel{\u2929\\vphantom{A}}", // Unicode U+2929
-	"char/0x292a/mathmode": "\\mathrel{\u292a\\vphantom{A}}", // Unicode U+292A
-	"char/0x2933/textmode": "{\\leadsto}", // Unicode U+2933
-	"char/0x2935/mathmode": "\\mathrel{\u2935\\vphantom{A}}", // Unicode U+2935
-	"char/0x2936/mathmode": "\\mathrel{\u2936\\vphantom{A}}", // Unicode U+2936
-	"char/0x2937/mathmode": "\\mathrel{\u2937\\vphantom{A}}", // Unicode U+2937
-	"char/0x2938/mathmode": "\\mathrel{\u2938\\vphantom{A}}", // Unicode U+2938
-	"char/0x2939/mathmode": "\\mathrel{\\stackrel{\\leftarrow}{+}}", // Unicode U+2939
-	"char/0x293c/mathmode": "\\mathrel{\u293c\\vphantom{A}}", // Unicode U+293C
-	"char/0x293d/mathmode": "\\mathrel{\u293d\\vphantom{A}}", // Unicode U+293D
-	"char/0x2945/mathmode": "\\mathrel{\\stackrel{\\rightarrow}{+}}", // Unicode U+2945
-	"char/0x2948/mathmode": "\\mathrel{\u2948\\vphantom{A}}", // Unicode U+2948
-	"char/0x2949/mathmode": "\\mathrel{\u2949\\vphantom{A}}", // Unicode U+2949
-	"char/0x294a/textmode": "{\\leftrightharpoon}", // Unicode U+294A
-	"char/0x294b/textmode": "{\\rightleftharpoon}", // Unicode U+294B
-	"char/0x294e/textmode": "{\\leftrightharpoonup}", // Unicode U+294E
-	"char/0x294f/textmode": "{\\rightupdownharpoon}", // Unicode U+294F
-	"char/0x2950/textmode": "{\\leftrightharpoondown}", // Unicode U+2950
-	"char/0x2951/textmode": "{\\leftupdownharpoon}", // Unicode U+2951
-	"char/0x2952/textmode": "{\\LeftVectorBar}", // Unicode U+2952
-	"char/0x2953/textmode": "{\\RightVectorBar}", // Unicode U+2953
-	"char/0x2954/textmode": "{\\RightUpVectorBar}", // Unicode U+2954
-	"char/0x2955/textmode": "{\\RightDownVectorBar}", // Unicode U+2955
-	"char/0x2956/textmode": "{\\DownLeftVectorBar}", // Unicode U+2956
-	"char/0x2957/textmode": "{\\DownRightVectorBar}", // Unicode U+2957
-	"char/0x2958/textmode": "{\\LeftUpVectorBar}", // Unicode U+2958
-	"char/0x2959/textmode": "{\\LeftDownVectorBar}", // Unicode U+2959
-	"char/0x295a/textmode": "{\\LeftTeeVector}", // Unicode U+295A
-	"char/0x295b/textmode": "{\\RightTeeVector}", // Unicode U+295B
-	"char/0x295c/textmode": "{\\RightUpTeeVector}", // Unicode U+295C
-	"char/0x295d/textmode": "{\\RightDownTeeVector}", // Unicode U+295D
-	"char/0x295e/textmode": "{\\DownLeftTeeVector}", // Unicode U+295E
-	"char/0x295f/textmode": "{\\DownRightTeeVector}", // Unicode U+295F
-	"char/0x2960/textmode": "{\\LeftUpTeeVector}", // Unicode U+2960
-	"char/0x2961/textmode": "{\\LeftDownTeeVector}", // Unicode U+2961
-	"char/0x2962/textmode": "{\\leftleftharpoons}", // Unicode U+2962
-	"char/0x2963/textmode": "{\\upupharpoons}", // Unicode U+2963
-	"char/0x2964/textmode": "{\\rightrightharpoons}", // Unicode U+2964
-	"char/0x2965/textmode": "{\\downdownharpoons}", // Unicode U+2965
-	"char/0x2966/mathmode": "\\mathrel{\u2966\\vphantom{A}}", // Unicode U+2966
-	"char/0x2967/mathmode": "\\mathrel{\u2967\\vphantom{A}}", // Unicode U+2967
-	"char/0x2968/mathmode": "\\mathrel{\u2968\\vphantom{A}}", // Unicode U+2968
-	"char/0x2969/mathmode": "\\mathrel{\u2969\\vphantom{A}}", // Unicode U+2969
-	"char/0x296a/textmode": "{\\leftbarharpoon}", // Unicode U+296A
-	"char/0x296b/textmode": "{\\barleftharpoon}", // Unicode U+296B
-	"char/0x296c/textmode": "{\\rightbarharpoon}", // Unicode U+296C
-	"char/0x296d/textmode": "{\\barrightharpoon}", // Unicode U+296D
-	"char/0x296e/textmode": "{\\updownharpoons}", // Unicode U+296E
-	"char/0x296f/textmode": "{\\downupharpoons}", // Unicode U+296F
-	"char/0x2971/mathmode": "\\mathrel{\u2971\\vphantom{A}}", // Unicode U+2971
-	"char/0x2972/mathmode": "\\mathrel{\\stackrel{\\sim}{\\rightarrow}}", // Unicode U+2972
-	"char/0x2973/mathmode": "\\mathrel{\\stackrel{\\leftarrow}{\\sim}}", // Unicode U+2973
-	"char/0x2974/mathmode": "\\mathrel{\\stackrel{\\rightarrow}{\\sim}}", // Unicode U+2974
-	"char/0x2975/mathmode": "\\mathrel{\\stackrel{\\rightarrow}{\\approx}}", // Unicode U+2975
-	"char/0x2976/mathmode": "\\mathrel{\u2976\\vphantom{A}}", // Unicode U+2976
-	"char/0x2978/mathmode": "\\mathrel{\u2978\\vphantom{A}}", // Unicode U+2978
-	"char/0x2979/mathmode": "\\mathrel{\\stackrel{\\subset}{\\rightarrow}}", // Unicode U+2979
-	"char/0x297b/mathmode": "\\mathrel{\u297b\\vphantom{A}}", // Unicode U+297B
-	"char/0x297c/textmode": "{\\strictfi}", // Unicode U+297C
-	"char/0x297d/textmode": "{\\strictif}", // Unicode U+297D
-	"char/0x297e/mathmode": "\\mathrel{\u297e\\vphantom{A}}", // Unicode U+297E
-	"char/0x297f/mathmode": "\\mathrel{\u297f\\vphantom{A}}", // Unicode U+297F
-	"char/0x2980/textmode": "{\\VERT}", // Unicode U+2980
-	"char/0x2981/textmode": "{\\spot}", // Unicode U+2981
-	"char/0x2985/textmode": "{\\Lparen}", // Unicode U+2985
-	"char/0x2986/textmode": "{\\Rparen}", // Unicode U+2986
-	"char/0x2987/textmode": "{\\limg}", // Unicode U+2987
-	"char/0x2988/textmode": "{\\rimg}", // Unicode U+2988
-	"char/0x2989/textmode": "{\\lblot}", // Unicode U+2989
-	"char/0x298a/textmode": "{\\rblot}", // Unicode U+298A
-	"char/0x298b/mathmode": "\\mathopen{\u298b\\vphantom{A}}", // Unicode U+298B
-	"char/0x298c/mathmode": "\\mathclose{\u298c\\vphantom{A}}", // Unicode U+298C
-	"char/0x298d/mathmode": "\\mathopen{\u298d\\vphantom{A}}", // Unicode U+298D
-	"char/0x298e/mathmode": "\\mathclose{\u298e\\vphantom{A}}", // Unicode U+298E
-	"char/0x298f/mathmode": "\\mathopen{\u298f\\vphantom{A}}", // Unicode U+298F
-	"char/0x2990/mathmode": "\\mathclose{\u2990\\vphantom{A}}", // Unicode U+2990
-	"char/0x2991/mathmode": "\\mathopen{\u2991\\vphantom{A}}", // Unicode U+2991
-	"char/0x2992/mathmode": "\\mathclose{\u2992\\vphantom{A}}", // Unicode U+2992
-	"char/0x2993/mathmode": "\\mathopen{\u2993\\vphantom{A}}", // Unicode U+2993
-	"char/0x2994/mathmode": "\\mathclose{\u2994\\vphantom{A}}", // Unicode U+2994
-	"char/0x2995/mathmode": "\\mathopen{\u2995\\vphantom{A}}", // Unicode U+2995
-	"char/0x2996/mathmode": "\\mathopen{\u2996\\vphantom{A}}", // Unicode U+2996
-	"char/0x299a/mathmode": "{\u299a\\vphantom{A}}", // Unicode U+299A
-	"char/0x299c/mathmode": "{\u299c\\vphantom{A}}", // Unicode U+299C
-	"char/0x299d/mathmode": "{\u299d\\vphantom{A}}", // Unicode U+299D
-	"char/0x29a4/mathmode": "{\\underline \\angle}", // Unicode U+29A4
-	"char/0x29a5/mathmode": "{\u29a5\\vphantom{A}}", // Unicode U+29A5
-	"char/0x29a6/mathmode": "{\u29a6\\vphantom{A}}", // Unicode U+29A6
-	"char/0x29a7/mathmode": "{\u29a7\\vphantom{A}}", // Unicode U+29A7
-	"char/0x29a8/mathmode": "{\u29a8\\vphantom{A}}", // Unicode U+29A8
-	"char/0x29a9/mathmode": "{\u29a9\\vphantom{A}}", // Unicode U+29A9
-	"char/0x29aa/mathmode": "{\u29aa\\vphantom{A}}", // Unicode U+29AA
-	"char/0x29ab/mathmode": "{\u29ab\\vphantom{A}}", // Unicode U+29AB
-	"char/0x29ac/mathmode": "{\u29ac\\vphantom{A}}", // Unicode U+29AC
-	"char/0x29ad/mathmode": "{\u29ad\\vphantom{A}}", // Unicode U+29AD
-	"char/0x29ae/mathmode": "{\u29ae\\vphantom{A}}", // Unicode U+29AE
-	"char/0x29af/mathmode": "{\u29af\\vphantom{A}}", // Unicode U+29AF
-	"char/0x29b0/mathmode": "{\u29b0\\vphantom{A}}", // Unicode U+29B0
-	"char/0x29b1/mathmode": "\\bar{\\varnothing}", // Unicode U+29B1
-	"char/0x29b2/mathmode": "{\u29b2\\vphantom{A}}", // Unicode U+29B2
-	"char/0x29b3/mathmode": "{\u29b3\\vphantom{A}}", // Unicode U+29B3
-	"char/0x29b4/mathmode": "{\u29b4\\vphantom{A}}", // Unicode U+29B4
-	"char/0x29b5/mathmode": "\\mathbin{\u29b5\\vphantom{A}}", // Unicode U+29B5
-	"char/0x29b6/mathmode": "\\mathbin{\u29b6\\vphantom{A}}", // Unicode U+29B6
-	"char/0x29b7/mathmode": "\\mathbin{\u29b7\\vphantom{A}}", // Unicode U+29B7
-	"char/0x29b8/textmode": "{\\circledbslash}", // Unicode U+29B8
-	"char/0x29b9/mathmode": "\\mathbin{\u29b9\\vphantom{A}}", // Unicode U+29B9
-	"char/0x29bb/mathmode": "{\u29bb\\vphantom{A}}", // Unicode U+29BB
-	"char/0x29bc/mathmode": "\\mathbin{\u29bc\\vphantom{A}}", // Unicode U+29BC
-	"char/0x29be/mathmode": "\\mathbin{\u29be\\vphantom{A}}", // Unicode U+29BE
-	"char/0x29bf/mathmode": "\\mathbin{\u223e\\vphantom{A}}", // Unicode U+29BF
-	"char/0x29c0/textmode": "{\\circledless}", // Unicode U+29C0
-	"char/0x29c1/textmode": "{\\circledgtr}", // Unicode U+29C1
-	"char/0x29c2/mathmode": "{\u29c2\\vphantom{A}}", // Unicode U+29C2
-	"char/0x29c3/mathmode": "{\u29c3\\vphantom{A}}", // Unicode U+29C3
-	"char/0x29c4/textmode": "{\\boxslash}", // Unicode U+29C4
-	"char/0x29c5/textmode": "{\\boxbslash}", // Unicode U+29C5
-	"char/0x29c6/textmode": "{\\boxast}", // Unicode U+29C6
-	"char/0x29c7/textmode": "{\\boxcircle}", // Unicode U+29C7
-	"char/0x29c8/textmode": "{\\boxbox}", // Unicode U+29C8
-	"char/0x29c9/mathmode": "{\u29c9\\vphantom{A}}", // Unicode U+29C9
-	"char/0x29cd/mathmode": "\\mathbin{\u29cd\\vphantom{A}}", // Unicode U+29CD
-	"char/0x29ce/mathmode": "\\mathrel{\u29ce\\vphantom{A}}", // Unicode U+29CE
-	"char/0x29cf/textmode": "{\\LeftTriangleBar}", // Unicode U+29CF
-	"char/0x29d0/textmode": "{\\RightTriangleBar}", // Unicode U+29D0
-	"char/0x29da/mathmode": "\\mathbin{\u29da\\vphantom{A}}", // Unicode U+29DA
-	"char/0x29dc/mathmode": "{\u29dc\\vphantom{A}}", // Unicode U+29DC
-	"char/0x29dd/mathmode": "{\u29dd\\vphantom{A}}", // Unicode U+29DD
-	"char/0x29de/mathmode": "{\u29de\\vphantom{A}}", // Unicode U+29DE
-	"char/0x29df/textmode": "{\\multimapboth}", // Unicode U+29DF
-	"char/0x29e3/mathmode": "\\mathrel{\u29e3\\vphantom{A}}", // Unicode U+29E3
-	"char/0x29e4/mathmode": "\\mathrel{\u29e4\\vphantom{A}}", // Unicode U+29E4
-	"char/0x29e5/mathmode": "\\mathrel{\u29e5\\vphantom{A}}", // Unicode U+29E5
-	"char/0x29eb/textmode": "{\\blacklozenge}", // Unicode U+29EB
-	"char/0x29f5/textmode": "{\\setminus}", // Unicode U+29F5
-	"char/0x29f6/mathmode": "\\bar{/}", // Unicode U+29F6
-	"char/0x29f9/textmode": "{\\zhide}", // Unicode U+29F9
-	"char/0x2a00/textmode": "{\\bigodot}", // Unicode U+2A00
-	"char/0x2a01/textmode": "{\\bigoplus}", // Unicode U+2A01
-	"char/0x2a02/textmode": "{\\bigotimes}", // Unicode U+2A02
-	"char/0x2a04/textmode": "{\\biguplus}", // Unicode U+2A04
-	"char/0x2a05/textmode": "{\\bigsqcap}", // Unicode U+2A05
-	"char/0x2a06/textmode": "{\\bigsqcup}", // Unicode U+2A06
-	"char/0x2a09/textmode": "{\\varprod}", // Unicode U+2A09
-	"char/0x2a0c/textmode": "{\\iiiint}", // Unicode U+2A0C
-	"char/0x2a0d/mathmode": "\\mathop{\\LARGE \u2a0d\\vphantom{\\int}}", // Unicode U+2A0D
-	"char/0x2a0f/textmode": "{\\fint}", // Unicode U+2A0F
-	"char/0x2a10/mathmode": "\\mathop{\\LARGE \u2a10\\vphantom{\\int}}", // Unicode U+2A10
-	"char/0x2a11/mathmode": "\\mathop{\\LARGE \u2a11\\vphantom{\\int}}", // Unicode U+2A11
-	"char/0x2a12/mathmode": "\\mathop{\\LARGE \u2a12\\vphantom{\\int}}", // Unicode U+2A12
-	"char/0x2a13/mathmode": "\\mathop{\\LARGE \u2a13\\vphantom{\\int}}", // Unicode U+2A13
-	"char/0x2a14/mathmode": "\\mathop{\\LARGE \u2a14\\vphantom{\\int}}", // Unicode U+2A14
-	"char/0x2a15/mathmode": "\\mathop{\\LARGE \u2a15\\vphantom{\\int}}", // Unicode U+2A15
-	"char/0x2a16/textmode": "{\\sqint}", // Unicode U+2A16
-	"char/0x2a17/mathmode": "\\mathop{\\LARGE \u2a17\\vphantom{\\int}}", // Unicode U+2A17
-	"char/0x2a1d/textmode": "{\\Join}", // Unicode U+2A1D
-	"char/0x2a1f/textmode": "{\\zcmp}", // Unicode U+2A1F
-	"char/0x2a20/textmode": "{\\zpipe}", // Unicode U+2A20
-	"char/0x2a21/textmode": "{\\zproject}", // Unicode U+2A21
-	"char/0x2a22/mathmode": "\\mathbin{\u2a22\\vphantom{A}}", // Unicode U+2A22
-	"char/0x2a23/mathmode": "\\mathrel{\\hat{\\oplus}}", // Unicode U+2A23
-	"char/0x2a24/mathmode": "\\tilde{+}", // Unicode U+2A24
-	"char/0x2a25/mathmode": "\\mathbin{\u2a25\\vphantom{A}}", // Unicode U+2A25
-	"char/0x2a26/mathmode": "\\mathbin{\u2a26\\vphantom{A}}", // Unicode U+2A26
-	"char/0x2a27/mathmode": "\\mathbin{\u2a27\\vphantom{A}}", // Unicode U+2A27
-	"char/0x2a29/mathmode": "\\mathrel{\u2a29\\vphantom{A}}", // Unicode U+2A29
-	"char/0x2a2a/mathmode": "\\mathbin{\u2a2a\\vphantom{A}}", // Unicode U+2A2A
-	"char/0x2a2d/mathmode": "\\mathbin{\u2a2d\\vphantom{A}}", // Unicode U+2A2D
-	"char/0x2a2e/mathmode": "\\mathbin{\u2a2e\\vphantom{A}}", // Unicode U+2A2E
-	"char/0x2a30/mathmode": "\\mathbin{\u2a30\\vphantom{A}}", // Unicode U+2A30
-	"char/0x2a31/mathmode": "\\mathrel{\\underline \\times}", // Unicode U+2A31
-	"char/0x2a33/mathmode": "\\mathbin{\u2a33\\vphantom{A}}", // Unicode U+2A33
-	"char/0x2a34/mathmode": "\\mathbin{\u2a34\\vphantom{A}}", // Unicode U+2A34
-	"char/0x2a35/mathmode": "\\mathbin{\u2a35\\vphantom{A}}", // Unicode U+2A35
-	"char/0x2a36/mathmode": "\\hat{\\otimes}", // Unicode U+2A36
-	"char/0x2a37/mathmode": "\\mathbin{\u2a37\\vphantom{A}}", // Unicode U+2A37
-	"char/0x2a38/mathmode": "\\mathbin{\u2a38\\vphantom{A}}", // Unicode U+2A38
-	"char/0x2a39/mathmode": "\\mathbin{\u2a39\\vphantom{A}}", // Unicode U+2A39
-	"char/0x2a3a/mathmode": "\\mathbin{\u2a3a\\vphantom{A}}", // Unicode U+2A3A
-	"char/0x2a3b/mathmode": "\\mathbin{\u2a3b\\vphantom{A}}", // Unicode U+2A3B
-	"char/0x2a3c/mathmode": "\\mathbin{\u2a3c\\vphantom{A}}", // Unicode U+2A3C
-	"char/0x2a3e/textmode": "{\\fcmp}", // Unicode U+2A3E
-	"char/0x2a3f/textmode": "{\\amalg}", // Unicode U+2A3F
-	"char/0x2a40/mathmode": "\\mathbin{\u2a40\\vphantom{A}}", // Unicode U+2A40
-	"char/0x2a42/mathmode": "\\bar{\\cup}", // Unicode U+2A42
-	"char/0x2a43/mathmode": "\\bar{\\cap}", // Unicode U+2A43
-	"char/0x2a44/mathmode": "\\mathbin{\u2a44\\vphantom{A}}", // Unicode U+2A44
-	"char/0x2a45/mathmode": "\\mathbin{\u2a45\\vphantom{A}}", // Unicode U+2A45
-	"char/0x2a46/mathmode": "\\mathbin{\u2a46\\vphantom{A}}", // Unicode U+2A46
-	"char/0x2a47/mathmode": "\\mathbin{\u2a47\\vphantom{A}}", // Unicode U+2A47
-	"char/0x2a48/mathmode": "\\mathbin{\u2a48\\vphantom{A}}", // Unicode U+2A48
-	"char/0x2a49/mathmode": "\\mathbin{\u2a49\\vphantom{A}}", // Unicode U+2A49
-	"char/0x2a4a/mathmode": "\\mathbin{\u2a4a\\vphantom{A}}", // Unicode U+2A4A
-	"char/0x2a4b/mathmode": "\\mathbin{\u2a4b\\vphantom{A}}", // Unicode U+2A4B
-	"char/0x2a4c/mathmode": "\\mathbin{\u2a4c\\vphantom{A}}", // Unicode U+2A4C
-	"char/0x2a4d/mathmode": "\\mathbin{\u2a4d\\vphantom{A}}", // Unicode U+2A4D
-	"char/0x2a50/mathmode": "\\mathbin{\u2a50\\vphantom{A}}", // Unicode U+2A50
-	"char/0x2a53/mathmode": "\\mathrel{\u2a53\\vphantom{A}}", // Unicode U+2A53
-	"char/0x2a54/mathmode": "\\mathrel{\u2a54\\vphantom{A}}", // Unicode U+2A54
-	"char/0x2a55/mathmode": "\\mathrel{\u2a55\\vphantom{A}}", // Unicode U+2A55
-	"char/0x2a56/mathmode": "\\mathrel{\u2a56\\vphantom{A}}", // Unicode U+2A56
-	"char/0x2a57/mathmode": "\\mathrel{\u2a57\\vphantom{A}}", // Unicode U+2A57
-	"char/0x2a58/mathmode": "\\mathrel{\u2a58\\vphantom{A}}", // Unicode U+2A58
-	"char/0x2a5a/mathmode": "\\mathrel{\u2a5a\\vphantom{A}}", // Unicode U+2A5A
-	"char/0x2a5b/mathmode": "\\mathrel{\u2a5b\\vphantom{A}}", // Unicode U+2A5B
-	"char/0x2a5c/mathmode": "\\mathrel{\u2a5c\\vphantom{A}}", // Unicode U+2A5C
-	"char/0x2a5d/mathmode": "\\mathrel{\u2a5d\\vphantom{A}}", // Unicode U+2A5D
-	"char/0x2a5e/textmode": "{\\doublebarwedge}", // Unicode U+2A5E
-	"char/0x2a5f/mathmode": "\\mathrel{\\underline \\wedge}", // Unicode U+2A5F
-	"char/0x2a64/textmode": "{\\dsub}", // Unicode U+2A64
-	"char/0x2a65/textmode": "{\\rsub}", // Unicode U+2A65
-	"char/0x2a66/mathmode": "\\mathrel{\u2a66\\vphantom{A}}", // Unicode U+2A66
-	"char/0x2a6a/mathmode": "\\mathrel{\u2a6a\\vphantom{A}}", // Unicode U+2A6A
-	"char/0x2a6d/mathmode": "\\mathrel{\\not \u2a6d}", // Unicode U+2A6D
-	"char/0x2a6e/mathmode": "\\mathrel{\u2a6e\\vphantom{A}}", // Unicode U+2A6E
-	"char/0x2a6f/mathmode": "\\hat{\\approx}", // Unicode U+2A6F
-	"char/0x2a70/mathmode": "\\mathrel{\\not \u2a70}", // Unicode U+2A70
-	"char/0x2a71/mathmode": "\\mathbin{\u2a71\\vphantom{A}}", // Unicode U+2A71
-	"char/0x2a72/mathmode": "\\mathbin{\u2a72\\vphantom{A}}", // Unicode U+2A72
-	"char/0x2a73/mathmode": "\\mathrel{\u2a73\\vphantom{A}}", // Unicode U+2A73
-	"char/0x2a74/textmode": "{\\Coloneqq}", // Unicode U+2A74
-	"char/0x2a75/textmode": "{\\Equal}", // Unicode U+2A75
-	"char/0x2a76/textmode": "{\\Same}", // Unicode U+2A76
-	"char/0x2a77/mathmode": "\\mathrel{\u2a77\\vphantom{A}}", // Unicode U+2A77
-	"char/0x2a78/mathmode": "\\mathrel{\u2a78\\vphantom{A}}", // Unicode U+2A78
-	"char/0x2a79/mathmode": "\\mathrel{\u2a79\\vphantom{A}}", // Unicode U+2A79
-	"char/0x2a7a/mathmode": "\\mathrel{\u2a7a\\vphantom{A}}", // Unicode U+2A7A
-	"char/0x2a7b/mathmode": "\\mathrel{\u2a7b\\vphantom{A}}", // Unicode U+2A7B
-	"char/0x2a7c/mathmode": "\\mathrel{\u2a7c\\vphantom{A}}", // Unicode U+2A7C
-	"char/0x2a7d/textmode": "{\\leqslant}", // Unicode U+2A7D
-	"char/0x2a7e/textmode": "{\\geqslant}", // Unicode U+2A7E
-	"char/0x2a7f/mathmode": "\\mathrel{\u2a7f\\vphantom{A}}", // Unicode U+2A7F
-	"char/0x2a80/mathmode": "\\mathrel{\u2a80\\vphantom{A}}", // Unicode U+2A80
-	"char/0x2a81/mathmode": "\\mathrel{\u2a81\\vphantom{A}}", // Unicode U+2A81
-	"char/0x2a82/mathmode": "\\mathrel{\u2a82\\vphantom{A}}", // Unicode U+2A82
-	"char/0x2a83/mathmode": "\\mathrel{\u2a83\\vphantom{A}}", // Unicode U+2A83
-	"char/0x2a84/mathmode": "\\mathrel{\u2a84\\vphantom{A}}", // Unicode U+2A84
-	"char/0x2a85/textmode": "{\\lessapprox}", // Unicode U+2A85
-	"char/0x2a86/textmode": "{\\gtrapprox}", // Unicode U+2A86
-	"char/0x2a87/textmode": "{\\lneq}", // Unicode U+2A87
-	"char/0x2a88/textmode": "{\\gneq}", // Unicode U+2A88
-	"char/0x2a89/textmode": "{\\lnapprox}", // Unicode U+2A89
-	"char/0x2a8a/textmode": "{\\gnapprox}", // Unicode U+2A8A
-	"char/0x2a8b/textmode": "{\\lesseqqgtr}", // Unicode U+2A8B
-	"char/0x2a8c/textmode": "{\\gtreqqless}", // Unicode U+2A8C
-	"char/0x2a8d/mathmode": "\\mathrel{\u2a8d\\vphantom{A}}", // Unicode U+2A8D
-	"char/0x2a8e/mathmode": "\\mathrel{\u2a8e\\vphantom{A}}", // Unicode U+2A8E
-	"char/0x2a8f/mathmode": "\\mathrel{\u2a8f\\vphantom{A}}", // Unicode U+2A8F
-	"char/0x2a90/mathmode": "\\mathrel{\u2a90\\vphantom{A}}", // Unicode U+2A90
-	"char/0x2a91/mathmode": "\\mathrel{\u2a91\\vphantom{A}}", // Unicode U+2A91
-	"char/0x2a92/mathmode": "\\mathrel{\u2a92\\vphantom{A}}", // Unicode U+2A92
-	"char/0x2a93/mathmode": "\\mathrel{\u2a93\\vphantom{A}}", // Unicode U+2A93
-	"char/0x2a94/mathmode": "\\mathrel{\u2a94\\vphantom{A}}", // Unicode U+2A94
-	"char/0x2a95/textmode": "{\\eqslantless}", // Unicode U+2A95
-	"char/0x2a96/textmode": "{\\eqslantgtr}", // Unicode U+2A96
-	"char/0x2a97/mathmode": "\\mathrel{\u2a97\\vphantom{A}}", // Unicode U+2A97
-	"char/0x2a98/mathmode": "\\mathrel{\u2a98\\vphantom{A}}", // Unicode U+2A98
-	"char/0x2a99/mathmode": "\\mathrel{\u2a99\\vphantom{A}}", // Unicode U+2A99
-	"char/0x2a9a/mathmode": "\\mathrel{\u2a9a\\vphantom{A}}", // Unicode U+2A9A
-	"char/0x2a9d/mathmode": "\\tilde{<}", // Unicode U+2A9D
-	"char/0x2a9e/mathmode": "\\tilde{>}", // Unicode U+2A9E
-	"char/0x2a9f/mathmode": "\\mathrel{\u2a9f\\vphantom{A}}", // Unicode U+2A9F
-	"char/0x2aa0/mathmode": "\\mathrel{\u2aa0\\vphantom{A}}", // Unicode U+2AA0
-	"char/0x2aa1/textmode": "{\\NestedLessLess}", // Unicode U+2AA1
-	"char/0x2aa2/textmode": "{\\NestedGreaterGreater}", // Unicode U+2AA2
-	"char/0x2aa4/mathmode": "\\mathrel{\u2aa4\\vphantom{A}}", // Unicode U+2AA4
-	"char/0x2aa5/mathmode": "\\mathrel{\u2aa5\\vphantom{A}}", // Unicode U+2AA5
-	"char/0x2aa6/textmode": "{\\leftslice}", // Unicode U+2AA6
-	"char/0x2aa7/textmode": "{\\rightslice}", // Unicode U+2AA7
-	"char/0x2aa8/mathmode": "\\mathrel{\u2aa8\\vphantom{A}}", // Unicode U+2AA8
-	"char/0x2aa9/mathmode": "\\mathrel{\u2aa9\\vphantom{A}}", // Unicode U+2AA9
-	"char/0x2aaa/mathmode": "\\mathrel{\u2aaa\\vphantom{A}}", // Unicode U+2AAA
-	"char/0x2aab/mathmode": "\\mathrel{\u2aab\\vphantom{A}}", // Unicode U+2AAB
-	"char/0x2aac/mathmode": "\\mathrel{\u2aac\\vphantom{A}}", // Unicode U+2AAC
-	"char/0x2aad/mathmode": "\\mathrel{\u2aad\\vphantom{A}}", // Unicode U+2AAD
-	"char/0x2aae/mathmode": "\\mathrel{\u2aae\\vphantom{A}}", // Unicode U+2AAE
-	"char/0x2aaf/textmode": "{\\preceq}", // Unicode U+2AAF
-	"char/0x2ab0/textmode": "{\\succeq}", // Unicode U+2AB0
-	"char/0x2ab3/textmode": "{\\preceqq}", // Unicode U+2AB3
-	"char/0x2ab4/textmode": "{\\succeqq}", // Unicode U+2AB4
-	"char/0x2ab5/mathmode": "\\precneqq", // Unicode U+2AB5
-	"char/0x2ab6/mathmode": "\\succneqq", // Unicode U+2AB6
-	"char/0x2ab7/textmode": "{\\precapprox}", // Unicode U+2AB7
-	"char/0x2ab8/textmode": "{\\succapprox}", // Unicode U+2AB8
-	"char/0x2ab9/textmode": "{\\precnapprox}", // Unicode U+2AB9
-	"char/0x2aba/textmode": "{\\succnapprox}", // Unicode U+2ABA
-	"char/0x2abb/textmode": "{\\llcurly}", // Unicode U+2ABB
-	"char/0x2abc/textmode": "{\\ggcurly}", // Unicode U+2ABC
-	"char/0x2abd/mathmode": "\\mathbin{\u2abd\\vphantom{A}}", // Unicode U+2ABD
-	"char/0x2abe/mathmode": "\\mathbin{\u2abe\\vphantom{A}}", // Unicode U+2ABE
-	"char/0x2abf/mathmode": "\\mathrel{\u2abf\\vphantom{A}}", // Unicode U+2ABF
-	"char/0x2ac0/mathmode": "\\mathrel{\u2ac0\\vphantom{A}}", // Unicode U+2AC0
-	"char/0x2ac1/mathmode": "\\mathrel{\u2ac1\\vphantom{A}}", // Unicode U+2AC1
-	"char/0x2ac2/mathmode": "\\mathrel{\u2ac2\\vphantom{A}}", // Unicode U+2AC2
-	"char/0x2ac3/mathmode": "\\mathrel{\u2ac3\\vphantom{A}}", // Unicode U+2AC3
-	"char/0x2ac4/mathmode": "\\mathrel{\u2ac4\\vphantom{A}}", // Unicode U+2AC4
-	"char/0x2ac5/textmode": "{\\subseteqq}", // Unicode U+2AC5
-	"char/0x2ac6/textmode": "{\\supseteqq}", // Unicode U+2AC6
-	"char/0x2ac7/mathmode": "\\mathrel{\\stackrel{\\subset}{\\sim}}", // Unicode U+2AC7
-	"char/0x2ac8/mathmode": "\\mathrel{\u2ac8\\vphantom{A}}", // Unicode U+2AC8
-	"char/0x2acb/textmode": "{\\subsetneqq}", // Unicode U+2ACB
-	"char/0x2acc/textmode": "{\\supsetneqq}", // Unicode U+2ACC
-	"char/0x2acf/mathmode": "\\mathrel{\u2acf\\vphantom{A}}", // Unicode U+2ACF
-	"char/0x2ad0/mathmode": "\\mathrel{\u2ad0\\vphantom{A}}", // Unicode U+2AD0
-	"char/0x2ad1/mathmode": "\\mathrel{\u2ad1\\vphantom{A}}", // Unicode U+2AD1
-	"char/0x2ad2/mathmode": "\\mathrel{\u2ad2\\vphantom{A}}", // Unicode U+2AD2
-	"char/0x2ad3/mathmode": "\\mathrel{\u2ad3\\vphantom{A}}", // Unicode U+2AD3
-	"char/0x2ad4/mathmode": "\\mathrel{\u2ad4\\vphantom{A}}", // Unicode U+2AD4
-	"char/0x2ad5/mathmode": "\\mathrel{\u2ad5\\vphantom{A}}", // Unicode U+2AD5
-	"char/0x2ad6/mathmode": "\\mathrel{\u2ad6\\vphantom{A}}", // Unicode U+2AD6
-	"char/0x2ad7/mathmode": "\\mathrel{\\supset\\subset}", // Unicode U+2AD7
-	"char/0x2ad8/mathmode": "\\mathrel{\u2ad8\\vphantom{A}}", // Unicode U+2AD8
-	"char/0x2ad9/mathmode": "\\mathrel{\u2ad9\\vphantom{A}}", // Unicode U+2AD9
-	"char/0x2ada/mathmode": "\\mathrel{\u2ada\\vphantom{A}}", // Unicode U+2ADA
-	"char/0x2adb/mathmode": "\\mathrel{\u2adb\\vphantom{A}}", // Unicode U+2ADB
-	"char/0x2ae4/mathmode": "\\mathrel{\u2ae4\\vphantom{A}}", // Unicode U+2AE4
-	"char/0x2ae6/mathmode": "\\mathrel{\u223e\\vphantom{A}}", // Unicode U+2AE6
-	"char/0x2ae7/mathmode": "\\mathrel{\u2ae7\\vphantom{A}}", // Unicode U+2AE7
-	"char/0x2ae8/mathmode": "\\mathrel{\u2ae8\\vphantom{A}}", // Unicode U+2AE8
-	"char/0x2ae9/mathmode": "\\mathrel{\u2ae9\\vphantom{A}}", // Unicode U+2AE9
-	"char/0x2aea/textmode": "{\\Top}", // Unicode U+2AEA
-	"char/0x2aeb/textmode": "{\\Bot}", // Unicode U+2AEB
-	"char/0x2aec/mathmode": "{\u2aec\\vphantom{A}}", // Unicode U+2AEC
-	"char/0x2aed/mathmode": "\\mathop{\u2aed\\vphantom{A}}", // Unicode U+2AED
-	"char/0x2aee/mathmode": "\\nmid", // Unicode U+2AEE
-	"char/0x2aef/mathmode": "\\mathrel{\u2aef\\vphantom{A}}", // Unicode U+2AEF
-	"char/0x2af0/mathmode": "\\mathrel{\u2af0\\vphantom{A}}", // Unicode U+2AF0
-	"char/0x2af1/mathmode": "{\u2af1\\vphantom{A}}", // Unicode U+2AF1
-	"char/0x2af2/mathmode": "\\mathrel{\u2af2\\vphantom{A}}", // Unicode U+2AF2
-	"char/0x2af3/mathmode": "\\mathrel{\u2af3\\vphantom{A}}", // Unicode U+2AF3
-	"char/0x2af4/textmode": "{\\interleave}", // Unicode U+2AF4
-	"char/0x2afc/textmode": "{\\biginterleave}", // Unicode U+2AFC
-	"char/0x2afd/textmode": "{\\sslash}", // Unicode U+2AFD
-	"char/0x2afe/textmode": "{\\talloblong}", // Unicode U+2AFE
-	"char/0x2b1b/textmode": "{\\blacksquare}", // Unicode U+2B1B
-	"char/0x2b1c/textmode": "{\\square}", // Unicode U+2B1C
-	"char/0x2b1d/textmode": "{\\blacksquare}", // Unicode U+2B1D
-	"char/0x2b27/textmode": "{\\blacklozenge}", // Unicode U+2B27
-	"char/0x2b28/textmode": "{\\lozenge}", // Unicode U+2B28
-	"char/0x2e2f/mathmode": "{\u2e2f\\vphantom{A}}", // Unicode U+2E2F
-	"char/0x300a/mathmode": "\\mathopen{\\langle\\!\\langle}", // Unicode U+300A
-	"char/0x300b/mathmode": "\\mathclose{\\rangle\\!\\rangle}", // Unicode U+300B
-	"char/0x3014/mathmode": "\\lgroup", // Unicode U+3014
-	"char/0x3015/mathmode": "\\rgroup", // Unicode U+3015
-	"char/0x3018/mathmode": "\\mathopen{\u3018\\vphantom{A}}", // Unicode U+3018
-	"char/0x3019/mathmode": "\\mathclose{\u3019\\vphantom{A}}", // Unicode U+3019
-	"char/0x301a/mathmode": "\\mathopen{\u301a\\vphantom{A}}", // Unicode U+301A
-	"char/0x301b/mathmode": "\\mathclose{\u301b\\vphantom{A}}", // Unicode U+301B
-	"char/0xa648/mathmode": "{\ua648\\vphantom{A}}", // Unicode U+A648
-	"char/0xa649/mathmode": "{\ua649\\vphantom{A}}", // Unicode U+A649
-	"char/0xa652/mathmode": "{\ua652\\vphantom{A}}", // Unicode U+A652
-	"char/0xa653/mathmode": "{\ua653\\vphantom{A}}", // Unicode U+A653
-	"char/0xa656/mathmode": "{\ua656\\vphantom{A}}", // Unicode U+A656
-	"char/0xa657/mathmode": "{\ua657\\vphantom{A}}", // Unicode U+A657
-	"char/0xa65a/mathmode": "{\ua65a\\vphantom{A}}", // Unicode U+A65A
-	"char/0xa65b/mathmode": "{\ua65b\\vphantom{A}}", // Unicode U+A65B
-	"char/0xa67f/mathmode": "{\ua67f\\vphantom{A}}", // Unicode U+A67F
-	"char/0xe540/mathmode": "{fj}", // Unicode U+E540
-	"char/0xe612/mathmode": "\\mathrel{\\bcancel{\\=}}", // Unicode U+E612
-	"char/0xe613/mathmode": "\\mathrel{\\bcancel{\u2261}}", // Unicode U+E613
-	"char/0xe651/mathmode": "\\dot{\\neq}", // Unicode U+E651
-	"char/0xe659/mathmode": "\\dot{\\notin}", // Unicode U+E659
-	"char/0xe65a/mathmode": "\\mathrel{\\bcancel{\\mathrel{\u22f9\\vphantom{A}}}}", // Unicode U+E65A
-	"char/0xe662/mathmode": "\\mathrel{\\bcancel \u2afd}", // Unicode U+E662
-	"char/0xe663/mathmode": "{\\not\\partial}", // Unicode U+E663
-	"char/0xe714/mathmode": "\\mathrel{\\not \u22d9}", // Unicode U+E714
-	"char/0xe71c/mathmode": "\\mathrel{\\not \u22d8}", // Unicode U+E71C
-	"char/0xe746/mathmode": "\\nsim", // Unicode U+E746
-	"char/0xe831/mathmode": "{\\not \u2220}", // Unicode U+E831
-	"char/0xe90b/mathmode": "\\mathrel{\\backslash\\subset}", // Unicode U+E90B
-	"char/0xe93a/mathmode": "\\mathrel{\u22db\\vphantom{A}}", // Unicode U+E93A
-	"char/0xe94e/mathmode": "\\mathrel{\u2aad\\vphantom{A}}", // Unicode U+E94E
-	"char/0xe957/mathmode": "\\mathrel{\u22da\\vphantom{A}}", // Unicode U+E957
-	"char/0xe988/mathmode": "\\mathrel{\u2aac\\vphantom{A}}", // Unicode U+E988
-	"char/0xe99c/mathmode": "\u27c9", // Unicode U+E99C
-	"char/0xea48/mathmode": "\\mathrel{\\not \u2933}", // Unicode U+EA48
-	"char/0xea49/mathmode": "\\mathrel{\\not \u219d}", // Unicode U+EA49
-	"char/0xeb02/mathmode": "\\mathbin{\\underset{\\=}{\u223e}}", // Unicode U+EB02
-	"char/0xfb00/mathmode": "{\ufb00\\vphantom{A}}", // Unicode U+FB00
-	"char/0xfb01/mathmode": "{\ufb01\\vphantom{A}}", // Unicode U+FB01
-	"char/0xfb02/mathmode": "{\ufb02\\vphantom{A}}", // Unicode U+FB02
-	"char/0xfb03/mathmode": "{\ufb03\\vphantom{A}}", // Unicode U+FB03
-	"char/0xfb04/mathmode": "{\ufb04\\vphantom{A}}", // Unicode U+FB04
-	"char/0xfffd/textmode": "{\\blacksquare}", // Unicode U+FFFD
-	"char/0x1d400/textmode": "{\\mathbf{A}}", // Unicode U+1D400
-	"char/0x1d401/textmode": "{\\mathbf{B}}", // Unicode U+1D401
-	"char/0x1d402/textmode": "{\\mathbf{C}}", // Unicode U+1D402
-	"char/0x1d403/textmode": "{\\mathbf{D}}", // Unicode U+1D403
-	"char/0x1d404/textmode": "{\\mathbf{E}}", // Unicode U+1D404
-	"char/0x1d405/textmode": "{\\mathbf{F}}", // Unicode U+1D405
-	"char/0x1d406/textmode": "{\\mathbf{G}}", // Unicode U+1D406
-	"char/0x1d407/textmode": "{\\mathbf{H}}", // Unicode U+1D407
-	"char/0x1d408/textmode": "{\\mathbf{I}}", // Unicode U+1D408
-	"char/0x1d409/textmode": "{\\mathbf{J}}", // Unicode U+1D409
-	"char/0x1d40a/textmode": "{\\mathbf{K}}", // Unicode U+1D40A
-	"char/0x1d40b/textmode": "{\\mathbf{L}}", // Unicode U+1D40B
-	"char/0x1d40c/textmode": "{\\mathbf{M}}", // Unicode U+1D40C
-	"char/0x1d40d/textmode": "{\\mathbf{N}}", // Unicode U+1D40D
-	"char/0x1d40e/textmode": "{\\mathbf{O}}", // Unicode U+1D40E
-	"char/0x1d40f/textmode": "{\\mathbf{P}}", // Unicode U+1D40F
-	"char/0x1d410/textmode": "{\\mathbf{Q}}", // Unicode U+1D410
-	"char/0x1d411/textmode": "{\\mathbf{R}}", // Unicode U+1D411
-	"char/0x1d412/textmode": "{\\mathbf{S}}", // Unicode U+1D412
-	"char/0x1d413/textmode": "{\\mathbf{T}}", // Unicode U+1D413
-	"char/0x1d414/textmode": "{\\mathbf{U}}", // Unicode U+1D414
-	"char/0x1d415/textmode": "{\\mathbf{V}}", // Unicode U+1D415
-	"char/0x1d416/textmode": "{\\mathbf{W}}", // Unicode U+1D416
-	"char/0x1d417/textmode": "{\\mathbf{X}}", // Unicode U+1D417
-	"char/0x1d418/textmode": "{\\mathbf{Y}}", // Unicode U+1D418
-	"char/0x1d419/textmode": "{\\mathbf{Z}}", // Unicode U+1D419
-	"char/0x1d41a/textmode": "{\\mathbf{a}}", // Unicode U+1D41A
-	"char/0x1d41b/textmode": "{\\mathbf{b}}", // Unicode U+1D41B
-	"char/0x1d41c/textmode": "{\\mathbf{c}}", // Unicode U+1D41C
-	"char/0x1d41d/textmode": "{\\mathbf{d}}", // Unicode U+1D41D
-	"char/0x1d41e/textmode": "{\\mathbf{e}}", // Unicode U+1D41E
-	"char/0x1d41f/textmode": "{\\mathbf{f}}", // Unicode U+1D41F
-	"char/0x1d420/textmode": "{\\mathbf{g}}", // Unicode U+1D420
-	"char/0x1d421/textmode": "{\\mathbf{h}}", // Unicode U+1D421
-	"char/0x1d422/textmode": "{\\mathbf{i}}", // Unicode U+1D422
-	"char/0x1d423/textmode": "{\\mathbf{j}}", // Unicode U+1D423
-	"char/0x1d424/textmode": "{\\mathbf{k}}", // Unicode U+1D424
-	"char/0x1d425/textmode": "{\\mathbf{l}}", // Unicode U+1D425
-	"char/0x1d426/textmode": "{\\mathbf{m}}", // Unicode U+1D426
-	"char/0x1d427/textmode": "{\\mathbf{n}}", // Unicode U+1D427
-	"char/0x1d428/textmode": "{\\mathbf{o}}", // Unicode U+1D428
-	"char/0x1d429/textmode": "{\\mathbf{p}}", // Unicode U+1D429
-	"char/0x1d42a/textmode": "{\\mathbf{q}}", // Unicode U+1D42A
-	"char/0x1d42b/textmode": "{\\mathbf{r}}", // Unicode U+1D42B
-	"char/0x1d42c/textmode": "{\\mathbf{s}}", // Unicode U+1D42C
-	"char/0x1d42d/textmode": "{\\mathbf{t}}", // Unicode U+1D42D
-	"char/0x1d42e/textmode": "{\\mathbf{u}}", // Unicode U+1D42E
-	"char/0x1d42f/textmode": "{\\mathbf{v}}", // Unicode U+1D42F
-	"char/0x1d430/textmode": "{\\mathbf{w}}", // Unicode U+1D430
-	"char/0x1d431/textmode": "{\\mathbf{x}}", // Unicode U+1D431
-	"char/0x1d432/textmode": "{\\mathbf{y}}", // Unicode U+1D432
-	"char/0x1d433/textmode": "{\\mathbf{z}}", // Unicode U+1D433
-	"char/0x1d434/textmode": "{A}", // Unicode U+1D434
-	"char/0x1d435/textmode": "{B}", // Unicode U+1D435
-	"char/0x1d436/textmode": "{C}", // Unicode U+1D436
-	"char/0x1d437/textmode": "{D}", // Unicode U+1D437
-	"char/0x1d438/textmode": "{E}", // Unicode U+1D438
-	"char/0x1d439/textmode": "{F}", // Unicode U+1D439
-	"char/0x1d43a/textmode": "{G}", // Unicode U+1D43A
-	"char/0x1d43b/textmode": "{H}", // Unicode U+1D43B
-	"char/0x1d43c/textmode": "{I}", // Unicode U+1D43C
-	"char/0x1d43d/textmode": "{J}", // Unicode U+1D43D
-	"char/0x1d43e/textmode": "{K}", // Unicode U+1D43E
-	"char/0x1d43f/textmode": "{L}", // Unicode U+1D43F
-	"char/0x1d440/textmode": "{M}", // Unicode U+1D440
-	"char/0x1d441/textmode": "{N}", // Unicode U+1D441
-	"char/0x1d442/textmode": "{O}", // Unicode U+1D442
-	"char/0x1d443/textmode": "{P}", // Unicode U+1D443
-	"char/0x1d444/textmode": "{Q}", // Unicode U+1D444
-	"char/0x1d445/textmode": "{R}", // Unicode U+1D445
-	"char/0x1d446/textmode": "{S}", // Unicode U+1D446
-	"char/0x1d447/textmode": "{T}", // Unicode U+1D447
-	"char/0x1d448/textmode": "{U}", // Unicode U+1D448
-	"char/0x1d449/textmode": "{V}", // Unicode U+1D449
-	"char/0x1d44a/textmode": "{W}", // Unicode U+1D44A
-	"char/0x1d44b/textmode": "{X}", // Unicode U+1D44B
-	"char/0x1d44c/textmode": "{Y}", // Unicode U+1D44C
-	"char/0x1d44d/textmode": "{Z}", // Unicode U+1D44D
-	"char/0x1d44e/textmode": "{a}", // Unicode U+1D44E
-	"char/0x1d44f/textmode": "{b}", // Unicode U+1D44F
-	"char/0x1d450/textmode": "{c}", // Unicode U+1D450
-	"char/0x1d451/textmode": "{d}", // Unicode U+1D451
-	"char/0x1d452/textmode": "{e}", // Unicode U+1D452
-	"char/0x1d453/textmode": "{f}", // Unicode U+1D453
-	"char/0x1d454/textmode": "{g}", // Unicode U+1D454
-	"char/0x1d456/textmode": "{i}", // Unicode U+1D456
-	"char/0x1d457/textmode": "{j}", // Unicode U+1D457
-	"char/0x1d458/textmode": "{k}", // Unicode U+1D458
-	"char/0x1d459/textmode": "{l}", // Unicode U+1D459
-	"char/0x1d45a/textmode": "{m}", // Unicode U+1D45A
-	"char/0x1d45b/textmode": "{n}", // Unicode U+1D45B
-	"char/0x1d45c/textmode": "{o}", // Unicode U+1D45C
-	"char/0x1d45d/textmode": "{p}", // Unicode U+1D45D
-	"char/0x1d45e/textmode": "{q}", // Unicode U+1D45E
-	"char/0x1d45f/textmode": "{r}", // Unicode U+1D45F
-	"char/0x1d460/textmode": "{s}", // Unicode U+1D460
-	"char/0x1d461/textmode": "{t}", // Unicode U+1D461
-	"char/0x1d462/textmode": "{u}", // Unicode U+1D462
-	"char/0x1d463/textmode": "{v}", // Unicode U+1D463
-	"char/0x1d464/textmode": "{w}", // Unicode U+1D464
-	"char/0x1d465/textmode": "{x}", // Unicode U+1D465
-	"char/0x1d466/textmode": "{y}", // Unicode U+1D466
-	"char/0x1d467/textmode": "{z}", // Unicode U+1D467
-	"char/0x1d468/textmode": "{\\mathbfit{A}}", // Unicode U+1D468
-	"char/0x1d469/textmode": "{\\mathbfit{B}}", // Unicode U+1D469
-	"char/0x1d46a/textmode": "{\\mathbfit{C}}", // Unicode U+1D46A
-	"char/0x1d46b/textmode": "{\\mathbfit{D}}", // Unicode U+1D46B
-	"char/0x1d46c/textmode": "{\\mathbfit{E}}", // Unicode U+1D46C
-	"char/0x1d46d/textmode": "{\\mathbfit{F}}", // Unicode U+1D46D
-	"char/0x1d46e/textmode": "{\\mathbfit{G}}", // Unicode U+1D46E
-	"char/0x1d46f/textmode": "{\\mathbfit{H}}", // Unicode U+1D46F
-	"char/0x1d470/textmode": "{\\mathbfit{I}}", // Unicode U+1D470
-	"char/0x1d471/textmode": "{\\mathbfit{J}}", // Unicode U+1D471
-	"char/0x1d472/textmode": "{\\mathbfit{K}}", // Unicode U+1D472
-	"char/0x1d473/textmode": "{\\mathbfit{L}}", // Unicode U+1D473
-	"char/0x1d474/textmode": "{\\mathbfit{M}}", // Unicode U+1D474
-	"char/0x1d475/textmode": "{\\mathbfit{N}}", // Unicode U+1D475
-	"char/0x1d476/textmode": "{\\mathbfit{O}}", // Unicode U+1D476
-	"char/0x1d477/textmode": "{\\mathbfit{P}}", // Unicode U+1D477
-	"char/0x1d478/textmode": "{\\mathbfit{Q}}", // Unicode U+1D478
-	"char/0x1d479/textmode": "{\\mathbfit{R}}", // Unicode U+1D479
-	"char/0x1d47a/textmode": "{\\mathbfit{S}}", // Unicode U+1D47A
-	"char/0x1d47b/textmode": "{\\mathbfit{T}}", // Unicode U+1D47B
-	"char/0x1d47c/textmode": "{\\mathbfit{U}}", // Unicode U+1D47C
-	"char/0x1d47d/textmode": "{\\mathbfit{V}}", // Unicode U+1D47D
-	"char/0x1d47e/textmode": "{\\mathbfit{W}}", // Unicode U+1D47E
-	"char/0x1d47f/textmode": "{\\mathbfit{X}}", // Unicode U+1D47F
-	"char/0x1d480/textmode": "{\\mathbfit{Y}}", // Unicode U+1D480
-	"char/0x1d481/textmode": "{\\mathbfit{Z}}", // Unicode U+1D481
-	"char/0x1d482/textmode": "{\\mathbfit{a}}", // Unicode U+1D482
-	"char/0x1d483/textmode": "{\\mathbfit{b}}", // Unicode U+1D483
-	"char/0x1d484/textmode": "{\\mathbfit{c}}", // Unicode U+1D484
-	"char/0x1d485/textmode": "{\\mathbfit{d}}", // Unicode U+1D485
-	"char/0x1d486/textmode": "{\\mathbfit{e}}", // Unicode U+1D486
-	"char/0x1d487/textmode": "{\\mathbfit{f}}", // Unicode U+1D487
-	"char/0x1d488/textmode": "{\\mathbfit{g}}", // Unicode U+1D488
-	"char/0x1d489/textmode": "{\\mathbfit{h}}", // Unicode U+1D489
-	"char/0x1d48a/textmode": "{\\mathbfit{i}}", // Unicode U+1D48A
-	"char/0x1d48b/textmode": "{\\mathbfit{j}}", // Unicode U+1D48B
-	"char/0x1d48c/textmode": "{\\mathbfit{k}}", // Unicode U+1D48C
-	"char/0x1d48d/textmode": "{\\mathbfit{l}}", // Unicode U+1D48D
-	"char/0x1d48e/textmode": "{\\mathbfit{m}}", // Unicode U+1D48E
-	"char/0x1d48f/textmode": "{\\mathbfit{n}}", // Unicode U+1D48F
-	"char/0x1d490/textmode": "{\\mathbfit{o}}", // Unicode U+1D490
-	"char/0x1d491/textmode": "{\\mathbfit{p}}", // Unicode U+1D491
-	"char/0x1d492/textmode": "{\\mathbfit{q}}", // Unicode U+1D492
-	"char/0x1d493/textmode": "{\\mathbfit{r}}", // Unicode U+1D493
-	"char/0x1d494/textmode": "{\\mathbfit{s}}", // Unicode U+1D494
-	"char/0x1d495/textmode": "{\\mathbfit{t}}", // Unicode U+1D495
-	"char/0x1d496/textmode": "{\\mathbfit{u}}", // Unicode U+1D496
-	"char/0x1d497/textmode": "{\\mathbfit{v}}", // Unicode U+1D497
-	"char/0x1d498/textmode": "{\\mathbfit{w}}", // Unicode U+1D498
-	"char/0x1d499/textmode": "{\\mathbfit{x}}", // Unicode U+1D499
-	"char/0x1d49a/textmode": "{\\mathbfit{y}}", // Unicode U+1D49A
-	"char/0x1d49b/textmode": "{\\mathbfit{z}}", // Unicode U+1D49B
-	"char/0x1d49c/textmode": "{\\mathcal{A}}", // Unicode U+1D49C
-	"char/0x1d49e/textmode": "{\\mathcal{C}}", // Unicode U+1D49E
-	"char/0x1d49f/textmode": "{\\mathcal{D}}", // Unicode U+1D49F
-	"char/0x1d4a2/textmode": "{\\mathcal{G}}", // Unicode U+1D4A2
-	"char/0x1d4a5/textmode": "{\\mathcal{J}}", // Unicode U+1D4A5
-	"char/0x1d4a6/textmode": "{\\mathcal{K}}", // Unicode U+1D4A6
-	"char/0x1d4a9/textmode": "{\\mathcal{N}}", // Unicode U+1D4A9
-	"char/0x1d4aa/textmode": "{\\mathcal{O}}", // Unicode U+1D4AA
-	"char/0x1d4ab/textmode": "{\\mathcal{P}}", // Unicode U+1D4AB
-	"char/0x1d4ac/textmode": "{\\mathcal{Q}}", // Unicode U+1D4AC
-	"char/0x1d4ae/textmode": "{\\mathcal{S}}", // Unicode U+1D4AE
-	"char/0x1d4af/textmode": "{\\mathcal{T}}", // Unicode U+1D4AF
-	"char/0x1d4b0/textmode": "{\\mathcal{U}}", // Unicode U+1D4B0
-	"char/0x1d4b1/textmode": "{\\mathcal{V}}", // Unicode U+1D4B1
-	"char/0x1d4b2/textmode": "{\\mathcal{W}}", // Unicode U+1D4B2
-	"char/0x1d4b3/textmode": "{\\mathcal{X}}", // Unicode U+1D4B3
-	"char/0x1d4b4/textmode": "{\\mathcal{Y}}", // Unicode U+1D4B4
-	"char/0x1d4b5/textmode": "{\\mathcal{Z}}", // Unicode U+1D4B5
-	"char/0x1d4b6/textmode": "{\\mathcal{a}}", // Unicode U+1D4B6
-	"char/0x1d4b7/textmode": "{\\mathcal{b}}", // Unicode U+1D4B7
-	"char/0x1d4b8/textmode": "{\\mathcal{c}}", // Unicode U+1D4B8
-	"char/0x1d4b9/textmode": "{\\mathcal{d}}", // Unicode U+1D4B9
-	"char/0x1d4bb/textmode": "{\\mathcal{f}}", // Unicode U+1D4BB
-	"char/0x1d4bd/textmode": "{\\mathcal{h}}", // Unicode U+1D4BD
-	"char/0x1d4be/textmode": "{\\mathcal{i}}", // Unicode U+1D4BE
-	"char/0x1d4bf/textmode": "{\\mathcal{j}}", // Unicode U+1D4BF
-	"char/0x1d4c0/textmode": "{\\mathcal{k}}", // Unicode U+1D4C0
-	"char/0x1d4c1/textmode": "{\\ell}", // Unicode U+1D4C1
-	"char/0x1d4c2/textmode": "{\\mathcal{m}}", // Unicode U+1D4C2
-	"char/0x1d4c3/textmode": "{\\mathcal{n}}", // Unicode U+1D4C3
-	"char/0x1d4c5/textmode": "{\\mathcal{p}}", // Unicode U+1D4C5
-	"char/0x1d4c6/textmode": "{\\mathcal{q}}", // Unicode U+1D4C6
-	"char/0x1d4c7/textmode": "{\\mathcal{r}}", // Unicode U+1D4C7
-	"char/0x1d4c8/textmode": "{\\mathcal{s}}", // Unicode U+1D4C8
-	"char/0x1d4c9/textmode": "{\\mathcal{t}}", // Unicode U+1D4C9
-	"char/0x1d4ca/textmode": "{\\mathcal{u}}", // Unicode U+1D4CA
-	"char/0x1d4cb/textmode": "{\\mathcal{v}}", // Unicode U+1D4CB
-	"char/0x1d4cc/textmode": "{\\mathcal{w}}", // Unicode U+1D4CC
-	"char/0x1d4cd/textmode": "{\\mathcal{x}}", // Unicode U+1D4CD
-	"char/0x1d4ce/textmode": "{\\mathcal{y}}", // Unicode U+1D4CE
-	"char/0x1d4cf/textmode": "{\\mathcal{z}}", // Unicode U+1D4CF
-	"char/0x1d504/textmode": "{\\mathfrak{A}}", // Unicode U+1D504
-	"char/0x1d505/textmode": "{\\mathfrak{B}}", // Unicode U+1D505
-	"char/0x1d507/textmode": "{\\mathfrak{D}}", // Unicode U+1D507
-	"char/0x1d508/textmode": "{\\mathfrak{E}}", // Unicode U+1D508
-	"char/0x1d509/textmode": "{\\mathfrak{F}}", // Unicode U+1D509
-	"char/0x1d50a/textmode": "{\\mathfrak{G}}", // Unicode U+1D50A
-	"char/0x1d50d/textmode": "{\\mathfrak{J}}", // Unicode U+1D50D
-	"char/0x1d50e/textmode": "{\\mathfrak{K}}", // Unicode U+1D50E
-	"char/0x1d50f/textmode": "{\\mathfrak{L}}", // Unicode U+1D50F
-	"char/0x1d510/textmode": "{\\mathfrak{M}}", // Unicode U+1D510
-	"char/0x1d511/textmode": "{\\mathfrak{N}}", // Unicode U+1D511
-	"char/0x1d512/textmode": "{\\mathfrak{O}}", // Unicode U+1D512
-	"char/0x1d513/textmode": "{\\mathfrak{P}}", // Unicode U+1D513
-	"char/0x1d514/textmode": "{\\mathfrak{Q}}", // Unicode U+1D514
-	"char/0x1d516/textmode": "{\\mathfrak{S}}", // Unicode U+1D516
-	"char/0x1d517/textmode": "{\\mathfrak{T}}", // Unicode U+1D517
-	"char/0x1d518/textmode": "{\\mathfrak{U}}", // Unicode U+1D518
-	"char/0x1d519/textmode": "{\\mathfrak{V}}", // Unicode U+1D519
-	"char/0x1d51a/textmode": "{\\mathfrak{W}}", // Unicode U+1D51A
-	"char/0x1d51b/textmode": "{\\mathfrak{X}}", // Unicode U+1D51B
-	"char/0x1d51c/textmode": "{\\mathfrak{Y}}", // Unicode U+1D51C
-	"char/0x1d51e/textmode": "{\\mathfrak{a}}", // Unicode U+1D51E
-	"char/0x1d51f/textmode": "{\\mathfrak{b}}", // Unicode U+1D51F
-	"char/0x1d520/textmode": "{\\mathfrak{c}}", // Unicode U+1D520
-	"char/0x1d521/textmode": "{\\mathfrak{d}}", // Unicode U+1D521
-	"char/0x1d522/textmode": "{\\mathfrak{e}}", // Unicode U+1D522
-	"char/0x1d523/textmode": "{\\mathfrak{f}}", // Unicode U+1D523
-	"char/0x1d524/textmode": "{\\mathfrak{g}}", // Unicode U+1D524
-	"char/0x1d525/textmode": "{\\mathfrak{h}}", // Unicode U+1D525
-	"char/0x1d526/textmode": "{\\mathfrak{i}}", // Unicode U+1D526
-	"char/0x1d527/textmode": "{\\mathfrak{j}}", // Unicode U+1D527
-	"char/0x1d528/textmode": "{\\mathfrak{k}}", // Unicode U+1D528
-	"char/0x1d529/textmode": "{\\mathfrak{l}}", // Unicode U+1D529
-	"char/0x1d52a/textmode": "{\\mathfrak{m}}", // Unicode U+1D52A
-	"char/0x1d52b/textmode": "{\\mathfrak{n}}", // Unicode U+1D52B
-	"char/0x1d52c/textmode": "{\\mathfrak{o}}", // Unicode U+1D52C
-	"char/0x1d52d/textmode": "{\\mathfrak{p}}", // Unicode U+1D52D
-	"char/0x1d52e/textmode": "{\\mathfrak{q}}", // Unicode U+1D52E
-	"char/0x1d52f/textmode": "{\\mathfrak{r}}", // Unicode U+1D52F
-	"char/0x1d530/textmode": "{\\mathfrak{s}}", // Unicode U+1D530
-	"char/0x1d531/textmode": "{\\mathfrak{t}}", // Unicode U+1D531
-	"char/0x1d532/textmode": "{\\mathfrak{u}}", // Unicode U+1D532
-	"char/0x1d533/textmode": "{\\mathfrak{v}}", // Unicode U+1D533
-	"char/0x1d534/textmode": "{\\mathfrak{w}}", // Unicode U+1D534
-	"char/0x1d535/textmode": "{\\mathfrak{x}}", // Unicode U+1D535
-	"char/0x1d536/textmode": "{\\mathfrak{y}}", // Unicode U+1D536
-	"char/0x1d537/textmode": "{\\mathfrak{z}}", // Unicode U+1D537
-	"char/0x1d538/textmode": "{\\mathbb{A}}", // Unicode U+1D538
-	"char/0x1d539/textmode": "{\\mathbb{B}}", // Unicode U+1D539
-	"char/0x1d53b/textmode": "{\\mathbb{D}}", // Unicode U+1D53B
-	"char/0x1d53c/textmode": "{\\mathbb{E}}", // Unicode U+1D53C
-	"char/0x1d53d/textmode": "{\\mathbb{F}}", // Unicode U+1D53D
-	"char/0x1d53e/textmode": "{\\mathbb{G}}", // Unicode U+1D53E
-	"char/0x1d540/textmode": "{\\mathbb{I}}", // Unicode U+1D540
-	"char/0x1d541/textmode": "{\\mathbb{J}}", // Unicode U+1D541
-	"char/0x1d542/textmode": "{\\mathbb{K}}", // Unicode U+1D542
-	"char/0x1d543/textmode": "{\\mathbb{L}}", // Unicode U+1D543
-	"char/0x1d544/textmode": "{\\mathbb{M}}", // Unicode U+1D544
-	"char/0x1d546/textmode": "{\\mathbb{O}}", // Unicode U+1D546
-	"char/0x1d54a/textmode": "{\\mathbb{S}}", // Unicode U+1D54A
-	"char/0x1d54b/textmode": "{\\mathbb{T}}", // Unicode U+1D54B
-	"char/0x1d54c/textmode": "{\\mathbb{U}}", // Unicode U+1D54C
-	"char/0x1d54d/textmode": "{\\mathbb{V}}", // Unicode U+1D54D
-	"char/0x1d54e/textmode": "{\\mathbb{W}}", // Unicode U+1D54E
-	"char/0x1d54f/textmode": "{\\mathbb{X}}", // Unicode U+1D54F
-	"char/0x1d550/textmode": "{\\mathbb{Y}}", // Unicode U+1D550
-	"char/0x1d552/textmode": "{\\mathbb{a}}", // Unicode U+1D552
-	"char/0x1d553/textmode": "{\\mathbb{b}}", // Unicode U+1D553
-	"char/0x1d554/textmode": "{\\mathbb{c}}", // Unicode U+1D554
-	"char/0x1d555/textmode": "{\\mathbb{d}}", // Unicode U+1D555
-	"char/0x1d556/textmode": "{\\mathbb{e}}", // Unicode U+1D556
-	"char/0x1d557/textmode": "{\\mathbb{f}}", // Unicode U+1D557
-	"char/0x1d558/textmode": "{\\mathbb{g}}", // Unicode U+1D558
-	"char/0x1d559/textmode": "{\\mathbb{h}}", // Unicode U+1D559
-	"char/0x1d55a/textmode": "{\\mathbb{i}}", // Unicode U+1D55A
-	"char/0x1d55b/textmode": "{\\mathbb{j}}", // Unicode U+1D55B
-	"char/0x1d55c/textmode": "{\\mathbb{k}}", // Unicode U+1D55C
-	"char/0x1d55d/textmode": "{\\mathbb{l}}", // Unicode U+1D55D
-	"char/0x1d55e/textmode": "{\\mathbb{m}}", // Unicode U+1D55E
-	"char/0x1d55f/textmode": "{\\mathbb{n}}", // Unicode U+1D55F
-	"char/0x1d560/textmode": "{\\mathbb{o}}", // Unicode U+1D560
-	"char/0x1d561/textmode": "{\\mathbb{p}}", // Unicode U+1D561
-	"char/0x1d562/textmode": "{\\mathbb{q}}", // Unicode U+1D562
-	"char/0x1d563/textmode": "{\\mathbb{r}}", // Unicode U+1D563
-	"char/0x1d564/textmode": "{\\mathbb{s}}", // Unicode U+1D564
-	"char/0x1d565/textmode": "{\\mathbb{t}}", // Unicode U+1D565
-	"char/0x1d566/textmode": "{\\mathbb{u}}", // Unicode U+1D566
-	"char/0x1d567/textmode": "{\\mathbb{v}}", // Unicode U+1D567
-	"char/0x1d568/textmode": "{\\mathbb{w}}", // Unicode U+1D568
-	"char/0x1d569/textmode": "{\\mathbb{x}}", // Unicode U+1D569
-	"char/0x1d56a/textmode": "{\\mathbb{y}}", // Unicode U+1D56A
-	"char/0x1d56b/textmode": "{\\mathbb{z}}", // Unicode U+1D56B
-	"char/0x1d5a0/textmode": "{\\mathsf{A}}", // Unicode U+1D5A0
-	"char/0x1d5a1/textmode": "{\\mathsf{B}}", // Unicode U+1D5A1
-	"char/0x1d5a2/textmode": "{\\mathsf{C}}", // Unicode U+1D5A2
-	"char/0x1d5a3/textmode": "{\\mathsf{D}}", // Unicode U+1D5A3
-	"char/0x1d5a4/textmode": "{\\mathsf{E}}", // Unicode U+1D5A4
-	"char/0x1d5a5/textmode": "{\\mathsf{F}}", // Unicode U+1D5A5
-	"char/0x1d5a6/textmode": "{\\mathsf{G}}", // Unicode U+1D5A6
-	"char/0x1d5a7/textmode": "{\\mathsf{H}}", // Unicode U+1D5A7
-	"char/0x1d5a8/textmode": "{\\mathsf{I}}", // Unicode U+1D5A8
-	"char/0x1d5a9/textmode": "{\\mathsf{J}}", // Unicode U+1D5A9
-	"char/0x1d5aa/textmode": "{\\mathsf{K}}", // Unicode U+1D5AA
-	"char/0x1d5ab/textmode": "{\\mathsf{L}}", // Unicode U+1D5AB
-	"char/0x1d5ac/textmode": "{\\mathsf{M}}", // Unicode U+1D5AC
-	"char/0x1d5ad/textmode": "{\\mathsf{N}}", // Unicode U+1D5AD
-	"char/0x1d5ae/textmode": "{\\mathsf{O}}", // Unicode U+1D5AE
-	"char/0x1d5af/textmode": "{\\mathsf{P}}", // Unicode U+1D5AF
-	"char/0x1d5b0/textmode": "{\\mathsf{Q}}", // Unicode U+1D5B0
-	"char/0x1d5b1/textmode": "{\\mathsf{R}}", // Unicode U+1D5B1
-	"char/0x1d5b2/textmode": "{\\mathsf{S}}", // Unicode U+1D5B2
-	"char/0x1d5b3/textmode": "{\\mathsf{T}}", // Unicode U+1D5B3
-	"char/0x1d5b4/textmode": "{\\mathsf{U}}", // Unicode U+1D5B4
-	"char/0x1d5b5/textmode": "{\\mathsf{V}}", // Unicode U+1D5B5
-	"char/0x1d5b6/textmode": "{\\mathsf{W}}", // Unicode U+1D5B6
-	"char/0x1d5b7/textmode": "{\\mathsf{X}}", // Unicode U+1D5B7
-	"char/0x1d5b8/textmode": "{\\mathsf{Y}}", // Unicode U+1D5B8
-	"char/0x1d5b9/textmode": "{\\mathsf{Z}}", // Unicode U+1D5B9
-	"char/0x1d5ba/textmode": "{\\mathsf{a}}", // Unicode U+1D5BA
-	"char/0x1d5bb/textmode": "{\\mathsf{b}}", // Unicode U+1D5BB
-	"char/0x1d5bc/textmode": "{\\mathsf{c}}", // Unicode U+1D5BC
-	"char/0x1d5bd/textmode": "{\\mathsf{d}}", // Unicode U+1D5BD
-	"char/0x1d5be/textmode": "{\\mathsf{e}}", // Unicode U+1D5BE
-	"char/0x1d5bf/textmode": "{\\mathsf{f}}", // Unicode U+1D5BF
-	"char/0x1d5c0/textmode": "{\\mathsf{g}}", // Unicode U+1D5C0
-	"char/0x1d5c1/textmode": "{\\mathsf{h}}", // Unicode U+1D5C1
-	"char/0x1d5c2/textmode": "{\\mathsf{i}}", // Unicode U+1D5C2
-	"char/0x1d5c3/textmode": "{\\mathsf{j}}", // Unicode U+1D5C3
-	"char/0x1d5c4/textmode": "{\\mathsf{k}}", // Unicode U+1D5C4
-	"char/0x1d5c5/textmode": "{\\mathsf{l}}", // Unicode U+1D5C5
-	"char/0x1d5c6/textmode": "{\\mathsf{m}}", // Unicode U+1D5C6
-	"char/0x1d5c7/textmode": "{\\mathsf{n}}", // Unicode U+1D5C7
-	"char/0x1d5c8/textmode": "{\\mathsf{o}}", // Unicode U+1D5C8
-	"char/0x1d5c9/textmode": "{\\mathsf{p}}", // Unicode U+1D5C9
-	"char/0x1d5ca/textmode": "{\\mathsf{q}}", // Unicode U+1D5CA
-	"char/0x1d5cb/textmode": "{\\mathsf{r}}", // Unicode U+1D5CB
-	"char/0x1d5cc/textmode": "{\\mathsf{s}}", // Unicode U+1D5CC
-	"char/0x1d5cd/textmode": "{\\mathsf{t}}", // Unicode U+1D5CD
-	"char/0x1d5ce/textmode": "{\\mathsf{u}}", // Unicode U+1D5CE
-	"char/0x1d5cf/textmode": "{\\mathsf{v}}", // Unicode U+1D5CF
-	"char/0x1d5d0/textmode": "{\\mathsf{w}}", // Unicode U+1D5D0
-	"char/0x1d5d1/textmode": "{\\mathsf{x}}", // Unicode U+1D5D1
-	"char/0x1d5d2/textmode": "{\\mathsf{y}}", // Unicode U+1D5D2
-	"char/0x1d5d3/textmode": "{\\mathsf{z}}", // Unicode U+1D5D3
-	"char/0x1d5d4/textmode": "{\\mathsfbf{A}}", // Unicode U+1D5D4
-	"char/0x1d5d5/textmode": "{\\mathsfbf{B}}", // Unicode U+1D5D5
-	"char/0x1d5d6/textmode": "{\\mathsfbf{C}}", // Unicode U+1D5D6
-	"char/0x1d5d7/textmode": "{\\mathsfbf{D}}", // Unicode U+1D5D7
-	"char/0x1d5d8/textmode": "{\\mathsfbf{E}}", // Unicode U+1D5D8
-	"char/0x1d5d9/textmode": "{\\mathsfbf{F}}", // Unicode U+1D5D9
-	"char/0x1d5da/textmode": "{\\mathsfbf{G}}", // Unicode U+1D5DA
-	"char/0x1d5db/textmode": "{\\mathsfbf{H}}", // Unicode U+1D5DB
-	"char/0x1d5dc/textmode": "{\\mathsfbf{I}}", // Unicode U+1D5DC
-	"char/0x1d5dd/textmode": "{\\mathsfbf{J}}", // Unicode U+1D5DD
-	"char/0x1d5de/textmode": "{\\mathsfbf{K}}", // Unicode U+1D5DE
-	"char/0x1d5df/textmode": "{\\mathsfbf{L}}", // Unicode U+1D5DF
-	"char/0x1d5e0/textmode": "{\\mathsfbf{M}}", // Unicode U+1D5E0
-	"char/0x1d5e1/textmode": "{\\mathsfbf{N}}", // Unicode U+1D5E1
-	"char/0x1d5e2/textmode": "{\\mathsfbf{O}}", // Unicode U+1D5E2
-	"char/0x1d5e3/textmode": "{\\mathsfbf{P}}", // Unicode U+1D5E3
-	"char/0x1d5e4/textmode": "{\\mathsfbf{Q}}", // Unicode U+1D5E4
-	"char/0x1d5e5/textmode": "{\\mathsfbf{R}}", // Unicode U+1D5E5
-	"char/0x1d5e6/textmode": "{\\mathsfbf{S}}", // Unicode U+1D5E6
-	"char/0x1d5e7/textmode": "{\\mathsfbf{T}}", // Unicode U+1D5E7
-	"char/0x1d5e8/textmode": "{\\mathsfbf{U}}", // Unicode U+1D5E8
-	"char/0x1d5e9/textmode": "{\\mathsfbf{V}}", // Unicode U+1D5E9
-	"char/0x1d5ea/textmode": "{\\mathsfbf{W}}", // Unicode U+1D5EA
-	"char/0x1d5eb/textmode": "{\\mathsfbf{X}}", // Unicode U+1D5EB
-	"char/0x1d5ec/textmode": "{\\mathsfbf{Y}}", // Unicode U+1D5EC
-	"char/0x1d5ed/textmode": "{\\mathsfbf{Z}}", // Unicode U+1D5ED
-	"char/0x1d5ee/textmode": "{\\mathsfbf{a}}", // Unicode U+1D5EE
-	"char/0x1d5ef/textmode": "{\\mathsfbf{b}}", // Unicode U+1D5EF
-	"char/0x1d5f0/textmode": "{\\mathsfbf{c}}", // Unicode U+1D5F0
-	"char/0x1d5f1/textmode": "{\\mathsfbf{d}}", // Unicode U+1D5F1
-	"char/0x1d5f2/textmode": "{\\mathsfbf{e}}", // Unicode U+1D5F2
-	"char/0x1d5f3/textmode": "{\\mathsfbf{f}}", // Unicode U+1D5F3
-	"char/0x1d5f4/textmode": "{\\mathsfbf{g}}", // Unicode U+1D5F4
-	"char/0x1d5f5/textmode": "{\\mathsfbf{h}}", // Unicode U+1D5F5
-	"char/0x1d5f6/textmode": "{\\mathsfbf{i}}", // Unicode U+1D5F6
-	"char/0x1d5f7/textmode": "{\\mathsfbf{j}}", // Unicode U+1D5F7
-	"char/0x1d5f8/textmode": "{\\mathsfbf{k}}", // Unicode U+1D5F8
-	"char/0x1d5f9/textmode": "{\\mathsfbf{l}}", // Unicode U+1D5F9
-	"char/0x1d5fa/textmode": "{\\mathsfbf{m}}", // Unicode U+1D5FA
-	"char/0x1d5fb/textmode": "{\\mathsfbf{n}}", // Unicode U+1D5FB
-	"char/0x1d5fc/textmode": "{\\mathsfbf{o}}", // Unicode U+1D5FC
-	"char/0x1d5fd/textmode": "{\\mathsfbf{p}}", // Unicode U+1D5FD
-	"char/0x1d5fe/textmode": "{\\mathsfbf{q}}", // Unicode U+1D5FE
-	"char/0x1d5ff/textmode": "{\\mathsfbf{r}}", // Unicode U+1D5FF
-	"char/0x1d600/textmode": "{\\mathsfbf{s}}", // Unicode U+1D600
-	"char/0x1d601/textmode": "{\\mathsfbf{t}}", // Unicode U+1D601
-	"char/0x1d602/textmode": "{\\mathsfbf{u}}", // Unicode U+1D602
-	"char/0x1d603/textmode": "{\\mathsfbf{v}}", // Unicode U+1D603
-	"char/0x1d604/textmode": "{\\mathsfbf{w}}", // Unicode U+1D604
-	"char/0x1d605/textmode": "{\\mathsfbf{x}}", // Unicode U+1D605
-	"char/0x1d606/textmode": "{\\mathsfbf{y}}", // Unicode U+1D606
-	"char/0x1d607/textmode": "{\\mathsfbf{z}}", // Unicode U+1D607
-	"char/0x1d608/textmode": "{\\mathsfit{A}}", // Unicode U+1D608
-	"char/0x1d609/textmode": "{\\mathsfit{B}}", // Unicode U+1D609
-	"char/0x1d60a/textmode": "{\\mathsfit{C}}", // Unicode U+1D60A
-	"char/0x1d60b/textmode": "{\\mathsfit{D}}", // Unicode U+1D60B
-	"char/0x1d60c/textmode": "{\\mathsfit{E}}", // Unicode U+1D60C
-	"char/0x1d60d/textmode": "{\\mathsfit{F}}", // Unicode U+1D60D
-	"char/0x1d60e/textmode": "{\\mathsfit{G}}", // Unicode U+1D60E
-	"char/0x1d60f/textmode": "{\\mathsfit{H}}", // Unicode U+1D60F
-	"char/0x1d610/textmode": "{\\mathsfit{I}}", // Unicode U+1D610
-	"char/0x1d611/textmode": "{\\mathsfit{J}}", // Unicode U+1D611
-	"char/0x1d612/textmode": "{\\mathsfit{K}}", // Unicode U+1D612
-	"char/0x1d613/textmode": "{\\mathsfit{L}}", // Unicode U+1D613
-	"char/0x1d614/textmode": "{\\mathsfit{M}}", // Unicode U+1D614
-	"char/0x1d615/textmode": "{\\mathsfit{N}}", // Unicode U+1D615
-	"char/0x1d616/textmode": "{\\mathsfit{O}}", // Unicode U+1D616
-	"char/0x1d617/textmode": "{\\mathsfit{P}}", // Unicode U+1D617
-	"char/0x1d618/textmode": "{\\mathsfit{Q}}", // Unicode U+1D618
-	"char/0x1d619/textmode": "{\\mathsfit{R}}", // Unicode U+1D619
-	"char/0x1d61a/textmode": "{\\mathsfit{S}}", // Unicode U+1D61A
-	"char/0x1d61b/textmode": "{\\mathsfit{T}}", // Unicode U+1D61B
-	"char/0x1d61c/textmode": "{\\mathsfit{U}}", // Unicode U+1D61C
-	"char/0x1d61d/textmode": "{\\mathsfit{V}}", // Unicode U+1D61D
-	"char/0x1d61e/textmode": "{\\mathsfit{W}}", // Unicode U+1D61E
-	"char/0x1d61f/textmode": "{\\mathsfit{X}}", // Unicode U+1D61F
-	"char/0x1d620/textmode": "{\\mathsfit{Y}}", // Unicode U+1D620
-	"char/0x1d621/textmode": "{\\mathsfit{Z}}", // Unicode U+1D621
-	"char/0x1d622/textmode": "{\\mathsfit{a}}", // Unicode U+1D622
-	"char/0x1d623/textmode": "{\\mathsfit{b}}", // Unicode U+1D623
-	"char/0x1d624/textmode": "{\\mathsfit{c}}", // Unicode U+1D624
-	"char/0x1d625/textmode": "{\\mathsfit{d}}", // Unicode U+1D625
-	"char/0x1d626/textmode": "{\\mathsfit{e}}", // Unicode U+1D626
-	"char/0x1d627/textmode": "{\\mathsfit{f}}", // Unicode U+1D627
-	"char/0x1d628/textmode": "{\\mathsfit{g}}", // Unicode U+1D628
-	"char/0x1d629/textmode": "{\\mathsfit{h}}", // Unicode U+1D629
-	"char/0x1d62a/textmode": "{\\mathsfit{i}}", // Unicode U+1D62A
-	"char/0x1d62b/textmode": "{\\mathsfit{j}}", // Unicode U+1D62B
-	"char/0x1d62c/textmode": "{\\mathsfit{k}}", // Unicode U+1D62C
-	"char/0x1d62d/textmode": "{\\mathsfit{l}}", // Unicode U+1D62D
-	"char/0x1d62e/textmode": "{\\mathsfit{m}}", // Unicode U+1D62E
-	"char/0x1d62f/textmode": "{\\mathsfit{n}}", // Unicode U+1D62F
-	"char/0x1d630/textmode": "{\\mathsfit{o}}", // Unicode U+1D630
-	"char/0x1d631/textmode": "{\\mathsfit{p}}", // Unicode U+1D631
-	"char/0x1d632/textmode": "{\\mathsfit{q}}", // Unicode U+1D632
-	"char/0x1d633/textmode": "{\\mathsfit{r}}", // Unicode U+1D633
-	"char/0x1d634/textmode": "{\\mathsfit{s}}", // Unicode U+1D634
-	"char/0x1d635/textmode": "{\\mathsfit{t}}", // Unicode U+1D635
-	"char/0x1d636/textmode": "{\\mathsfit{u}}", // Unicode U+1D636
-	"char/0x1d637/textmode": "{\\mathsfit{v}}", // Unicode U+1D637
-	"char/0x1d638/textmode": "{\\mathsfit{w}}", // Unicode U+1D638
-	"char/0x1d639/textmode": "{\\mathsfit{x}}", // Unicode U+1D639
-	"char/0x1d63a/textmode": "{\\mathsfit{y}}", // Unicode U+1D63A
-	"char/0x1d63b/textmode": "{\\mathsfit{z}}", // Unicode U+1D63B
-	"char/0x1d63c/textmode": "{\\mathsfbfit{A}}", // Unicode U+1D63C
-	"char/0x1d63d/textmode": "{\\mathsfbfit{B}}", // Unicode U+1D63D
-	"char/0x1d63e/textmode": "{\\mathsfbfit{C}}", // Unicode U+1D63E
-	"char/0x1d63f/textmode": "{\\mathsfbfit{D}}", // Unicode U+1D63F
-	"char/0x1d640/textmode": "{\\mathsfbfit{E}}", // Unicode U+1D640
-	"char/0x1d641/textmode": "{\\mathsfbfit{F}}", // Unicode U+1D641
-	"char/0x1d642/textmode": "{\\mathsfbfit{G}}", // Unicode U+1D642
-	"char/0x1d643/textmode": "{\\mathsfbfit{H}}", // Unicode U+1D643
-	"char/0x1d644/textmode": "{\\mathsfbfit{I}}", // Unicode U+1D644
-	"char/0x1d645/textmode": "{\\mathsfbfit{J}}", // Unicode U+1D645
-	"char/0x1d646/textmode": "{\\mathsfbfit{K}}", // Unicode U+1D646
-	"char/0x1d647/textmode": "{\\mathsfbfit{L}}", // Unicode U+1D647
-	"char/0x1d648/textmode": "{\\mathsfbfit{M}}", // Unicode U+1D648
-	"char/0x1d649/textmode": "{\\mathsfbfit{N}}", // Unicode U+1D649
-	"char/0x1d64a/textmode": "{\\mathsfbfit{O}}", // Unicode U+1D64A
-	"char/0x1d64b/textmode": "{\\mathsfbfit{P}}", // Unicode U+1D64B
-	"char/0x1d64c/textmode": "{\\mathsfbfit{Q}}", // Unicode U+1D64C
-	"char/0x1d64d/textmode": "{\\mathsfbfit{R}}", // Unicode U+1D64D
-	"char/0x1d64e/textmode": "{\\mathsfbfit{S}}", // Unicode U+1D64E
-	"char/0x1d64f/textmode": "{\\mathsfbfit{T}}", // Unicode U+1D64F
-	"char/0x1d650/textmode": "{\\mathsfbfit{U}}", // Unicode U+1D650
-	"char/0x1d651/textmode": "{\\mathsfbfit{V}}", // Unicode U+1D651
-	"char/0x1d652/textmode": "{\\mathsfbfit{W}}", // Unicode U+1D652
-	"char/0x1d653/textmode": "{\\mathsfbfit{X}}", // Unicode U+1D653
-	"char/0x1d654/textmode": "{\\mathsfbfit{Y}}", // Unicode U+1D654
-	"char/0x1d655/textmode": "{\\mathsfbfit{Z}}", // Unicode U+1D655
-	"char/0x1d656/textmode": "{\\mathsfbfit{a}}", // Unicode U+1D656
-	"char/0x1d657/textmode": "{\\mathsfbfit{b}}", // Unicode U+1D657
-	"char/0x1d658/textmode": "{\\mathsfbfit{c}}", // Unicode U+1D658
-	"char/0x1d659/textmode": "{\\mathsfbfit{d}}", // Unicode U+1D659
-	"char/0x1d65a/textmode": "{\\mathsfbfit{e}}", // Unicode U+1D65A
-	"char/0x1d65b/textmode": "{\\mathsfbfit{f}}", // Unicode U+1D65B
-	"char/0x1d65c/textmode": "{\\mathsfbfit{g}}", // Unicode U+1D65C
-	"char/0x1d65d/textmode": "{\\mathsfbfit{h}}", // Unicode U+1D65D
-	"char/0x1d65e/textmode": "{\\mathsfbfit{i}}", // Unicode U+1D65E
-	"char/0x1d65f/textmode": "{\\mathsfbfit{j}}", // Unicode U+1D65F
-	"char/0x1d660/textmode": "{\\mathsfbfit{k}}", // Unicode U+1D660
-	"char/0x1d661/textmode": "{\\mathsfbfit{l}}", // Unicode U+1D661
-	"char/0x1d662/textmode": "{\\mathsfbfit{m}}", // Unicode U+1D662
-	"char/0x1d663/textmode": "{\\mathsfbfit{n}}", // Unicode U+1D663
-	"char/0x1d664/textmode": "{\\mathsfbfit{o}}", // Unicode U+1D664
-	"char/0x1d665/textmode": "{\\mathsfbfit{p}}", // Unicode U+1D665
-	"char/0x1d666/textmode": "{\\mathsfbfit{q}}", // Unicode U+1D666
-	"char/0x1d667/textmode": "{\\mathsfbfit{r}}", // Unicode U+1D667
-	"char/0x1d668/textmode": "{\\mathsfbfit{s}}", // Unicode U+1D668
-	"char/0x1d669/textmode": "{\\mathsfbfit{t}}", // Unicode U+1D669
-	"char/0x1d66a/textmode": "{\\mathsfbfit{u}}", // Unicode U+1D66A
-	"char/0x1d66b/textmode": "{\\mathsfbfit{v}}", // Unicode U+1D66B
-	"char/0x1d66c/textmode": "{\\mathsfbfit{w}}", // Unicode U+1D66C
-	"char/0x1d66d/textmode": "{\\mathsfbfit{x}}", // Unicode U+1D66D
-	"char/0x1d66e/textmode": "{\\mathsfbfit{y}}", // Unicode U+1D66E
-	"char/0x1d66f/textmode": "{\\mathsfbfit{z}}", // Unicode U+1D66F
-	"char/0x1d670/textmode": "{\\mathtt{A}}", // Unicode U+1D670
-	"char/0x1d671/textmode": "{\\mathtt{B}}", // Unicode U+1D671
-	"char/0x1d672/textmode": "{\\mathtt{C}}", // Unicode U+1D672
-	"char/0x1d673/textmode": "{\\mathtt{D}}", // Unicode U+1D673
-	"char/0x1d674/textmode": "{\\mathtt{E}}", // Unicode U+1D674
-	"char/0x1d675/textmode": "{\\mathtt{F}}", // Unicode U+1D675
-	"char/0x1d676/textmode": "{\\mathtt{G}}", // Unicode U+1D676
-	"char/0x1d677/textmode": "{\\mathtt{H}}", // Unicode U+1D677
-	"char/0x1d678/textmode": "{\\mathtt{I}}", // Unicode U+1D678
-	"char/0x1d679/textmode": "{\\mathtt{J}}", // Unicode U+1D679
-	"char/0x1d67a/textmode": "{\\mathtt{K}}", // Unicode U+1D67A
-	"char/0x1d67b/textmode": "{\\mathtt{L}}", // Unicode U+1D67B
-	"char/0x1d67c/textmode": "{\\mathtt{M}}", // Unicode U+1D67C
-	"char/0x1d67d/textmode": "{\\mathtt{N}}", // Unicode U+1D67D
-	"char/0x1d67e/textmode": "{\\mathtt{O}}", // Unicode U+1D67E
-	"char/0x1d67f/textmode": "{\\mathtt{P}}", // Unicode U+1D67F
-	"char/0x1d680/textmode": "{\\mathtt{Q}}", // Unicode U+1D680
-	"char/0x1d681/textmode": "{\\mathtt{R}}", // Unicode U+1D681
-	"char/0x1d682/textmode": "{\\mathtt{S}}", // Unicode U+1D682
-	"char/0x1d683/textmode": "{\\mathtt{T}}", // Unicode U+1D683
-	"char/0x1d684/textmode": "{\\mathtt{U}}", // Unicode U+1D684
-	"char/0x1d685/textmode": "{\\mathtt{V}}", // Unicode U+1D685
-	"char/0x1d686/textmode": "{\\mathtt{W}}", // Unicode U+1D686
-	"char/0x1d687/textmode": "{\\mathtt{X}}", // Unicode U+1D687
-	"char/0x1d688/textmode": "{\\mathtt{Y}}", // Unicode U+1D688
-	"char/0x1d689/textmode": "{\\mathtt{Z}}", // Unicode U+1D689
-	"char/0x1d68a/textmode": "{\\mathtt{a}}", // Unicode U+1D68A
-	"char/0x1d68b/textmode": "{\\mathtt{b}}", // Unicode U+1D68B
-	"char/0x1d68c/textmode": "{\\mathtt{c}}", // Unicode U+1D68C
-	"char/0x1d68d/textmode": "{\\mathtt{d}}", // Unicode U+1D68D
-	"char/0x1d68e/textmode": "{\\mathtt{e}}", // Unicode U+1D68E
-	"char/0x1d68f/textmode": "{\\mathtt{f}}", // Unicode U+1D68F
-	"char/0x1d690/textmode": "{\\mathtt{g}}", // Unicode U+1D690
-	"char/0x1d691/textmode": "{\\mathtt{h}}", // Unicode U+1D691
-	"char/0x1d692/textmode": "{\\mathtt{i}}", // Unicode U+1D692
-	"char/0x1d693/textmode": "{\\mathtt{j}}", // Unicode U+1D693
-	"char/0x1d694/textmode": "{\\mathtt{k}}", // Unicode U+1D694
-	"char/0x1d695/textmode": "{\\mathtt{l}}", // Unicode U+1D695
-	"char/0x1d696/textmode": "{\\mathtt{m}}", // Unicode U+1D696
-	"char/0x1d697/textmode": "{\\mathtt{n}}", // Unicode U+1D697
-	"char/0x1d698/textmode": "{\\mathtt{o}}", // Unicode U+1D698
-	"char/0x1d699/textmode": "{\\mathtt{p}}", // Unicode U+1D699
-	"char/0x1d69a/textmode": "{\\mathtt{q}}", // Unicode U+1D69A
-	"char/0x1d69b/textmode": "{\\mathtt{r}}", // Unicode U+1D69B
-	"char/0x1d69c/textmode": "{\\mathtt{s}}", // Unicode U+1D69C
-	"char/0x1d69d/textmode": "{\\mathtt{t}}", // Unicode U+1D69D
-	"char/0x1d69e/textmode": "{\\mathtt{u}}", // Unicode U+1D69E
-	"char/0x1d69f/textmode": "{\\mathtt{v}}", // Unicode U+1D69F
-	"char/0x1d6a0/textmode": "{\\mathtt{w}}", // Unicode U+1D6A0
-	"char/0x1d6a1/textmode": "{\\mathtt{x}}", // Unicode U+1D6A1
-	"char/0x1d6a2/textmode": "{\\mathtt{y}}", // Unicode U+1D6A2
-	"char/0x1d6a3/textmode": "{\\mathtt{z}}", // Unicode U+1D6A3
-	"char/0x1d6a4/textmode": "{\\imath}", // Unicode U+1D6A4
-	"char/0x1d6a5/textmode": "{\\jmath}", // Unicode U+1D6A5
-	"char/0x1d6aa/textmode": "{\\mathbf{\\Gamma}}", // Unicode U+1D6AA
-	"char/0x1d6ab/textmode": "{\\mathbf{\\Delta}}", // Unicode U+1D6AB
-	"char/0x1d6af/textmode": "{\\mathbf{\\Theta}}", // Unicode U+1D6AF
-	"char/0x1d6b2/textmode": "{\\mathbf{\\Lambda}}", // Unicode U+1D6B2
-	"char/0x1d6b5/textmode": "{\\mathbf{\\Xi}}", // Unicode U+1D6B5
-	"char/0x1d6b7/textmode": "{\\mathbf{\\Pi}}", // Unicode U+1D6B7
-	"char/0x1d6ba/textmode": "{\\mathbf{\\Sigma}}", // Unicode U+1D6BA
-	"char/0x1d6bc/textmode": "{\\mathbf{\\Upsilon}}", // Unicode U+1D6BC
-	"char/0x1d6bd/textmode": "{\\mathbf{\\Phi}}", // Unicode U+1D6BD
-	"char/0x1d6bf/textmode": "{\\mathbf{\\Psi}}", // Unicode U+1D6BF
-	"char/0x1d6c0/textmode": "{\\mathbf{\\Omega}}", // Unicode U+1D6C0
-	"char/0x1d6c2/textmode": "{\\mathbf{\\alpha}}", // Unicode U+1D6C2
-	"char/0x1d6c3/textmode": "{\\mathbf{\\beta}}", // Unicode U+1D6C3
-	"char/0x1d6c4/textmode": "{\\mathbf{\\gamma}}", // Unicode U+1D6C4
-	"char/0x1d6c5/textmode": "{\\mathbf{\\delta}}", // Unicode U+1D6C5
-	"char/0x1d6c6/textmode": "{\\mathbf{\\varepsilon}}", // Unicode U+1D6C6
-	"char/0x1d6c7/textmode": "{\\mathbf{\\zeta}}", // Unicode U+1D6C7
-	"char/0x1d6c8/textmode": "{\\mathbf{\\eta}}", // Unicode U+1D6C8
-	"char/0x1d6c9/textmode": "{\\mathbf{\\theta}}", // Unicode U+1D6C9
-	"char/0x1d6ca/textmode": "{\\mathbf{\\iota}}", // Unicode U+1D6CA
-	"char/0x1d6cb/textmode": "{\\mathbf{\\kappa}}", // Unicode U+1D6CB
-	"char/0x1d6cc/textmode": "{\\mathbf{\\lambda}}", // Unicode U+1D6CC
-	"char/0x1d6cd/textmode": "{\\mathbf{\\mu}}", // Unicode U+1D6CD
-	"char/0x1d6ce/textmode": "{\\mathbf{\\nu}}", // Unicode U+1D6CE
-	"char/0x1d6cf/textmode": "{\\mathbf{\\xi}}", // Unicode U+1D6CF
-	"char/0x1d6d1/textmode": "{\\mathbf{\\pi}}", // Unicode U+1D6D1
-	"char/0x1d6d2/textmode": "{\\mathbf{\\rho}}", // Unicode U+1D6D2
-	"char/0x1d6d3/textmode": "{\\mathbf{\\varsigma}}", // Unicode U+1D6D3
-	"char/0x1d6d4/textmode": "{\\mathbf{\\sigma}}", // Unicode U+1D6D4
-	"char/0x1d6d5/textmode": "{\\mathbf{\\tau}}", // Unicode U+1D6D5
-	"char/0x1d6d6/textmode": "{\\mathbf{\\upsilon}}", // Unicode U+1D6D6
-	"char/0x1d6d7/textmode": "{\\mathbf{\\varphi}}", // Unicode U+1D6D7
-	"char/0x1d6d8/textmode": "{\\mathbf{\\chi}}", // Unicode U+1D6D8
-	"char/0x1d6d9/textmode": "{\\mathbf{\\psi}}", // Unicode U+1D6D9
-	"char/0x1d6da/textmode": "{\\mathbf{\\omega}}", // Unicode U+1D6DA
-	"char/0x1d6dc/textmode": "{\\mathbf{\\epsilon}}", // Unicode U+1D6DC
-	"char/0x1d6dd/textmode": "{\\mathbf{\\vartheta}}", // Unicode U+1D6DD
-	"char/0x1d6df/textmode": "{\\mathbf{\\phi}}", // Unicode U+1D6DF
-	"char/0x1d6e0/textmode": "{\\mathbf{\\varrho}}", // Unicode U+1D6E0
-	"char/0x1d6e1/textmode": "{\\mathbf{\\varpi}}", // Unicode U+1D6E1
-	"char/0x1d6e4/textmode": "{\\Gamma}", // Unicode U+1D6E4
-	"char/0x1d6e5/textmode": "{\\Delta}", // Unicode U+1D6E5
-	"char/0x1d6e9/textmode": "{\\Theta}", // Unicode U+1D6E9
-	"char/0x1d6ec/textmode": "{\\Lambda}", // Unicode U+1D6EC
-	"char/0x1d6ef/textmode": "{\\Xi}", // Unicode U+1D6EF
-	"char/0x1d6f1/textmode": "{\\Pi}", // Unicode U+1D6F1
-	"char/0x1d6f4/textmode": "{\\Sigma}", // Unicode U+1D6F4
-	"char/0x1d6f6/textmode": "{\\Upsilon}", // Unicode U+1D6F6
-	"char/0x1d6f7/textmode": "{\\Phi}", // Unicode U+1D6F7
-	"char/0x1d6f9/textmode": "{\\Psi}", // Unicode U+1D6F9
-	"char/0x1d6fa/textmode": "{\\Omega}", // Unicode U+1D6FA
-	"char/0x1d6fc/textmode": "{\\alpha}", // Unicode U+1D6FC
-	"char/0x1d6fd/textmode": "{\\beta}", // Unicode U+1D6FD
-	"char/0x1d6fe/textmode": "{\\gamma}", // Unicode U+1D6FE
-	"char/0x1d6ff/textmode": "{\\delta}", // Unicode U+1D6FF
-	"char/0x1d700/textmode": "\u1d700", // Unicode U+1D700
-	"char/0x1d701/textmode": "{\\zeta}", // Unicode U+1D701
-	"char/0x1d702/textmode": "{\\eta}", // Unicode U+1D702
-	"char/0x1d703/textmode": "{\\theta}", // Unicode U+1D703
-	"char/0x1d704/textmode": "{\\iota}", // Unicode U+1D704
-	"char/0x1d705/textmode": "{\\kappa}", // Unicode U+1D705
-	"char/0x1d706/textmode": "{\\lambda}", // Unicode U+1D706
-	"char/0x1d707/textmode": "{\\mu}", // Unicode U+1D707
-	"char/0x1d708/textmode": "{\\nu}", // Unicode U+1D708
-	"char/0x1d709/textmode": "{\\xi}", // Unicode U+1D709
-	"char/0x1d70b/textmode": "{\\pi}", // Unicode U+1D70B
-	"char/0x1d70c/textmode": "{\\rho}", // Unicode U+1D70C
-	"char/0x1d70d/textmode": "{\\varsigma}", // Unicode U+1D70D
-	"char/0x1d70e/textmode": "{\\sigma}", // Unicode U+1D70E
-	"char/0x1d70f/textmode": "{\\tau}", // Unicode U+1D70F
-	"char/0x1d710/textmode": "{\\upsilon}", // Unicode U+1D710
-	"char/0x1d711/textmode": "{\\varphi}", // Unicode U+1D711
-	"char/0x1d712/textmode": "{\\chi}", // Unicode U+1D712
-	"char/0x1d713/textmode": "{\\psi}", // Unicode U+1D713
-	"char/0x1d714/textmode": "{\\omega}", // Unicode U+1D714
-	"char/0x1d715/textmode": "{\\partial}", // Unicode U+1D715
-	"char/0x1d716/textmode": "{\\epsilon}", // Unicode U+1D716
-	"char/0x1d717/textmode": "{\\vartheta}", // Unicode U+1D717
-	"char/0x1d718/textmode": "{\\varkappa}", // Unicode U+1D718
-	"char/0x1d719/textmode": "{\\phi}", // Unicode U+1D719
-	"char/0x1d71a/textmode": "{\\varrho}", // Unicode U+1D71A
-	"char/0x1d71b/textmode": "{\\varpi}", // Unicode U+1D71B
-	"char/0x1d71e/textmode": "{\\mathbfit{\\Gamma}}", // Unicode U+1D71E
-	"char/0x1d71f/textmode": "{\\mathbfit{\\Delta}}", // Unicode U+1D71F
-	"char/0x1d723/textmode": "{\\mathbfit{\\Theta}}", // Unicode U+1D723
-	"char/0x1d726/textmode": "{\\mathbfit{\\Lambda}}", // Unicode U+1D726
-	"char/0x1d729/textmode": "{\\mathbfit{\\Xi}}", // Unicode U+1D729
-	"char/0x1d72b/textmode": "{\\mathbfit{\\Pi}}", // Unicode U+1D72B
-	"char/0x1d72e/textmode": "{\\mathbfit{\\Sigma}}", // Unicode U+1D72E
-	"char/0x1d730/textmode": "{\\mathbfit{\\Upsilon}}", // Unicode U+1D730
-	"char/0x1d731/textmode": "{\\mathbfit{\\Phi}}", // Unicode U+1D731
-	"char/0x1d733/textmode": "{\\mathbfit{\\Psi}}", // Unicode U+1D733
-	"char/0x1d734/textmode": "{\\mathbfit{\\Omega}}", // Unicode U+1D734
-	"char/0x1d736/textmode": "{\\mathbfit{\\alpha}}", // Unicode U+1D736
-	"char/0x1d737/textmode": "{\\mathbfit{\\beta}}", // Unicode U+1D737
-	"char/0x1d738/textmode": "{\\mathbfit{\\gamma}}", // Unicode U+1D738
-	"char/0x1d739/textmode": "{\\mathbfit{\\delta}}", // Unicode U+1D739
-	"char/0x1d73a/textmode": "{\\mathbfit{\\varepsilon}}", // Unicode U+1D73A
-	"char/0x1d73b/textmode": "{\\mathbfit{\\zeta}}", // Unicode U+1D73B
-	"char/0x1d73c/textmode": "{\\mathbfit{\\eta}}", // Unicode U+1D73C
-	"char/0x1d73d/textmode": "{\\mathbfit{\\theta}}", // Unicode U+1D73D
-	"char/0x1d73e/textmode": "{\\mathbfit{\\iota}}", // Unicode U+1D73E
-	"char/0x1d73f/textmode": "{\\mathbfit{\\kappa}}", // Unicode U+1D73F
-	"char/0x1d740/textmode": "{\\mathbfit{\\lambda}}", // Unicode U+1D740
-	"char/0x1d741/textmode": "{\\mathbfit{\\mu}}", // Unicode U+1D741
-	"char/0x1d742/textmode": "{\\mathbfit{\\nu}}", // Unicode U+1D742
-	"char/0x1d743/textmode": "{\\mathbfit{\\xi}}", // Unicode U+1D743
-	"char/0x1d745/textmode": "{\\mathbfit{\\pi}}", // Unicode U+1D745
-	"char/0x1d746/textmode": "{\\mathbfit{\\rho}}", // Unicode U+1D746
-	"char/0x1d747/textmode": "{\\mathbfit{\\varsigma}}", // Unicode U+1D747
-	"char/0x1d748/textmode": "{\\mathbfit{\\sigma}}", // Unicode U+1D748
-	"char/0x1d749/textmode": "{\\mathbfit{\\tau}}", // Unicode U+1D749
-	"char/0x1d74a/textmode": "{\\mathbfit{\\upsilon}}", // Unicode U+1D74A
-	"char/0x1d74b/textmode": "{\\mathbfit{\\varphi}}", // Unicode U+1D74B
-	"char/0x1d74c/textmode": "{\\mathbfit{\\chi}}", // Unicode U+1D74C
-	"char/0x1d74d/textmode": "{\\mathbfit{\\psi}}", // Unicode U+1D74D
-	"char/0x1d74e/textmode": "{\\mathbfit{\\omega}}", // Unicode U+1D74E
-	"char/0x1d750/textmode": "{\\mathbfit{\\epsilon}}", // Unicode U+1D750
-	"char/0x1d751/textmode": "{\\mathbfit{\\vartheta}}", // Unicode U+1D751
-	"char/0x1d753/textmode": "{\\mathbfit{\\phi}}", // Unicode U+1D753
-	"char/0x1d754/textmode": "{\\mathbfit{\\varrho}}", // Unicode U+1D754
-	"char/0x1d755/textmode": "{\\mathbfit{\\varpi}}", // Unicode U+1D755
-	"char/0x1d758/textmode": "{\\mathsfbf{\\Gamma}}", // Unicode U+1D758
-	"char/0x1d759/textmode": "{\\mathsfbf{\\Delta}}", // Unicode U+1D759
-	"char/0x1d75d/textmode": "{\\mathsfbf{\\Theta}}", // Unicode U+1D75D
-	"char/0x1d760/textmode": "{\\mathsfbf{\\Lambda}}", // Unicode U+1D760
-	"char/0x1d763/textmode": "{\\mathsfbf{\\Xi}}", // Unicode U+1D763
-	"char/0x1d765/textmode": "{\\mathsfbf{\\Pi}}", // Unicode U+1D765
-	"char/0x1d768/textmode": "{\\mathsfbf{\\Sigma}}", // Unicode U+1D768
-	"char/0x1d76a/textmode": "{\\mathsfbf{\\Upsilon}}", // Unicode U+1D76A
-	"char/0x1d76b/textmode": "{\\mathsfbf{\\Phi}}", // Unicode U+1D76B
-	"char/0x1d76d/textmode": "{\\mathsfbf{\\Psi}}", // Unicode U+1D76D
-	"char/0x1d76e/textmode": "{\\mathsfbf{\\Omega}}", // Unicode U+1D76E
-	"char/0x1d770/textmode": "{\\mathsfbf{\\alpha}}", // Unicode U+1D770
-	"char/0x1d771/textmode": "{\\mathsfbf{\\beta}}", // Unicode U+1D771
-	"char/0x1d772/textmode": "{\\mathsfbf{\\gamma}}", // Unicode U+1D772
-	"char/0x1d773/textmode": "{\\mathsfbf{\\delta}}", // Unicode U+1D773
-	"char/0x1d774/textmode": "{\\mathsfbf{\\varepsilon}}", // Unicode U+1D774
-	"char/0x1d775/textmode": "{\\mathsfbf{\\zeta}}", // Unicode U+1D775
-	"char/0x1d776/textmode": "{\\mathsfbf{\\eta}}", // Unicode U+1D776
-	"char/0x1d777/textmode": "{\\mathsfbf{\\theta}}", // Unicode U+1D777
-	"char/0x1d778/textmode": "{\\mathsfbf{\\iota}}", // Unicode U+1D778
-	"char/0x1d779/textmode": "{\\mathsfbf{\\kappa}}", // Unicode U+1D779
-	"char/0x1d77a/textmode": "{\\mathsfbf{\\lambda}}", // Unicode U+1D77A
-	"char/0x1d77b/textmode": "{\\mathsfbf{\\mu}}", // Unicode U+1D77B
-	"char/0x1d77c/textmode": "{\\mathsfbf{\\nu}}", // Unicode U+1D77C
-	"char/0x1d77d/textmode": "{\\mathsfbf{\\xi}}", // Unicode U+1D77D
-	"char/0x1d77f/textmode": "{\\mathsfbf{\\pi}}", // Unicode U+1D77F
-	"char/0x1d780/textmode": "{\\mathsfbf{\\rho}}", // Unicode U+1D780
-	"char/0x1d781/textmode": "{\\mathsfbf{\\varsigma}}", // Unicode U+1D781
-	"char/0x1d782/textmode": "{\\mathsfbf{\\sigma}}", // Unicode U+1D782
-	"char/0x1d783/textmode": "{\\mathsfbf{\\tau}}", // Unicode U+1D783
-	"char/0x1d784/textmode": "{\\mathsfbf{\\upsilon}}", // Unicode U+1D784
-	"char/0x1d785/textmode": "{\\mathsfbf{\\varphi}}", // Unicode U+1D785
-	"char/0x1d786/textmode": "{\\mathsfbf{\\chi}}", // Unicode U+1D786
-	"char/0x1d787/textmode": "{\\mathsfbf{\\psi}}", // Unicode U+1D787
-	"char/0x1d788/textmode": "{\\mathsfbf{\\omega}}", // Unicode U+1D788
-	"char/0x1d78a/textmode": "{\\mathsfbf{\\epsilon}}", // Unicode U+1D78A
-	"char/0x1d78b/textmode": "{\\mathsfbf{\\vartheta}}", // Unicode U+1D78B
-	"char/0x1d78d/textmode": "{\\mathsfbf{\\phi}}", // Unicode U+1D78D
-	"char/0x1d78e/textmode": "{\\mathsfbf{\\varrho}}", // Unicode U+1D78E
-	"char/0x1d78f/textmode": "{\\mathsfbf{\\varpi}}", // Unicode U+1D78F
-	"char/0x1d792/textmode": "{\\mathsfbfit{\\Gamma}}", // Unicode U+1D792
-	"char/0x1d793/textmode": "{\\mathsfbfit{\\Delta}}", // Unicode U+1D793
-	"char/0x1d797/textmode": "{\\mathsfbfit{\\Theta}}", // Unicode U+1D797
-	"char/0x1d79a/textmode": "{\\mathsfbfit{\\Lambda}}", // Unicode U+1D79A
-	"char/0x1d79d/textmode": "{\\mathsfbfit{\\Xi}}", // Unicode U+1D79D
-	"char/0x1d79f/textmode": "{\\mathsfbfit{\\Pi}}", // Unicode U+1D79F
-	"char/0x1d7a2/textmode": "{\\mathsfbfit{\\Sigma}}", // Unicode U+1D7A2
-	"char/0x1d7a4/textmode": "{\\mathsfbfit{\\Upsilon}}", // Unicode U+1D7A4
-	"char/0x1d7a5/textmode": "{\\mathsfbfit{\\Phi}}", // Unicode U+1D7A5
-	"char/0x1d7a7/textmode": "{\\mathsfbfit{\\Psi}}", // Unicode U+1D7A7
-	"char/0x1d7a8/textmode": "{\\mathsfbfit{\\Omega}}", // Unicode U+1D7A8
-	"char/0x1d7aa/textmode": "{\\mathsfbfit{\\alpha}}", // Unicode U+1D7AA
-	"char/0x1d7ab/textmode": "{\\mathsfbfit{\\beta}}", // Unicode U+1D7AB
-	"char/0x1d7ac/textmode": "{\\mathsfbfit{\\gamma}}", // Unicode U+1D7AC
-	"char/0x1d7ad/textmode": "{\\mathsfbfit{\\delta}}", // Unicode U+1D7AD
-	"char/0x1d7ae/textmode": "{\\mathsfbfit{\\varepsilon}}", // Unicode U+1D7AE
-	"char/0x1d7af/textmode": "{\\mathsfbfit{\\zeta}}", // Unicode U+1D7AF
-	"char/0x1d7b0/textmode": "{\\mathsfbfit{\\eta}}", // Unicode U+1D7B0
-	"char/0x1d7b1/textmode": "{\\mathsfbfit{\\theta}}", // Unicode U+1D7B1
-	"char/0x1d7b2/textmode": "{\\mathsfbfit{\\iota}}", // Unicode U+1D7B2
-	"char/0x1d7b3/textmode": "{\\mathsfbfit{\\kappa}}", // Unicode U+1D7B3
-	"char/0x1d7b4/textmode": "{\\mathsfbfit{\\lambda}}", // Unicode U+1D7B4
-	"char/0x1d7b5/textmode": "{\\mathsfbfit{\\mu}}", // Unicode U+1D7B5
-	"char/0x1d7b6/textmode": "{\\mathsfbfit{\\nu}}", // Unicode U+1D7B6
-	"char/0x1d7b7/textmode": "{\\mathsfbfit{\\xi}}", // Unicode U+1D7B7
-	"char/0x1d7b9/textmode": "{\\mathsfbfit{\\pi}}", // Unicode U+1D7B9
-	"char/0x1d7ba/textmode": "{\\mathsfbfit{\\rho}}", // Unicode U+1D7BA
-	"char/0x1d7bb/textmode": "{\\mathsfbfit{\\varsigma}}", // Unicode U+1D7BB
-	"char/0x1d7bc/textmode": "{\\mathsfbfit{\\sigma}}", // Unicode U+1D7BC
-	"char/0x1d7bd/textmode": "{\\mathsfbfit{\\tau}}", // Unicode U+1D7BD
-	"char/0x1d7be/textmode": "{\\mathsfbfit{\\upsilon}}", // Unicode U+1D7BE
-	"char/0x1d7bf/textmode": "{\\mathsfbfit{\\varphi}}", // Unicode U+1D7BF
-	"char/0x1d7c0/textmode": "{\\mathsfbfit{\\chi}}", // Unicode U+1D7C0
-	"char/0x1d7c1/textmode": "{\\mathsfbfit{\\psi}}", // Unicode U+1D7C1
-	"char/0x1d7c2/textmode": "{\\mathsfbfit{\\omega}}", // Unicode U+1D7C2
-	"char/0x1d7c4/textmode": "{\\mathsfbfit{\\epsilon}}", // Unicode U+1D7C4
-	"char/0x1d7c5/textmode": "{\\mathsfbfit{\\vartheta}}", // Unicode U+1D7C5
-	"char/0x1d7c7/textmode": "{\\mathsfbfit{\\phi}}", // Unicode U+1D7C7
-	"char/0x1d7c8/textmode": "{\\mathsfbfit{\\varrho}}", // Unicode U+1D7C8
-	"char/0x1d7c9/textmode": "{\\mathsfbfit{\\varpi}}", // Unicode U+1D7C9
-	"char/0x1d7ce/textmode": "{\\mathbf{0}}", // Unicode U+1D7CE
-	"char/0x1d7cf/textmode": "{\\mathbf{1}}", // Unicode U+1D7CF
-	"char/0x1d7d0/textmode": "{\\mathbf{2}}", // Unicode U+1D7D0
-	"char/0x1d7d1/textmode": "{\\mathbf{3}}", // Unicode U+1D7D1
-	"char/0x1d7d2/textmode": "{\\mathbf{4}}", // Unicode U+1D7D2
-	"char/0x1d7d3/textmode": "{\\mathbf{5}}", // Unicode U+1D7D3
-	"char/0x1d7d4/textmode": "{\\mathbf{6}}", // Unicode U+1D7D4
-	"char/0x1d7d5/textmode": "{\\mathbf{7}}", // Unicode U+1D7D5
-	"char/0x1d7d6/textmode": "{\\mathbf{8}}", // Unicode U+1D7D6
-	"char/0x1d7d7/textmode": "{\\mathbf{9}}", // Unicode U+1D7D7
-	"char/0x1d7d8/textmode": "{\\mathbb{0}}", // Unicode U+1D7D8
-	"char/0x1d7d9/textmode": "{\\mathbb{1}}", // Unicode U+1D7D9
-	"char/0x1d7da/textmode": "{\\mathbb{2}}", // Unicode U+1D7DA
-	"char/0x1d7db/textmode": "{\\mathbb{3}}", // Unicode U+1D7DB
-	"char/0x1d7dc/textmode": "{\\mathbb{4}}", // Unicode U+1D7DC
-	"char/0x1d7dd/textmode": "{\\mathbb{5}}", // Unicode U+1D7DD
-	"char/0x1d7de/textmode": "{\\mathbb{6}}", // Unicode U+1D7DE
-	"char/0x1d7df/textmode": "{\\mathbb{7}}", // Unicode U+1D7DF
-	"char/0x1d7e0/textmode": "{\\mathbb{8}}", // Unicode U+1D7E0
-	"char/0x1d7e1/textmode": "{\\mathbb{9}}", // Unicode U+1D7E1
-	"char/0x1d7e2/textmode": "{\\mathsf{0}}", // Unicode U+1D7E2
-	"char/0x1d7e3/textmode": "{\\mathsf{1}}", // Unicode U+1D7E3
-	"char/0x1d7e4/textmode": "{\\mathsf{2}}", // Unicode U+1D7E4
-	"char/0x1d7e5/textmode": "{\\mathsf{3}}", // Unicode U+1D7E5
-	"char/0x1d7e6/textmode": "{\\mathsf{4}}", // Unicode U+1D7E6
-	"char/0x1d7e7/textmode": "{\\mathsf{5}}", // Unicode U+1D7E7
-	"char/0x1d7e8/textmode": "{\\mathsf{6}}", // Unicode U+1D7E8
-	"char/0x1d7e9/textmode": "{\\mathsf{7}}", // Unicode U+1D7E9
-	"char/0x1d7ea/textmode": "{\\mathsf{8}}", // Unicode U+1D7EA
-	"char/0x1d7eb/textmode": "{\\mathsf{9}}", // Unicode U+1D7EB
-	"char/0x1d7ec/textmode": "{\\mathsfbf{0}}", // Unicode U+1D7EC
-	"char/0x1d7ed/textmode": "{\\mathsfbf{1}}", // Unicode U+1D7ED
-	"char/0x1d7ee/textmode": "{\\mathsfbf{2}}", // Unicode U+1D7EE
-	"char/0x1d7ef/textmode": "{\\mathsfbf{3}}", // Unicode U+1D7EF
-	"char/0x1d7f0/textmode": "{\\mathsfbf{4}}", // Unicode U+1D7F0
-	"char/0x1d7f1/textmode": "{\\mathsfbf{5}}", // Unicode U+1D7F1
-	"char/0x1d7f2/textmode": "{\\mathsfbf{6}}", // Unicode U+1D7F2
-	"char/0x1d7f3/textmode": "{\\mathsfbf{7}}", // Unicode U+1D7F3
-	"char/0x1d7f4/textmode": "{\\mathsfbf{8}}", // Unicode U+1D7F4
-	"char/0x1d7f5/textmode": "{\\mathsfbf{9}}", // Unicode U+1D7F5
-	"char/0x1d7f6/textmode": "{\\mathtt{0}}", // Unicode U+1D7F6
-	"char/0x1d7f7/textmode": "{\\mathtt{1}}", // Unicode U+1D7F7
-	"char/0x1d7f8/textmode": "{\\mathtt{2}}", // Unicode U+1D7F8
-	"char/0x1d7f9/textmode": "{\\mathtt{3}}", // Unicode U+1D7F9
-	"char/0x1d7fa/textmode": "{\\mathtt{4}}", // Unicode U+1D7FA
-	"char/0x1d7fb/textmode": "{\\mathtt{5}}", // Unicode U+1D7FB
-	"char/0x1d7fc/textmode": "{\\mathtt{6}}", // Unicode U+1D7FC
-	"char/0x1d7fd/textmode": "{\\mathtt{7}}", // Unicode U+1D7FD
-	"char/0x1d7fe/textmode": "{\\mathtt{8}}", // Unicode U+1D7FE
-	"char/0x1d7ff/textmode": "{\\mathtt{9}}", // Unicode U+1D7FF
-	"char/0x1f514/textmode": "{\\bell}", // Unicode U+1F514
-	"char/0x1f868/textmode": "{\\leftarrow}", // Unicode U+1F868
-	"char/0x1f869/textmode": "{\\uparrow}", // Unicode U+1F869
-	"char/0x1f86a/textmode": "{\\rightarrow}", // Unicode U+1F86A
-	"char/0x1f86b/textmode": "{\\downarrow}", // Unicode U+1F86B
-	"char/0xe901/mathmode": "\\mathbin{\u2a72\\vphantom{A}}", // MTCode 0xE901 -> U+2A72
-	"char/0xe902/mathmode": "\\mathbin{\u2a71\\vphantom{A}}", // MTCode 0xE902 -> U+2A71
-	"char/0xe903/mathmode": "\\mathbin{\u2a26\\vphantom{A}}", // MTCode 0xE903 -> U+2A26
-	"char/0xe904/mathmode": "\\tilde{+}", // MTCode 0xE904 -> U+2A24
-	"char/0xe90a/mathmode": "\\mathrel{\\bar{\\not\\in}}", // MTCode 0xE90A -> U+22FE
-	"char/0xe90b/textmode": "{\\supseteq}", // MTCode 0xE90B -> U+2287
-	"char/0xe90c/textmode": "{\\subseteq}", // MTCode 0xE90C -> U+2286
-	"char/0xe912/mathmode": "\\mathrel{\\bar{\\in}}", // MTCode 0xE912 -> U+22F7
-	"char/0xe913/mathmode": "\\mathrel{\u2a9a\\vphantom{A}}", // MTCode 0xE913 -> U+2A9A
-	"char/0xe914/mathmode": "\\mathrel{\u2ac8\\vphantom{A}}", // MTCode 0xE914 -> U+2AC8
-	"char/0xe915/mathmode": "\\mathrel{\\stackrel{\\subset}{\\sim}}", // MTCode 0xE915 -> U+2AC7
-	"char/0xe916/mathmode": "\\mathbin{\u2abe\\vphantom{A}}", // MTCode 0xE916 -> U+2ABE
-	"char/0xe917/mathmode": "\\mathbin{\u2abd\\vphantom{A}}", // MTCode 0xE917 -> U+2ABD
-	"char/0xe918/mathmode": "\\mathrel{\u2a66\\vphantom{A}}", // MTCode 0xE918 -> U+2A66
-	"char/0xe922/textmode": "{\\lesseqgtr}", // MTCode 0xE922 -> U+22DA
-	"char/0xe924/mathmode": "\\mathrel{\u2a6a\\vphantom{A}}", // MTCode 0xE924 -> U+2A6A
-	"char/0xe926/textmode": "{\\lesseqqgtr}", // MTCode 0xE926 -> U+2A8B
-	"char/0xe927/textmode": "{\\gtreqqless}", // MTCode 0xE927 -> U+2A8C
-	"char/0xe928/textmode": "{\\lesssim}", // MTCode 0xE928 -> U+2272
-	"char/0xe929/textmode": "{\\gtrsim}", // MTCode 0xE929 -> U+2273
-	"char/0xe92d/textmode": "{\\gtreqless}", // MTCode 0xE92D -> U+22DB
-	"char/0xe92e/textmode": "{\\textbar}", // MTCode 0xE92E -> U+007C
-	"char/0xe930/textmode": "{\\biginterleave}", // MTCode 0xE930 -> U+2AFC
-	"char/0xe932/textmode": "{\\lesssim}", // MTCode 0xE932 -> U+2272
-	"char/0xe933/textmode": "{\\gtrsim}", // MTCode 0xE933 -> U+2273
-	"char/0xe936/textmode": "{\\NestedLessLess}", // MTCode 0xE936 -> U+2AA1
-	"char/0xe937/textmode": "{\\NestedGreaterGreater}", // MTCode 0xE937 -> U+2AA2
-	"char/0xe93a/textmode": "{\\precapprox}", // MTCode 0xE93A -> U+2AB7
-	"char/0xe93b/textmode": "{\\succapprox}", // MTCode 0xE93B -> U+2AB8
-	"char/0xe940/textmode": "{\\preceqq}", // MTCode 0xE940 -> U+2AB3
-	"char/0xe941/textmode": "{\\succeqq}", // MTCode 0xE941 -> U+2AB4
-	"char/0xe948/mathmode": "\\mathrel{\u2ae4\\vphantom{A}}", // MTCode 0xE948 -> U+2AE4
-	"char/0xe949/mathmode": "\\mathrel{\u223e\\vphantom{A}}", // MTCode 0xE949 -> U+223E
-	"char/0xe94a/textmode": "{\\dashv}", // MTCode 0xE94A -> U+22A3
-	"char/0xe94b/textmode": "{\\Equal}", // MTCode 0xE94B -> U+2A75
-	"char/0xe94c/textmode": "{\\Same}", // MTCode 0xE94C -> U+2A76
-	"char/0xe94e/textmode": "{\\equiv}", // MTCode 0xE94E -> U+2261
-	"char/0xe950/textmode": "{\\LeftTriangleBar}", // MTCode 0xE950 -> U+29CF
-	"char/0xe951/textmode": "{\\RightTriangleBar}", // MTCode 0xE951 -> U+29D0
-	"char/0xe954/textmode": "{\\supset}", // MTCode 0xE954 -> U+2283
-	"char/0xe955/textmode": "{\\smile}", // MTCode 0xE955 -> U+2323
-	"char/0xe956/textmode": "{\\frown}", // MTCode 0xE956 -> U+2322
-	"char/0xe959/mathmode": "\\mathrel{\u2a90\\vphantom{A}}", // MTCode 0xE959 -> U+2A90
-	"char/0xe95a/mathmode": "\\mathrel{\u2a8f\\vphantom{A}}", // MTCode 0xE95A -> U+2A8F
-	"char/0xe95c/mathmode": "\\mathrel{\u2a53\\vphantom{A}}", // MTCode 0xE95C -> U+2A53
-	"char/0xe95d/mathmode": "\\mathrel{\u2a54\\vphantom{A}}", // MTCode 0xE95D -> U+2A54
-	"char/0xe962/mathmode": "\\mathrel{\\not \u2a70}", // MTCode 0xE962 -> U+2A70
-	"char/0xe966/mathmode": "\\mathrel{\u2a78\\vphantom{A}}", // MTCode 0xE966 -> U+2A78
-	"char/0xe96d/textmode": "{\\bumpeq}", // MTCode 0xE96D -> U+224F
-	"char/0xe96e/mathmode": "\\mathrel{\u2aa4\\vphantom{A}}", // MTCode 0xE96E -> U+2AA4
-	"char/0xe970/mathmode": "\\mathrel{\u2ad6\\vphantom{A}}", // MTCode 0xE970 -> U+2AD6
-	"char/0xe971/mathmode": "\\mathrel{\u2ad5\\vphantom{A}}", // MTCode 0xE971 -> U+2AD5
-	"char/0xe972/mathmode": "\\mathrel{\u2ad4\\vphantom{A}}", // MTCode 0xE972 -> U+2AD4
-	"char/0xe973/mathmode": "\\mathrel{\u2ad3\\vphantom{A}}", // MTCode 0xE973 -> U+2AD3
-	"char/0xe979/textmode": "{\\interleave}", // MTCode 0xE979 -> U+2AF4
-	"char/0xe97b/mathmode": "\\mathrel{\u2ae8\\vphantom{A}}", // MTCode 0xE97B -> U+2AE8
-	"char/0xe97e/mathmode": "\\mathrel{\u2ae9\\vphantom{A}}", // MTCode 0xE97E -> U+2AE9
-	"char/0xe97f/mathmode": "\\mathrel{\u2ae4\\vphantom{A}}", // MTCode 0xE97F -> U+2AE4
-	"char/0xe981/textmode": "{\\sslash}", // MTCode 0xE981 -> U+2AFD
-	"char/0xe982/mathmode": "{\u299c\\vphantom{A}}", // MTCode 0xE982 -> U+299C
-	"char/0xe984/mathmode": "\\mathbin{\u29b6\\vphantom{A}}", // MTCode 0xE984 -> U+29B6
-	"char/0xe985/mathmode": "\\mathbin{\u2a38\\vphantom{A}}", // MTCode 0xE985 -> U+2A38
-	"char/0xe98e/mathmode": "\\mathrel{\u297e\\vphantom{A}}", // MTCode 0xE98E -> U+297E
-	"char/0xe98f/textmode": "{\\spot}", // MTCode 0xE98F -> U+2981
-	"char/0xe992/mathmode": "\\mathbin{\u2a33\\vphantom{A}}", // MTCode 0xE992 -> U+2A33
-	"char/0xe994/mathmode": "\\mathrel{\u29e5\\vphantom{A}}", // MTCode 0xE994 -> U+29E5
-	"char/0xe996/mathmode": "\\mathrel{\u2af0\\vphantom{A}}", // MTCode 0xE996 -> U+2AF0
-	"char/0xe998/textmode": "{\\leftmoon}", // MTCode 0xE998 -> U+263E
-	"char/0xe999/textmode": "{\\smiley}", // MTCode 0xE999 -> U+263A
-	"char/0xe9a6/mathmode": "\\tilde{+}", // MTCode 0xE9A6 -> U+2A24
-	"char/0xe9a7/mathmode": "\\mathbin{\u2a26\\vphantom{A}}", // MTCode 0xE9A7 -> U+2A26
-	"char/0xeb01/textmode": "\\hspace{0pt}", // MTCode 0xEB01 -> U+200B
-	"char/0xeb02/textmode": "\\,", // MTCode 0xEB02 -> U+2009
-	"char/0xeb03/textmode": "\\,", // MTCode 0xEB03 -> U+2005
-	"char/0xeb04/textmode": "\\,", // MTCode 0xEB04 -> U+2004
-	"char/0xeb05/textmode": "{\\quad}", // MTCode 0xEB05 -> U+2003
-	"char/0xeb06/textmode": "{\\quad}", // MTCode 0xEB06 -> U+2003
-	"char/0xeb07/textmode": "\\,", // MTCode 0xEB07 -> U+2009
-	"char/0xeb08/textmode": "{\\enspace}", // MTCode 0xEB08 -> U+2002
-	"char/0xed01/textmode": "{\\Game}", // MTCode 0xED01 -> U+2141
-	"char/0xed02/textmode": "{\\jmath}", // MTCode 0xED02 -> U+1D6A5
-	"char/0xed03/textmode": "\\boldsymbol{\\digamma}", // MTCode 0xED03 -> U+03DD
-	"char/0xed04/textmode": "{\\DifferentialD}", // MTCode 0xED04 -> U+2146
-	"char/0xed05/textmode": "{\\ExponetialE}", // MTCode 0xED05 -> U+2147
-	"char/0xed06/textmode": "{\\ComplexI}", // MTCode 0xED06 -> U+2148
-	"char/0xed07/textmode": "{\\ComplexJ}", // MTCode 0xED07 -> U+2149
-	"char/0xed08/textmode": "{\\CapitalDifferentialD}", // MTCode 0xED08 -> U+2145
-	"char/0xef01/textmode": "\\hspace{0pt}", // MTCode 0xEF01 -> U+200B
-	"char/0xef02/textmode": "\\,", // MTCode 0xEF02 -> U+2009
-	"char/0xef03/textmode": "\\,", // MTCode 0xEF03 -> U+2005
-	"char/0xef04/textmode": "\\,", // MTCode 0xEF04 -> U+2004
-	"char/0xef05/textmode": "{\\quad}", // MTCode 0xEF05 -> U+2003
-	"char/0xef06/textmode": "{\\quad}", // MTCode 0xEF06 -> U+2003
-	"char/0xef07/textmode": "\\,", // MTCode 0xEF07 -> U+2009
-	"char/0xef08/textmode": "{\\enspace}", // MTCode 0xEF08 -> U+2002
-	"char/0xef80/textmode": "{\\varointclockwise}", // MTCode 0xEF80 -> U+2232
-	"char/0xef81/textmode": "{\\sqint}", // MTCode 0xEF81 -> U+2A16
-	"char/0xef82/textmode": "{\\fint}", // MTCode 0xEF82 -> U+2A0F
-	"char/0x0022/textmode": "{\\forall}", // Symbol 0x0022 -> U+2200
-	"char/0x0024/textmode": "{\\exists}", // Symbol 0x0024 -> U+2203
-	"char/0x0027/textmode": "{\\ni}", // Symbol 0x0027 -> U+220D
-	"char/0x002a/textmode": "{\\ast}", // Symbol 0x002A -> U+2217
-	"char/0x002d/textmode": "{-}", // Symbol 0x002D -> U+2212
-	"char/0x0040/textmode": "{\\cong}", // Symbol 0x0040 -> U+2245
-	"char/0x0041/textmode": "A", // Symbol 0x0041 -> U+0391
-	"char/0x0042/textmode": "B", // Symbol 0x0042 -> U+0392
-	"char/0x0043/textmode": "\u03a7", // Symbol 0x0043 -> U+03A7
-	"char/0x0044/textmode": "{\\Delta}", // Symbol 0x0044 -> U+0394
-	"char/0x0045/textmode": "E", // Symbol 0x0045 -> U+0395
-	"char/0x0046/textmode": "{\\Phi}", // Symbol 0x0046 -> U+03A6
-	"char/0x0047/textmode": "{\\Gamma}", // Symbol 0x0047 -> U+0393
-	"char/0x0048/textmode": "H", // Symbol 0x0048 -> U+0397
-	"char/0x0049/textmode": "I", // Symbol 0x0049 -> U+0399
-	"char/0x004a/textmode": "{\\vartheta}", // Symbol 0x004A -> U+03D1
-	"char/0x004b/textmode": "K", // Symbol 0x004B -> U+039A
-	"char/0x004c/textmode": "{\\Lambda}", // Symbol 0x004C -> U+039B
-	"char/0x004d/textmode": "M", // Symbol 0x004D -> U+039C
-	"char/0x004e/textmode": "N", // Symbol 0x004E -> U+039D
-	"char/0x004f/textmode": "O", // Symbol 0x004F -> U+039F
-	"char/0x0050/textmode": "{\\Pi}", // Symbol 0x0050 -> U+03A0
-	"char/0x0051/textmode": "{\\Theta}", // Symbol 0x0051 -> U+0398
-	"char/0x0052/textmode": "P", // Symbol 0x0052 -> U+03A1
-	"char/0x0053/textmode": "{\\Sigma}", // Symbol 0x0053 -> U+03A3
-	"char/0x0054/textmode": "T", // Symbol 0x0054 -> U+03A4
-	"char/0x0055/textmode": "{\\Upsilon}", // Symbol 0x0055 -> U+03A5
-	"char/0x0056/textmode": "{\\varsigma}", // Symbol 0x0056 -> U+03C2
-	"char/0x0057/textmode": "{\\Omega}", // Symbol 0x0057 -> U+03A9
-	"char/0x0058/textmode": "{\\Xi}", // Symbol 0x0058 -> U+039E
-	"char/0x0059/textmode": "{\\Psi}", // Symbol 0x0059 -> U+03A8
-	"char/0x005a/textmode": "\u0396", // Symbol 0x005A -> U+0396
-	"char/0x005c/textmode": "{\\therefore}", // Symbol 0x005C -> U+2234
-	"char/0x0061/textmode": "{\\alpha}", // Symbol 0x0061 -> U+03B1
-	"char/0x0062/textmode": "{\\beta}", // Symbol 0x0062 -> U+03B2
-	"char/0x0063/textmode": "{\\chi}", // Symbol 0x0063 -> U+03C7
-	"char/0x0064/textmode": "{\\delta}", // Symbol 0x0064 -> U+03B4
-	"char/0x0065/textmode": "{\\varepsilon}", // Symbol 0x0065 -> U+03B5
-	"char/0x0066/textmode": "{\\phi}", // Symbol 0x0066 -> U+03D5
-	"char/0x0067/textmode": "{\\gamma}", // Symbol 0x0067 -> U+03B3
-	"char/0x0068/textmode": "{\\eta}", // Symbol 0x0068 -> U+03B7
-	"char/0x0069/textmode": "{\\iota}", // Symbol 0x0069 -> U+03B9
-	"char/0x006a/textmode": "{\\varphi}", // Symbol 0x006A -> U+03C6
-	"char/0x006b/textmode": "{\\kappa}", // Symbol 0x006B -> U+03BA
-	"char/0x006c/textmode": "{\\lambda}", // Symbol 0x006C -> U+03BB
-	"char/0x006d/textmode": "{\\mu}", // Symbol 0x006D -> U+03BC
-	"char/0x006e/textmode": "{\\nu}", // Symbol 0x006E -> U+03BD
-	"char/0x006f/textmode": "o", // Symbol 0x006F -> U+03BF
-	"char/0x0070/textmode": "{\\pi}", // Symbol 0x0070 -> U+03C0
-	"char/0x0071/textmode": "{\\theta}", // Symbol 0x0071 -> U+03B8
-	"char/0x0072/textmode": "{\\rho}", // Symbol 0x0072 -> U+03C1
-	"char/0x0073/textmode": "{\\sigma}", // Symbol 0x0073 -> U+03C3
-	"char/0x0074/textmode": "{\\tau}", // Symbol 0x0074 -> U+03C4
-	"char/0x0075/textmode": "{\\upsilon}", // Symbol 0x0075 -> U+03C5
-	"char/0x0076/textmode": "{\\varpi}", // Symbol 0x0076 -> U+03D6
-	"char/0x0077/textmode": "{\\omega}", // Symbol 0x0077 -> U+03C9
-	"char/0x0078/textmode": "{\\xi}", // Symbol 0x0078 -> U+03BE
-	"char/0x0079/textmode": "{\\psi}", // Symbol 0x0079 -> U+03C8
-	"char/0x007a/textmode": "{\\zeta}", // Symbol 0x007A -> U+03B6
-	"char/0x0080/textmode": "{\\Square}", // Symbol 0x0080 -> U+2610
-	"char/0x00a1/mathmode": "\\Upsilon", // Symbol 0x00A1 -> U+03D2
-	"char/0x00a6/textmode": "{\\mathit{f}}", // Symbol 0x00A6 -> U+0192
-	"char/0x00a8/textmode": "{\\blacklozenge}", // Symbol 0x00A8 -> U+2666
-	"char/0x00aa/textmode": "{\\spadesuit}", // Symbol 0x00AA -> U+2660
-	"char/0x00af/textmode": "{\\downarrow}", // Symbol 0x00AF -> U+2193
-	"char/0x00b4/textmode": "{\\times}", // Symbol 0x00B4 -> U+00D7
-	"char/0x00b7/textmode": "{\\textbullet}", // Symbol 0x00B7 -> U+2022
-	"char/0x00b8/textmode": "{\\div}", // Symbol 0x00B8 -> U+00F7
-	"char/0x00bc/textmode": "{\\ldots}", // Symbol 0x00BC -> U+2026
-	"char/0x00c0/textmode": "{\\aleph}", // Symbol 0x00C0 -> U+2135
-	"char/0x00c1/textmode": "{\\Im}", // Symbol 0x00C1 -> U+2111
-	"char/0x00c2/textmode": "{\\Re}", // Symbol 0x00C2 -> U+211C
-	"char/0x00c3/textmode": "{\\wp}", // Symbol 0x00C3 -> U+2118
-	"char/0x00c7/textmode": "{\\cap}", // Symbol 0x00C7 -> U+2229
-	"char/0x00c8/textmode": "{\\cup}", // Symbol 0x00C8 -> U+222A
-	"char/0x00c9/textmode": "{\\supset}", // Symbol 0x00C9 -> U+2283
-	"char/0x00ca/textmode": "{\\supseteq}", // Symbol 0x00CA -> U+2287
-	"char/0x00cb/textmode": "{\\nsubset}", // Symbol 0x00CB -> U+2284
-	"char/0x00cc/textmode": "{\\subset}", // Symbol 0x00CC -> U+2282
-	"char/0x00cd/textmode": "{\\subseteq}", // Symbol 0x00CD -> U+2286
-	"char/0x00ce/textmode": "{\\in}", // Symbol 0x00CE -> U+2208
-	"char/0x00cf/textmode": "{\\notin}", // Symbol 0x00CF -> U+2209
-	"char/0x00d0/textmode": "{\\angle}", // Symbol 0x00D0 -> U+2220
-	"char/0x00d1/textmode": "{\\nabla}", // Symbol 0x00D1 -> U+2207
-	"char/0x00d2/textmode": "{\\textregistered}", // Symbol 0x00D2 -> U+00AE
-	"char/0x00d3/textmode": "{\\textcopyright}", // Symbol 0x00D3 -> U+00A9
-	"char/0x00d4/textmode": "{\\texttrademark}", // Symbol 0x00D4 -> U+2122
-	"char/0x00d5/textmode": "{\\prod}", // Symbol 0x00D5 -> U+220F
-	"char/0x00d9/textmode": "{\\wedge}", // Symbol 0x00D9 -> U+2227
-	"char/0x00da/textmode": "{\\vee}", // Symbol 0x00DA -> U+2228
-	"char/0x00db/textmode": "{\\Leftrightarrow}", // Symbol 0x00DB -> U+21D4
-	"char/0x00dd/textmode": "{\\Uparrow}", // Symbol 0x00DD -> U+21D1
-	"char/0x00de/textmode": "{\\Rightarrow}", // Symbol 0x00DE -> U+21D2
-	"char/0x00e0/textmode": "{\\diamond}", // Symbol 0x00E0 -> U+22C4
-	"char/0x00e1/textmode": "{\\langle}", // Symbol 0x00E1 -> U+2329
-	"char/0x00e2/textmode": "{\\textregistered}", // Symbol 0x00E2 -> U+00AE
-	"char/0x00e3/textmode": "{\\textcopyright}", // Symbol 0x00E3 -> U+00A9
-	"char/0x00f1/textmode": "{\\rangle}", // Symbol 0x00F1 -> U+232A
-	"char/0x00f2/textmode": "{\\int}", // Symbol 0x00F2 -> U+222B
-	"char/0x00f3/textmode": "{\\inttop}", // Symbol 0x00F3 -> U+2320
-	"char/0x00f5/textmode": "{\\intbottom}", // Symbol 0x00F5 -> U+2321
-	"char/0x00ff/textmode": "{\\Square}", // Symbol 0x00FF -> U+2610
-	"char/0xf021/textmode": "!", // Symbol 0xF021 -> U+0021
-	"char/0xf022/textmode": "{\\forall}", // Symbol 0xF022 -> U+2200
-	"char/0xf023/mathmode": "\\#", // Symbol 0xF023 -> U+0023
-	"char/0xf024/textmode": "{\\exists}", // Symbol 0xF024 -> U+2203
-	"char/0xf025/mathmode": "\\%", // Symbol 0xF025 -> U+0025
-	"char/0xf026/mathmode": "\\&", // Symbol 0xF026 -> U+0026
-	"char/0xf027/textmode": "{\\ni}", // Symbol 0xF027 -> U+220D
-	"char/0xf028/mathmode": "(", // Symbol 0xF028 -> U+0028
-	"char/0xf029/mathmode": ")", // Symbol 0xF029 -> U+0029
-	"char/0xf02a/textmode": "{\\ast}", // Symbol 0xF02A -> U+2217
-	"char/0xf02b/mathmode": "+", // Symbol 0xF02B -> U+002B
-	"char/0xf02c/mathmode": "\\text{,}", // Symbol 0xF02C -> U+002C
-	"char/0xf02d/textmode": "{-}", // Symbol 0xF02D -> U+2212
-	"char/0xf02e/mathmode": "\\text{.}", // Symbol 0xF02E -> U+002E
-	"char/0xf02f/mathmode": "/", // Symbol 0xF02F -> U+002F
-	"char/0xf03a/textmode": "\\colon", // Symbol 0xF03A -> U+003A
-	"char/0xf03b/mathmode": "\\text{;}", // Symbol 0xF03B -> U+003B
-	"char/0xf03c/textmode": "{\\textless}", // Symbol 0xF03C -> U+003C
-	"char/0xf03d/mathmode": "=", // Symbol 0xF03D -> U+003D
-	"char/0xf03e/textmode": "{\\textgreater}", // Symbol 0xF03E -> U+003E
-	"char/0xf03f/mathmode": "\\text{?}", // Symbol 0xF03F -> U+003F
-	"char/0xf040/textmode": "{\\cong}", // Symbol 0xF040 -> U+2245
-	"char/0xf041/textmode": "A", // Symbol 0xF041 -> U+0391
-	"char/0xf042/textmode": "B", // Symbol 0xF042 -> U+0392
-	"char/0xf043/textmode": "\u03a7", // Symbol 0xF043 -> U+03A7
-	"char/0xf044/textmode": "{\\Delta}", // Symbol 0xF044 -> U+0394
-	"char/0xf045/textmode": "E", // Symbol 0xF045 -> U+0395
-	"char/0xf046/textmode": "{\\Phi}", // Symbol 0xF046 -> U+03A6
-	"char/0xf047/textmode": "{\\Gamma}", // Symbol 0xF047 -> U+0393
-	"char/0xf048/textmode": "H", // Symbol 0xF048 -> U+0397
-	"char/0xf049/textmode": "I", // Symbol 0xF049 -> U+0399
-	"char/0xf04a/textmode": "{\\vartheta}", // Symbol 0xF04A -> U+03D1
-	"char/0xf04b/textmode": "K", // Symbol 0xF04B -> U+039A
-	"char/0xf04c/textmode": "{\\Lambda}", // Symbol 0xF04C -> U+039B
-	"char/0xf04d/textmode": "M", // Symbol 0xF04D -> U+039C
-	"char/0xf04e/textmode": "N", // Symbol 0xF04E -> U+039D
-	"char/0xf04f/textmode": "O", // Symbol 0xF04F -> U+039F
-	"char/0xf050/textmode": "{\\Pi}", // Symbol 0xF050 -> U+03A0
-	"char/0xf051/textmode": "{\\Theta}", // Symbol 0xF051 -> U+0398
-	"char/0xf052/textmode": "P", // Symbol 0xF052 -> U+03A1
-	"char/0xf053/textmode": "{\\Sigma}", // Symbol 0xF053 -> U+03A3
-	"char/0xf054/textmode": "T", // Symbol 0xF054 -> U+03A4
-	"char/0xf055/textmode": "{\\Upsilon}", // Symbol 0xF055 -> U+03A5
-	"char/0xf056/textmode": "{\\varsigma}", // Symbol 0xF056 -> U+03C2
-	"char/0xf057/textmode": "{\\Omega}", // Symbol 0xF057 -> U+03A9
-	"char/0xf058/textmode": "{\\Xi}", // Symbol 0xF058 -> U+039E
-	"char/0xf059/textmode": "{\\Psi}", // Symbol 0xF059 -> U+03A8
-	"char/0xf05a/textmode": "\u0396", // Symbol 0xF05A -> U+0396
-	"char/0xf05b/mathmode": "[", // Symbol 0xF05B -> U+005B
-	"char/0xf05c/textmode": "{\\therefore}", // Symbol 0xF05C -> U+2234
-	"char/0xf05d/mathmode": "]", // Symbol 0xF05D -> U+005D
-	"char/0xf05e/textmode": "{\\bot}", // Symbol 0xF05E -> U+22A5
-	"char/0xf05f/mathmode": "\\_", // Symbol 0xF05F -> U+005F
-	"char/0xf061/textmode": "{\\alpha}", // Symbol 0xF061 -> U+03B1
-	"char/0xf062/textmode": "{\\beta}", // Symbol 0xF062 -> U+03B2
-	"char/0xf063/textmode": "{\\chi}", // Symbol 0xF063 -> U+03C7
-	"char/0xf064/textmode": "{\\delta}", // Symbol 0xF064 -> U+03B4
-	"char/0xf065/textmode": "{\\varepsilon}", // Symbol 0xF065 -> U+03B5
-	"char/0xf066/textmode": "{\\phi}", // Symbol 0xF066 -> U+03D5
-	"char/0xf067/textmode": "{\\gamma}", // Symbol 0xF067 -> U+03B3
-	"char/0xf068/textmode": "{\\eta}", // Symbol 0xF068 -> U+03B7
-	"char/0xf069/textmode": "{\\iota}", // Symbol 0xF069 -> U+03B9
-	"char/0xf06a/textmode": "{\\varphi}", // Symbol 0xF06A -> U+03C6
-	"char/0xf06b/textmode": "{\\kappa}", // Symbol 0xF06B -> U+03BA
-	"char/0xf06c/textmode": "{\\lambda}", // Symbol 0xF06C -> U+03BB
-	"char/0xf06d/textmode": "{\\mu}", // Symbol 0xF06D -> U+03BC
-	"char/0xf06e/textmode": "{\\nu}", // Symbol 0xF06E -> U+03BD
-	"char/0xf06f/textmode": "o", // Symbol 0xF06F -> U+03BF
-	"char/0xf070/textmode": "{\\pi}", // Symbol 0xF070 -> U+03C0
-	"char/0xf071/textmode": "{\\theta}", // Symbol 0xF071 -> U+03B8
-	"char/0xf072/textmode": "{\\rho}", // Symbol 0xF072 -> U+03C1
-	"char/0xf073/textmode": "{\\sigma}", // Symbol 0xF073 -> U+03C3
-	"char/0xf074/textmode": "{\\tau}", // Symbol 0xF074 -> U+03C4
-	"char/0xf075/textmode": "{\\upsilon}", // Symbol 0xF075 -> U+03C5
-	"char/0xf076/textmode": "{\\varpi}", // Symbol 0xF076 -> U+03D6
-	"char/0xf077/textmode": "{\\omega}", // Symbol 0xF077 -> U+03C9
-	"char/0xf078/textmode": "{\\xi}", // Symbol 0xF078 -> U+03BE
-	"char/0xf079/textmode": "{\\psi}", // Symbol 0xF079 -> U+03C8
-	"char/0xf07a/textmode": "{\\zeta}", // Symbol 0xF07A -> U+03B6
-	"char/0xf07c/textmode": "{\\textbar}", // Symbol 0xF07C -> U+007C
-	"char/0xf07e/textmode": "{\\sim}", // Symbol 0xF07E -> U+223C
-	"char/0xf080/textmode": "{\\Square}", // Symbol 0xF080 -> U+2610
-	"char/0xf0a0/textmode": "{\\square}", // Symbol 0xF0A0 -> U+25A1
-	"char/0xf0a1/mathmode": "\\Upsilon", // Symbol 0xF0A1 -> U+03D2
-	"char/0xf0a2/textmode": "^{\\prime}", // Symbol 0xF0A2 -> U+2032
-	"char/0xf0a3/textmode": "{\\leq}", // Symbol 0xF0A3 -> U+2264
-	"char/0xf0a5/textmode": "{\\infty}", // Symbol 0xF0A5 -> U+221E
-	"char/0xf0a6/textmode": "{\\mathit{f}}", // Symbol 0xF0A6 -> U+0192
-	"char/0xf0a7/textmode": "{\\clubsuit}", // Symbol 0xF0A7 -> U+2663
-	"char/0xf0a8/textmode": "{\\blacklozenge}", // Symbol 0xF0A8 -> U+2666
-	"char/0xf0a9/textmode": "{\\varheartsuit}", // Symbol 0xF0A9 -> U+2665
-	"char/0xf0aa/textmode": "{\\spadesuit}", // Symbol 0xF0AA -> U+2660
-	"char/0xf0ab/textmode": "{\\leftrightarrow}", // Symbol 0xF0AB -> U+2194
-	"char/0xf0ac/textmode": "{\\leftarrow}", // Symbol 0xF0AC -> U+2190
-	"char/0xf0ad/textmode": "{\\uparrow}", // Symbol 0xF0AD -> U+2191
-	"char/0xf0ae/textmode": "{\\rightarrow}", // Symbol 0xF0AE -> U+2192
-	"char/0xf0af/textmode": "{\\downarrow}", // Symbol 0xF0AF -> U+2193
-	"char/0xf0b0/textmode": "^{\\circ}", // Symbol 0xF0B0 -> U+00B0
-	"char/0xf0b1/textmode": "{\\pm}", // Symbol 0xF0B1 -> U+00B1
-	"char/0xf0b2/textmode": "^{\\prime\\prime}", // Symbol 0xF0B2 -> U+2033
-	"char/0xf0b3/textmode": "{\\geq}", // Symbol 0xF0B3 -> U+2265
-	"char/0xf0b4/textmode": "{\\times}", // Symbol 0xF0B4 -> U+00D7
-	"char/0xf0b5/textmode": "{\\propto}", // Symbol 0xF0B5 -> U+221D
-	"char/0xf0b6/textmode": "{\\partial}", // Symbol 0xF0B6 -> U+2202
-	"char/0xf0b7/textmode": "{\\textbullet}", // Symbol 0xF0B7 -> U+2022
-	"char/0xf0b8/textmode": "{\\div}", // Symbol 0xF0B8 -> U+00F7
-	"char/0xf0b9/textmode": "{\\neq}", // Symbol 0xF0B9 -> U+2260
-	"char/0xf0ba/textmode": "{\\equiv}", // Symbol 0xF0BA -> U+2261
-	"char/0xf0bb/textmode": "{\\approx}", // Symbol 0xF0BB -> U+2248
-	"char/0xf0bc/textmode": "{\\ldots}", // Symbol 0xF0BC -> U+2026
-	"char/0xf0bd/mathmode": "|", // Symbol 0xF0BD -> U+23D0
-	"char/0xf0c0/textmode": "{\\aleph}", // Symbol 0xF0C0 -> U+2135
-	"char/0xf0c1/textmode": "{\\Im}", // Symbol 0xF0C1 -> U+2111
-	"char/0xf0c2/textmode": "{\\Re}", // Symbol 0xF0C2 -> U+211C
-	"char/0xf0c3/textmode": "{\\wp}", // Symbol 0xF0C3 -> U+2118
-	"char/0xf0c4/textmode": "{\\otimes}", // Symbol 0xF0C4 -> U+2297
-	"char/0xf0c5/textmode": "{\\oplus}", // Symbol 0xF0C5 -> U+2295
-	"char/0xf0c6/textmode": "{\\varnothing}", // Symbol 0xF0C6 -> U+2205
-	"char/0xf0c7/textmode": "{\\cap}", // Symbol 0xF0C7 -> U+2229
-	"char/0xf0c8/textmode": "{\\cup}", // Symbol 0xF0C8 -> U+222A
-	"char/0xf0c9/textmode": "{\\supset}", // Symbol 0xF0C9 -> U+2283
-	"char/0xf0ca/textmode": "{\\supseteq}", // Symbol 0xF0CA -> U+2287
-	"char/0xf0cb/textmode": "{\\nsubset}", // Symbol 0xF0CB -> U+2284
-	"char/0xf0cc/textmode": "{\\subset}", // Symbol 0xF0CC -> U+2282
-	"char/0xf0cd/textmode": "{\\subseteq}", // Symbol 0xF0CD -> U+2286
-	"char/0xf0ce/textmode": "{\\in}", // Symbol 0xF0CE -> U+2208
-	"char/0xf0cf/textmode": "{\\notin}", // Symbol 0xF0CF -> U+2209
-	"char/0xf0d0/textmode": "{\\angle}", // Symbol 0xF0D0 -> U+2220
-	"char/0xf0d1/textmode": "{\\nabla}", // Symbol 0xF0D1 -> U+2207
-	"char/0xf0d2/textmode": "{\\textregistered}", // Symbol 0xF0D2 -> U+00AE
-	"char/0xf0d3/textmode": "{\\textcopyright}", // Symbol 0xF0D3 -> U+00A9
-	"char/0xf0d4/textmode": "{\\texttrademark}", // Symbol 0xF0D4 -> U+2122
-	"char/0xf0d5/textmode": "{\\prod}", // Symbol 0xF0D5 -> U+220F
-	"char/0xf0d6/textmode": "{\\sqrt{}}", // Symbol 0xF0D6 -> U+221A
-	"char/0xf0d7/textmode": "{\\cdot}", // Symbol 0xF0D7 -> U+22C5
-	"char/0xf0d8/textmode": "{\\neg}", // Symbol 0xF0D8 -> U+00AC
-	"char/0xf0d9/textmode": "{\\wedge}", // Symbol 0xF0D9 -> U+2227
-	"char/0xf0da/textmode": "{\\vee}", // Symbol 0xF0DA -> U+2228
-	"char/0xf0db/textmode": "{\\Leftrightarrow}", // Symbol 0xF0DB -> U+21D4
-	"char/0xf0dc/textmode": "{\\Leftarrow}", // Symbol 0xF0DC -> U+21D0
-	"char/0xf0dd/textmode": "{\\Uparrow}", // Symbol 0xF0DD -> U+21D1
-	"char/0xf0de/textmode": "{\\Rightarrow}", // Symbol 0xF0DE -> U+21D2
-	"char/0xf0df/textmode": "{\\Downarrow}", // Symbol 0xF0DF -> U+21D3
-	"char/0xf0e0/textmode": "{\\diamond}", // Symbol 0xF0E0 -> U+22C4
-	"char/0xf0e1/textmode": "{\\langle}", // Symbol 0xF0E1 -> U+2329
-	"char/0xf0e2/textmode": "{\\textregistered}", // Symbol 0xF0E2 -> U+00AE
-	"char/0xf0e3/textmode": "{\\textcopyright}", // Symbol 0xF0E3 -> U+00A9
-	"char/0xf0e4/textmode": "{\\texttrademark}", // Symbol 0xF0E4 -> U+2122
-	"char/0xf0e5/textmode": "{\\sum}", // Symbol 0xF0E5 -> U+2211
-	"char/0xf0f0/textmode": "{\\texteuro}", // Symbol 0xF0F0 -> U+20AC
-	"char/0xf0f1/textmode": "{\\rangle}", // Symbol 0xF0F1 -> U+232A
-	"char/0xf0f2/textmode": "{\\int}", // Symbol 0xF0F2 -> U+222B
-	"char/0xf0f3/textmode": "{\\inttop}", // Symbol 0xF0F3 -> U+2320
-	"char/0xf0f5/textmode": "{\\intbottom}", // Symbol 0xF0F5 -> U+2321
-	"char/0xf0ff/textmode": "{\\Square}", // Symbol 0xF0FF -> U+2610
+	"char/0x0021/textmode":  "!",                                                    // Unicode U+0021
+	"char/0x0022/mathmode":  "\\text{\"{}}",                                         // Unicode U+0022
+	"char/0x0023/mathmode":  "\\#",                                                  // Unicode U+0023
+	"char/0x0024/mathmode":  "\\$",                                                  // Unicode U+0024
+	"char/0x0025/mathmode":  "\\%",                                                  // Unicode U+0025
+	"char/0x0026/mathmode":  "\\&",                                                  // Unicode U+0026
+	"char/0x0027/mathmode":  "\\text{'\\vphantom{A}}",                               // Unicode U+0027
+	"char/0x0028/mathmode":  "(",                                                    // Unicode U+0028
+	"char/0x0029/mathmode":  ")",                                                    // Unicode U+0029
+	"char/0x002a/mathmode":  "\\ast",                                                // Unicode U+002A
+	"char/0x002b/mathmode":  "+",                                                    // Unicode U+002B
+	"char/0x002c/mathmode":  "\\text{,}",                                            // Unicode U+002C
+	"char/0x002e/mathmode":  "\\text{.}",                                            // Unicode U+002E
+	"char/0x002f/mathmode":  "/",                                                    // Unicode U+002F
+	"char/0x003a/textmode":  "\\colon",                                              // Unicode U+003A
+	"char/0x003b/mathmode":  "\\text{;}",                                            // Unicode U+003B
+	"char/0x003c/textmode":  "{\\textless}",                                         // Unicode U+003C
+	"char/0x003d/mathmode":  "=",                                                    // Unicode U+003D
+	"char/0x003e/textmode":  "{\\textgreater}",                                      // Unicode U+003E
+	"char/0x003f/mathmode":  "\\text{?}",                                            // Unicode U+003F
+	"char/0x0040/mathmode":  "\\text{@}",                                            // Unicode U+0040
+	"char/0x005b/mathmode":  "[",                                                    // Unicode U+005B
+	"char/0x005c/mathmode":  "\\backslash",                                          // Unicode U+005C
+	"char/0x005d/mathmode":  "]",                                                    // Unicode U+005D
+	"char/0x005e/textmode":  "\\textasciicircum{}",                                  // Unicode U+005E
+	"char/0x005f/mathmode":  "\\_",                                                  // Unicode U+005F
+	"char/0x0060/mathmode":  "\\grave{}",                                            // Unicode U+0060
+	"char/0x007c/textmode":  "{\\textbar}",                                          // Unicode U+007C
+	"char/0x007e/textmode":  "\\textasciitilde{}",                                   // Unicode U+007E
+	"char/0x00a0/textmode":  "~",                                                    // Unicode U+00A0
+	"char/0x00a1/textmode":  "{\\textexclamdown}",                                   // Unicode U+00A1
+	"char/0x00a2/textmode":  "{\\cent}",                                             // Unicode U+00A2
+	"char/0x00a3/textmode":  "{\\pounds}",                                           // Unicode U+00A3
+	"char/0x00a4/mathmode":  "{\u00a4\\vphantom{A}}",                                // Unicode U+00A4
+	"char/0x00a5/textmode":  "{\\yen}",                                              // Unicode U+00A5
+	"char/0x00a6/mathmode":  "{\u00a6\\vphantom{A}}",                                // Unicode U+00A6
+	"char/0x00a7/textmode":  "{\\S}",                                                // Unicode U+00A7
+	"char/0x00a8/mathmode":  "\\ddot{}",                                             // Unicode U+00A8
+	"char/0x00a9/textmode":  "{\\textcopyright}",                                    // Unicode U+00A9
+	"char/0x00aa/mathmode":  "{{}^{\\rm a}}",                                        // Unicode U+00AA
+	"char/0x00ab/textmode":  "\"<",                                                  // Unicode U+00AB
+	"char/0x00ac/textmode":  "{\\neg}",                                              // Unicode U+00AC
+	"char/0x00ad/textmode":  "\\-",                                                  // Unicode U+00AD
+	"char/0x00ae/textmode":  "{\\textregistered}",                                   // Unicode U+00AE
+	"char/0x00af/mathmode":  "\\bar",                                                // Unicode U+00AF
+	"char/0x00b0/textmode":  "^{\\circ}",                                            // Unicode U+00B0
+	"char/0x00b1/textmode":  "{\\pm}",                                               // Unicode U+00B1
+	"char/0x00b2/textmode":  "^{2}",                                                 // Unicode U+00B2
+	"char/0x00b3/textmode":  "^{3}",                                                 // Unicode U+00B3
+	"char/0x00b4/mathmode":  "\\acute{}",                                            // Unicode U+00B4
+	"char/0x00b5/textmode":  "{\\mathrm{\\mu}}",                                     // Unicode U+00B5
+	"char/0x00b6/textmode":  "\\P",                                                  // Unicode U+00B6
+	"char/0x00b7/mathmode":  "\\cdot",                                               // Unicode U+00B7
+	"char/0x00b9/textmode":  "^{1}",                                                 // Unicode U+00B9
+	"char/0x00ba/textmode":  "^{\\circ}",                                            // Unicode U+00BA
+	"char/0x00bb/textmode":  "\">",                                                  // Unicode U+00BB
+	"char/0x00bc/mathmode":  "{\u00bc\\vphantom{\\frac12}}",                         // Unicode U+00BC
+	"char/0x00bd/mathmode":  "{\u00bd\\vphantom{\\frac12}}",                         // Unicode U+00BD
+	"char/0x00be/mathmode":  "{\u00be\\vphantom{\\frac12}}",                         // Unicode U+00BE
+	"char/0x00bf/textmode":  "{\\textquestiondown}",                                 // Unicode U+00BF
+	"char/0x00c0/mathmode":  "\\grave{A}",                                           // Unicode U+00C0
+	"char/0x00c1/mathmode":  "\\acute{A}",                                           // Unicode U+00C1
+	"char/0x00c2/mathmode":  "\\hat{A}",                                             // Unicode U+00C2
+	"char/0x00c3/mathmode":  "\\tilde{A}",                                           // Unicode U+00C3
+	"char/0x00c4/textmode":  "\u00c4",                                               // Unicode U+00C4
+	"char/0x00c5/textmode":  "\\AA{}",                                               // Unicode U+00C5
+	"char/0x00c6/textmode":  "\\AE{}",                                               // Unicode U+00C6
+	"char/0x00c7/mathmode":  "{\u00c7\\vphantom{A}}",                                // Unicode U+00C7
+	"char/0x00c8/mathmode":  "\\grave{E}",                                           // Unicode U+00C8
+	"char/0x00c9/mathmode":  "\\acute{E}",                                           // Unicode U+00C9
+	"char/0x00ca/mathmode":  "\\hat{E}",                                             // Unicode U+00CA
+	"char/0x00cb/mathmode":  "\\ddot{E}",                                            // Unicode U+00CB
+	"char/0x00cc/mathmode":  "\\grave{I}",                                           // Unicode U+00CC
+	"char/0x00cd/mathmode":  "\\acute{I}",                                           // Unicode U+00CD
+	"char/0x00ce/mathmode":  "\\hat{I}",                                             // Unicode U+00CE
+	"char/0x00cf/mathmode":  "\\ddot{I}",                                            // Unicode U+00CF
+	"char/0x00d0/mathmode":  "{\u00d0\\vphantom{A}}",                                // Unicode U+00D0
+	"char/0x00d1/mathmode":  "\\tilde{N}",                                           // Unicode U+00D1
+	"char/0x00d2/mathmode":  "\\grave{O}",                                           // Unicode U+00D2
+	"char/0x00d3/mathmode":  "\\acute{O}",                                           // Unicode U+00D3
+	"char/0x00d4/mathmode":  "\\hat{O}",                                             // Unicode U+00D4
+	"char/0x00d5/mathmode":  "\\tilde{O}",                                           // Unicode U+00D5
+	"char/0x00d6/textmode":  "\u00d6",                                               // Unicode U+00D6
+	"char/0x00d7/textmode":  "\\times",                                              // Unicode U+00D7
+	"char/0x00d8/textmode":  "\\O{}",                                                // Unicode U+00D8
+	"char/0x00d9/mathmode":  "\\grave{U}",                                           // Unicode U+00D9
+	"char/0x00da/mathmode":  "\\acute{U}",                                           // Unicode U+00DA
+	"char/0x00db/mathmode":  "\\hat{U}",                                             // Unicode U+00DB
+	"char/0x00dc/textmode":  "\u00dc",                                               // Unicode U+00DC
+	"char/0x00dd/mathmode":  "\\acute{Y}",                                           // Unicode U+00DD
+	"char/0x00de/mathmode":  "{\u00de\\vphantom{A}}",                                // Unicode U+00DE
+	"char/0x00df/textmode":  "\"z",                                                  // Unicode U+00DF
+	"char/0x00e0/mathmode":  "\\grave{a}",                                           // Unicode U+00E0
+	"char/0x00e1/mathmode":  "\\acute{a}",                                           // Unicode U+00E1
+	"char/0x00e2/mathmode":  "\\hat{a}",                                             // Unicode U+00E2
+	"char/0x00e3/mathmode":  "\\tilde{a}",                                           // Unicode U+00E3
+	"char/0x00e4/textmode":  "\u00e4",                                               // Unicode U+00E4
+	"char/0x00e5/textmode":  "\\aa{}",                                               // Unicode U+00E5
+	"char/0x00e6/textmode":  "\\ae{}",                                               // Unicode U+00E6
+	"char/0x00e7/mathmode":  "{\u00e7\\vphantom{A}}",                                // Unicode U+00E7
+	"char/0x00e8/mathmode":  "\\grave{e}",                                           // Unicode U+00E8
+	"char/0x00e9/mathmode":  "\\acute{e}",                                           // Unicode U+00E9
+	"char/0x00ea/mathmode":  "\\hat{e}",                                             // Unicode U+00EA
+	"char/0x00eb/mathmode":  "\\ddot{e}",                                            // Unicode U+00EB
+	"char/0x00ec/mathmode":  "\\grave{\\imath}",                                     // Unicode U+00EC
+	"char/0x00ed/mathmode":  "\\acute{\\imath}",                                     // Unicode U+00ED
+	"char/0x00ee/mathmode":  "\\hat{\\imath}",                                       // Unicode U+00EE
+	"char/0x00ef/mathmode":  "\\ddot{\\imath}",                                      // Unicode U+00EF
+	"char/0x00f0/textmode":  "{\\eth}",                                              // Unicode U+00F0
+	"char/0x00f1/mathmode":  "\\tilde{n}",                                           // Unicode U+00F1
+	"char/0x00f2/mathmode":  "\\grave{o}",                                           // Unicode U+00F2
+	"char/0x00f3/mathmode":  "\\acute{o}",                                           // Unicode U+00F3
+	"char/0x00f4/mathmode":  "\\hat{o}",                                             // Unicode U+00F4
+	"char/0x00f5/mathmode":  "\\tilde{o}",                                           // Unicode U+00F5
+	"char/0x00f6/textmode":  "\u00f6",                                               // Unicode U+00F6
+	"char/0x00f7/textmode":  "\\div",                                                // Unicode U+00F7
+	"char/0x00f8/textmode":  "\\o{}",                                                // Unicode U+00F8
+	"char/0x00f9/mathmode":  "\\grave{u}",                                           // Unicode U+00F9
+	"char/0x00fa/mathmode":  "\\acute{u}",                                           // Unicode U+00FA
+	"char/0x00fb/mathmode":  "\\hat{u}",                                             // Unicode U+00FB
+	"char/0x00fc/textmode":  "\u00fc",                                               // Unicode U+00FC
+	"char/0x00fd/mathmode":  "\\acute{y}",                                           // Unicode U+00FD
+	"char/0x00fe/mathmode":  "{\u00fe\\vphantom{A}}",                                // Unicode U+00FE
+	"char/0x00ff/mathmode":  "\\ddot{y}",                                            // Unicode U+00FF
+	"char/0x0100/mathmode":  "{\u0100\\vphantom{\\bar{A}}}",                         // Unicode U+0100
+	"char/0x0101/mathmode":  "{\u0101\\vphantom{\\bar{a}}}",                         // Unicode U+0101
+	"char/0x0102/mathmode":  "\\breve{A}",                                           // Unicode U+0102
+	"char/0x0103/mathmode":  "\\breve{a}",                                           // Unicode U+0103
+	"char/0x0104/mathmode":  "{\u0104\\vphantom{A}}",                                // Unicode U+0104
+	"char/0x0105/mathmode":  "{\u0105\\vphantom{A}}",                                // Unicode U+0105
+	"char/0x0106/mathmode":  "\\acute{C}",                                           // Unicode U+0106
+	"char/0x0107/mathmode":  "\\acute{c}",                                           // Unicode U+0107
+	"char/0x0108/mathmode":  "\\hat{C}",                                             // Unicode U+0108
+	"char/0x0109/mathmode":  "\\hat{c}",                                             // Unicode U+0109
+	"char/0x010a/mathmode":  "\\dot{C}",                                             // Unicode U+010A
+	"char/0x010b/mathmode":  "\\dot{c}",                                             // Unicode U+010B
+	"char/0x010c/mathmode":  "\\check{C}",                                           // Unicode U+010C
+	"char/0x010d/mathmode":  "\\check{c}",                                           // Unicode U+010D
+	"char/0x010e/mathmode":  "\\check{D}",                                           // Unicode U+010E
+	"char/0x010f/mathmode":  "\\check{d}",                                           // Unicode U+010F
+	"char/0x0110/mathmode":  "{\u0110\\vphantom{A}}",                                // Unicode U+0110
+	"char/0x0111/mathmode":  "{\u0111\\vphantom{A}}",                                // Unicode U+0111
+	"char/0x0112/mathmode":  "{\u0112\\vphantom{\\bar{E}}}",                         // Unicode U+0112
+	"char/0x0113/mathmode":  "{\u0113\\vphantom{\\bar{e}}}",                         // Unicode U+0113
+	"char/0x0116/mathmode":  "\\dot{E}",                                             // Unicode U+0116
+	"char/0x0117/mathmode":  "\\dot{e}",                                             // Unicode U+0117
+	"char/0x0118/mathmode":  "{\u0118\\vphantom{A}}",                                // Unicode U+0118
+	"char/0x0119/mathmode":  "{\u0119\\vphantom{A}}",                                // Unicode U+0119
+	"char/0x011a/mathmode":  "\\check{E}",                                           // Unicode U+011A
+	"char/0x011b/mathmode":  "\\check{e}",                                           // Unicode U+011B
+	"char/0x011c/mathmode":  "\\hat{G}",                                             // Unicode U+011C
+	"char/0x011d/mathmode":  "\\hat{g}",                                             // Unicode U+011D
+	"char/0x011e/mathmode":  "\\breve{G}",                                           // Unicode U+011E
+	"char/0x011f/mathmode":  "\\breve{g}",                                           // Unicode U+011F
+	"char/0x0120/mathmode":  "\\dot{G}",                                             // Unicode U+0120
+	"char/0x0121/mathmode":  "\\dot{g}",                                             // Unicode U+0121
+	"char/0x0122/mathmode":  "{\u0122\\vphantom{A}}",                                // Unicode U+0122
+	"char/0x0124/mathmode":  "\\hat{H}",                                             // Unicode U+0124
+	"char/0x0125/mathmode":  "\\hat{h}",                                             // Unicode U+0125
+	"char/0x0126/mathmode":  "{\u0126\\vphantom{A}}",                                // Unicode U+0126
+	"char/0x0127/textmode":  "\\textcrh{}",                                          // Unicode U+0127
+	"char/0x0128/mathmode":  "\\tilde{I}",                                           // Unicode U+0128
+	"char/0x0129/mathmode":  "\\tilde{\\imath}",                                     // Unicode U+0129
+	"char/0x012a/mathmode":  "{\u012a\\vphantom{\\bar{I}}}",                         // Unicode U+012A
+	"char/0x012b/mathmode":  "{\u012b\\vphantom{\\bar{i}}}",                         // Unicode U+012B
+	"char/0x012e/mathmode":  "{\u012e\\vphantom{A}}",                                // Unicode U+012E
+	"char/0x012f/mathmode":  "{\u012f\\vphantom{A}}",                                // Unicode U+012F
+	"char/0x0130/mathmode":  "\\dot{I}",                                             // Unicode U+0130
+	"char/0x0131/textmode":  "\\i{}",                                                // Unicode U+0131
+	"char/0x0132/mathmode":  "{IJ}",                                                 // Unicode U+0132
+	"char/0x0133/mathmode":  "{ij}",                                                 // Unicode U+0133
+	"char/0x0134/mathmode":  "\\hat{J}",                                             // Unicode U+0134
+	"char/0x0135/mathmode":  "\\hat{\\jmath}",                                       // Unicode U+0135
+	"char/0x0136/mathmode":  "{\u0136\\vphantom{A}}",                                // Unicode U+0136
+	"char/0x0137/mathmode":  "{\u0137\\vphantom{A}}",                                // Unicode U+0137
+	"char/0x0138/mathmode":  "{\u0138\\vphantom{A}}",                                // Unicode U+0138
+	"char/0x0139/mathmode":  "\\acute{L}",                                           // Unicode U+0139
+	"char/0x013a/mathmode":  "\\acute{l}",                                           // Unicode U+013A
+	"char/0x013b/mathmode":  "{\u013b\\vphantom{A}}",                                // Unicode U+013B
+	"char/0x013c/mathmode":  "{\u013c\\vphantom{A}}",                                // Unicode U+013C
+	"char/0x013d/mathmode":  "\\check{L}",                                           // Unicode U+013D
+	"char/0x013e/mathmode":  "\\check{l}",                                           // Unicode U+013E
+	"char/0x013f/mathmode":  "{L\\cdot}",                                            // Unicode U+013F
+	"char/0x0140/mathmode":  "{l\\cdot}",                                            // Unicode U+0140
+	"char/0x0141/textmode":  "\\L{}",                                                // Unicode U+0141
+	"char/0x0142/textmode":  "\\l{}",                                                // Unicode U+0142
+	"char/0x0143/mathmode":  "\\acute{N}",                                           // Unicode U+0143
+	"char/0x0144/mathmode":  "\\acute{n}",                                           // Unicode U+0144
+	"char/0x0145/mathmode":  "{\u0145\\vphantom{A}}",                                // Unicode U+0145
+	"char/0x0146/mathmode":  "{\u0146\\vphantom{A}}",                                // Unicode U+0146
+	"char/0x0147/mathmode":  "\\check{N}",                                           // Unicode U+0147
+	"char/0x0148/mathmode":  "\\check{n}",                                           // Unicode U+0148
+	"char/0x0149/mathmode":  "{\\text{'}n}",                                         // Unicode U+0149
+	"char/0x014a/mathmode":  "{\u014a\\vphantom{A}}",                                // Unicode U+014A
+	"char/0x014b/mathmode":  "{\u014b\\vphantom{A}}",                                // Unicode U+014B
+	"char/0x014c/mathmode":  "{\u014c\\vphantom{\\bar{O}}}",                         // Unicode U+014C
+	"char/0x014d/mathmode":  "{\u014d\\vphantom{\\bar{o}}}",                         // Unicode U+014D
+	"char/0x0150/mathmode":  "\\text{\\H O}",                                        // Unicode U+0150
+	"char/0x0151/mathmode":  "\\text{\\H o}",                                        // Unicode U+0151
+	"char/0x0152/textmode":  "\\OE{}",                                               // Unicode U+0152
+	"char/0x0153/textmode":  "\\oe{}",                                               // Unicode U+0153
+	"char/0x0154/mathmode":  "\\acute{R}",                                           // Unicode U+0154
+	"char/0x0155/mathmode":  "\\acute{r}",                                           // Unicode U+0155
+	"char/0x0156/mathmode":  "{\u0156\\vphantom{A}}",                                // Unicode U+0156
+	"char/0x0157/mathmode":  "{\u0157\\vphantom{A}}",                                // Unicode U+0157
+	"char/0x0158/mathmode":  "\\check{R}",                                           // Unicode U+0158
+	"char/0x0159/mathmode":  "\\check{r}",                                           // Unicode U+0159
+	"char/0x015a/mathmode":  "\\acute{S}",                                           // Unicode U+015A
+	"char/0x015b/mathmode":  "\\acute{s}",                                           // Unicode U+015B
+	"char/0x015c/mathmode":  "\\hat{S}",                                             // Unicode U+015C
+	"char/0x015d/mathmode":  "\\hat{s}",                                             // Unicode U+015D
+	"char/0x015e/mathmode":  "{\u015e\\vphantom{A}}",                                // Unicode U+015E
+	"char/0x015f/mathmode":  "{\u015f\\vphantom{A}}",                                // Unicode U+015F
+	"char/0x0160/mathmode":  "\\check{S}",                                           // Unicode U+0160
+	"char/0x0161/mathmode":  "\\check{s}",                                           // Unicode U+0161
+	"char/0x0162/mathmode":  "{\u0162\\vphantom{A}}",                                // Unicode U+0162
+	"char/0x0163/mathmode":  "{\u0163\\vphantom{A}}",                                // Unicode U+0163
+	"char/0x0164/mathmode":  "\\check{T}",                                           // Unicode U+0164
+	"char/0x0165/mathmode":  "\\check{t}",                                           // Unicode U+0165
+	"char/0x0166/mathmode":  "{\u0166\\vphantom{A}}",                                // Unicode U+0166
+	"char/0x0167/mathmode":  "{\u0167\\vphantom{A}}",                                // Unicode U+0167
+	"char/0x0168/mathmode":  "\\tilde{U}",                                           // Unicode U+0168
+	"char/0x0169/mathmode":  "\\tilde{u}",                                           // Unicode U+0169
+	"char/0x016a/mathmode":  "{\u016a\\vphantom{\\bar{U}}}",                         // Unicode U+016A
+	"char/0x016b/mathmode":  "{\u016b\\vphantom{\\bar{u}}}",                         // Unicode U+016B
+	"char/0x016c/mathmode":  "\\breve{U}",                                           // Unicode U+016C
+	"char/0x016d/mathmode":  "\\breve{u}",                                           // Unicode U+016D
+	"char/0x016e/mathmode":  "{\u016e\\vphantom{A}}",                                // Unicode U+016E
+	"char/0x016f/mathmode":  "{\u016f\\vphantom{A}}",                                // Unicode U+016F
+	"char/0x0170/mathmode":  "\\text{\\H U}",                                        // Unicode U+0170
+	"char/0x0171/mathmode":  "\\text{\\H u}",                                        // Unicode U+0171
+	"char/0x0172/mathmode":  "{\u0172\\vphantom{A}}",                                // Unicode U+0172
+	"char/0x0173/mathmode":  "{\u0173\\vphantom{A}}",                                // Unicode U+0173
+	"char/0x0174/mathmode":  "\\hat{W}",                                             // Unicode U+0174
+	"char/0x0175/mathmode":  "\\hat{w}",                                             // Unicode U+0175
+	"char/0x0176/mathmode":  "\\hat{Y}",                                             // Unicode U+0176
+	"char/0x0177/mathmode":  "\\hat{y}",                                             // Unicode U+0177
+	"char/0x0178/mathmode":  "\\ddot{Y}",                                            // Unicode U+0178
+	"char/0x0179/mathmode":  "\\acute{Z}",                                           // Unicode U+0179
+	"char/0x017a/mathmode":  "\\acute{z}",                                           // Unicode U+017A
+	"char/0x017b/mathmode":  "\\dot{Z}",                                             // Unicode U+017B
+	"char/0x017c/mathmode":  "\\dot{z}",                                             // Unicode U+017C
+	"char/0x017d/mathmode":  "\\check{Z}",                                           // Unicode U+017D
+	"char/0x017e/mathmode":  "\\check{z}",                                           // Unicode U+017E
+	"char/0x0192/textmode":  "{\\mathit{f}}",                                        // Unicode U+0192
+	"char/0x01b5/mathmode":  "{\u01b5\\vphantom{A}}",                                // Unicode U+01B5
+	"char/0x01c0/textmode":  "{\\textbar}",                                          // Unicode U+01C0
+	"char/0x01f5/mathmode":  "\\acute{g}",                                           // Unicode U+01F5
+	"char/0x0237/textmode":  "{\\jmath}",                                            // Unicode U+0237
+	"char/0x0250/textmode":  "\\textturna{}",                                        // Unicode U+0250
+	"char/0x0251/textmode":  "\\textscripta{}",                                      // Unicode U+0251
+	"char/0x0252/textmode":  "\\textturnscripta{}",                                  // Unicode U+0252
+	"char/0x0253/textmode":  "\\texthtb{}",                                          // Unicode U+0253
+	"char/0x0254/textmode":  "\\textopeno{}",                                        // Unicode U+0254
+	"char/0x0255/textmode":  "\\textctc{}",                                          // Unicode U+0255
+	"char/0x0256/textmode":  "\\textrtaild{}",                                       // Unicode U+0256
+	"char/0x0257/textmode":  "\\texthtd{}",                                          // Unicode U+0257
+	"char/0x0258/textmode":  "\\textreve{}",                                         // Unicode U+0258
+	"char/0x0259/textmode":  "\\textschwa{}",                                        // Unicode U+0259
+	"char/0x025a/textmode":  "\\textrhookschwa{}",                                   // Unicode U+025A
+	"char/0x025b/textmode":  "\\textepsilon{}",                                      // Unicode U+025B
+	"char/0x025c/textmode":  "\\textrevepsilon{}",                                   // Unicode U+025C
+	"char/0x025d/textmode":  "\\textrhookrevepsilon{}",                              // Unicode U+025D
+	"char/0x025e/textmode":  "\\textcloserevepsilon{}",                              // Unicode U+025E
+	"char/0x025f/textmode":  "\\textbardotlessj{}",                                  // Unicode U+025F
+	"char/0x0260/textmode":  "\\texthtg{}",                                          // Unicode U+0260
+	"char/0x0261/textmode":  "\\textg{}",                                            // Unicode U+0261
+	"char/0x0262/textmode":  "\\textscg{}",                                          // Unicode U+0262
+	"char/0x0263/textmode":  "\\textbabygamma{}",                                    // Unicode U+0263
+	"char/0x0264/textmode":  "textramshorns{}",                                      // Unicode U+0264
+	"char/0x0265/textmode":  "\\textturnh{}",                                        // Unicode U+0265
+	"char/0x0266/textmode":  "\\texthth{}",                                          // Unicode U+0266
+	"char/0x0267/textmode":  "\\texththeng{}",                                       // Unicode U+0267
+	"char/0x0268/textmode":  "\\textbari{}",                                         // Unicode U+0268
+	"char/0x0269/textmode":  "\\textiota{}",                                         // Unicode U+0269
+	"char/0x026a/textmode":  "\\textsci{}",                                          // Unicode U+026A
+	"char/0x026b/textmode":  "\\textltilde{}",                                       // Unicode U+026B
+	"char/0x026c/textmode":  "\\textbeltl{}",                                        // Unicode U+026C
+	"char/0x026d/textmode":  "\\textrtaill{}",                                       // Unicode U+026D
+	"char/0x026e/textmode":  "\\textlyoghlig{}",                                     // Unicode U+026E
+	"char/0x026f/textmode":  "\\textturnm{}",                                        // Unicode U+026F
+	"char/0x0270/textmode":  "\\textturnmrleg{}",                                    // Unicode U+0270
+	"char/0x0271/textmode":  "\\textltailm{}",                                       // Unicode U+0271
+	"char/0x0272/textmode":  "\\textltailn{}",                                       // Unicode U+0272
+	"char/0x0273/textmode":  "\\textnrleg{}",                                        // Unicode U+0273
+	"char/0x0274/textmode":  "\\textscn{}",                                          // Unicode U+0274
+	"char/0x0275/textmode":  "\\textbaro{}",                                         // Unicode U+0275
+	"char/0x0276/textmode":  "\\textscoelig{}",                                      // Unicode U+0276
+	"char/0x0277/textmode":  "\\textcloseomega{}",                                   // Unicode U+0277
+	"char/0x0278/textmode":  "\\textphi{}",                                          // Unicode U+0278
+	"char/0x0279/textmode":  "\\textturnr{}",                                        // Unicode U+0279
+	"char/0x027a/textmode":  "\\textturnlonglegr{}",                                 // Unicode U+027A
+	"char/0x027b/textmode":  "\\textturnrrtail{}",                                   // Unicode U+027B
+	"char/0x027c/textmode":  "\\textlonglegr{}",                                     // Unicode U+027C
+	"char/0x027d/textmode":  "\\textrtailr{}",                                       // Unicode U+027D
+	"char/0x027e/textmode":  "\\textfishhookr{}",                                    // Unicode U+027E
+	"char/0x0280/textmode":  "\\textscr{}",                                          // Unicode U+0280
+	"char/0x0281/textmode":  "\\textinvscr{}",                                       // Unicode U+0281
+	"char/0x0282/textmode":  "\\textrtails{}",                                       // Unicode U+0282
+	"char/0x0283/textmode":  "\\textesh{}",                                          // Unicode U+0283
+	"char/0x0284/textmode":  "\\texthtbardotlessj{}",                                // Unicode U+0284
+	"char/0x0286/textmode":  "\\textctesh{}",                                        // Unicode U+0286
+	"char/0x0287/textmode":  "\\textturnt{}",                                        // Unicode U+0287
+	"char/0x0288/textmode":  "\\textrtailt{}",                                       // Unicode U+0288
+	"char/0x0289/textmode":  "\\textbaru{}",                                         // Unicode U+0289
+	"char/0x028a/textmode":  "\\textupsilon{}",                                      // Unicode U+028A
+	"char/0x028b/textmode":  "\\textscriptv{}",                                      // Unicode U+028B
+	"char/0x028c/textmode":  "\\textturnv{}",                                        // Unicode U+028C
+	"char/0x028d/textmode":  "\\textturnw{}",                                        // Unicode U+028D
+	"char/0x028e/textmode":  "\\textturny{}",                                        // Unicode U+028E
+	"char/0x028f/textmode":  "\\textscy{}",                                          // Unicode U+028F
+	"char/0x0290/textmode":  "\\textrtailz{}",                                       // Unicode U+0290
+	"char/0x0291/textmode":  "\\textctz{}",                                          // Unicode U+0291
+	"char/0x0292/textmode":  "\\textyogh{}",                                         // Unicode U+0292
+	"char/0x0293/textmode":  "\\textctyogh{}",                                       // Unicode U+0293
+	"char/0x0294/textmode":  "\\textglotstop{}",                                     // Unicode U+0294
+	"char/0x0295/textmode":  "\\textrevglotstop{}",                                  // Unicode U+0295
+	"char/0x0296/textmode":  "\\textinvglotstop{}",                                  // Unicode U+0296
+	"char/0x0297/textmode":  "\\textstretchc{}",                                     // Unicode U+0297
+	"char/0x0298/textmode":  "\\textbullseye{}",                                     // Unicode U+0298
+	"char/0x0299/textmode":  "\\textscb{}",                                          // Unicode U+0299
+	"char/0x029a/textmode":  "\\textcloseepsilon{}",                                 // Unicode U+029A
+	"char/0x029b/textmode":  "\\texthtscg{}",                                        // Unicode U+029B
+	"char/0x029c/textmode":  "\\textsch{}",                                          // Unicode U+029C
+	"char/0x029d/textmode":  "\\textctj{}",                                          // Unicode U+029D
+	"char/0x029e/textmode":  "\\textturnk{}",                                        // Unicode U+029E
+	"char/0x029f/textmode":  "\\textscl{}",                                          // Unicode U+029F
+	"char/0x02a0/textmode":  "\\texthtq{}",                                          // Unicode U+02A0
+	"char/0x02a1/textmode":  "\\textbarglotstop{}",                                  // Unicode U+02A1
+	"char/0x02a2/textmode":  "\\textbarrevglotstop{}",                               // Unicode U+02A2
+	"char/0x02a3/textmode":  "\\textdzlig{}",                                        // Unicode U+02A3
+	"char/0x02a4/textmode":  "\\textdyoghlig{}",                                     // Unicode U+02A4
+	"char/0x02a5/textmode":  "\\textdctzlig{}",                                      // Unicode U+02A5
+	"char/0x02a6/textmode":  "\\texttslig{}",                                        // Unicode U+02A6
+	"char/0x02a7/textmode":  "\\textteshlig{}",                                      // Unicode U+02A7
+	"char/0x02a8/textmode":  "\\texttctclig{}",                                      // Unicode U+02A8
+	"char/0x02c6/mathmode":  "\\hat{}",                                              // Unicode U+02C6
+	"char/0x02c7/mathmode":  "\\check{}",                                            // Unicode U+02C7
+	"char/0x02d8/mathmode":  "\\breve{}",                                            // Unicode U+02D8
+	"char/0x02d9/mathmode":  "\\dot{}",                                              // Unicode U+02D9
+	"char/0x02da/mathmode":  "\\mathring{}",                                         // Unicode U+02DA
+	"char/0x02dc/textmode":  "\u02dc",                                               // Unicode U+02DC
+	"char/0x0300/textmode":  "\u0300",                                               // Unicode U+0300
+	"char/0x0301/textmode":  "\u0301",                                               // Unicode U+0301
+	"char/0x0302/textmode":  "\u0302",                                               // Unicode U+0302
+	"char/0x0303/textmode":  "\u0303",                                               // Unicode U+0303
+	"char/0x0304/textmode":  "\u0304",                                               // Unicode U+0304
+	"char/0x0305/textmode":  "\u0305",                                               // Unicode U+0305
+	"char/0x0306/textmode":  "\u0306",                                               // Unicode U+0306
+	"char/0x0307/textmode":  "\u0307",                                               // Unicode U+0307
+	"char/0x0308/textmode":  "\u0308",                                               // Unicode U+0308
+	"char/0x030a/textmode":  "\u030a",                                               // Unicode U+030A
+	"char/0x030c/textmode":  "\u030c",                                               // Unicode U+030C
+	"char/0x0330/textmode":  "\u0330",                                               // Unicode U+0330
+	"char/0x0331/textmode":  "\u0331",                                               // Unicode U+0331
+	"char/0x0332/textmode":  "\u0332",                                               // Unicode U+0332
+	"char/0x0338/textmode":  "\u0338",                                               // Unicode U+0338
+	"char/0x0386/mathmode":  "{\u0386\\vphantom{\\bar{A}}}",                         // Unicode U+0386
+	"char/0x0388/mathmode":  "{\u0388\\vphantom{\\bar{A}}}",                         // Unicode U+0388
+	"char/0x0389/mathmode":  "{\u0389\\vphantom{\\bar{A}}}",                         // Unicode U+0389
+	"char/0x038a/mathmode":  "{\u038a\\vphantom{\\bar{A}}}",                         // Unicode U+038A
+	"char/0x038c/mathmode":  "{\u038c\\vphantom{\\bar{A}}}",                         // Unicode U+038C
+	"char/0x038e/mathmode":  "{\u038e\\vphantom{\\bar{A}}}",                         // Unicode U+038E
+	"char/0x038f/mathmode":  "{\u038f\\vphantom{\\bar{A}}}",                         // Unicode U+038F
+	"char/0x0390/mathmode":  "{\u0390\\vphantom{\\bar{A}}}",                         // Unicode U+0390
+	"char/0x0391/textmode":  "A",                                                    // Unicode U+0391
+	"char/0x0392/textmode":  "B",                                                    // Unicode U+0392
+	"char/0x0393/textmode":  "{\\Gamma}",                                            // Unicode U+0393
+	"char/0x0394/textmode":  "{\\Delta}",                                            // Unicode U+0394
+	"char/0x0395/textmode":  "E",                                                    // Unicode U+0395
+	"char/0x0396/textmode":  "\u0396",                                               // Unicode U+0396
+	"char/0x0397/textmode":  "H",                                                    // Unicode U+0397
+	"char/0x0398/textmode":  "{\\Theta}",                                            // Unicode U+0398
+	"char/0x0399/textmode":  "I",                                                    // Unicode U+0399
+	"char/0x039a/textmode":  "K",                                                    // Unicode U+039A
+	"char/0x039b/textmode":  "{\\Lambda}",                                           // Unicode U+039B
+	"char/0x039c/textmode":  "M",                                                    // Unicode U+039C
+	"char/0x039d/textmode":  "N",                                                    // Unicode U+039D
+	"char/0x039e/textmode":  "{\\Xi}",                                               // Unicode U+039E
+	"char/0x039f/textmode":  "O",                                                    // Unicode U+039F
+	"char/0x03a0/textmode":  "{\\Pi}",                                               // Unicode U+03A0
+	"char/0x03a1/textmode":  "P",                                                    // Unicode U+03A1
+	"char/0x03a3/textmode":  "{\\Sigma}",                                            // Unicode U+03A3
+	"char/0x03a4/textmode":  "T",                                                    // Unicode U+03A4
+	"char/0x03a5/textmode":  "{\\Upsilon}",                                          // Unicode U+03A5
+	"char/0x03a6/textmode":  "{\\Phi}",                                              // Unicode U+03A6
+	"char/0x03a7/textmode":  "\u03a7",                                               // Unicode U+03A7
+	"char/0x03a8/textmode":  "{\\Psi}",                                              // Unicode U+03A8
+	"char/0x03a9/textmode":  "{\\Omega}",                                            // Unicode U+03A9
+	"char/0x03aa/mathmode":  "{\u03aa\\vphantom{\\bar{A}}}",                         // Unicode U+03AA
+	"char/0x03ab/mathmode":  "{\u03ab\\vphantom{\\bar{A}}}",                         // Unicode U+03AB
+	"char/0x03ac/mathmode":  "{\u03ac\\vphantom{\\bar{A}}}",                         // Unicode U+03AC
+	"char/0x03ad/mathmode":  "{\u03ad\\vphantom{\\bar{A}}}",                         // Unicode U+03AD
+	"char/0x03ae/mathmode":  "{\u03ae\\vphantom{\\bar{A}}}",                         // Unicode U+03AE
+	"char/0x03af/mathmode":  "{\u03af\\vphantom{\\bar{A}}}",                         // Unicode U+03AF
+	"char/0x03b0/mathmode":  "{\u03b0\\vphantom{\\bar{A}}}",                         // Unicode U+03B0
+	"char/0x03b1/textmode":  "{\\alpha}",                                            // Unicode U+03B1
+	"char/0x03b2/textmode":  "{\\beta}",                                             // Unicode U+03B2
+	"char/0x03b3/textmode":  "{\\gamma}",                                            // Unicode U+03B3
+	"char/0x03b4/textmode":  "{\\delta}",                                            // Unicode U+03B4
+	"char/0x03b5/textmode":  "{\\varepsilon}",                                       // Unicode U+03B5
+	"char/0x03b6/textmode":  "{\\zeta}",                                             // Unicode U+03B6
+	"char/0x03b7/textmode":  "{\\eta}",                                              // Unicode U+03B7
+	"char/0x03b8/textmode":  "{\\theta}",                                            // Unicode U+03B8
+	"char/0x03b9/textmode":  "{\\iota}",                                             // Unicode U+03B9
+	"char/0x03ba/textmode":  "{\\kappa}",                                            // Unicode U+03BA
+	"char/0x03bb/textmode":  "{\\lambda}",                                           // Unicode U+03BB
+	"char/0x03bc/textmode":  "{\\mu}",                                               // Unicode U+03BC
+	"char/0x03bd/textmode":  "{\\nu}",                                               // Unicode U+03BD
+	"char/0x03be/textmode":  "{\\xi}",                                               // Unicode U+03BE
+	"char/0x03bf/textmode":  "o",                                                    // Unicode U+03BF
+	"char/0x03c0/textmode":  "{\\pi}",                                               // Unicode U+03C0
+	"char/0x03c1/textmode":  "{\\rho}",                                              // Unicode U+03C1
+	"char/0x03c2/textmode":  "{\\varsigma}",                                         // Unicode U+03C2
+	"char/0x03c3/textmode":  "{\\sigma}",                                            // Unicode U+03C3
+	"char/0x03c4/textmode":  "{\\tau}",                                              // Unicode U+03C4
+	"char/0x03c5/textmode":  "{\\upsilon}",                                          // Unicode U+03C5
+	"char/0x03c6/textmode":  "{\\varphi}",                                           // Unicode U+03C6
+	"char/0x03c7/textmode":  "{\\chi}",                                              // Unicode U+03C7
+	"char/0x03c8/textmode":  "{\\psi}",                                              // Unicode U+03C8
+	"char/0x03c9/textmode":  "{\\omega}",                                            // Unicode U+03C9
+	"char/0x03ca/mathmode":  "{\u03ca\\vphantom{\\bar{A}}}",                         // Unicode U+03CA
+	"char/0x03cb/mathmode":  "{\u03cb\\vphantom{\\bar{A}}}",                         // Unicode U+03CB
+	"char/0x03cc/mathmode":  "{\u03cc\\vphantom{\\bar{A}}}",                         // Unicode U+03CC
+	"char/0x03cd/mathmode":  "{\u03cd\\vphantom{\\bar{A}}}",                         // Unicode U+03CD
+	"char/0x03ce/mathmode":  "{\u03ce\\vphantom{\\bar{A}}}",                         // Unicode U+03CE
+	"char/0x03d0/textmode":  "{\\varbeta}",                                          // Unicode U+03D0
+	"char/0x03d1/textmode":  "{\\vartheta}",                                         // Unicode U+03D1
+	"char/0x03d2/mathmode":  "\\Upsilon",                                            // Unicode U+03D2
+	"char/0x03d5/textmode":  "{\\phi}",                                              // Unicode U+03D5
+	"char/0x03d6/textmode":  "{\\varpi}",                                            // Unicode U+03D6
+	"char/0x03d8/textmode":  "\\boldsymbol{\\Koppa}",                                // Unicode U+03D8
+	"char/0x03d9/textmode":  "\\boldsymbol{\\koppa}",                                // Unicode U+03D9
+	"char/0x03da/textmode":  "\\boldsymbol{\\Stigma}",                               // Unicode U+03DA
+	"char/0x03db/textmode":  "\\boldsymbol{\\stigma}",                               // Unicode U+03DB
+	"char/0x03dc/textmode":  "\\boldsymbol{\\Digamma}",                              // Unicode U+03DC
+	"char/0x03dd/textmode":  "\\boldsymbol{\\digamma}",                              // Unicode U+03DD
+	"char/0x03de/textmode":  "\\boldsymbol{\\Koppa}",                                // Unicode U+03DE
+	"char/0x03df/textmode":  "\\boldsymbol{\\koppa}",                                // Unicode U+03DF
+	"char/0x03e0/textmode":  "\\boldsymbol{\\Sampi}",                                // Unicode U+03E0
+	"char/0x03e1/textmode":  "\\boldsymbol{\\sampi}",                                // Unicode U+03E1
+	"char/0x03f0/mathmode":  "\\varkappa",                                           // Unicode U+03F0
+	"char/0x03f1/textmode":  "\\boldsymbol{\\varrho}",                               // Unicode U+03F1
+	"char/0x03f4/textmode":  "{\\Theta}",                                            // Unicode U+03F4
+	"char/0x03f5/textmode":  "\\boldsymbol{\\epsilon}",                              // Unicode U+03F5
+	"char/0x03f6/textmode":  "\\boldsymbol{\\backepsilon}",                          // Unicode U+03F6
+	"char/0x0400/mathmode":  "{\u0400\\vphantom{A}}",                                // Unicode U+0400
+	"char/0x0401/mathmode":  "{\u0401\\vphantom{A}}",                                // Unicode U+0401
+	"char/0x0402/mathmode":  "{\u0402\\vphantom{A}}",                                // Unicode U+0402
+	"char/0x0403/mathmode":  "{\u0403\\vphantom{A}}",                                // Unicode U+0403
+	"char/0x0404/mathmode":  "{\u0404\\vphantom{E}}",                                // Unicode U+0404
+	"char/0x0405/mathmode":  "{\u0405\\vphantom{A}}",                                // Unicode U+0405
+	"char/0x0406/mathmode":  "{\u0406\\vphantom{I}}",                                // Unicode U+0406
+	"char/0x0407/mathmode":  "{\u0407\\vphantom{A}}",                                // Unicode U+0407
+	"char/0x0408/mathmode":  "{\u0408\\vphantom{J}}",                                // Unicode U+0408
+	"char/0x0409/mathmode":  "{\u0409\\vphantom{A}}",                                // Unicode U+0409
+	"char/0x040a/mathmode":  "{\u040a\\vphantom{A}}",                                // Unicode U+040A
+	"char/0x040b/mathmode":  "{\u040b\\vphantom{A}}",                                // Unicode U+040B
+	"char/0x040c/mathmode":  "{\u040c\\vphantom{K}}",                                // Unicode U+040C
+	"char/0x040d/mathmode":  "{\u040d\\vphantom{A}}",                                // Unicode U+040D
+	"char/0x040e/mathmode":  "{\u040e\\vphantom{A}}",                                // Unicode U+040E
+	"char/0x040f/mathmode":  "{\u040f\\vphantom{A}}",                                // Unicode U+040F
+	"char/0x0410/mathmode":  "{\u0410\\vphantom{A}}",                                // Unicode U+0410
+	"char/0x0411/mathmode":  "{\u0411\\vphantom{A}}",                                // Unicode U+0411
+	"char/0x0412/mathmode":  "{\u0412\\vphantom{A}}",                                // Unicode U+0412
+	"char/0x0413/mathmode":  "{\u0413\\vphantom{A}}",                                // Unicode U+0413
+	"char/0x0414/mathmode":  "{\u0414\\vphantom{A}}",                                // Unicode U+0414
+	"char/0x0415/mathmode":  "{\u0415\\vphantom{A}}",                                // Unicode U+0415
+	"char/0x0416/mathmode":  "{\u0416\\vphantom{A}}",                                // Unicode U+0416
+	"char/0x0417/mathmode":  "{\u0417\\vphantom{A}}",                                // Unicode U+0417
+	"char/0x0418/mathmode":  "{\u0418\\vphantom{A}}",                                // Unicode U+0418
+	"char/0x0419/mathmode":  "{\u0419\\vphantom{A}}",                                // Unicode U+0419
+	"char/0x041a/mathmode":  "{\u041a\\vphantom{A}}",                                // Unicode U+041A
+	"char/0x041b/mathmode":  "{\u041b\\vphantom{A}}",                                // Unicode U+041B
+	"char/0x041c/mathmode":  "{\u041c\\vphantom{A}}",                                // Unicode U+041C
+	"char/0x041d/mathmode":  "{\u041d\\vphantom{A}}",                                // Unicode U+041D
+	"char/0x041e/mathmode":  "{\u041e\\vphantom{A}}",                                // Unicode U+041E
+	"char/0x041f/mathmode":  "{\u041f\\vphantom{A}}",                                // Unicode U+041F
+	"char/0x0420/mathmode":  "{\u0420\\vphantom{A}}",                                // Unicode U+0420
+	"char/0x0421/mathmode":  "{\u0421\\vphantom{A}}",                                // Unicode U+0421
+	"char/0x0422/mathmode":  "{\u0422\\vphantom{A}}",                                // Unicode U+0422
+	"char/0x0423/mathmode":  "{\u0423\\vphantom{A}}",                                // Unicode U+0423
+	"char/0x0424/mathmode":  "{\u0424\\vphantom{A}}",                                // Unicode U+0424
+	"char/0x0425/mathmode":  "{\u0425\\vphantom{A}}",                                // Unicode U+0425
+	"char/0x0426/mathmode":  "{\u0426\\vphantom{A}}",                                // Unicode U+0426
+	"char/0x0427/mathmode":  "{\u0427\\vphantom{A}}",                                // Unicode U+0427
+	"char/0x0428/mathmode":  "{\u0428\\vphantom{A}}",                                // Unicode U+0428
+	"char/0x0429/mathmode":  "{\u0429\\vphantom{A}}",                                // Unicode U+0429
+	"char/0x042a/mathmode":  "{\u042a\\vphantom{A}}",                                // Unicode U+042A
+	"char/0x042b/mathmode":  "{\u042b\\vphantom{A}}",                                // Unicode U+042B
+	"char/0x042c/mathmode":  "{\u042c\\vphantom{A}}",                                // Unicode U+042C
+	"char/0x042d/mathmode":  "{\u042d\\vphantom{A}}",                                // Unicode U+042D
+	"char/0x042e/mathmode":  "{\u042e\\vphantom{A}}",                                // Unicode U+042E
+	"char/0x042f/mathmode":  "{\u042f\\vphantom{A}}",                                // Unicode U+042F
+	"char/0x0430/mathmode":  "{\u0430\\vphantom{A}}",                                // Unicode U+0430
+	"char/0x0431/mathmode":  "{\u0431\\vphantom{A}}",                                // Unicode U+0431
+	"char/0x0432/mathmode":  "{\u0432\\vphantom{A}}",                                // Unicode U+0432
+	"char/0x0433/mathmode":  "{\u0433\\vphantom{A}}",                                // Unicode U+0433
+	"char/0x0434/mathmode":  "{\u0434\\vphantom{A}}",                                // Unicode U+0434
+	"char/0x0435/mathmode":  "{\u0435\\vphantom{A}}",                                // Unicode U+0435
+	"char/0x0436/mathmode":  "{\u0436\\vphantom{A}}",                                // Unicode U+0436
+	"char/0x0437/mathmode":  "{\u0437\\vphantom{A}}",                                // Unicode U+0437
+	"char/0x0438/mathmode":  "{\u0438\\vphantom{A}}",                                // Unicode U+0438
+	"char/0x0439/mathmode":  "{\u0439\\vphantom{A}}",                                // Unicode U+0439
+	"char/0x043a/mathmode":  "{\u043a\\vphantom{A}}",                                // Unicode U+043A
+	"char/0x043b/mathmode":  "{\u043b\\vphantom{A}}",                                // Unicode U+043B
+	"char/0x043c/mathmode":  "{\u043c\\vphantom{A}}",                                // Unicode U+043C
+	"char/0x043d/mathmode":  "{\u043d\\vphantom{A}}",                                // Unicode U+043D
+	"char/0x043e/mathmode":  "{\u043e\\vphantom{A}}",                                // Unicode U+043E
+	"char/0x043f/mathmode":  "{\u043f\\vphantom{A}}",                                // Unicode U+043F
+	"char/0x0440/mathmode":  "{\u0440\\vphantom{A}}",                                // Unicode U+0440
+	"char/0x0441/mathmode":  "{\u0441\\vphantom{A}}",                                // Unicode U+0441
+	"char/0x0442/mathmode":  "{\u0442\\vphantom{A}}",                                // Unicode U+0442
+	"char/0x0443/mathmode":  "{\u0443\\vphantom{A}}",                                // Unicode U+0443
+	"char/0x0444/mathmode":  "{\u0444\\vphantom{A}}",                                // Unicode U+0444
+	"char/0x0445/mathmode":  "{\u0445\\vphantom{A}}",                                // Unicode U+0445
+	"char/0x0446/mathmode":  "{\u0446\\vphantom{A}}",                                // Unicode U+0446
+	"char/0x0447/mathmode":  "{\u0447\\vphantom{A}}",                                // Unicode U+0447
+	"char/0x0448/mathmode":  "{\u0448\\vphantom{A}}",                                // Unicode U+0448
+	"char/0x0449/mathmode":  "{\u0449\\vphantom{A}}",                                // Unicode U+0449
+	"char/0x044a/mathmode":  "{\u044a\\vphantom{A}}",                                // Unicode U+044A
+	"char/0x044b/mathmode":  "{\u044b\\vphantom{A}}",                                // Unicode U+044B
+	"char/0x044c/mathmode":  "{\u044c\\vphantom{A}}",                                // Unicode U+044C
+	"char/0x044d/mathmode":  "{\u044d\\vphantom{A}}",                                // Unicode U+044D
+	"char/0x044e/mathmode":  "{\u044e\\vphantom{A}}",                                // Unicode U+044E
+	"char/0x044f/mathmode":  "{\u044f\\vphantom{A}}",                                // Unicode U+044F
+	"char/0x0450/mathmode":  "{\u0450\\vphantom{A}}",                                // Unicode U+0450
+	"char/0x0451/mathmode":  "{\u0451\\vphantom{A}}",                                // Unicode U+0451
+	"char/0x0452/mathmode":  "{\u0452\\vphantom{A}}",                                // Unicode U+0452
+	"char/0x0453/mathmode":  "{\u0453\\vphantom{i}}",                                // Unicode U+0453
+	"char/0x0454/mathmode":  "{\u0454\\vphantom{a}}",                                // Unicode U+0454
+	"char/0x0455/mathmode":  "{\u0455\\vphantom{a}}",                                // Unicode U+0455
+	"char/0x0456/mathmode":  "{\u0456\\vphantom{i}}",                                // Unicode U+0456
+	"char/0x0457/mathmode":  "{\u0457\\vphantom{i}}",                                // Unicode U+0457
+	"char/0x0458/mathmode":  "{\u0458\\vphantom{j}}",                                // Unicode U+0458
+	"char/0x0459/mathmode":  "{\u0459\\vphantom{A}}",                                // Unicode U+0459
+	"char/0x045a/mathmode":  "{\u045a\\vphantom{a}}",                                // Unicode U+045A
+	"char/0x045b/mathmode":  "{\u045b\\vphantom{A}}",                                // Unicode U+045B
+	"char/0x045c/mathmode":  "{\u045c\\vphantom{A}}",                                // Unicode U+045C
+	"char/0x045d/mathmode":  "{\u045d\\vphantom{A}}",                                // Unicode U+045D
+	"char/0x045e/mathmode":  "{\u045e\\vphantom{j}}",                                // Unicode U+045E
+	"char/0x045f/mathmode":  "{\u045f\\vphantom{a}}",                                // Unicode U+045F
+	"char/0x0460/mathmode":  "{\u0460\\vphantom{A}}",                                // Unicode U+0460
+	"char/0x0461/mathmode":  "{\u0461\\vphantom{A}}",                                // Unicode U+0461
+	"char/0x0462/mathmode":  "{\u0462\\vphantom{A}}",                                // Unicode U+0462
+	"char/0x0463/mathmode":  "{\u0463\\vphantom{A}}",                                // Unicode U+0463
+	"char/0x0464/mathmode":  "{\u0464\\vphantom{A}}",                                // Unicode U+0464
+	"char/0x0465/mathmode":  "{\u0465\\vphantom{A}}",                                // Unicode U+0465
+	"char/0x0466/mathmode":  "{\u0466\\vphantom{A}}",                                // Unicode U+0466
+	"char/0x0467/mathmode":  "{\u0467\\vphantom{A}}",                                // Unicode U+0467
+	"char/0x0468/mathmode":  "{\u0468\\vphantom{A}}",                                // Unicode U+0468
+	"char/0x0469/mathmode":  "{\u0469\\vphantom{A}}",                                // Unicode U+0469
+	"char/0x046a/mathmode":  "{\u046a\\vphantom{A}}",                                // Unicode U+046A
+	"char/0x046b/mathmode":  "{\u046b\\vphantom{A}}",                                // Unicode U+046B
+	"char/0x046c/mathmode":  "{\u046c\\vphantom{A}}",                                // Unicode U+046C
+	"char/0x046d/mathmode":  "{\u046d\\vphantom{A}}",                                // Unicode U+046D
+	"char/0x046e/mathmode":  "{\u046e\\vphantom{A}}",                                // Unicode U+046E
+	"char/0x046f/mathmode":  "{\u046f\\vphantom{A}}",                                // Unicode U+046F
+	"char/0x0470/mathmode":  "{\u0470\\vphantom{A}}",                                // Unicode U+0470
+	"char/0x0471/mathmode":  "{\u0471\\vphantom{A}}",                                // Unicode U+0471
+	"char/0x0474/mathmode":  "{\u0474\\vphantom{A}}",                                // Unicode U+0474
+	"char/0x0475/mathmode":  "{\u0475\\vphantom{A}}",                                // Unicode U+0475
+	"char/0x0478/mathmode":  "{\u0478\\vphantom{A}}",                                // Unicode U+0478
+	"char/0x0479/mathmode":  "{\u0479\\vphantom{A}}",                                // Unicode U+0479
+	"char/0x0490/mathmode":  "{\u0490\\vphantom{A}}",                                // Unicode U+0490
+	"char/0x0491/mathmode":  "{\u0491\\vphantom{A}}",                                // Unicode U+0491
+	"char/0x04e8/mathmode":  "{\u04e8\\vphantom{A}}",                                // Unicode U+04E8
+	"char/0x04e9/mathmode":  "{\u04e9\\vphantom{A}}",                                // Unicode U+04E9
+	"char/0x1e9e/mathmode":  "{\u1e9e\\vphantom{A}}",                                // Unicode U+1E9E
+	"char/0x2001/textmode":  "{\\quad}",                                             // Unicode U+2001
+	"char/0x2002/textmode":  "{\\enspace}",                                          // Unicode U+2002
+	"char/0x2003/textmode":  "{\\quad}",                                             // Unicode U+2003
+	"char/0x2004/textmode":  "\\,",                                                  // Unicode U+2004
+	"char/0x2005/textmode":  "\\,",                                                  // Unicode U+2005
+	"char/0x2006/textmode":  "\\,",                                                  // Unicode U+2006
+	"char/0x2007/textmode":  "\\,",                                                  // Unicode U+2007
+	"char/0x2008/textmode":  "\\,",                                                  // Unicode U+2008
+	"char/0x2009/textmode":  "\\,",                                                  // Unicode U+2009
+	"char/0x200a/textmode":  "\\,",                                                  // Unicode U+200A
+	"char/0x200b/textmode":  "\\hspace{0pt}",                                        // Unicode U+200B
+	"char/0x2010/mathmode":  "\\text{-}",                                            // Unicode U+2010
+	"char/0x2011/textmode":  "\\hbox{-}",                                            // Unicode U+2011
+	"char/0x2012/textmode":  "-",                                                    // Unicode U+2012
+	"char/0x2013/mathmode":  "\\text{--}",                                           // Unicode U+2013
+	"char/0x2014/mathmode":  "\\text{---}",                                          // Unicode U+2014
+	"char/0x2015/mathmode":  "\\text{---}",                                          // Unicode U+2015
+	"char/0x2016/textmode":  "{\\|}",                                                // Unicode U+2016
+	"char/0x2018/textmode":  "`",                                                    // Unicode U+2018
+	"char/0x2019/textmode":  "'",                                                    // Unicode U+2019
+	"char/0x201a/textmode":  ",",                                                    // Unicode U+201A
+	"char/0x201b/textmode":  "`",                                                    // Unicode U+201B
+	"char/0x201c/textmode":  "``",                                                   // Unicode U+201C
+	"char/0x201d/textmode":  "''",                                                   // Unicode U+201D
+	"char/0x201e/textmode":  "\"`",                                                  // Unicode U+201E
+	"char/0x2020/textmode":  "{\\dag}",                                              // Unicode U+2020
+	"char/0x2021/textmode":  "{\\ddag}",                                             // Unicode U+2021
+	"char/0x2022/textmode":  "{\\textbullet}",                                       // Unicode U+2022
+	"char/0x2023/textmode":  "{\\blacktriangleright}",                               // Unicode U+2023
+	"char/0x2024/textmode":  "{\\ldotp}",                                            // Unicode U+2024
+	"char/0x2025/textmode":  "{\\ldotp\\ldotp}",                                     // Unicode U+2025
+	"char/0x2026/textmode":  "{\\ldots}",                                            // Unicode U+2026
+	"char/0x2027/textmode":  "{\\textbullet}",                                       // Unicode U+2027
+	"char/0x202f/textmode":  "\\,",                                                  // Unicode U+202F
+	"char/0x2030/textmode":  "{\\textperthousand}",                                  // Unicode U+2030
+	"char/0x2031/textmode":  "{\\textpertenthousand}",                               // Unicode U+2031
+	"char/0x2032/textmode":  "^{\\prime}",                                           // Unicode U+2032
+	"char/0x2033/textmode":  "^{\\prime\\prime}",                                    // Unicode U+2033
+	"char/0x2034/textmode":  "^{\\prime\\prime\\prime}",                             // Unicode U+2034
+	"char/0x2035/textmode":  "{\\backprime}",                                        // Unicode U+2035
+	"char/0x2036/textmode":  "{\\backdprime}",                                       // Unicode U+2036
+	"char/0x2037/textmode":  "{\\backtrprime}",                                      // Unicode U+2037
+	"char/0x2038/textmode":  "\\caretinsert",                                        // Unicode U+2038
+	"char/0x2039/textmode":  "{\\flq}",                                              // Unicode U+2039
+	"char/0x203a/textmode":  "{\\frq}",                                              // Unicode U+203A
+	"char/0x203c/textmode":  "{\\Exclam}",                                           // Unicode U+203C
+	"char/0x2040/textmode":  "{\\cat}",                                              // Unicode U+2040
+	"char/0x2041/mathmode":  "{\u2041\\vphantom{A}}",                                // Unicode U+2041
+	"char/0x2043/textmode":  "{\\hyphenbullet}",                                     // Unicode U+2043
+	"char/0x2047/textmode":  "{\\Question}",                                         // Unicode U+2047
+	"char/0x204f/mathmode":  "{\u204f\\vphantom{A}}",                                // Unicode U+204F
+	"char/0x2057/textmode":  "{\\qprime}",                                           // Unicode U+2057
+	"char/0x205f/textmode":  "{\\:}",                                                // Unicode U+205F
+	"char/0x2061/textmode":  " ",                                                    // Unicode U+2061
+	"char/0x2062/textmode":  " ",                                                    // Unicode U+2062
+	"char/0x2063/textmode":  " ",                                                    // Unicode U+2063
+	"char/0x2064/textmode":  " ",                                                    // Unicode U+2064
+	"char/0x2074/textmode":  "^{4}",                                                 // Unicode U+2074
+	"char/0x2075/textmode":  "^{5}",                                                 // Unicode U+2075
+	"char/0x2076/textmode":  "^{6}",                                                 // Unicode U+2076
+	"char/0x2077/textmode":  "^{7}",                                                 // Unicode U+2077
+	"char/0x2078/textmode":  "^{8}",                                                 // Unicode U+2078
+	"char/0x2079/textmode":  "^{9}",                                                 // Unicode U+2079
+	"char/0x207a/textmode":  "^{+}",                                                 // Unicode U+207A
+	"char/0x207b/textmode":  "^{-}",                                                 // Unicode U+207B
+	"char/0x207c/textmode":  "^{=}",                                                 // Unicode U+207C
+	"char/0x207d/textmode":  "^{(}",                                                 // Unicode U+207D
+	"char/0x207e/textmode":  "^{)}",                                                 // Unicode U+207E
+	"char/0x207f/textmode":  "^{n}",                                                 // Unicode U+207F
+	"char/0x2080/textmode":  "_{0}",                                                 // Unicode U+2080
+	"char/0x2081/textmode":  "_{1}",                                                 // Unicode U+2081
+	"char/0x2082/textmode":  "_{2}",                                                 // Unicode U+2082
+	"char/0x2083/textmode":  "_{3}",                                                 // Unicode U+2083
+	"char/0x2084/textmode":  "_{4}",                                                 // Unicode U+2084
+	"char/0x2085/textmode":  "_{5}",                                                 // Unicode U+2085
+	"char/0x2086/textmode":  "_{6}",                                                 // Unicode U+2086
+	"char/0x2087/textmode":  "_{7}",                                                 // Unicode U+2087
+	"char/0x2088/textmode":  "_{8}",                                                 // Unicode U+2088
+	"char/0x2089/textmode":  "_{9}",                                                 // Unicode U+2089
+	"char/0x208a/textmode":  "_{+}",                                                 // Unicode U+208A
+	"char/0x208b/textmode":  "_{-}",                                                 // Unicode U+208B
+	"char/0x208c/textmode":  "_{=}",                                                 // Unicode U+208C
+	"char/0x208d/textmode":  "_{(}",                                                 // Unicode U+208D
+	"char/0x208e/textmode":  "_{)}",                                                 // Unicode U+208E
+	"char/0x2090/textmode":  "_{a}",                                                 // Unicode U+2090
+	"char/0x2091/textmode":  "_{e}",                                                 // Unicode U+2091
+	"char/0x2092/textmode":  "_{o}",                                                 // Unicode U+2092
+	"char/0x2093/textmode":  "_{x}",                                                 // Unicode U+2093
+	"char/0x2094/textmode":  "_{\\text{\\textschwa}}",                               // Unicode U+2094
+	"char/0x2095/textmode":  "_{h}",                                                 // Unicode U+2095
+	"char/0x2096/textmode":  "_{k}",                                                 // Unicode U+2096
+	"char/0x2097/textmode":  "_{l}",                                                 // Unicode U+2097
+	"char/0x2098/textmode":  "_{m}",                                                 // Unicode U+2098
+	"char/0x2099/textmode":  "_{n}",                                                 // Unicode U+2099
+	"char/0x209a/textmode":  "_{p}",                                                 // Unicode U+209A
+	"char/0x209b/textmode":  "_{s}",                                                 // Unicode U+209B
+	"char/0x209c/textmode":  "_{t}",                                                 // Unicode U+209C
+	"char/0x20a1/textmode":  "{\\textcolonmonetary}",                                // Unicode U+20A1
+	"char/0x20a4/textmode":  "{\\textlira}",                                         // Unicode U+20A4
+	"char/0x20a6/textmode":  "{\\textnaira}",                                        // Unicode U+20A6
+	"char/0x20a7/textmode":  "Pt",                                                   // Unicode U+20A7
+	"char/0x20a8/textmode":  "Rs",                                                   // Unicode U+20A8
+	"char/0x20a9/textmode":  "{\\textwon}",                                          // Unicode U+20A9
+	"char/0x20ab/textmode":  "{\\textdong}",                                         // Unicode U+20AB
+	"char/0x20ac/textmode":  "{\\texteuro}",                                         // Unicode U+20AC
+	"char/0x20b1/textmode":  "{\\textpeso}",                                         // Unicode U+20B1
+	"char/0x20b2/textmode":  "{\\textguarani}",                                      // Unicode U+20B2
+	"char/0x20d0/textmode":  "{\\lvec}",                                             // Unicode U+20D0
+	"char/0x20d1/textmode":  "{\\vec}",                                              // Unicode U+20D1
+	"char/0x20d6/textmode":  "{\\LVec}",                                             // Unicode U+20D6
+	"char/0x20d7/textmode":  "{\\vec}",                                              // Unicode U+20D7
+	"char/0x20db/textmode":  "\u20db",                                               // Unicode U+20DB
+	"char/0x20dc/textmode":  "{\\ddddot}",                                           // Unicode U+20DC
+	"char/0x20dd/textmode":  "{\\enclosesquare}",                                    // Unicode U+20DD
+	"char/0x20de/textmode":  "{\\enclosediamond}",                                   // Unicode U+20DE
+	"char/0x20e1/textmode":  "{\\overleftrightarrow}",                               // Unicode U+20E1
+	"char/0x20e4/textmode":  "{\\enclosetriangle}",                                  // Unicode U+20E4
+	"char/0x20ee/textmode":  "{\\underleftarrow}",                                   // Unicode U+20EE
+	"char/0x20ef/textmode":  "{\\underrightarrow}",                                  // Unicode U+20EF
+	"char/0x2102/textmode":  "{\\mathbb{C}}",                                        // Unicode U+2102
+	"char/0x2105/mathmode":  "{\u2105\\vphantom{A}}",                                // Unicode U+2105
+	"char/0x2107/textmode":  "{\\Euler}",                                            // Unicode U+2107
+	"char/0x210a/textmode":  "{\\mathcal{g}}",                                       // Unicode U+210A
+	"char/0x210b/textmode":  "{\\mathcal{H}}",                                       // Unicode U+210B
+	"char/0x210c/textmode":  "{\\mathfrak{H}}",                                      // Unicode U+210C
+	"char/0x210d/textmode":  "{\\mathbb{H}}",                                        // Unicode U+210D
+	"char/0x210e/textmode":  "{\\mathit{h}}",                                        // Unicode U+210E
+	"char/0x210f/textmode":  "{\\hslash}",                                           // Unicode U+210F
+	"char/0x2110/textmode":  "{\\mathcal{I}}",                                       // Unicode U+2110
+	"char/0x2111/textmode":  "{\\Im}",                                               // Unicode U+2111
+	"char/0x2112/textmode":  "{\\mathcal{L}}",                                       // Unicode U+2112
+	"char/0x2113/textmode":  "{\\ell}",                                              // Unicode U+2113
+	"char/0x2115/textmode":  "{\\mathbb{N}}",                                        // Unicode U+2115
+	"char/0x2116/mathmode":  "{\u2116\\vphantom{A}}",                                // Unicode U+2116
+	"char/0x2117/mathmode":  "{\u2117\\vphantom{A}}",                                // Unicode U+2117
+	"char/0x2118/textmode":  "{\\wp}",                                               // Unicode U+2118
+	"char/0x2119/textmode":  "{\\mathbb{P}}",                                        // Unicode U+2119
+	"char/0x211a/textmode":  "{\\mathbb{Q}}",                                        // Unicode U+211A
+	"char/0x211b/textmode":  "{\\mathcal{R}}",                                       // Unicode U+211B
+	"char/0x211c/textmode":  "{\\Re}",                                               // Unicode U+211C
+	"char/0x211d/textmode":  "{\\mathbb{R}}",                                        // Unicode U+211D
+	"char/0x211e/mathmode":  "{\u211e\\vphantom{A}}",                                // Unicode U+211E
+	"char/0x2120/textmode":  "{\\textservicemark}",                                  // Unicode U+2120
+	"char/0x2122/textmode":  "{\\texttrademark}",                                    // Unicode U+2122
+	"char/0x2124/textmode":  "{\\mathbb{Z}}",                                        // Unicode U+2124
+	"char/0x2126/textmode":  "{\\tcohm}",                                            // Unicode U+2126
+	"char/0x2127/textmode":  "{\\mho}",                                              // Unicode U+2127
+	"char/0x2128/textmode":  "{\\mathfrak{Z}}",                                      // Unicode U+2128
+	"char/0x2129/mathmode":  "{\u2129\\vphantom{A}}",                                // Unicode U+2129
+	"char/0x212b/textmode":  "{\\Angstroem}",                                        // Unicode U+212B
+	"char/0x212c/textmode":  "{\\mathcal{B}}",                                       // Unicode U+212C
+	"char/0x212d/textmode":  "{\\mathfrak{C}}",                                      // Unicode U+212D
+	"char/0x212f/textmode":  "{\\mathcal{e}}",                                       // Unicode U+212F
+	"char/0x2130/textmode":  "{\\mathcal{E}}",                                       // Unicode U+2130
+	"char/0x2131/textmode":  "{\\mathcal{F}}",                                       // Unicode U+2131
+	"char/0x2132/textmode":  "{\\Finv}",                                             // Unicode U+2132
+	"char/0x2133/textmode":  "{\\mathcal{M}}",                                       // Unicode U+2133
+	"char/0x2134/textmode":  "{\\mathcal{o}}",                                       // Unicode U+2134
+	"char/0x2135/textmode":  "{\\aleph}",                                            // Unicode U+2135
+	"char/0x2136/textmode":  "{\\beth}",                                             // Unicode U+2136
+	"char/0x2137/textmode":  "{\\gimel}",                                            // Unicode U+2137
+	"char/0x2138/textmode":  "{\\daleth}",                                           // Unicode U+2138
+	"char/0x213c/textmode":  "{\\mathbb{pi}}",                                       // Unicode U+213C
+	"char/0x213d/textmode":  "{\\mathbb{gamma}}",                                    // Unicode U+213D
+	"char/0x213e/textmode":  "{\\mathbb{Gamma}}",                                    // Unicode U+213E
+	"char/0x213f/textmode":  "{\\mathbb{Pi}}",                                       // Unicode U+213F
+	"char/0x2140/textmode":  "{\\mathbb{Sigma}}",                                    // Unicode U+2140
+	"char/0x2141/textmode":  "{\\Game}",                                             // Unicode U+2141
+	"char/0x2142/textmode":  "{\\sansLturned}",                                      // Unicode U+2142
+	"char/0x2143/textmode":  "{\\sansLmirrored}",                                    // Unicode U+2143
+	"char/0x2144/textmode":  "{\\Yup}",                                              // Unicode U+2144
+	"char/0x2145/textmode":  "{\\CapitalDifferentialD}",                             // Unicode U+2145
+	"char/0x2146/textmode":  "{\\DifferentialD}",                                    // Unicode U+2146
+	"char/0x2147/textmode":  "{\\ExponetialE}",                                      // Unicode U+2147
+	"char/0x2148/textmode":  "{\\ComplexI}",                                         // Unicode U+2148
+	"char/0x2149/textmode":  "{\\ComplexJ}",                                         // Unicode U+2149
+	"char/0x214a/textmode":  "{\\PropertyLine}",                                     // Unicode U+214A
+	"char/0x214b/textmode":  "{\\invamp}",                                           // Unicode U+214B
+	"char/0x2153/mathmode":  "{\u2153\\vphantom{\\frac12}}",                         // Unicode U+2153
+	"char/0x2154/mathmode":  "{\u2154\\vphantom{\\frac12}}",                         // Unicode U+2154
+	"char/0x2155/mathmode":  "{\u2155\\vphantom{\\frac12}}",                         // Unicode U+2155
+	"char/0x2156/mathmode":  "{\u2156\\vphantom{\\frac12}}",                         // Unicode U+2156
+	"char/0x2157/mathmode":  "{\u2157\\vphantom{\\frac12}}",                         // Unicode U+2157
+	"char/0x2158/mathmode":  "{\u2158\\vphantom{\\frac12}}",                         // Unicode U+2158
+	"char/0x2159/mathmode":  "{\u2159\\vphantom{\\frac12}}",                         // Unicode U+2159
+	"char/0x215a/mathmode":  "{\u215a\\vphantom{\\frac12}}",                         // Unicode U+215A
+	"char/0x215b/mathmode":  "{\u215b\\vphantom{\\frac12}}",                         // Unicode U+215B
+	"char/0x215c/mathmode":  "{\u215c\\vphantom{\\frac12}}",                         // Unicode U+215C
+	"char/0x215d/mathmode":  "{\u215d\\vphantom{\\frac12}}",                         // Unicode U+215D
+	"char/0x215e/mathmode":  "{\u215e\\vphantom{\\frac12}}",                         // Unicode U+215E
+	"char/0x2190/textmode":  "{\\leftarrow}",                                        // Unicode U+2190
+	"char/0x2191/textmode":  "{\\uparrow}",                                          // Unicode U+2191
+	"char/0x2192/textmode":  "{\\rightarrow}",                                       // Unicode U+2192
+	"char/0x2193/textmode":  "{\\downarrow}",                                        // Unicode U+2193
+	"char/0x2194/textmode":  "{\\leftrightarrow}",                                   // Unicode U+2194
+	"char/0x2195/textmode":  "{\\updownarrow}",                                      // Unicode U+2195
+	"char/0x2196/textmode":  "{\\nwarrow}",                                          // Unicode U+2196
+	"char/0x2197/textmode":  "{\\nearrow}",                                          // Unicode U+2197
+	"char/0x2198/textmode":  "{\\searrow}",                                          // Unicode U+2198
+	"char/0x2199/textmode":  "{\\swarrow}",                                          // Unicode U+2199
+	"char/0x219a/textmode":  "{\\nleftarrow}",                                       // Unicode U+219A
+	"char/0x219b/textmode":  "{\\nrightarrow}",                                      // Unicode U+219B
+	"char/0x219d/mathmode":  "\\rightsquigarrow",                                    // Unicode U+219D
+	"char/0x219e/textmode":  "{\\twoheadleftarrow}",                                 // Unicode U+219E
+	"char/0x219f/mathmode":  "\\mathrel{\u219f\\vphantom{A}}",                       // Unicode U+219F
+	"char/0x21a0/textmode":  "{\\twoheadrightarrow}",                                // Unicode U+21A0
+	"char/0x21a1/mathmode":  "\\mathrel{\u21a1\\vphantom{A}}",                       // Unicode U+21A1
+	"char/0x21a2/textmode":  "{\\leftarrowtail}",                                    // Unicode U+21A2
+	"char/0x21a3/textmode":  "{\\rightarrowtail}",                                   // Unicode U+21A3
+	"char/0x21a4/textmode":  "{\\mapsfrom}",                                         // Unicode U+21A4
+	"char/0x21a5/textmode":  "{\\MapsUp}",                                           // Unicode U+21A5
+	"char/0x21a6/textmode":  "{\\mapsto}",                                           // Unicode U+21A6
+	"char/0x21a7/textmode":  "{\\MapsDown}",                                         // Unicode U+21A7
+	"char/0x21a8/textmode":  "{\\updownarrowbar}",                                   // Unicode U+21A8
+	"char/0x21a9/textmode":  "{\\hookleftarrow}",                                    // Unicode U+21A9
+	"char/0x21aa/textmode":  "{\\hookrightarrow}",                                   // Unicode U+21AA
+	"char/0x21ab/textmode":  "{\\looparrowleft}",                                    // Unicode U+21AB
+	"char/0x21ac/textmode":  "{\\looparrowright}",                                   // Unicode U+21AC
+	"char/0x21ad/textmode":  "{\\leftrightsquigarrow}",                              // Unicode U+21AD
+	"char/0x21ae/textmode":  "{\\nleftrightarrow}",                                  // Unicode U+21AE
+	"char/0x21af/textmode":  "{\\lightning}",                                        // Unicode U+21AF
+	"char/0x21b0/textmode":  "{\\Lsh}",                                              // Unicode U+21B0
+	"char/0x21b1/textmode":  "{\\Rsh}",                                              // Unicode U+21B1
+	"char/0x21b2/textmode":  "{\\dlsh}",                                             // Unicode U+21B2
+	"char/0x21b3/textmode":  "{\\drsh}",                                             // Unicode U+21B3
+	"char/0x21b6/textmode":  "{\\curvearrowleft}",                                   // Unicode U+21B6
+	"char/0x21b7/textmode":  "{\\curvearrowright}",                                  // Unicode U+21B7
+	"char/0x21ba/textmode":  "{\\circlearrowleft}",                                  // Unicode U+21BA
+	"char/0x21bb/textmode":  "{\\circlearrowright}",                                 // Unicode U+21BB
+	"char/0x21bc/textmode":  "{\\leftharpoonup}",                                    // Unicode U+21BC
+	"char/0x21bd/textmode":  "{\\leftharpoondown}",                                  // Unicode U+21BD
+	"char/0x21be/textmode":  "{\\upharpoonright}",                                   // Unicode U+21BE
+	"char/0x21bf/textmode":  "{\\upharpoonleft}",                                    // Unicode U+21BF
+	"char/0x21c0/textmode":  "{\\rightharpoonup}",                                   // Unicode U+21C0
+	"char/0x21c1/textmode":  "{\\rightharpoondown}",                                 // Unicode U+21C1
+	"char/0x21c2/textmode":  "{\\downharpoonright}",                                 // Unicode U+21C2
+	"char/0x21c3/textmode":  "{\\downharpoonleft}",                                  // Unicode U+21C3
+	"char/0x21c4/textmode":  "{\\rightleftarrows}",                                  // Unicode U+21C4
+	"char/0x21c5/textmode":  "{\\updownarrows}",                                     // Unicode U+21C5
+	"char/0x21c6/textmode":  "{\\leftrightarrows}",                                  // Unicode U+21C6
+	"char/0x21c7/textmode":  "{\\leftleftarrows}",                                   // Unicode U+21C7
+	"char/0x21c8/textmode":  "{\\upuparrows}",                                       // Unicode U+21C8
+	"char/0x21c9/textmode":  "{\\rightrightarrows}",                                 // Unicode U+21C9
+	"char/0x21ca/textmode":  "{\\downdownarrows}",                                   // Unicode U+21CA
+	"char/0x21cb/textmode":  "{\\leftrightharpoons}",                                // Unicode U+21CB
+	"char/0x21cc/textmode":  "{\\rightleftharpoons}",                                // Unicode U+21CC
+	"char/0x21cd/textmode":  "{\\nLeftarrow}",                                       // Unicode U+21CD
+	"char/0x21ce/textmode":  "{\\nLeftrightarrow}",                                  // Unicode U+21CE
+	"char/0x21cf/textmode":  "{\\nRightarrow}",                                      // Unicode U+21CF
+	"char/0x21d0/textmode":  "{\\Leftarrow}",                                        // Unicode U+21D0
+	"char/0x21d1/textmode":  "{\\Uparrow}",                                          // Unicode U+21D1
+	"char/0x21d2/textmode":  "{\\Rightarrow}",                                       // Unicode U+21D2
+	"char/0x21d3/textmode":  "{\\Downarrow}",                                        // Unicode U+21D3
+	"char/0x21d4/textmode":  "{\\Leftrightarrow}",                                   // Unicode U+21D4
+	"char/0x21d5/textmode":  "{\\Updownarrow}",                                      // Unicode U+21D5
+	"char/0x21d6/textmode":  "{\\Nwarrow}",                                          // Unicode U+21D6
+	"char/0x21d7/textmode":  "{\\Nearrow}",                                          // Unicode U+21D7
+	"char/0x21d8/textmode":  "{\\Searrow}",                                          // Unicode U+21D8
+	"char/0x21d9/textmode":  "{\\Swarrow}",                                          // Unicode U+21D9
+	"char/0x21da/textmode":  "{\\Lleftarrow}",                                       // Unicode U+21DA
+	"char/0x21db/textmode":  "{\\Rrightarrow}",                                      // Unicode U+21DB
+	"char/0x21dc/textmode":  "{\\leftsquigarrow}",                                   // Unicode U+21DC
+	"char/0x21dd/textmode":  "{\\rightsquigarrow}",                                  // Unicode U+21DD
+	"char/0x21e0/textmode":  "{\\dashleftarrow}",                                    // Unicode U+21E0
+	"char/0x21e2/textmode":  "{\\dashrightarrow}",                                   // Unicode U+21E2
+	"char/0x21e4/textmode":  "{\\LeftArrowBar}",                                     // Unicode U+21E4
+	"char/0x21e5/textmode":  "{\\RightArrowBar}",                                    // Unicode U+21E5
+	"char/0x21f5/textmode":  "{\\downuparrows}",                                     // Unicode U+21F5
+	"char/0x21f8/textmode":  "{\\pfun}",                                             // Unicode U+21F8
+	"char/0x21fb/textmode":  "{\\ffun}",                                             // Unicode U+21FB
+	"char/0x21fd/textmode":  "{\\leftarrowtriangle}",                                // Unicode U+21FD
+	"char/0x21fe/textmode":  "{\\rightarrowtriangle}",                               // Unicode U+21FE
+	"char/0x21ff/textmode":  "{\\leftrightarrowtriangle}",                           // Unicode U+21FF
+	"char/0x2200/textmode":  "{\\forall}",                                           // Unicode U+2200
+	"char/0x2201/textmode":  "{\\complement}",                                       // Unicode U+2201
+	"char/0x2202/textmode":  "{\\partial}",                                          // Unicode U+2202
+	"char/0x2203/textmode":  "{\\exists}",                                           // Unicode U+2203
+	"char/0x2204/textmode":  "{\\nexists}",                                          // Unicode U+2204
+	"char/0x2205/textmode":  "{\\varnothing}",                                       // Unicode U+2205
+	"char/0x2206/textmode":  "{\\Updelta}",                                          // Unicode U+2206
+	"char/0x2207/textmode":  "{\\nabla}",                                            // Unicode U+2207
+	"char/0x2208/textmode":  "{\\in}",                                               // Unicode U+2208
+	"char/0x2209/textmode":  "{\\notin}",                                            // Unicode U+2209
+	"char/0x220a/textmode":  "{\\in}",                                               // Unicode U+220A
+	"char/0x220b/textmode":  "{\\ni}",                                               // Unicode U+220B
+	"char/0x220c/textmode":  "{\\notni}",                                            // Unicode U+220C
+	"char/0x220d/textmode":  "{\\ni}",                                               // Unicode U+220D
+	"char/0x220e/textmode":  "{\\blacksquare}",                                      // Unicode U+220E
+	"char/0x220f/textmode":  "{\\prod}",                                             // Unicode U+220F
+	"char/0x2210/textmode":  "{\\coprod}",                                           // Unicode U+2210
+	"char/0x2211/textmode":  "{\\sum}",                                              // Unicode U+2211
+	"char/0x2212/textmode":  "{-}",                                                  // Unicode U+2212
+	"char/0x2213/textmode":  "{\\mp}",                                               // Unicode U+2213
+	"char/0x2214/textmode":  "{\\dotplus}",                                          // Unicode U+2214
+	"char/0x2215/textmode":  "{\\slash}",                                            // Unicode U+2215
+	"char/0x2216/textmode":  "{\\smallsetminus}",                                    // Unicode U+2216
+	"char/0x2217/textmode":  "{\\ast}",                                              // Unicode U+2217
+	"char/0x2218/textmode":  "{\\circ}",                                             // Unicode U+2218
+	"char/0x2219/textmode":  "{\\cdot}",                                             // Unicode U+2219
+	"char/0x221a/textmode":  "{\\sqrt{}}",                                           // Unicode U+221A
+	"char/0x221b/textmode":  "{\\sqrt[3]{}}",                                        // Unicode U+221B
+	"char/0x221c/textmode":  "{\\sqrt[4]{}}",                                        // Unicode U+221C
+	"char/0x221d/textmode":  "{\\propto}",                                           // Unicode U+221D
+	"char/0x221e/textmode":  "{\\infty}",                                            // Unicode U+221E
+	"char/0x221f/textmode":  "{\\llcorner}",                                         // Unicode U+221F
+	"char/0x2220/textmode":  "{\\angle}",                                            // Unicode U+2220
+	"char/0x2221/textmode":  "{\\measuredangle}",                                    // Unicode U+2221
+	"char/0x2222/textmode":  "{\\sphericalangle}",                                   // Unicode U+2222
+	"char/0x2223/textmode":  "{\\mid}",                                              // Unicode U+2223
+	"char/0x2224/textmode":  "{\\nmid}",                                             // Unicode U+2224
+	"char/0x2225/textmode":  "{\\parallel}",                                         // Unicode U+2225
+	"char/0x2226/textmode":  "{\\nparallel}",                                        // Unicode U+2226
+	"char/0x2227/textmode":  "{\\wedge}",                                            // Unicode U+2227
+	"char/0x2228/textmode":  "{\\vee}",                                              // Unicode U+2228
+	"char/0x2229/textmode":  "{\\cap}",                                              // Unicode U+2229
+	"char/0x222a/textmode":  "{\\cup}",                                              // Unicode U+222A
+	"char/0x222b/textmode":  "{\\int}",                                              // Unicode U+222B
+	"char/0x222c/textmode":  "{\\iint}",                                             // Unicode U+222C
+	"char/0x222d/textmode":  "{\\iiint}",                                            // Unicode U+222D
+	"char/0x222e/textmode":  "{\\oint}",                                             // Unicode U+222E
+	"char/0x222f/textmode":  "{\\oiint}",                                            // Unicode U+222F
+	"char/0x2230/textmode":  "{\\oiiint}",                                           // Unicode U+2230
+	"char/0x2231/mathmode":  "\\mathop{\\LARGE \u2231\\vphantom{\\int}}",            // Unicode U+2231
+	"char/0x2232/textmode":  "{\\varointclockwise}",                                 // Unicode U+2232
+	"char/0x2233/textmode":  "{\\ointctrclockwise}",                                 // Unicode U+2233
+	"char/0x2234/textmode":  "{\\therefore}",                                        // Unicode U+2234
+	"char/0x2235/textmode":  "{\\because}",                                          // Unicode U+2235
+	"char/0x2236/textmode":  "{:}",                                                  // Unicode U+2236
+	"char/0x2237/textmode":  "{::}",                                                 // Unicode U+2237
+	"char/0x2238/textmode":  "{\\dot{-}}",                                           // Unicode U+2238
+	"char/0x2239/textmode":  "{\\eqcolon}",                                          // Unicode U+2239
+	"char/0x223a/mathmode":  "\\mathrel{\u223a\\vphantom{A}}",                       // Unicode U+223A
+	"char/0x223b/mathmode":  "\\mathrel{\u223b\\vphantom{A}}",                       // Unicode U+223B
+	"char/0x223c/textmode":  "{\\sim}",                                              // Unicode U+223C
+	"char/0x223d/textmode":  "{\\backsim}",                                          // Unicode U+223D
+	"char/0x223e/mathmode":  "\\mathrel{\u223e\\vphantom{A}}",                       // Unicode U+223E
+	"char/0x223f/textmode":  "{\\AC}",                                               // Unicode U+223F
+	"char/0x2240/textmode":  "{\\wr}",                                               // Unicode U+2240
+	"char/0x2241/textmode":  "{\\nsim}",                                             // Unicode U+2241
+	"char/0x2242/textmode":  "{\\eqsim}",                                            // Unicode U+2242
+	"char/0x2243/textmode":  "{\\simeq}",                                            // Unicode U+2243
+	"char/0x2244/textmode":  "{\\nsimeq}",                                           // Unicode U+2244
+	"char/0x2245/textmode":  "{\\cong}",                                             // Unicode U+2245
+	"char/0x2246/mathmode":  "\\mathrel{\u2246\\vphantom{A}}",                       // Unicode U+2246
+	"char/0x2247/textmode":  "{\\ncong}",                                            // Unicode U+2247
+	"char/0x2248/textmode":  "{\\approx}",                                           // Unicode U+2248
+	"char/0x2249/textmode":  "{\\napprox}",                                          // Unicode U+2249
+	"char/0x224a/textmode":  "{\\approxeq}",                                         // Unicode U+224A
+	"char/0x224b/mathmode":  "\\mathrel{\\not \u224b}",                              // Unicode U+224B
+	"char/0x224c/mathmode":  "\\mathbin{\\overset{\u223d}{\\=}}",                    // Unicode U+224C
+	"char/0x224d/textmode":  "{\\asymp}",                                            // Unicode U+224D
+	"char/0x224e/textmode":  "{\\Bumpeq}",                                           // Unicode U+224E
+	"char/0x224f/textmode":  "{\\bumpeq}",                                           // Unicode U+224F
+	"char/0x2250/textmode":  "{\\doteq}",                                            // Unicode U+2250
+	"char/0x2251/textmode":  "{\\Doteq}",                                            // Unicode U+2251
+	"char/0x2252/textmode":  "{\\fallingdotseq}",                                    // Unicode U+2252
+	"char/0x2253/textmode":  "{\\risingdotseq}",                                     // Unicode U+2253
+	"char/0x2254/textmode":  "{\\coloneqq}",                                         // Unicode U+2254
+	"char/0x2255/textmode":  "{\\eqqcolon}",                                         // Unicode U+2255
+	"char/0x2256/textmode":  "{\\eqcirc}",                                           // Unicode U+2256
+	"char/0x2257/textmode":  "{\\circeq}",                                           // Unicode U+2257
+	"char/0x2259/textmode":  "{\\corresponds}",                                      // Unicode U+2259
+	"char/0x225a/mathmode":  "\\mathrel{\\check{\\=}}",                              // Unicode U+225A
+	"char/0x225c/textmode":  "{\\triangleq}",                                        // Unicode U+225C
+	"char/0x225f/mathmode":  "\\mathrel{\u225f\\vphantom{A}}",                       // Unicode U+225F
+	"char/0x2260/textmode":  "{\\neq}",                                              // Unicode U+2260
+	"char/0x2261/textmode":  "{\\equiv}",                                            // Unicode U+2261
+	"char/0x2262/textmode":  "{\\nequiv}",                                           // Unicode U+2262
+	"char/0x2264/textmode":  "{\\leq}",                                              // Unicode U+2264
+	"char/0x2265/textmode":  "{\\geq}",                                              // Unicode U+2265
+	"char/0x2266/textmode":  "{\\leqq}",                                             // Unicode U+2266
+	"char/0x2267/textmode":  "{\\geqq}",                                             // Unicode U+2267
+	"char/0x2268/textmode":  "{\\lneqq}",                                            // Unicode U+2268
+	"char/0x2269/textmode":  "{\\gneqq}",                                            // Unicode U+2269
+	"char/0x226a/textmode":  "{\\ll}",                                               // Unicode U+226A
+	"char/0x226b/textmode":  "{\\gg}",                                               // Unicode U+226B
+	"char/0x226c/textmode":  "{\\between}",                                          // Unicode U+226C
+	"char/0x226d/textmode":  "{\\notasymp}",                                         // Unicode U+226D
+	"char/0x226e/textmode":  "{\\nless}",                                            // Unicode U+226E
+	"char/0x226f/textmode":  "{\\ngtr}",                                             // Unicode U+226F
+	"char/0x2270/textmode":  "{\\nleq}",                                             // Unicode U+2270
+	"char/0x2271/textmode":  "{\\ngeq}",                                             // Unicode U+2271
+	"char/0x2272/textmode":  "{\\lesssim}",                                          // Unicode U+2272
+	"char/0x2273/textmode":  "{\\gtrsim}",                                           // Unicode U+2273
+	"char/0x2274/textmode":  "{\\NotLessTilde}",                                     // Unicode U+2274
+	"char/0x2275/textmode":  "{\\NotGreaterTilde}",                                  // Unicode U+2275
+	"char/0x2276/textmode":  "{\\lessgtr}",                                          // Unicode U+2276
+	"char/0x2277/textmode":  "{\\gtrless}",                                          // Unicode U+2277
+	"char/0x2278/mathmode":  "\\mathrel{\u2278\\vphantom{A}}",                       // Unicode U+2278
+	"char/0x2279/textmode":  "{\\NotGreaterLess}",                                   // Unicode U+2279
+	"char/0x227a/textmode":  "{\\prec}",                                             // Unicode U+227A
+	"char/0x227b/textmode":  "{\\succ}",                                             // Unicode U+227B
+	"char/0x227c/textmode":  "{\\preccurlyeq}",                                      // Unicode U+227C
+	"char/0x227d/textmode":  "{\\succcurlyeq}",                                      // Unicode U+227D
+	"char/0x227e/textmode":  "{\\precsim}",                                          // Unicode U+227E
+	"char/0x227f/textmode":  "{\\succsim}",                                          // Unicode U+227F
+	"char/0x2280/textmode":  "{\\nprec}",                                            // Unicode U+2280
+	"char/0x2281/textmode":  "{\\nsucc}",                                            // Unicode U+2281
+	"char/0x2282/textmode":  "{\\subset}",                                           // Unicode U+2282
+	"char/0x2283/textmode":  "{\\supset}",                                           // Unicode U+2283
+	"char/0x2284/textmode":  "{\\nsubset}",                                          // Unicode U+2284
+	"char/0x2285/textmode":  "{\\nsupset}",                                          // Unicode U+2285
+	"char/0x2286/textmode":  "{\\subseteq}",                                         // Unicode U+2286
+	"char/0x2287/textmode":  "{\\supseteq}",                                         // Unicode U+2287
+	"char/0x2288/textmode":  "{\\nsubseteq}",                                        // Unicode U+2288
+	"char/0x2289/textmode":  "{\\nsupseteq}",                                        // Unicode U+2289
+	"char/0x228a/textmode":  "{\\subsetneq}",                                        // Unicode U+228A
+	"char/0x228b/textmode":  "{\\supsetneq}",                                        // Unicode U+228B
+	"char/0x228d/mathmode":  "\\mathbin{\u228d\\vphantom{A}}",                       // Unicode U+228D
+	"char/0x228e/textmode":  "{\\uplus}",                                            // Unicode U+228E
+	"char/0x228f/textmode":  "{\\sqsubset}",                                         // Unicode U+228F
+	"char/0x2290/textmode":  "{\\sqsupset}",                                         // Unicode U+2290
+	"char/0x2291/textmode":  "{\\sqsubseteq}",                                       // Unicode U+2291
+	"char/0x2292/textmode":  "{\\sqsupseteq}",                                       // Unicode U+2292
+	"char/0x2293/textmode":  "{\\sqcap}",                                            // Unicode U+2293
+	"char/0x2294/textmode":  "{\\sqcup}",                                            // Unicode U+2294
+	"char/0x2295/textmode":  "{\\oplus}",                                            // Unicode U+2295
+	"char/0x2296/textmode":  "{\\ominus}",                                           // Unicode U+2296
+	"char/0x2297/textmode":  "{\\otimes}",                                           // Unicode U+2297
+	"char/0x2298/textmode":  "{\\oslash}",                                           // Unicode U+2298
+	"char/0x2299/textmode":  "{\\odot}",                                             // Unicode U+2299
+	"char/0x229a/textmode":  "{\\circledcirc}",                                      // Unicode U+229A
+	"char/0x229b/textmode":  "{\\circledast}",                                       // Unicode U+229B
+	"char/0x229d/textmode":  "{\\circleddash}",                                      // Unicode U+229D
+	"char/0x229e/textmode":  "{\\boxplus}",                                          // Unicode U+229E
+	"char/0x229f/textmode":  "{\\boxminus}",                                         // Unicode U+229F
+	"char/0x22a0/textmode":  "{\\boxtimes}",                                         // Unicode U+22A0
+	"char/0x22a1/textmode":  "{\\boxdot}",                                           // Unicode U+22A1
+	"char/0x22a2/textmode":  "{\\vdash}",                                            // Unicode U+22A2
+	"char/0x22a3/textmode":  "{\\dashv}",                                            // Unicode U+22A3
+	"char/0x22a4/textmode":  "{\\top}",                                              // Unicode U+22A4
+	"char/0x22a5/textmode":  "{\\bot}",                                              // Unicode U+22A5
+	"char/0x22a7/textmode":  "{\\models}",                                           // Unicode U+22A7
+	"char/0x22a8/textmode":  "{\\vDash}",                                            // Unicode U+22A8
+	"char/0x22a9/textmode":  "{\\Vdash}",                                            // Unicode U+22A9
+	"char/0x22aa/textmode":  "{\\Vvdash}",                                           // Unicode U+22AA
+	"char/0x22ab/textmode":  "{\\VDash}",                                            // Unicode U+22AB
+	"char/0x22ac/textmode":  "{\\nvdash}",                                           // Unicode U+22AC
+	"char/0x22ad/textmode":  "{\\nvDash}",                                           // Unicode U+22AD
+	"char/0x22ae/textmode":  "{\\nVdash}",                                           // Unicode U+22AE
+	"char/0x22af/textmode":  "{\\nVDash}",                                           // Unicode U+22AF
+	"char/0x22b0/mathmode":  "\\mathrel{\u22b0\\vphantom{A}}",                       // Unicode U+22B0
+	"char/0x22b2/textmode":  "{\\vartriangleleft}",                                  // Unicode U+22B2
+	"char/0x22b3/textmode":  "{\\vartriangleright}",                                 // Unicode U+22B3
+	"char/0x22b4/textmode":  "{\\trianglelefteq}",                                   // Unicode U+22B4
+	"char/0x22b5/textmode":  "{\\trianglerighteq}",                                  // Unicode U+22B5
+	"char/0x22b6/textmode":  "{\\multimapdotbothA}",                                 // Unicode U+22B6
+	"char/0x22b7/textmode":  "{\\multimapdotbothB}",                                 // Unicode U+22B7
+	"char/0x22b8/textmode":  "{\\multimap}",                                         // Unicode U+22B8
+	"char/0x22b9/mathmode":  "\\mathbin{\u22b9\\vphantom{A}}",                       // Unicode U+22B9
+	"char/0x22ba/textmode":  "{\\intercal}",                                         // Unicode U+22BA
+	"char/0x22bb/textmode":  "{\\veebar}",                                           // Unicode U+22BB
+	"char/0x22bc/textmode":  "{\\barwedge}",                                         // Unicode U+22BC
+	"char/0x22bd/mathmode":  "\\bar{\\vee}",                                         // Unicode U+22BD
+	"char/0x22be/mathmode":  "{\u22be\\vphantom{A}}",                                // Unicode U+22BE
+	"char/0x22bf/mathmode":  "{\u22bf\\vphantom{A}}",                                // Unicode U+22BF
+	"char/0x22c0/textmode":  "{\\bigwedge}",                                         // Unicode U+22C0
+	"char/0x22c1/textmode":  "{\\bigvee}",                                           // Unicode U+22C1
+	"char/0x22c2/textmode":  "{\\bigcap}",                                           // Unicode U+22C2
+	"char/0x22c3/textmode":  "{\\bigcup}",                                           // Unicode U+22C3
+	"char/0x22c4/textmode":  "{\\diamond}",                                          // Unicode U+22C4
+	"char/0x22c5/textmode":  "{\\cdot}",                                             // Unicode U+22C5
+	"char/0x22c6/textmode":  "{\\star}",                                             // Unicode U+22C6
+	"char/0x22c7/textmode":  "{\\divideontimes}",                                    // Unicode U+22C7
+	"char/0x22c8/textmode":  "{\\bowtie}",                                           // Unicode U+22C8
+	"char/0x22c9/textmode":  "{\\ltimes}",                                           // Unicode U+22C9
+	"char/0x22ca/textmode":  "{\\rtimes}",                                           // Unicode U+22CA
+	"char/0x22cb/textmode":  "{\\leftthreetimes}",                                   // Unicode U+22CB
+	"char/0x22cc/textmode":  "{\\rightthreetimes}",                                  // Unicode U+22CC
+	"char/0x22cd/textmode":  "{\\backsimeq}",                                        // Unicode U+22CD
+	"char/0x22ce/textmode":  "{\\curlyvee}",                                         // Unicode U+22CE
+	"char/0x22cf/textmode":  "{\\curlywedge}",                                       // Unicode U+22CF
+	"char/0x22d0/textmode":  "{\\Subset}",                                           // Unicode U+22D0
+	"char/0x22d1/textmode":  "{\\Supset}",                                           // Unicode U+22D1
+	"char/0x22d2/textmode":  "{\\Cap}",                                              // Unicode U+22D2
+	"char/0x22d3/textmode":  "{\\Cup}",                                              // Unicode U+22D3
+	"char/0x22d4/textmode":  "{\\pitchfork}",                                        // Unicode U+22D4
+	"char/0x22d5/textmode":  "{\\hash}",                                             // Unicode U+22D5
+	"char/0x22d6/textmode":  "{\\lessdot}",                                          // Unicode U+22D6
+	"char/0x22d7/textmode":  "{\\gtrdot}",                                           // Unicode U+22D7
+	"char/0x22d8/textmode":  "{\\lll}",                                              // Unicode U+22D8
+	"char/0x22d9/textmode":  "{\\ggg}",                                              // Unicode U+22D9
+	"char/0x22da/textmode":  "{\\lesseqgtr}",                                        // Unicode U+22DA
+	"char/0x22db/textmode":  "{\\gtreqless}",                                        // Unicode U+22DB
+	"char/0x22de/textmode":  "{\\curlyeqprec}",                                      // Unicode U+22DE
+	"char/0x22df/textmode":  "{\\curlyeqsucc}",                                      // Unicode U+22DF
+	"char/0x22e0/textmode":  "{\\npreceq}",                                          // Unicode U+22E0
+	"char/0x22e1/textmode":  "{\\nsucceq}",                                          // Unicode U+22E1
+	"char/0x22e2/textmode":  "{\\nsqsubseteq}",                                      // Unicode U+22E2
+	"char/0x22e3/textmode":  "{\\nsqsupseteq}",                                      // Unicode U+22E3
+	"char/0x22e6/textmode":  "{\\lnsim}",                                            // Unicode U+22E6
+	"char/0x22e7/textmode":  "{\\gnsim}",                                            // Unicode U+22E7
+	"char/0x22e8/textmode":  "{\\precnsim}",                                         // Unicode U+22E8
+	"char/0x22e9/textmode":  "{\\succnsim}",                                         // Unicode U+22E9
+	"char/0x22ea/textmode":  "{\\ntriangleleft}",                                    // Unicode U+22EA
+	"char/0x22eb/textmode":  "{\\ntriangleright}",                                   // Unicode U+22EB
+	"char/0x22ec/textmode":  "{\\ntrianglelefteq}",                                  // Unicode U+22EC
+	"char/0x22ed/textmode":  "{\\ntrianglerighteq}",                                 // Unicode U+22ED
+	"char/0x22ee/textmode":  "{\\vdots}",                                            // Unicode U+22EE
+	"char/0x22ef/textmode":  "{\\cdots}",                                            // Unicode U+22EF
+	"char/0x22f0/textmode":  "{\\adots}",                                            // Unicode U+22F0
+	"char/0x22f1/textmode":  "{\\ddots}",                                            // Unicode U+22F1
+	"char/0x22f2/mathmode":  "\\mathrel{\u22f2\\vphantom{A}}",                       // Unicode U+22F2
+	"char/0x22f3/mathmode":  "\\mathrel{\u22f3\\vphantom{A}}",                       // Unicode U+22F3
+	"char/0x22f4/mathmode":  "\\mathrel{\u22f4\\vphantom{A}}",                       // Unicode U+22F4
+	"char/0x22f5/mathmode":  "\\mathrel{\u22f5\\vphantom{A}}",                       // Unicode U+22F5
+	"char/0x22f6/textmode":  "{\\barin}",                                            // Unicode U+22F6
+	"char/0x22f7/mathmode":  "\\mathrel{\\bar{\\in}}",                               // Unicode U+22F7
+	"char/0x22f9/mathmode":  "\\mathrel{\u22f9\\vphantom{A}}",                       // Unicode U+22F9
+	"char/0x22fa/mathmode":  "\\mathrel{\u22fa\\vphantom{A}}",                       // Unicode U+22FA
+	"char/0x22fb/mathmode":  "{\u22fb\\vphantom{A}}",                                // Unicode U+22FB
+	"char/0x22fc/mathmode":  "\\mathrel{\u22fc\\vphantom{A}}",                       // Unicode U+22FC
+	"char/0x22fd/mathmode":  "\\mathrel{\u22fd\\vphantom{A}}",                       // Unicode U+22FD
+	"char/0x22fe/mathmode":  "\\mathrel{\\bar{\\not\\in}}",                          // Unicode U+22FE
+	"char/0x2300/textmode":  "{\\diameter}",                                         // Unicode U+2300
+	"char/0x2302/textmode":  "{\\house}",                                            // Unicode U+2302
+	"char/0x2305/mathmode":  "\\barwedge",                                           // Unicode U+2305
+	"char/0x2306/mathmode":  "\\mathbin{\u2a5e\\vphantom{A}}",                       // Unicode U+2306
+	"char/0x2308/textmode":  "{\\lceil}",                                            // Unicode U+2308
+	"char/0x2309/textmode":  "{\\rceil}",                                            // Unicode U+2309
+	"char/0x230a/textmode":  "{\\lfloor}",                                           // Unicode U+230A
+	"char/0x230b/textmode":  "{\\rfloor}",                                           // Unicode U+230B
+	"char/0x230c/mathmode":  "{\u230c\\vphantom{A}}",                                // Unicode U+230C
+	"char/0x230d/mathmode":  "{\u230d\\vphantom{A}}",                                // Unicode U+230D
+	"char/0x230e/mathmode":  "{\u230e\\vphantom{A}}",                                // Unicode U+230E
+	"char/0x230f/mathmode":  "{\u230f\\vphantom{A}}",                                // Unicode U+230F
+	"char/0x2310/textmode":  "{\\invneg}",                                           // Unicode U+2310
+	"char/0x2311/textmode":  "{\\wasylozenge}",                                      // Unicode U+2311
+	"char/0x2312/textmode":  "{\\profline}",                                         // Unicode U+2312
+	"char/0x2313/textmode":  "{\\profsurf}",                                         // Unicode U+2313
+	"char/0x2315/mathmode":  "{\u2315\\vphantom{A}}",                                // Unicode U+2315
+	"char/0x2316/mathmode":  "{\u2316\\vphantom{A}}",                                // Unicode U+2316
+	"char/0x2317/textmode":  "{\\viewdata}",                                         // Unicode U+2317
+	"char/0x2319/textmode":  "{\\turnednot}",                                        // Unicode U+2319
+	"char/0x231c/textmode":  "{\\ulcorner}",                                         // Unicode U+231C
+	"char/0x231d/textmode":  "{\\urcorner}",                                         // Unicode U+231D
+	"char/0x231e/textmode":  "{\\llcorner}",                                         // Unicode U+231E
+	"char/0x231f/textmode":  "{\\lrcorner}",                                         // Unicode U+231F
+	"char/0x2320/textmode":  "{\\inttop}",                                           // Unicode U+2320
+	"char/0x2321/textmode":  "{\\intbottom}",                                        // Unicode U+2321
+	"char/0x2322/textmode":  "{\\frown}",                                            // Unicode U+2322
+	"char/0x2323/textmode":  "{\\smile}",                                            // Unicode U+2323
+	"char/0x2329/textmode":  "{\\langle}",                                           // Unicode U+2329
+	"char/0x232a/textmode":  "{\\rangle}",                                           // Unicode U+232A
+	"char/0x232c/textmode":  "{\\varhexagonlrbonds}",                                // Unicode U+232C
+	"char/0x232d/mathmode":  "{\u232d\\vphantom{A}}",                                // Unicode U+232D
+	"char/0x232e/mathmode":  "{\u232e\\vphantom{A}}",                                // Unicode U+232E
+	"char/0x2332/textmode":  "{\\conictaper}",                                       // Unicode U+2332
+	"char/0x2336/textmode":  "{\\topbot}",                                           // Unicode U+2336
+	"char/0x2339/textmode":  "{\\APLinv}",                                           // Unicode U+2339
+	"char/0x233d/mathmode":  "\\mathbin{\u233d\\vphantom{A}}",                       // Unicode U+233D
+	"char/0x233f/textmode":  "{\\notslash}",                                         // Unicode U+233F
+	"char/0x2340/textmode":  "{\\notbackslash}",                                     // Unicode U+2340
+	"char/0x2347/textmode":  "{\\APLleftarrowbox}",                                  // Unicode U+2347
+	"char/0x2348/textmode":  "{\\APLrightarrowbox}",                                 // Unicode U+2348
+	"char/0x2350/textmode":  "{\\APLuparrowbox}",                                    // Unicode U+2350
+	"char/0x2353/textmode":  "{\\APLboxupcaret}",                                    // Unicode U+2353
+	"char/0x2357/textmode":  "{\\APLdownarrowbox}",                                  // Unicode U+2357
+	"char/0x235d/textmode":  "{\\APLcomment}",                                       // Unicode U+235D
+	"char/0x235e/textmode":  "{\\APLinput}",                                         // Unicode U+235E
+	"char/0x235f/textmode":  "{\\APLlog}",                                           // Unicode U+235F
+	"char/0x2370/textmode":  "{\\APLboxquestion}",                                   // Unicode U+2370
+	"char/0x237a/textmode":  "\u237a",                                               // Unicode U+237A
+	"char/0x237c/textmode":  "{\\rangledownzigzagarrow}",                            // Unicode U+237C
+	"char/0x2394/textmode":  "{\\hexagon}",                                          // Unicode U+2394
+	"char/0x2396/mathmode":  "\u2396",                                               // Unicode U+2396
+	"char/0x23b0/mathmode":  "\\lmoustache",                                         // Unicode U+23B0
+	"char/0x23b1/mathmode":  "\\rmoustache",                                         // Unicode U+23B1
+	"char/0x23b4/mathmode":  "{\u23b4\\vphantom{A}}",                                // Unicode U+23B4
+	"char/0x23b5/mathmode":  "{\u23b5\\vphantom{A}}",                                // Unicode U+23B5
+	"char/0x23b6/mathmode":  "{\u23b6\\vphantom{A}}",                                // Unicode U+23B6
+	"char/0x23d0/mathmode":  "|",                                                    // Unicode U+23D0
+	"char/0x23dc/textmode":  "{\\overparen}",                                        // Unicode U+23DC
+	"char/0x23dd/textmode":  "{\\underparen}",                                       // Unicode U+23DD
+	"char/0x23de/textmode":  "{\\overbrace}",                                        // Unicode U+23DE
+	"char/0x23df/textmode":  "{\\underbrace}",                                       // Unicode U+23DF
+	"char/0x23e2/mathmode":  "{\u23e2\\vphantom{A}}",                                // Unicode U+23E2
+	"char/0x23e4/mathmode":  "-",                                                    // Unicode U+23E4
+	"char/0x2423/textmode":  "{\\textvisiblespace}",                                 // Unicode U+2423
+	"char/0x2460/textmode":  "\\ding{172}",                                          // Unicode U+2460
+	"char/0x2461/textmode":  "\\ding{173}",                                          // Unicode U+2461
+	"char/0x2462/textmode":  "\\ding{174}",                                          // Unicode U+2462
+	"char/0x2463/textmode":  "\\ding{175}",                                          // Unicode U+2463
+	"char/0x2464/textmode":  "\\ding{176}",                                          // Unicode U+2464
+	"char/0x2465/textmode":  "\\ding{177}",                                          // Unicode U+2465
+	"char/0x2466/textmode":  "\\ding{178}",                                          // Unicode U+2466
+	"char/0x2467/textmode":  "\\ding{179}",                                          // Unicode U+2467
+	"char/0x2468/textmode":  "\\ding{180}",                                          // Unicode U+2468
+	"char/0x2469/textmode":  "\\ding{181}",                                          // Unicode U+2469
+	"char/0x246a/textmode":  "\\ding{172}\\ding{172}",                               // Unicode U+246A
+	"char/0x246b/textmode":  "\\ding{172}\\ding{173}",                               // Unicode U+246B
+	"char/0x246c/textmode":  "\\ding{172}\\ding{174}",                               // Unicode U+246C
+	"char/0x246d/textmode":  "\\ding{172}\\ding{175}",                               // Unicode U+246D
+	"char/0x246e/textmode":  "\\ding{172}\\ding{176}",                               // Unicode U+246E
+	"char/0x246f/textmode":  "\\ding{172}\\ding{177}",                               // Unicode U+246F
+	"char/0x2470/textmode":  "\\ding{172}\\ding{178}",                               // Unicode U+2470
+	"char/0x2471/textmode":  "\\ding{172}\\ding{179}",                               // Unicode U+2471
+	"char/0x2472/textmode":  "\\ding{172}\\ding{180}",                               // Unicode U+2472
+	"char/0x2473/textmode":  "\\ding{173}\\ding{173}",                               // Unicode U+2473
+	"char/0x2474/textmode":  "(1)",                                                  // Unicode U+2474
+	"char/0x2475/textmode":  "(2)",                                                  // Unicode U+2475
+	"char/0x2476/textmode":  "(3)",                                                  // Unicode U+2476
+	"char/0x2477/textmode":  "(4)",                                                  // Unicode U+2477
+	"char/0x2478/textmode":  "(5)",                                                  // Unicode U+2478
+	"char/0x2479/textmode":  "(6)",                                                  // Unicode U+2479
+	"char/0x247a/textmode":  "(7)",                                                  // Unicode U+247A
+	"char/0x247b/textmode":  "(8)",                                                  // Unicode U+247B
+	"char/0x247c/textmode":  "(9)",                                                  // Unicode U+247C
+	"char/0x247d/textmode":  "(10)",                                                 // Unicode U+247D
+	"char/0x247e/textmode":  "(11)",                                                 // Unicode U+247E
+	"char/0x247f/textmode":  "(12)",                                                 // Unicode U+247F
+	"char/0x2480/textmode":  "(13)",                                                 // Unicode U+2480
+	"char/0x2481/textmode":  "(14)",                                                 // Unicode U+2481
+	"char/0x2482/textmode":  "(15)",                                                 // Unicode U+2482
+	"char/0x2483/textmode":  "(16)",                                                 // Unicode U+2483
+	"char/0x2484/textmode":  "(17)",                                                 // Unicode U+2484
+	"char/0x2485/textmode":  "(18)",                                                 // Unicode U+2485
+	"char/0x2486/textmode":  "(19)",                                                 // Unicode U+2486
+	"char/0x2487/textmode":  "(20)",                                                 // Unicode U+2487
+	"char/0x2488/textmode":  "1.",                                                   // Unicode U+2488
+	"char/0x2489/textmode":  "2.",                                                   // Unicode U+2489
+	"char/0x248a/textmode":  "3.",                                                   // Unicode U+248A
+	"char/0x248b/textmode":  "4.",                                                   // Unicode U+248B
+	"char/0x248c/textmode":  "5.",                                                   // Unicode U+248C
+	"char/0x248d/textmode":  "6.",                                                   // Unicode U+248D
+	"char/0x248e/textmode":  "7.",                                                   // Unicode U+248E
+	"char/0x248f/textmode":  "8.",                                                   // Unicode U+248F
+	"char/0x2490/textmode":  "9.",                                                   // Unicode U+2490
+	"char/0x2491/textmode":  "10.",                                                  // Unicode U+2491
+	"char/0x2492/textmode":  "11.",                                                  // Unicode U+2492
+	"char/0x2493/textmode":  "12.",                                                  // Unicode U+2493
+	"char/0x2494/textmode":  "13.",                                                  // Unicode U+2494
+	"char/0x2495/textmode":  "14.",                                                  // Unicode U+2495
+	"char/0x2496/textmode":  "15.",                                                  // Unicode U+2496
+	"char/0x2497/textmode":  "16.",                                                  // Unicode U+2497
+	"char/0x2498/textmode":  "17.",                                                  // Unicode U+2498
+	"char/0x2499/textmode":  "18.",                                                  // Unicode U+2499
+	"char/0x249a/textmode":  "19.",                                                  // Unicode U+249A
+	"char/0x249b/textmode":  "20.",                                                  // Unicode U+249B
+	"char/0x249c/textmode":  "(a)",                                                  // Unicode U+249C
+	"char/0x249d/textmode":  "(b)",                                                  // Unicode U+249D
+	"char/0x249e/textmode":  "(c)",                                                  // Unicode U+249E
+	"char/0x249f/textmode":  "(d)",                                                  // Unicode U+249F
+	"char/0x24a0/textmode":  "(e)",                                                  // Unicode U+24A0
+	"char/0x24a1/textmode":  "(f)",                                                  // Unicode U+24A1
+	"char/0x24a2/textmode":  "(g)",                                                  // Unicode U+24A2
+	"char/0x24a3/textmode":  "(h)",                                                  // Unicode U+24A3
+	"char/0x24a4/textmode":  "(i)",                                                  // Unicode U+24A4
+	"char/0x24a5/textmode":  "(j)",                                                  // Unicode U+24A5
+	"char/0x24a6/textmode":  "(k)",                                                  // Unicode U+24A6
+	"char/0x24a7/textmode":  "(l)",                                                  // Unicode U+24A7
+	"char/0x24a8/textmode":  "(m)",                                                  // Unicode U+24A8
+	"char/0x24a9/textmode":  "(n)",                                                  // Unicode U+24A9
+	"char/0x24aa/textmode":  "(o)",                                                  // Unicode U+24AA
+	"char/0x24ab/textmode":  "(p)",                                                  // Unicode U+24AB
+	"char/0x24ac/textmode":  "(q)",                                                  // Unicode U+24AC
+	"char/0x24ad/textmode":  "(r)",                                                  // Unicode U+24AD
+	"char/0x24ae/textmode":  "(s)",                                                  // Unicode U+24AE
+	"char/0x24af/textmode":  "(t)",                                                  // Unicode U+24AF
+	"char/0x24b0/textmode":  "(u)",                                                  // Unicode U+24B0
+	"char/0x24b1/textmode":  "(v)",                                                  // Unicode U+24B1
+	"char/0x24b2/textmode":  "(w)",                                                  // Unicode U+24B2
+	"char/0x24b3/textmode":  "(x)",                                                  // Unicode U+24B3
+	"char/0x24b4/textmode":  "(y)",                                                  // Unicode U+24B4
+	"char/0x24b5/textmode":  "(z)",                                                  // Unicode U+24B5
+	"char/0x24b6/textmode":  "\\textcircled(A)",                                     // Unicode U+24B6
+	"char/0x24b7/textmode":  "\\textcircled(B)",                                     // Unicode U+24B7
+	"char/0x24b8/textmode":  "\\textcircled(C)",                                     // Unicode U+24B8
+	"char/0x24b9/textmode":  "\\textcircled(D)",                                     // Unicode U+24B9
+	"char/0x24ba/textmode":  "\\textcircled(E)",                                     // Unicode U+24BA
+	"char/0x24bb/textmode":  "\\textcircled(F)",                                     // Unicode U+24BB
+	"char/0x24bc/textmode":  "\\textcircled(G)",                                     // Unicode U+24BC
+	"char/0x24bd/textmode":  "\\textcircled(H)",                                     // Unicode U+24BD
+	"char/0x24be/textmode":  "\\textcircled(I)",                                     // Unicode U+24BE
+	"char/0x24bf/textmode":  "\\textcircled(J)",                                     // Unicode U+24BF
+	"char/0x24c0/textmode":  "\\textcircled(K)",                                     // Unicode U+24C0
+	"char/0x24c1/textmode":  "\\textcircled(L)",                                     // Unicode U+24C1
+	"char/0x24c2/textmode":  "\\textcircled(M)",                                     // Unicode U+24C2
+	"char/0x24c3/textmode":  "\\textcircled(N)",                                     // Unicode U+24C3
+	"char/0x24c4/textmode":  "\\textcircled(O)",                                     // Unicode U+24C4
+	"char/0x24c5/textmode":  "\\textcircled(P)",                                     // Unicode U+24C5
+	"char/0x24c6/textmode":  "\\textcircled(Q)",                                     // Unicode U+24C6
+	"char/0x24c7/textmode":  "\\textcircled(R)",                                     // Unicode U+24C7
+	"char/0x24c8/textmode":  "\\textcircled(S)",                                     // Unicode U+24C8
+	"char/0x24c9/textmode":  "\\textcircled(T)",                                     // Unicode U+24C9
+	"char/0x24ca/textmode":  "\\textcircled(U)",                                     // Unicode U+24CA
+	"char/0x24cb/textmode":  "\\textcircled(V)",                                     // Unicode U+24CB
+	"char/0x24cc/textmode":  "\\textcircled(W)",                                     // Unicode U+24CC
+	"char/0x24cd/textmode":  "\\textcircled(X)",                                     // Unicode U+24CD
+	"char/0x24ce/textmode":  "\\textcircled(Y)",                                     // Unicode U+24CE
+	"char/0x24cf/textmode":  "\\textcircled(Z)",                                     // Unicode U+24CF
+	"char/0x24d0/textmode":  "\\textcircled(a)",                                     // Unicode U+24D0
+	"char/0x24d1/textmode":  "\\textcircled(b)",                                     // Unicode U+24D1
+	"char/0x24d2/textmode":  "\\textcircled(c)",                                     // Unicode U+24D2
+	"char/0x24d3/textmode":  "\\textcircled(d)",                                     // Unicode U+24D3
+	"char/0x24d4/textmode":  "\\textcircled(e)",                                     // Unicode U+24D4
+	"char/0x24d5/textmode":  "\\textcircled(f)",                                     // Unicode U+24D5
+	"char/0x24d6/textmode":  "\\textcircled(g)",                                     // Unicode U+24D6
+	"char/0x24d7/textmode":  "\\textcircled(h)",                                     // Unicode U+24D7
+	"char/0x24d8/textmode":  "\\textcircled(i)",                                     // Unicode U+24D8
+	"char/0x24d9/textmode":  "\\textcircled(j)",                                     // Unicode U+24D9
+	"char/0x24da/textmode":  "\\textcircled(k)",                                     // Unicode U+24DA
+	"char/0x24db/textmode":  "\\textcircled(l)",                                     // Unicode U+24DB
+	"char/0x24dc/textmode":  "\\textcircled(m)",                                     // Unicode U+24DC
+	"char/0x24dd/textmode":  "\\textcircled(b)",                                     // Unicode U+24DD
+	"char/0x24de/textmode":  "\\textcircled(o)",                                     // Unicode U+24DE
+	"char/0x24df/textmode":  "\\textcircled(p)",                                     // Unicode U+24DF
+	"char/0x24e0/textmode":  "\\textcircled(q)",                                     // Unicode U+24E0
+	"char/0x24e1/textmode":  "\\textcircled(r)",                                     // Unicode U+24E1
+	"char/0x24e2/textmode":  "\\textcircled(s)",                                     // Unicode U+24E2
+	"char/0x24e3/textmode":  "\\textcircled(t)",                                     // Unicode U+24E3
+	"char/0x24e4/textmode":  "\\textcircled(u)",                                     // Unicode U+24E4
+	"char/0x24e5/textmode":  "\\textcircled(v)",                                     // Unicode U+24E5
+	"char/0x24e6/textmode":  "\\textcircled(w)",                                     // Unicode U+24E6
+	"char/0x24e7/textmode":  "\\textcircled(x)",                                     // Unicode U+24E7
+	"char/0x24e8/textmode":  "\\textcircled(y)",                                     // Unicode U+24E8
+	"char/0x24e9/textmode":  "\\textcircled(z)",                                     // Unicode U+24E9
+	"char/0x24ea/textmode":  "\\textcircled(0)",                                     // Unicode U+24EA
+	"char/0x24eb/textmode":  "\\ding{182}\\ding{182}",                               // Unicode U+24EB
+	"char/0x24ec/textmode":  "\\ding{182}\\ding{183}",                               // Unicode U+24EC
+	"char/0x24ed/textmode":  "\\ding{182}\\ding{184}",                               // Unicode U+24ED
+	"char/0x24ee/textmode":  "\\ding{182}\\ding{185}",                               // Unicode U+24EE
+	"char/0x24ef/textmode":  "\\ding{182}\\ding{186}",                               // Unicode U+24EF
+	"char/0x24f0/textmode":  "\\ding{182}\\ding{187}",                               // Unicode U+24F0
+	"char/0x24f1/textmode":  "\\ding{182}\\ding{188}",                               // Unicode U+24F1
+	"char/0x24f2/textmode":  "\\ding{182}\\ding{189}",                               // Unicode U+24F2
+	"char/0x24f3/textmode":  "\\ding{182}\\ding{190}",                               // Unicode U+24F3
+	"char/0x24f4/textmode":  "\\ding{183}\\ding{183}",                               // Unicode U+24F4
+	"char/0x24f5/textmode":  "\\ding{172}",                                          // Unicode U+24F5
+	"char/0x24f6/textmode":  "\\ding{173}",                                          // Unicode U+24F6
+	"char/0x24f7/textmode":  "\\ding{174}",                                          // Unicode U+24F7
+	"char/0x24f8/textmode":  "\\ding{175}",                                          // Unicode U+24F8
+	"char/0x24f9/textmode":  "\\ding{176}",                                          // Unicode U+24F9
+	"char/0x24fa/textmode":  "\\ding{177}",                                          // Unicode U+24FA
+	"char/0x24fb/textmode":  "\\ding{178}",                                          // Unicode U+24FB
+	"char/0x24fc/textmode":  "\\ding{179}",                                          // Unicode U+24FC
+	"char/0x24fd/textmode":  "\\ding{180}",                                          // Unicode U+24FD
+	"char/0x24fe/textmode":  "\\ding{181}",                                          // Unicode U+24FE
+	"char/0x24ff/textmode":  "\\textcircled{0}",                                     // Unicode U+24FF
+	"char/0x2502/textmode":  "{\\textbar}",                                          // Unicode U+2502
+	"char/0x2580/mathmode":  "{\u2580\\vphantom{A}}",                                // Unicode U+2580
+	"char/0x2584/mathmode":  "{\u2584\\vphantom{A}}",                                // Unicode U+2584
+	"char/0x2588/mathmode":  "{\u2588\\vphantom{A}}",                                // Unicode U+2588
+	"char/0x2591/mathmode":  "{\u2591\\vphantom{A}}",                                // Unicode U+2591
+	"char/0x2592/mathmode":  "{\u2592\\vphantom{A}}",                                // Unicode U+2592
+	"char/0x2593/mathmode":  "{\u2593\\vphantom{A}}",                                // Unicode U+2593
+	"char/0x25a0/textmode":  "{\\blacksquare}",                                      // Unicode U+25A0
+	"char/0x25a1/textmode":  "{\\square}",                                           // Unicode U+25A1
+	"char/0x25aa/textmode":  "{\\blacksquare}",                                      // Unicode U+25AA
+	"char/0x25ad/mathmode":  "{\u25ad\\vphantom{A}}",                                // Unicode U+25AD
+	"char/0x25ae/mathmode":  "{\u25ae\\vphantom{A}}",                                // Unicode U+25AE
+	"char/0x25b1/mathmode":  "{\u25b1\\vphantom{A}}",                                // Unicode U+25B1
+	"char/0x25b3/textmode":  "{\\bigtriangleup}",                                    // Unicode U+25B3
+	"char/0x25b4/textmode":  "{\\blacktriangleup}",                                  // Unicode U+25B4
+	"char/0x25b5/textmode":  "{\\smalltriangleup}",                                  // Unicode U+25B5
+	"char/0x25b6/textmode":  "{\\RHD}",                                              // Unicode U+25B6
+	"char/0x25b7/textmode":  "{\\rhd}",                                              // Unicode U+25B7
+	"char/0x25b8/textmode":  "{\\blacktriangleright}",                               // Unicode U+25B8
+	"char/0x25b9/textmode":  "{\\smalltriangleright}",                               // Unicode U+25B9
+	"char/0x25bd/textmode":  "{\\bigtriangledown}",                                  // Unicode U+25BD
+	"char/0x25be/textmode":  "{\\blacktriangledown}",                                // Unicode U+25BE
+	"char/0x25bf/textmode":  "{\\smalltriangledown}",                                // Unicode U+25BF
+	"char/0x25c0/textmode":  "{\\LHD}",                                              // Unicode U+25C0
+	"char/0x25c1/textmode":  "{\\lhd}",                                              // Unicode U+25C1
+	"char/0x25c2/textmode":  "{\\blacktriangleleft}",                                // Unicode U+25C2
+	"char/0x25c3/textmode":  "{\\smalltriangleleft}",                                // Unicode U+25C3
+	"char/0x25c6/textmode":  "{\\Diamondblack}",                                     // Unicode U+25C6
+	"char/0x25c7/textmode":  "{\\Diamond}",                                          // Unicode U+25C7
+	"char/0x25ca/textmode":  "{\\lozenge}",                                          // Unicode U+25CA
+	"char/0x25cb/textmode":  "{\\Circle}",                                           // Unicode U+25CB
+	"char/0x25cf/textmode":  "{\\CIRCLE}",                                           // Unicode U+25CF
+	"char/0x25d0/textmode":  "{\\LEFTcircle}",                                       // Unicode U+25D0
+	"char/0x25d1/textmode":  "{\\RIGHTcircle}",                                      // Unicode U+25D1
+	"char/0x25d6/textmode":  "{\\LEFTCIRCLE}",                                       // Unicode U+25D6
+	"char/0x25d7/textmode":  "{\\RIGHTCIRCLE}",                                      // Unicode U+25D7
+	"char/0x25eb/textmode":  "{\\boxbar}",                                           // Unicode U+25EB
+	"char/0x25ec/mathmode":  "\\mathbin{\u25ec\\vphantom{A}}",                       // Unicode U+25EC
+	"char/0x25ef/mathmode":  "\\bigcirc",                                            // Unicode U+25EF
+	"char/0x25f8/mathmode":  "{\u25f8\\vphantom{A}}",                                // Unicode U+25F8
+	"char/0x25f9/mathmode":  "{\u25f9\\vphantom{A}}",                                // Unicode U+25F9
+	"char/0x25fa/mathmode":  "{\u25fa\\vphantom{A}}",                                // Unicode U+25FA
+	"char/0x25fb/textmode":  "{\\square}",                                           // Unicode U+25FB
+	"char/0x25fc/textmode":  "{\\blacksquare}",                                      // Unicode U+25FC
+	"char/0x2605/textmode":  "{\\bigstar}",                                          // Unicode U+2605
+	"char/0x2606/mathmode":  "{\u2606\\vphantom{A}}",                                // Unicode U+2606
+	"char/0x2609/textmode":  "{\\Sun}",                                              // Unicode U+2609
+	"char/0x260e/textmode":  "\\ding{37}",                                           // Unicode U+260E
+	"char/0x260f/textmode":  "\\ding{37}",                                           // Unicode U+260F
+	"char/0x2610/textmode":  "{\\Square}",                                           // Unicode U+2610
+	"char/0x2611/textmode":  "{\\CheckedBox}",                                       // Unicode U+2611
+	"char/0x2612/textmode":  "{\\XBox}",                                             // Unicode U+2612
+	"char/0x2615/textmode":  "{\\steaming}",                                         // Unicode U+2615
+	"char/0x261e/textmode":  "{\\pointright}",                                       // Unicode U+261E
+	"char/0x2620/textmode":  "{\\skull}",                                            // Unicode U+2620
+	"char/0x2622/textmode":  "{\\radiation}",                                        // Unicode U+2622
+	"char/0x2623/textmode":  "{\\biohazard}",                                        // Unicode U+2623
+	"char/0x262f/textmode":  "{\\yinyang}",                                          // Unicode U+262F
+	"char/0x2639/textmode":  "{\\frownie}",                                          // Unicode U+2639
+	"char/0x263a/textmode":  "{\\smiley}",                                           // Unicode U+263A
+	"char/0x263b/textmode":  "{\\blacksmiley}",                                      // Unicode U+263B
+	"char/0x263c/textmode":  "{\\sun}",                                              // Unicode U+263C
+	"char/0x263d/textmode":  "{\\rightmoon}",                                        // Unicode U+263D
+	"char/0x263e/textmode":  "{\\leftmoon}",                                         // Unicode U+263E
+	"char/0x263f/textmode":  "{\\mercury}",                                          // Unicode U+263F
+	"char/0x2640/textmode":  "{\\female}",                                           // Unicode U+2640
+	"char/0x2641/textmode":  "{\\earth}",                                            // Unicode U+2641
+	"char/0x2642/textmode":  "{\\male}",                                             // Unicode U+2642
+	"char/0x2643/textmode":  "{\\jupiter}",                                          // Unicode U+2643
+	"char/0x2644/textmode":  "{\\saturn}",                                           // Unicode U+2644
+	"char/0x2645/textmode":  "{\\uranus}",                                           // Unicode U+2645
+	"char/0x2646/textmode":  "{\\neptune}",                                          // Unicode U+2646
+	"char/0x2647/textmode":  "{\\pluto}",                                            // Unicode U+2647
+	"char/0x2648/textmode":  "{\\aries}",                                            // Unicode U+2648
+	"char/0x2649/textmode":  "{\\taurus}",                                           // Unicode U+2649
+	"char/0x264a/textmode":  "{\\gemini}",                                           // Unicode U+264A
+	"char/0x264b/textmode":  "{\\cancer}",                                           // Unicode U+264B
+	"char/0x264c/textmode":  "{\\leo}",                                              // Unicode U+264C
+	"char/0x264d/textmode":  "{\\virgo}",                                            // Unicode U+264D
+	"char/0x264e/textmode":  "{\\libra}",                                            // Unicode U+264E
+	"char/0x264f/textmode":  "{\\scorpio}",                                          // Unicode U+264F
+	"char/0x2650/textmode":  "{\\sagittarius}",                                      // Unicode U+2650
+	"char/0x2651/textmode":  "{\\capricornus}",                                      // Unicode U+2651
+	"char/0x2652/textmode":  "{\\aquarius}",                                         // Unicode U+2652
+	"char/0x2653/textmode":  "{\\pisces}",                                           // Unicode U+2653
+	"char/0x2660/textmode":  "{\\spadesuit}",                                        // Unicode U+2660
+	"char/0x2661/textmode":  "{\\heartsuit}",                                        // Unicode U+2661
+	"char/0x2662/textmode":  "{\\diamondsuit}",                                      // Unicode U+2662
+	"char/0x2663/textmode":  "{\\clubsuit}",                                         // Unicode U+2663
+	"char/0x2664/textmode":  "{\\varspadesuit}",                                     // Unicode U+2664
+	"char/0x2665/textmode":  "{\\varheartsuit}",                                     // Unicode U+2665
+	"char/0x2666/textmode":  "{\\blacklozenge}",                                     // Unicode U+2666
+	"char/0x2667/textmode":  "{\\varclubsuit}",                                      // Unicode U+2667
+	"char/0x2669/textmode":  "{\\quarternote}",                                      // Unicode U+2669
+	"char/0x266a/textmode":  "{\\eighthnote}",                                       // Unicode U+266A
+	"char/0x266b/textmode":  "{\\twonotes}",                                         // Unicode U+266B
+	"char/0x266c/textmode":  "{\\sixteenthnote}",                                    // Unicode U+266C
+	"char/0x266d/textmode":  "{\\flat}",                                             // Unicode U+266D
+	"char/0x266e/textmode":  "{\\natural}",                                          // Unicode U+266E
+	"char/0x266f/textmode":  "{\\sharp}",                                            // Unicode U+266F
+	"char/0x267b/textmode":  "{\\recycle}",                                          // Unicode U+267B
+	"char/0x2693/textmode":  "{\\anchor}",                                           // Unicode U+2693
+	"char/0x2694/textmode":  "{\\swords}",                                           // Unicode U+2694
+	"char/0x26a0/textmode":  "{\\warning}",                                          // Unicode U+26A0
+	"char/0x26aa/textmode":  "{\\medcirc}",                                          // Unicode U+26AA
+	"char/0x26ab/textmode":  "{\\medbullet}",                                        // Unicode U+26AB
+	"char/0x2700/textmode":  "\\ding{34}",                                           // Unicode U+2700
+	"char/0x2701/textmode":  "\\ding{33}",                                           // Unicode U+2701
+	"char/0x2702/textmode":  "\\ding{34}",                                           // Unicode U+2702
+	"char/0x2703/textmode":  "\\ding{35}",                                           // Unicode U+2703
+	"char/0x2704/textmode":  "\\ding{36}",                                           // Unicode U+2704
+	"char/0x2705/textmode":  "\\ding{52}",                                           // Unicode U+2705
+	"char/0x2706/textmode":  "\\ding{38}",                                           // Unicode U+2706
+	"char/0x2707/textmode":  "\\ding{39}",                                           // Unicode U+2707
+	"char/0x2708/textmode":  "\\ding{40}",                                           // Unicode U+2708
+	"char/0x2709/textmode":  "\\ding{41}",                                           // Unicode U+2709
+	"char/0x270a/textmode":  "\\ding{42}",                                           // Unicode U+270A
+	"char/0x270b/textmode":  "\\ding{43}",                                           // Unicode U+270B
+	"char/0x270c/textmode":  "\\ding{44}",                                           // Unicode U+270C
+	"char/0x270d/textmode":  "\\ding{45}",                                           // Unicode U+270D
+	"char/0x270e/textmode":  "\\ding{46}",                                           // Unicode U+270E
+	"char/0x270f/textmode":  "\\ding{47}",                                           // Unicode U+270F
+	"char/0x2710/textmode":  "\\ding{48}",                                           // Unicode U+2710
+	"char/0x2711/textmode":  "\\ding{49}",                                           // Unicode U+2711
+	"char/0x2712/textmode":  "\\ding{50}",                                           // Unicode U+2712
+	"char/0x2713/textmode":  "\\ding{51}",                                           // Unicode U+2713
+	"char/0x2714/textmode":  "\\ding{52}",                                           // Unicode U+2714
+	"char/0x2715/textmode":  "\\ding{53}",                                           // Unicode U+2715
+	"char/0x2716/textmode":  "\\ding{54}",                                           // Unicode U+2716
+	"char/0x2717/textmode":  "\\ding{55}",                                           // Unicode U+2717
+	"char/0x2718/textmode":  "\\ding{56}",                                           // Unicode U+2718
+	"char/0x2719/textmode":  "\\ding{57}",                                           // Unicode U+2719
+	"char/0x271a/textmode":  "\\ding{58}",                                           // Unicode U+271A
+	"char/0x271b/textmode":  "\\ding{59}",                                           // Unicode U+271B
+	"char/0x271c/textmode":  "\\ding{60}",                                           // Unicode U+271C
+	"char/0x271d/textmode":  "\\ding{61}",                                           // Unicode U+271D
+	"char/0x271e/textmode":  "\\ding{62}",                                           // Unicode U+271E
+	"char/0x271f/textmode":  "\\ding{63}",                                           // Unicode U+271F
+	"char/0x2720/textmode":  "\\ding{64}",                                           // Unicode U+2720
+	"char/0x2721/textmode":  "\\ding{65}",                                           // Unicode U+2721
+	"char/0x2722/textmode":  "\\ding{66}",                                           // Unicode U+2722
+	"char/0x2723/textmode":  "\\ding{67}",                                           // Unicode U+2723
+	"char/0x2724/textmode":  "\\ding{68}",                                           // Unicode U+2724
+	"char/0x2725/textmode":  "\\ding{69}",                                           // Unicode U+2725
+	"char/0x2726/textmode":  "\\ding{70}",                                           // Unicode U+2726
+	"char/0x2727/textmode":  "\\ding{71}",                                           // Unicode U+2727
+	"char/0x2728/textmode":  "\\ding{72}",                                           // Unicode U+2728
+	"char/0x2729/textmode":  "\\ding{73}",                                           // Unicode U+2729
+	"char/0x272a/textmode":  "\\ding{74}",                                           // Unicode U+272A
+	"char/0x272b/textmode":  "\\ding{75}",                                           // Unicode U+272B
+	"char/0x272c/textmode":  "\\ding{76}",                                           // Unicode U+272C
+	"char/0x272d/textmode":  "\\ding{77}",                                           // Unicode U+272D
+	"char/0x272e/textmode":  "\\ding{78}",                                           // Unicode U+272E
+	"char/0x272f/textmode":  "\\ding{79}",                                           // Unicode U+272F
+	"char/0x2730/textmode":  "\\ding{80}",                                           // Unicode U+2730
+	"char/0x2731/textmode":  "\\ding{81}",                                           // Unicode U+2731
+	"char/0x2732/textmode":  "\\ding{82}",                                           // Unicode U+2732
+	"char/0x2733/textmode":  "\\ding{83}",                                           // Unicode U+2733
+	"char/0x2734/textmode":  "\\ding{84}",                                           // Unicode U+2734
+	"char/0x2735/textmode":  "\\ding{85}",                                           // Unicode U+2735
+	"char/0x2736/textmode":  "\\ding{86}",                                           // Unicode U+2736
+	"char/0x2737/textmode":  "\\ding{87}",                                           // Unicode U+2737
+	"char/0x2738/textmode":  "\\ding{88}",                                           // Unicode U+2738
+	"char/0x2739/textmode":  "\\ding{89}",                                           // Unicode U+2739
+	"char/0x273a/textmode":  "\\ding{90}",                                           // Unicode U+273A
+	"char/0x273b/textmode":  "\\ding{91}",                                           // Unicode U+273B
+	"char/0x273c/textmode":  "\\ding{92}",                                           // Unicode U+273C
+	"char/0x273d/textmode":  "\\ding{93}",                                           // Unicode U+273D
+	"char/0x273e/textmode":  "\\ding{94}",                                           // Unicode U+273E
+	"char/0x273f/textmode":  "\\ding{95}",                                           // Unicode U+273F
+	"char/0x2740/textmode":  "\\ding{96}",                                           // Unicode U+2740
+	"char/0x2741/textmode":  "\\ding{97}",                                           // Unicode U+2741
+	"char/0x2742/textmode":  "\\ding{98}",                                           // Unicode U+2742
+	"char/0x2743/textmode":  "\\ding{99}",                                           // Unicode U+2743
+	"char/0x2744/textmode":  "\\ding{100}",                                          // Unicode U+2744
+	"char/0x2745/textmode":  "\\ding{101}",                                          // Unicode U+2745
+	"char/0x2746/textmode":  "\\ding{102}",                                          // Unicode U+2746
+	"char/0x2747/textmode":  "\\ding{103}",                                          // Unicode U+2747
+	"char/0x2748/textmode":  "\\ding{104}",                                          // Unicode U+2748
+	"char/0x2749/textmode":  "\\ding{105}",                                          // Unicode U+2749
+	"char/0x274a/textmode":  "\\ding{106}",                                          // Unicode U+274A
+	"char/0x274b/textmode":  "\\ding{107}",                                          // Unicode U+274B
+	"char/0x274c/textmode":  "\\ding{53}",                                           // Unicode U+274C
+	"char/0x274d/textmode":  "\\ding{109}",                                          // Unicode U+274D
+	"char/0x274e/textmode":  "\\ding{53}",                                           // Unicode U+274E
+	"char/0x274f/textmode":  "\\ding{111}",                                          // Unicode U+274F
+	"char/0x2750/textmode":  "\\ding{112}",                                          // Unicode U+2750
+	"char/0x2751/textmode":  "\\ding{113}",                                          // Unicode U+2751
+	"char/0x2752/textmode":  "\\ding{114}",                                          // Unicode U+2752
+	"char/0x2753/textmode":  "?",                                                    // Unicode U+2753
+	"char/0x2754/textmode":  "?",                                                    // Unicode U+2754
+	"char/0x2755/textmode":  "!",                                                    // Unicode U+2755
+	"char/0x2756/textmode":  "\\ding{118}",                                          // Unicode U+2756
+	"char/0x2757/textmode":  "!",                                                    // Unicode U+2757
+	"char/0x2758/textmode":  "\\ding{120}",                                          // Unicode U+2758
+	"char/0x2759/textmode":  "\\ding{121}",                                          // Unicode U+2759
+	"char/0x275a/textmode":  "\\ding{122}",                                          // Unicode U+275A
+	"char/0x275b/textmode":  "\\ding{123}",                                          // Unicode U+275B
+	"char/0x275c/textmode":  "\\ding{124}",                                          // Unicode U+275C
+	"char/0x275d/textmode":  "\\ding{125}",                                          // Unicode U+275D
+	"char/0x275e/textmode":  "\\ding{126}",                                          // Unicode U+275E
+	"char/0x275f/textmode":  "\\raisebox{-1ex}{\\ding{124}}",                        // Unicode U+275F
+	"char/0x2760/textmode":  "\\raisebox{-1ex}{\\ding{126}}",                        // Unicode U+2760
+	"char/0x2761/textmode":  "\\ding{161}",                                          // Unicode U+2761
+	"char/0x2762/textmode":  "\\ding{162}",                                          // Unicode U+2762
+	"char/0x2763/textmode":  "\\ding{163}",                                          // Unicode U+2763
+	"char/0x2764/textmode":  "\\ding{164}",                                          // Unicode U+2764
+	"char/0x2765/textmode":  "\\ding{165}",                                          // Unicode U+2765
+	"char/0x2766/textmode":  "\\ding{166}",                                          // Unicode U+2766
+	"char/0x2767/textmode":  "\\ding{167}",                                          // Unicode U+2767
+	"char/0x2768/textmode":  "\\(",                                                  // Unicode U+2768
+	"char/0x2769/textmode":  "\\)",                                                  // Unicode U+2769
+	"char/0x276a/textmode":  "\\(",                                                  // Unicode U+276A
+	"char/0x276b/textmode":  "\\)",                                                  // Unicode U+276B
+	"char/0x276c/textmode":  "\\(",                                                  // Unicode U+276C
+	"char/0x276d/textmode":  "\\)",                                                  // Unicode U+276D
+	"char/0x2770/textmode":  "{\\flq}",                                              // Unicode U+2770
+	"char/0x2771/textmode":  "{\\frq}",                                              // Unicode U+2771
+	"char/0x2772/textmode":  "\\[",                                                  // Unicode U+2772
+	"char/0x2773/textmode":  "\\]",                                                  // Unicode U+2773
+	"char/0x2776/textmode":  "\\ding{182}",                                          // Unicode U+2776
+	"char/0x2777/textmode":  "\\ding{183}",                                          // Unicode U+2777
+	"char/0x2778/textmode":  "\\ding{184}",                                          // Unicode U+2778
+	"char/0x2779/textmode":  "\\ding{185}",                                          // Unicode U+2779
+	"char/0x277a/textmode":  "\\ding{186}",                                          // Unicode U+277A
+	"char/0x277b/textmode":  "\\ding{187}",                                          // Unicode U+277B
+	"char/0x277c/textmode":  "\\ding{188}",                                          // Unicode U+277C
+	"char/0x277d/textmode":  "\\ding{189}",                                          // Unicode U+277D
+	"char/0x277e/textmode":  "\\ding{190}",                                          // Unicode U+277E
+	"char/0x277f/textmode":  "\\ding{191}",                                          // Unicode U+277F
+	"char/0x2780/textmode":  "\\ding{192}",                                          // Unicode U+2780
+	"char/0x2781/textmode":  "\\ding{193}",                                          // Unicode U+2781
+	"char/0x2782/textmode":  "\\ding{194}",                                          // Unicode U+2782
+	"char/0x2783/textmode":  "\\ding{195}",                                          // Unicode U+2783
+	"char/0x2784/textmode":  "\\ding{196}",                                          // Unicode U+2784
+	"char/0x2785/textmode":  "\\ding{197}",                                          // Unicode U+2785
+	"char/0x2786/textmode":  "\\ding{198}",                                          // Unicode U+2786
+	"char/0x2787/textmode":  "\\ding{199}",                                          // Unicode U+2787
+	"char/0x2788/textmode":  "\\ding{200}",                                          // Unicode U+2788
+	"char/0x2789/textmode":  "\\ding{201}",                                          // Unicode U+2789
+	"char/0x278a/textmode":  "\\ding{202}",                                          // Unicode U+278A
+	"char/0x278b/textmode":  "\\ding{203}",                                          // Unicode U+278B
+	"char/0x278c/textmode":  "\\ding{204}",                                          // Unicode U+278C
+	"char/0x278d/textmode":  "\\ding{205}",                                          // Unicode U+278D
+	"char/0x278e/textmode":  "\\ding{206}",                                          // Unicode U+278E
+	"char/0x278f/textmode":  "\\ding{207}",                                          // Unicode U+278F
+	"char/0x2790/textmode":  "\\ding{208}",                                          // Unicode U+2790
+	"char/0x2791/textmode":  "\\ding{209}",                                          // Unicode U+2791
+	"char/0x2792/textmode":  "\\ding{210}",                                          // Unicode U+2792
+	"char/0x2793/textmode":  "\\ding{211}",                                          // Unicode U+2793
+	"char/0x2794/textmode":  "\\ding{212}",                                          // Unicode U+2794
+	"char/0x2795/textmode":  "+",                                                    // Unicode U+2795
+	"char/0x2796/textmode":  "-",                                                    // Unicode U+2796
+	"char/0x2797/textmode":  "\\div",                                                // Unicode U+2797
+	"char/0x2798/textmode":  "\\ding{216}",                                          // Unicode U+2798
+	"char/0x2799/textmode":  "\\ding{217}",                                          // Unicode U+2799
+	"char/0x279a/textmode":  "\\ding{218}",                                          // Unicode U+279A
+	"char/0x279b/textmode":  "\\ding{219}",                                          // Unicode U+279B
+	"char/0x279c/textmode":  "\\ding{220}",                                          // Unicode U+279C
+	"char/0x279d/textmode":  "\\ding{221}",                                          // Unicode U+279D
+	"char/0x279e/textmode":  "\\ding{222}",                                          // Unicode U+279E
+	"char/0x279f/textmode":  "\\ding{223}",                                          // Unicode U+279F
+	"char/0x27a0/textmode":  "\\ding{224}",                                          // Unicode U+27A0
+	"char/0x27a1/textmode":  "\\ding{225}",                                          // Unicode U+27A1
+	"char/0x27a2/textmode":  "\\ding{226}",                                          // Unicode U+27A2
+	"char/0x27a3/textmode":  "\\ding{227}",                                          // Unicode U+27A3
+	"char/0x27a4/textmode":  "\\ding{228}",                                          // Unicode U+27A4
+	"char/0x27a5/textmode":  "\\ding{229}",                                          // Unicode U+27A5
+	"char/0x27a6/textmode":  "\\ding{230}",                                          // Unicode U+27A6
+	"char/0x27a7/textmode":  "\\ding{231}",                                          // Unicode U+27A7
+	"char/0x27a8/textmode":  "\\ding{232}",                                          // Unicode U+27A8
+	"char/0x27a9/textmode":  "\\ding{233}",                                          // Unicode U+27A9
+	"char/0x27aa/textmode":  "\\ding{234}",                                          // Unicode U+27AA
+	"char/0x27ab/textmode":  "\\ding{235}",                                          // Unicode U+27AB
+	"char/0x27ac/textmode":  "\\ding{236}",                                          // Unicode U+27AC
+	"char/0x27ad/textmode":  "\\ding{237}",                                          // Unicode U+27AD
+	"char/0x27ae/textmode":  "\\ding{238}",                                          // Unicode U+27AE
+	"char/0x27af/textmode":  "\\ding{239}",                                          // Unicode U+27AF
+	"char/0x27b1/textmode":  "\\ding{241}",                                          // Unicode U+27B1
+	"char/0x27b2/textmode":  "\\ding{242}",                                          // Unicode U+27B2
+	"char/0x27b3/textmode":  "\\ding{243}",                                          // Unicode U+27B3
+	"char/0x27b4/textmode":  "\\ding{244}",                                          // Unicode U+27B4
+	"char/0x27b5/textmode":  "\\ding{245}",                                          // Unicode U+27B5
+	"char/0x27b6/textmode":  "\\ding{246}",                                          // Unicode U+27B6
+	"char/0x27b7/textmode":  "\\ding{247}",                                          // Unicode U+27B7
+	"char/0x27b8/textmode":  "\\ding{248}",                                          // Unicode U+27B8
+	"char/0x27b9/textmode":  "\\ding{249}",                                          // Unicode U+27B9
+	"char/0x27ba/textmode":  "\\ding{250}",                                          // Unicode U+27BA
+	"char/0x27bb/textmode":  "\\ding{251}",                                          // Unicode U+27BB
+	"char/0x27bc/textmode":  "\\ding{252}",                                          // Unicode U+27BC
+	"char/0x27bd/textmode":  "\\ding{253}",                                          // Unicode U+27BD
+	"char/0x27be/textmode":  "\\ding{254}",                                          // Unicode U+27BE
+	"char/0x27c2/textmode":  "{\\perp}",                                             // Unicode U+27C2
+	"char/0x27c5/textmode":  "{\\Lbag}",                                             // Unicode U+27C5
+	"char/0x27c6/textmode":  "{\\Rbag}",                                             // Unicode U+27C6
+	"char/0x27c8/mathmode":  "\\bcancel{\\subset}",                                  // Unicode U+27C8
+	"char/0x27c9/mathmode":  "\\bcancel{\\supset}",                                  // Unicode U+27C9
+	"char/0x27d0/textmode":  "{\\Diamonddot}",                                       // Unicode U+27D0
+	"char/0x27dc/textmode":  "{\\multimapinv}",                                      // Unicode U+27DC
+	"char/0x27e6/textmode":  "{\\llbracket}",                                        // Unicode U+27E6
+	"char/0x27e7/textmode":  "{\\rrbracket}",                                        // Unicode U+27E7
+	"char/0x27e8/textmode":  "{\\langle}",                                           // Unicode U+27E8
+	"char/0x27e9/textmode":  "{\\rangle}",                                           // Unicode U+27E9
+	"char/0x27ea/textmode":  "{\\lang}",                                             // Unicode U+27EA
+	"char/0x27eb/textmode":  "{\\rang}",                                             // Unicode U+27EB
+	"char/0x27ee/textmode":  "{\\lgroup}",                                           // Unicode U+27EE
+	"char/0x27ef/textmode":  "{\\rgroup}",                                           // Unicode U+27EF
+	"char/0x27f5/textmode":  "{\\longleftarrow}",                                    // Unicode U+27F5
+	"char/0x27f6/textmode":  "{\\longrightarrow}",                                   // Unicode U+27F6
+	"char/0x27f7/textmode":  "{\\longleftrightarrow}",                               // Unicode U+27F7
+	"char/0x27f8/textmode":  "{\\Longleftarrow}",                                    // Unicode U+27F8
+	"char/0x27f9/textmode":  "{\\Longrightarrow}",                                   // Unicode U+27F9
+	"char/0x27fa/textmode":  "{\\Longleftrightarrow}",                               // Unicode U+27FA
+	"char/0x27fb/textmode":  "{\\longmapsfrom}",                                     // Unicode U+27FB
+	"char/0x27fc/textmode":  "{\\longmapsto}",                                       // Unicode U+27FC
+	"char/0x27fd/textmode":  "{\\Longmapsfrom}",                                     // Unicode U+27FD
+	"char/0x27fe/textmode":  "{\\Longmapsto}",                                       // Unicode U+27FE
+	"char/0x27ff/mathmode":  "\\mathrel{\u27ff\\vphantom{A}}",                       // Unicode U+27FF
+	"char/0x2900/textmode":  "{\\psur}",                                             // Unicode U+2900
+	"char/0x2902/mathmode":  "\\mathrel{\u2902\\vphantom{A}}",                       // Unicode U+2902
+	"char/0x2903/mathmode":  "\\mathrel{\u2903\\vphantom{A}}",                       // Unicode U+2903
+	"char/0x2904/mathmode":  "\\mathrel{\u2904\\vphantom{A}}",                       // Unicode U+2904
+	"char/0x2905/mathmode":  "\\mathrel{\u2905\\vphantom{A}}",                       // Unicode U+2905
+	"char/0x2906/textmode":  "{\\Mapsfrom}",                                         // Unicode U+2906
+	"char/0x2907/textmode":  "{\\Mapsto}",                                           // Unicode U+2907
+	"char/0x290c/mathmode":  "\\mathrel{\u290c\\vphantom{A}}",                       // Unicode U+290C
+	"char/0x290d/mathmode":  "\\dashrightarrow",                                     // Unicode U+290D
+	"char/0x290e/mathmode":  "\\mathrel{\u290e\\vphantom{A}}",                       // Unicode U+290E
+	"char/0x290f/mathmode":  "\\mathrel{\u290f\\vphantom{A}}",                       // Unicode U+290F
+	"char/0x2910/mathmode":  "\\mathrel{\u2910\\vphantom{A}}",                       // Unicode U+2910
+	"char/0x2911/mathmode":  "\\mathrel{\u2911\\vphantom{A}}",                       // Unicode U+2911
+	"char/0x2912/textmode":  "{\\UpArrowBar}",                                       // Unicode U+2912
+	"char/0x2913/textmode":  "{\\DownArrowBar}",                                     // Unicode U+2913
+	"char/0x2914/textmode":  "{\\pinj}",                                             // Unicode U+2914
+	"char/0x2915/textmode":  "{\\finj}",                                             // Unicode U+2915
+	"char/0x2916/textmode":  "{\\bij}",                                              // Unicode U+2916
+	"char/0x2919/mathmode":  "\\mathrel{\u2919\\vphantom{A}}",                       // Unicode U+2919
+	"char/0x291a/mathmode":  "\\mathrel{\u291a\\vphantom{A}}",                       // Unicode U+291A
+	"char/0x291b/mathmode":  "\\mathrel{\u291b\\vphantom{A}}",                       // Unicode U+291B
+	"char/0x291c/mathmode":  "\\mathrel{\u291c\\vphantom{A}}",                       // Unicode U+291C
+	"char/0x291d/mathmode":  "\\mathrel{\u291d\\vphantom{A}}",                       // Unicode U+291D
+	"char/0x291e/mathmode":  "\\mathrel{\u291e\\vphantom{A}}",                       // Unicode U+291E
+	"char/0x291f/mathmode":  "\\mathrel{\u291f\\vphantom{A}}",                       // Unicode U+291F
+	"char/0x2920/mathmode":  "\\mathrel{\u2920\\vphantom{A}}",                       // Unicode U+2920
+	"char/0x2923/mathmode":  "\\mathrel{\u2923\\vphantom{A}}",                       // Unicode U+2923
+	"char/0x2924/mathmode":  "\\mathrel{\u2924\\vphantom{A}}",                       // Unicode U+2924
+	"char/0x2925/mathmode":  "\\mathrel{\u2925\\vphantom{A}}",                       // Unicode U+2925
+	"char/0x2926/mathmode":  "\\mathrel{\u2926\\vphantom{A}}",                       // Unicode U+2926
+	"char/0x2927/mathmode":  "\\mathrel{\u2927\\vphantom{A}}",                       // Unicode U+2927
+	"char/0x2928/mathmode":  "\\mathrel{\u2928\\vphantom{A}}",                       // Unicode U+2928
+	"char/0x2929/mathmode":  "\\mathrel{\u2929\\vphantom{A}}",                       // Unicode U+2929
+	"char/0x292a/mathmode":  "\\mathrel{\u292a\\vphantom{A}}",                       // Unicode U+292A
+	"char/0x2933/textmode":  "{\\leadsto}",                                          // Unicode U+2933
+	"char/0x2935/mathmode":  "\\mathrel{\u2935\\vphantom{A}}",                       // Unicode U+2935
+	"char/0x2936/mathmode":  "\\mathrel{\u2936\\vphantom{A}}",                       // Unicode U+2936
+	"char/0x2937/mathmode":  "\\mathrel{\u2937\\vphantom{A}}",                       // Unicode U+2937
+	"char/0x2938/mathmode":  "\\mathrel{\u2938\\vphantom{A}}",                       // Unicode U+2938
+	"char/0x2939/mathmode":  "\\mathrel{\\stackrel{\\leftarrow}{+}}",                // Unicode U+2939
+	"char/0x293c/mathmode":  "\\mathrel{\u293c\\vphantom{A}}",                       // Unicode U+293C
+	"char/0x293d/mathmode":  "\\mathrel{\u293d\\vphantom{A}}",                       // Unicode U+293D
+	"char/0x2945/mathmode":  "\\mathrel{\\stackrel{\\rightarrow}{+}}",               // Unicode U+2945
+	"char/0x2948/mathmode":  "\\mathrel{\u2948\\vphantom{A}}",                       // Unicode U+2948
+	"char/0x2949/mathmode":  "\\mathrel{\u2949\\vphantom{A}}",                       // Unicode U+2949
+	"char/0x294a/textmode":  "{\\leftrightharpoon}",                                 // Unicode U+294A
+	"char/0x294b/textmode":  "{\\rightleftharpoon}",                                 // Unicode U+294B
+	"char/0x294e/textmode":  "{\\leftrightharpoonup}",                               // Unicode U+294E
+	"char/0x294f/textmode":  "{\\rightupdownharpoon}",                               // Unicode U+294F
+	"char/0x2950/textmode":  "{\\leftrightharpoondown}",                             // Unicode U+2950
+	"char/0x2951/textmode":  "{\\leftupdownharpoon}",                                // Unicode U+2951
+	"char/0x2952/textmode":  "{\\LeftVectorBar}",                                    // Unicode U+2952
+	"char/0x2953/textmode":  "{\\RightVectorBar}",                                   // Unicode U+2953
+	"char/0x2954/textmode":  "{\\RightUpVectorBar}",                                 // Unicode U+2954
+	"char/0x2955/textmode":  "{\\RightDownVectorBar}",                               // Unicode U+2955
+	"char/0x2956/textmode":  "{\\DownLeftVectorBar}",                                // Unicode U+2956
+	"char/0x2957/textmode":  "{\\DownRightVectorBar}",                               // Unicode U+2957
+	"char/0x2958/textmode":  "{\\LeftUpVectorBar}",                                  // Unicode U+2958
+	"char/0x2959/textmode":  "{\\LeftDownVectorBar}",                                // Unicode U+2959
+	"char/0x295a/textmode":  "{\\LeftTeeVector}",                                    // Unicode U+295A
+	"char/0x295b/textmode":  "{\\RightTeeVector}",                                   // Unicode U+295B
+	"char/0x295c/textmode":  "{\\RightUpTeeVector}",                                 // Unicode U+295C
+	"char/0x295d/textmode":  "{\\RightDownTeeVector}",                               // Unicode U+295D
+	"char/0x295e/textmode":  "{\\DownLeftTeeVector}",                                // Unicode U+295E
+	"char/0x295f/textmode":  "{\\DownRightTeeVector}",                               // Unicode U+295F
+	"char/0x2960/textmode":  "{\\LeftUpTeeVector}",                                  // Unicode U+2960
+	"char/0x2961/textmode":  "{\\LeftDownTeeVector}",                                // Unicode U+2961
+	"char/0x2962/textmode":  "{\\leftleftharpoons}",                                 // Unicode U+2962
+	"char/0x2963/textmode":  "{\\upupharpoons}",                                     // Unicode U+2963
+	"char/0x2964/textmode":  "{\\rightrightharpoons}",                               // Unicode U+2964
+	"char/0x2965/textmode":  "{\\downdownharpoons}",                                 // Unicode U+2965
+	"char/0x2966/mathmode":  "\\mathrel{\u2966\\vphantom{A}}",                       // Unicode U+2966
+	"char/0x2967/mathmode":  "\\mathrel{\u2967\\vphantom{A}}",                       // Unicode U+2967
+	"char/0x2968/mathmode":  "\\mathrel{\u2968\\vphantom{A}}",                       // Unicode U+2968
+	"char/0x2969/mathmode":  "\\mathrel{\u2969\\vphantom{A}}",                       // Unicode U+2969
+	"char/0x296a/textmode":  "{\\leftbarharpoon}",                                   // Unicode U+296A
+	"char/0x296b/textmode":  "{\\barleftharpoon}",                                   // Unicode U+296B
+	"char/0x296c/textmode":  "{\\rightbarharpoon}",                                  // Unicode U+296C
+	"char/0x296d/textmode":  "{\\barrightharpoon}",                                  // Unicode U+296D
+	"char/0x296e/textmode":  "{\\updownharpoons}",                                   // Unicode U+296E
+	"char/0x296f/textmode":  "{\\downupharpoons}",                                   // Unicode U+296F
+	"char/0x2971/mathmode":  "\\mathrel{\u2971\\vphantom{A}}",                       // Unicode U+2971
+	"char/0x2972/mathmode":  "\\mathrel{\\stackrel{\\sim}{\\rightarrow}}",           // Unicode U+2972
+	"char/0x2973/mathmode":  "\\mathrel{\\stackrel{\\leftarrow}{\\sim}}",            // Unicode U+2973
+	"char/0x2974/mathmode":  "\\mathrel{\\stackrel{\\rightarrow}{\\sim}}",           // Unicode U+2974
+	"char/0x2975/mathmode":  "\\mathrel{\\stackrel{\\rightarrow}{\\approx}}",        // Unicode U+2975
+	"char/0x2976/mathmode":  "\\mathrel{\u2976\\vphantom{A}}",                       // Unicode U+2976
+	"char/0x2978/mathmode":  "\\mathrel{\u2978\\vphantom{A}}",                       // Unicode U+2978
+	"char/0x2979/mathmode":  "\\mathrel{\\stackrel{\\subset}{\\rightarrow}}",        // Unicode U+2979
+	"char/0x297b/mathmode":  "\\mathrel{\u297b\\vphantom{A}}",                       // Unicode U+297B
+	"char/0x297c/textmode":  "{\\strictfi}",                                         // Unicode U+297C
+	"char/0x297d/textmode":  "{\\strictif}",                                         // Unicode U+297D
+	"char/0x297e/mathmode":  "\\mathrel{\u297e\\vphantom{A}}",                       // Unicode U+297E
+	"char/0x297f/mathmode":  "\\mathrel{\u297f\\vphantom{A}}",                       // Unicode U+297F
+	"char/0x2980/textmode":  "{\\VERT}",                                             // Unicode U+2980
+	"char/0x2981/textmode":  "{\\spot}",                                             // Unicode U+2981
+	"char/0x2985/textmode":  "{\\Lparen}",                                           // Unicode U+2985
+	"char/0x2986/textmode":  "{\\Rparen}",                                           // Unicode U+2986
+	"char/0x2987/textmode":  "{\\limg}",                                             // Unicode U+2987
+	"char/0x2988/textmode":  "{\\rimg}",                                             // Unicode U+2988
+	"char/0x2989/textmode":  "{\\lblot}",                                            // Unicode U+2989
+	"char/0x298a/textmode":  "{\\rblot}",                                            // Unicode U+298A
+	"char/0x298b/mathmode":  "\\mathopen{\u298b\\vphantom{A}}",                      // Unicode U+298B
+	"char/0x298c/mathmode":  "\\mathclose{\u298c\\vphantom{A}}",                     // Unicode U+298C
+	"char/0x298d/mathmode":  "\\mathopen{\u298d\\vphantom{A}}",                      // Unicode U+298D
+	"char/0x298e/mathmode":  "\\mathclose{\u298e\\vphantom{A}}",                     // Unicode U+298E
+	"char/0x298f/mathmode":  "\\mathopen{\u298f\\vphantom{A}}",                      // Unicode U+298F
+	"char/0x2990/mathmode":  "\\mathclose{\u2990\\vphantom{A}}",                     // Unicode U+2990
+	"char/0x2991/mathmode":  "\\mathopen{\u2991\\vphantom{A}}",                      // Unicode U+2991
+	"char/0x2992/mathmode":  "\\mathclose{\u2992\\vphantom{A}}",                     // Unicode U+2992
+	"char/0x2993/mathmode":  "\\mathopen{\u2993\\vphantom{A}}",                      // Unicode U+2993
+	"char/0x2994/mathmode":  "\\mathclose{\u2994\\vphantom{A}}",                     // Unicode U+2994
+	"char/0x2995/mathmode":  "\\mathopen{\u2995\\vphantom{A}}",                      // Unicode U+2995
+	"char/0x2996/mathmode":  "\\mathopen{\u2996\\vphantom{A}}",                      // Unicode U+2996
+	"char/0x299a/mathmode":  "{\u299a\\vphantom{A}}",                                // Unicode U+299A
+	"char/0x299c/mathmode":  "{\u299c\\vphantom{A}}",                                // Unicode U+299C
+	"char/0x299d/mathmode":  "{\u299d\\vphantom{A}}",                                // Unicode U+299D
+	"char/0x29a4/mathmode":  "{\\underline \\angle}",                                // Unicode U+29A4
+	"char/0x29a5/mathmode":  "{\u29a5\\vphantom{A}}",                                // Unicode U+29A5
+	"char/0x29a6/mathmode":  "{\u29a6\\vphantom{A}}",                                // Unicode U+29A6
+	"char/0x29a7/mathmode":  "{\u29a7\\vphantom{A}}",                                // Unicode U+29A7
+	"char/0x29a8/mathmode":  "{\u29a8\\vphantom{A}}",                                // Unicode U+29A8
+	"char/0x29a9/mathmode":  "{\u29a9\\vphantom{A}}",                                // Unicode U+29A9
+	"char/0x29aa/mathmode":  "{\u29aa\\vphantom{A}}",                                // Unicode U+29AA
+	"char/0x29ab/mathmode":  "{\u29ab\\vphantom{A}}",                                // Unicode U+29AB
+	"char/0x29ac/mathmode":  "{\u29ac\\vphantom{A}}",                                // Unicode U+29AC
+	"char/0x29ad/mathmode":  "{\u29ad\\vphantom{A}}",                                // Unicode U+29AD
+	"char/0x29ae/mathmode":  "{\u29ae\\vphantom{A}}",                                // Unicode U+29AE
+	"char/0x29af/mathmode":  "{\u29af\\vphantom{A}}",                                // Unicode U+29AF
+	"char/0x29b0/mathmode":  "{\u29b0\\vphantom{A}}",                                // Unicode U+29B0
+	"char/0x29b1/mathmode":  "\\bar{\\varnothing}",                                  // Unicode U+29B1
+	"char/0x29b2/mathmode":  "{\u29b2\\vphantom{A}}",                                // Unicode U+29B2
+	"char/0x29b3/mathmode":  "{\u29b3\\vphantom{A}}",                                // Unicode U+29B3
+	"char/0x29b4/mathmode":  "{\u29b4\\vphantom{A}}",                                // Unicode U+29B4
+	"char/0x29b5/mathmode":  "\\mathbin{\u29b5\\vphantom{A}}",                       // Unicode U+29B5
+	"char/0x29b6/mathmode":  "\\mathbin{\u29b6\\vphantom{A}}",                       // Unicode U+29B6
+	"char/0x29b7/mathmode":  "\\mathbin{\u29b7\\vphantom{A}}",                       // Unicode U+29B7
+	"char/0x29b8/textmode":  "{\\circledbslash}",                                    // Unicode U+29B8
+	"char/0x29b9/mathmode":  "\\mathbin{\u29b9\\vphantom{A}}",                       // Unicode U+29B9
+	"char/0x29bb/mathmode":  "{\u29bb\\vphantom{A}}",                                // Unicode U+29BB
+	"char/0x29bc/mathmode":  "\\mathbin{\u29bc\\vphantom{A}}",                       // Unicode U+29BC
+	"char/0x29be/mathmode":  "\\mathbin{\u29be\\vphantom{A}}",                       // Unicode U+29BE
+	"char/0x29bf/mathmode":  "\\mathbin{\u223e\\vphantom{A}}",                       // Unicode U+29BF
+	"char/0x29c0/textmode":  "{\\circledless}",                                      // Unicode U+29C0
+	"char/0x29c1/textmode":  "{\\circledgtr}",                                       // Unicode U+29C1
+	"char/0x29c2/mathmode":  "{\u29c2\\vphantom{A}}",                                // Unicode U+29C2
+	"char/0x29c3/mathmode":  "{\u29c3\\vphantom{A}}",                                // Unicode U+29C3
+	"char/0x29c4/textmode":  "{\\boxslash}",                                         // Unicode U+29C4
+	"char/0x29c5/textmode":  "{\\boxbslash}",                                        // Unicode U+29C5
+	"char/0x29c6/textmode":  "{\\boxast}",                                           // Unicode U+29C6
+	"char/0x29c7/textmode":  "{\\boxcircle}",                                        // Unicode U+29C7
+	"char/0x29c8/textmode":  "{\\boxbox}",                                           // Unicode U+29C8
+	"char/0x29c9/mathmode":  "{\u29c9\\vphantom{A}}",                                // Unicode U+29C9
+	"char/0x29cd/mathmode":  "\\mathbin{\u29cd\\vphantom{A}}",                       // Unicode U+29CD
+	"char/0x29ce/mathmode":  "\\mathrel{\u29ce\\vphantom{A}}",                       // Unicode U+29CE
+	"char/0x29cf/textmode":  "{\\LeftTriangleBar}",                                  // Unicode U+29CF
+	"char/0x29d0/textmode":  "{\\RightTriangleBar}",                                 // Unicode U+29D0
+	"char/0x29da/mathmode":  "\\mathbin{\u29da\\vphantom{A}}",                       // Unicode U+29DA
+	"char/0x29dc/mathmode":  "{\u29dc\\vphantom{A}}",                                // Unicode U+29DC
+	"char/0x29dd/mathmode":  "{\u29dd\\vphantom{A}}",                                // Unicode U+29DD
+	"char/0x29de/mathmode":  "{\u29de\\vphantom{A}}",                                // Unicode U+29DE
+	"char/0x29df/textmode":  "{\\multimapboth}",                                     // Unicode U+29DF
+	"char/0x29e3/mathmode":  "\\mathrel{\u29e3\\vphantom{A}}",                       // Unicode U+29E3
+	"char/0x29e4/mathmode":  "\\mathrel{\u29e4\\vphantom{A}}",                       // Unicode U+29E4
+	"char/0x29e5/mathmode":  "\\mathrel{\u29e5\\vphantom{A}}",                       // Unicode U+29E5
+	"char/0x29eb/textmode":  "{\\blacklozenge}",                                     // Unicode U+29EB
+	"char/0x29f5/textmode":  "{\\setminus}",                                         // Unicode U+29F5
+	"char/0x29f6/mathmode":  "\\bar{/}",                                             // Unicode U+29F6
+	"char/0x29f9/textmode":  "{\\zhide}",                                            // Unicode U+29F9
+	"char/0x2a00/textmode":  "{\\bigodot}",                                          // Unicode U+2A00
+	"char/0x2a01/textmode":  "{\\bigoplus}",                                         // Unicode U+2A01
+	"char/0x2a02/textmode":  "{\\bigotimes}",                                        // Unicode U+2A02
+	"char/0x2a04/textmode":  "{\\biguplus}",                                         // Unicode U+2A04
+	"char/0x2a05/textmode":  "{\\bigsqcap}",                                         // Unicode U+2A05
+	"char/0x2a06/textmode":  "{\\bigsqcup}",                                         // Unicode U+2A06
+	"char/0x2a09/textmode":  "{\\varprod}",                                          // Unicode U+2A09
+	"char/0x2a0c/textmode":  "{\\iiiint}",                                           // Unicode U+2A0C
+	"char/0x2a0d/mathmode":  "\\mathop{\\LARGE \u2a0d\\vphantom{\\int}}",            // Unicode U+2A0D
+	"char/0x2a0f/textmode":  "{\\fint}",                                             // Unicode U+2A0F
+	"char/0x2a10/mathmode":  "\\mathop{\\LARGE \u2a10\\vphantom{\\int}}",            // Unicode U+2A10
+	"char/0x2a11/mathmode":  "\\mathop{\\LARGE \u2a11\\vphantom{\\int}}",            // Unicode U+2A11
+	"char/0x2a12/mathmode":  "\\mathop{\\LARGE \u2a12\\vphantom{\\int}}",            // Unicode U+2A12
+	"char/0x2a13/mathmode":  "\\mathop{\\LARGE \u2a13\\vphantom{\\int}}",            // Unicode U+2A13
+	"char/0x2a14/mathmode":  "\\mathop{\\LARGE \u2a14\\vphantom{\\int}}",            // Unicode U+2A14
+	"char/0x2a15/mathmode":  "\\mathop{\\LARGE \u2a15\\vphantom{\\int}}",            // Unicode U+2A15
+	"char/0x2a16/textmode":  "{\\sqint}",                                            // Unicode U+2A16
+	"char/0x2a17/mathmode":  "\\mathop{\\LARGE \u2a17\\vphantom{\\int}}",            // Unicode U+2A17
+	"char/0x2a1d/textmode":  "{\\Join}",                                             // Unicode U+2A1D
+	"char/0x2a1f/textmode":  "{\\zcmp}",                                             // Unicode U+2A1F
+	"char/0x2a20/textmode":  "{\\zpipe}",                                            // Unicode U+2A20
+	"char/0x2a21/textmode":  "{\\zproject}",                                         // Unicode U+2A21
+	"char/0x2a22/mathmode":  "\\mathbin{\u2a22\\vphantom{A}}",                       // Unicode U+2A22
+	"char/0x2a23/mathmode":  "\\mathrel{\\hat{\\oplus}}",                            // Unicode U+2A23
+	"char/0x2a24/mathmode":  "\\tilde{+}",                                           // Unicode U+2A24
+	"char/0x2a25/mathmode":  "\\mathbin{\u2a25\\vphantom{A}}",                       // Unicode U+2A25
+	"char/0x2a26/mathmode":  "\\mathbin{\u2a26\\vphantom{A}}",                       // Unicode U+2A26
+	"char/0x2a27/mathmode":  "\\mathbin{\u2a27\\vphantom{A}}",                       // Unicode U+2A27
+	"char/0x2a29/mathmode":  "\\mathrel{\u2a29\\vphantom{A}}",                       // Unicode U+2A29
+	"char/0x2a2a/mathmode":  "\\mathbin{\u2a2a\\vphantom{A}}",                       // Unicode U+2A2A
+	"char/0x2a2d/mathmode":  "\\mathbin{\u2a2d\\vphantom{A}}",                       // Unicode U+2A2D
+	"char/0x2a2e/mathmode":  "\\mathbin{\u2a2e\\vphantom{A}}",                       // Unicode U+2A2E
+	"char/0x2a30/mathmode":  "\\mathbin{\u2a30\\vphantom{A}}",                       // Unicode U+2A30
+	"char/0x2a31/mathmode":  "\\mathrel{\\underline \\times}",                       // Unicode U+2A31
+	"char/0x2a33/mathmode":  "\\mathbin{\u2a33\\vphantom{A}}",                       // Unicode U+2A33
+	"char/0x2a34/mathmode":  "\\mathbin{\u2a34\\vphantom{A}}",                       // Unicode U+2A34
+	"char/0x2a35/mathmode":  "\\mathbin{\u2a35\\vphantom{A}}",                       // Unicode U+2A35
+	"char/0x2a36/mathmode":  "\\hat{\\otimes}",                                      // Unicode U+2A36
+	"char/0x2a37/mathmode":  "\\mathbin{\u2a37\\vphantom{A}}",                       // Unicode U+2A37
+	"char/0x2a38/mathmode":  "\\mathbin{\u2a38\\vphantom{A}}",                       // Unicode U+2A38
+	"char/0x2a39/mathmode":  "\\mathbin{\u2a39\\vphantom{A}}",                       // Unicode U+2A39
+	"char/0x2a3a/mathmode":  "\\mathbin{\u2a3a\\vphantom{A}}",                       // Unicode U+2A3A
+	"char/0x2a3b/mathmode":  "\\mathbin{\u2a3b\\vphantom{A}}",                       // Unicode U+2A3B
+	"char/0x2a3c/mathmode":  "\\mathbin{\u2a3c\\vphantom{A}}",                       // Unicode U+2A3C
+	"char/0x2a3e/textmode":  "{\\fcmp}",                                             // Unicode U+2A3E
+	"char/0x2a3f/textmode":  "{\\amalg}",                                            // Unicode U+2A3F
+	"char/0x2a40/mathmode":  "\\mathbin{\u2a40\\vphantom{A}}",                       // Unicode U+2A40
+	"char/0x2a42/mathmode":  "\\bar{\\cup}",                                         // Unicode U+2A42
+	"char/0x2a43/mathmode":  "\\bar{\\cap}",                                         // Unicode U+2A43
+	"char/0x2a44/mathmode":  "\\mathbin{\u2a44\\vphantom{A}}",                       // Unicode U+2A44
+	"char/0x2a45/mathmode":  "\\mathbin{\u2a45\\vphantom{A}}",                       // Unicode U+2A45
+	"char/0x2a46/mathmode":  "\\mathbin{\u2a46\\vphantom{A}}",                       // Unicode U+2A46
+	"char/0x2a47/mathmode":  "\\mathbin{\u2a47\\vphantom{A}}",                       // Unicode U+2A47
+	"char/0x2a48/mathmode":  "\\mathbin{\u2a48\\vphantom{A}}",                       // Unicode U+2A48
+	"char/0x2a49/mathmode":  "\\mathbin{\u2a49\\vphantom{A}}",                       // Unicode U+2A49
+	"char/0x2a4a/mathmode":  "\\mathbin{\u2a4a\\vphantom{A}}",                       // Unicode U+2A4A
+	"char/0x2a4b/mathmode":  "\\mathbin{\u2a4b\\vphantom{A}}",                       // Unicode U+2A4B
+	"char/0x2a4c/mathmode":  "\\mathbin{\u2a4c\\vphantom{A}}",                       // Unicode U+2A4C
+	"char/0x2a4d/mathmode":  "\\mathbin{\u2a4d\\vphantom{A}}",                       // Unicode U+2A4D
+	"char/0x2a50/mathmode":  "\\mathbin{\u2a50\\vphantom{A}}",                       // Unicode U+2A50
+	"char/0x2a53/mathmode":  "\\mathrel{\u2a53\\vphantom{A}}",                       // Unicode U+2A53
+	"char/0x2a54/mathmode":  "\\mathrel{\u2a54\\vphantom{A}}",                       // Unicode U+2A54
+	"char/0x2a55/mathmode":  "\\mathrel{\u2a55\\vphantom{A}}",                       // Unicode U+2A55
+	"char/0x2a56/mathmode":  "\\mathrel{\u2a56\\vphantom{A}}",                       // Unicode U+2A56
+	"char/0x2a57/mathmode":  "\\mathrel{\u2a57\\vphantom{A}}",                       // Unicode U+2A57
+	"char/0x2a58/mathmode":  "\\mathrel{\u2a58\\vphantom{A}}",                       // Unicode U+2A58
+	"char/0x2a5a/mathmode":  "\\mathrel{\u2a5a\\vphantom{A}}",                       // Unicode U+2A5A
+	"char/0x2a5b/mathmode":  "\\mathrel{\u2a5b\\vphantom{A}}",                       // Unicode U+2A5B
+	"char/0x2a5c/mathmode":  "\\mathrel{\u2a5c\\vphantom{A}}",                       // Unicode U+2A5C
+	"char/0x2a5d/mathmode":  "\\mathrel{\u2a5d\\vphantom{A}}",                       // Unicode U+2A5D
+	"char/0x2a5e/textmode":  "{\\doublebarwedge}",                                   // Unicode U+2A5E
+	"char/0x2a5f/mathmode":  "\\mathrel{\\underline \\wedge}",                       // Unicode U+2A5F
+	"char/0x2a64/textmode":  "{\\dsub}",                                             // Unicode U+2A64
+	"char/0x2a65/textmode":  "{\\rsub}",                                             // Unicode U+2A65
+	"char/0x2a66/mathmode":  "\\mathrel{\u2a66\\vphantom{A}}",                       // Unicode U+2A66
+	"char/0x2a6a/mathmode":  "\\mathrel{\u2a6a\\vphantom{A}}",                       // Unicode U+2A6A
+	"char/0x2a6d/mathmode":  "\\mathrel{\\not \u2a6d}",                              // Unicode U+2A6D
+	"char/0x2a6e/mathmode":  "\\mathrel{\u2a6e\\vphantom{A}}",                       // Unicode U+2A6E
+	"char/0x2a6f/mathmode":  "\\hat{\\approx}",                                      // Unicode U+2A6F
+	"char/0x2a70/mathmode":  "\\mathrel{\\not \u2a70}",                              // Unicode U+2A70
+	"char/0x2a71/mathmode":  "\\mathbin{\u2a71\\vphantom{A}}",                       // Unicode U+2A71
+	"char/0x2a72/mathmode":  "\\mathbin{\u2a72\\vphantom{A}}",                       // Unicode U+2A72
+	"char/0x2a73/mathmode":  "\\mathrel{\u2a73\\vphantom{A}}",                       // Unicode U+2A73
+	"char/0x2a74/textmode":  "{\\Coloneqq}",                                         // Unicode U+2A74
+	"char/0x2a75/textmode":  "{\\Equal}",                                            // Unicode U+2A75
+	"char/0x2a76/textmode":  "{\\Same}",                                             // Unicode U+2A76
+	"char/0x2a77/mathmode":  "\\mathrel{\u2a77\\vphantom{A}}",                       // Unicode U+2A77
+	"char/0x2a78/mathmode":  "\\mathrel{\u2a78\\vphantom{A}}",                       // Unicode U+2A78
+	"char/0x2a79/mathmode":  "\\mathrel{\u2a79\\vphantom{A}}",                       // Unicode U+2A79
+	"char/0x2a7a/mathmode":  "\\mathrel{\u2a7a\\vphantom{A}}",                       // Unicode U+2A7A
+	"char/0x2a7b/mathmode":  "\\mathrel{\u2a7b\\vphantom{A}}",                       // Unicode U+2A7B
+	"char/0x2a7c/mathmode":  "\\mathrel{\u2a7c\\vphantom{A}}",                       // Unicode U+2A7C
+	"char/0x2a7d/textmode":  "{\\leqslant}",                                         // Unicode U+2A7D
+	"char/0x2a7e/textmode":  "{\\geqslant}",                                         // Unicode U+2A7E
+	"char/0x2a7f/mathmode":  "\\mathrel{\u2a7f\\vphantom{A}}",                       // Unicode U+2A7F
+	"char/0x2a80/mathmode":  "\\mathrel{\u2a80\\vphantom{A}}",                       // Unicode U+2A80
+	"char/0x2a81/mathmode":  "\\mathrel{\u2a81\\vphantom{A}}",                       // Unicode U+2A81
+	"char/0x2a82/mathmode":  "\\mathrel{\u2a82\\vphantom{A}}",                       // Unicode U+2A82
+	"char/0x2a83/mathmode":  "\\mathrel{\u2a83\\vphantom{A}}",                       // Unicode U+2A83
+	"char/0x2a84/mathmode":  "\\mathrel{\u2a84\\vphantom{A}}",                       // Unicode U+2A84
+	"char/0x2a85/textmode":  "{\\lessapprox}",                                       // Unicode U+2A85
+	"char/0x2a86/textmode":  "{\\gtrapprox}",                                        // Unicode U+2A86
+	"char/0x2a87/textmode":  "{\\lneq}",                                             // Unicode U+2A87
+	"char/0x2a88/textmode":  "{\\gneq}",                                             // Unicode U+2A88
+	"char/0x2a89/textmode":  "{\\lnapprox}",                                         // Unicode U+2A89
+	"char/0x2a8a/textmode":  "{\\gnapprox}",                                         // Unicode U+2A8A
+	"char/0x2a8b/textmode":  "{\\lesseqqgtr}",                                       // Unicode U+2A8B
+	"char/0x2a8c/textmode":  "{\\gtreqqless}",                                       // Unicode U+2A8C
+	"char/0x2a8d/mathmode":  "\\mathrel{\u2a8d\\vphantom{A}}",                       // Unicode U+2A8D
+	"char/0x2a8e/mathmode":  "\\mathrel{\u2a8e\\vphantom{A}}",                       // Unicode U+2A8E
+	"char/0x2a8f/mathmode":  "\\mathrel{\u2a8f\\vphantom{A}}",                       // Unicode U+2A8F
+	"char/0x2a90/mathmode":  "\\mathrel{\u2a90\\vphantom{A}}",                       // Unicode U+2A90
+	"char/0x2a91/mathmode":  "\\mathrel{\u2a91\\vphantom{A}}",                       // Unicode U+2A91
+	"char/0x2a92/mathmode":  "\\mathrel{\u2a92\\vphantom{A}}",                       // Unicode U+2A92
+	"char/0x2a93/mathmode":  "\\mathrel{\u2a93\\vphantom{A}}",                       // Unicode U+2A93
+	"char/0x2a94/mathmode":  "\\mathrel{\u2a94\\vphantom{A}}",                       // Unicode U+2A94
+	"char/0x2a95/textmode":  "{\\eqslantless}",                                      // Unicode U+2A95
+	"char/0x2a96/textmode":  "{\\eqslantgtr}",                                       // Unicode U+2A96
+	"char/0x2a97/mathmode":  "\\mathrel{\u2a97\\vphantom{A}}",                       // Unicode U+2A97
+	"char/0x2a98/mathmode":  "\\mathrel{\u2a98\\vphantom{A}}",                       // Unicode U+2A98
+	"char/0x2a99/mathmode":  "\\mathrel{\u2a99\\vphantom{A}}",                       // Unicode U+2A99
+	"char/0x2a9a/mathmode":  "\\mathrel{\u2a9a\\vphantom{A}}",                       // Unicode U+2A9A
+	"char/0x2a9d/mathmode":  "\\tilde{<}",                                           // Unicode U+2A9D
+	"char/0x2a9e/mathmode":  "\\tilde{>}",                                           // Unicode U+2A9E
+	"char/0x2a9f/mathmode":  "\\mathrel{\u2a9f\\vphantom{A}}",                       // Unicode U+2A9F
+	"char/0x2aa0/mathmode":  "\\mathrel{\u2aa0\\vphantom{A}}",                       // Unicode U+2AA0
+	"char/0x2aa1/textmode":  "{\\NestedLessLess}",                                   // Unicode U+2AA1
+	"char/0x2aa2/textmode":  "{\\NestedGreaterGreater}",                             // Unicode U+2AA2
+	"char/0x2aa4/mathmode":  "\\mathrel{\u2aa4\\vphantom{A}}",                       // Unicode U+2AA4
+	"char/0x2aa5/mathmode":  "\\mathrel{\u2aa5\\vphantom{A}}",                       // Unicode U+2AA5
+	"char/0x2aa6/textmode":  "{\\leftslice}",                                        // Unicode U+2AA6
+	"char/0x2aa7/textmode":  "{\\rightslice}",                                       // Unicode U+2AA7
+	"char/0x2aa8/mathmode":  "\\mathrel{\u2aa8\\vphantom{A}}",                       // Unicode U+2AA8
+	"char/0x2aa9/mathmode":  "\\mathrel{\u2aa9\\vphantom{A}}",                       // Unicode U+2AA9
+	"char/0x2aaa/mathmode":  "\\mathrel{\u2aaa\\vphantom{A}}",                       // Unicode U+2AAA
+	"char/0x2aab/mathmode":  "\\mathrel{\u2aab\\vphantom{A}}",                       // Unicode U+2AAB
+	"char/0x2aac/mathmode":  "\\mathrel{\u2aac\\vphantom{A}}",                       // Unicode U+2AAC
+	"char/0x2aad/mathmode":  "\\mathrel{\u2aad\\vphantom{A}}",                       // Unicode U+2AAD
+	"char/0x2aae/mathmode":  "\\mathrel{\u2aae\\vphantom{A}}",                       // Unicode U+2AAE
+	"char/0x2aaf/textmode":  "{\\preceq}",                                           // Unicode U+2AAF
+	"char/0x2ab0/textmode":  "{\\succeq}",                                           // Unicode U+2AB0
+	"char/0x2ab3/textmode":  "{\\preceqq}",                                          // Unicode U+2AB3
+	"char/0x2ab4/textmode":  "{\\succeqq}",                                          // Unicode U+2AB4
+	"char/0x2ab5/mathmode":  "\\precneqq",                                           // Unicode U+2AB5
+	"char/0x2ab6/mathmode":  "\\succneqq",                                           // Unicode U+2AB6
+	"char/0x2ab7/textmode":  "{\\precapprox}",                                       // Unicode U+2AB7
+	"char/0x2ab8/textmode":  "{\\succapprox}",                                       // Unicode U+2AB8
+	"char/0x2ab9/textmode":  "{\\precnapprox}",                                      // Unicode U+2AB9
+	"char/0x2aba/textmode":  "{\\succnapprox}",                                      // Unicode U+2ABA
+	"char/0x2abb/textmode":  "{\\llcurly}",                                          // Unicode U+2ABB
+	"char/0x2abc/textmode":  "{\\ggcurly}",                                          // Unicode U+2ABC
+	"char/0x2abd/mathmode":  "\\mathbin{\u2abd\\vphantom{A}}",                       // Unicode U+2ABD
+	"char/0x2abe/mathmode":  "\\mathbin{\u2abe\\vphantom{A}}",                       // Unicode U+2ABE
+	"char/0x2abf/mathmode":  "\\mathrel{\u2abf\\vphantom{A}}",                       // Unicode U+2ABF
+	"char/0x2ac0/mathmode":  "\\mathrel{\u2ac0\\vphantom{A}}",                       // Unicode U+2AC0
+	"char/0x2ac1/mathmode":  "\\mathrel{\u2ac1\\vphantom{A}}",                       // Unicode U+2AC1
+	"char/0x2ac2/mathmode":  "\\mathrel{\u2ac2\\vphantom{A}}",                       // Unicode U+2AC2
+	"char/0x2ac3/mathmode":  "\\mathrel{\u2ac3\\vphantom{A}}",                       // Unicode U+2AC3
+	"char/0x2ac4/mathmode":  "\\mathrel{\u2ac4\\vphantom{A}}",                       // Unicode U+2AC4
+	"char/0x2ac5/textmode":  "{\\subseteqq}",                                        // Unicode U+2AC5
+	"char/0x2ac6/textmode":  "{\\supseteqq}",                                        // Unicode U+2AC6
+	"char/0x2ac7/mathmode":  "\\mathrel{\\stackrel{\\subset}{\\sim}}",               // Unicode U+2AC7
+	"char/0x2ac8/mathmode":  "\\mathrel{\u2ac8\\vphantom{A}}",                       // Unicode U+2AC8
+	"char/0x2acb/textmode":  "{\\subsetneqq}",                                       // Unicode U+2ACB
+	"char/0x2acc/textmode":  "{\\supsetneqq}",                                       // Unicode U+2ACC
+	"char/0x2acf/mathmode":  "\\mathrel{\u2acf\\vphantom{A}}",                       // Unicode U+2ACF
+	"char/0x2ad0/mathmode":  "\\mathrel{\u2ad0\\vphantom{A}}",                       // Unicode U+2AD0
+	"char/0x2ad1/mathmode":  "\\mathrel{\u2ad1\\vphantom{A}}",                       // Unicode U+2AD1
+	"char/0x2ad2/mathmode":  "\\mathrel{\u2ad2\\vphantom{A}}",                       // Unicode U+2AD2
+	"char/0x2ad3/mathmode":  "\\mathrel{\u2ad3\\vphantom{A}}",                       // Unicode U+2AD3
+	"char/0x2ad4/mathmode":  "\\mathrel{\u2ad4\\vphantom{A}}",                       // Unicode U+2AD4
+	"char/0x2ad5/mathmode":  "\\mathrel{\u2ad5\\vphantom{A}}",                       // Unicode U+2AD5
+	"char/0x2ad6/mathmode":  "\\mathrel{\u2ad6\\vphantom{A}}",                       // Unicode U+2AD6
+	"char/0x2ad7/mathmode":  "\\mathrel{\\supset\\subset}",                          // Unicode U+2AD7
+	"char/0x2ad8/mathmode":  "\\mathrel{\u2ad8\\vphantom{A}}",                       // Unicode U+2AD8
+	"char/0x2ad9/mathmode":  "\\mathrel{\u2ad9\\vphantom{A}}",                       // Unicode U+2AD9
+	"char/0x2ada/mathmode":  "\\mathrel{\u2ada\\vphantom{A}}",                       // Unicode U+2ADA
+	"char/0x2adb/mathmode":  "\\mathrel{\u2adb\\vphantom{A}}",                       // Unicode U+2ADB
+	"char/0x2ae4/mathmode":  "\\mathrel{\u2ae4\\vphantom{A}}",                       // Unicode U+2AE4
+	"char/0x2ae6/mathmode":  "\\mathrel{\u223e\\vphantom{A}}",                       // Unicode U+2AE6
+	"char/0x2ae7/mathmode":  "\\mathrel{\u2ae7\\vphantom{A}}",                       // Unicode U+2AE7
+	"char/0x2ae8/mathmode":  "\\mathrel{\u2ae8\\vphantom{A}}",                       // Unicode U+2AE8
+	"char/0x2ae9/mathmode":  "\\mathrel{\u2ae9\\vphantom{A}}",                       // Unicode U+2AE9
+	"char/0x2aea/textmode":  "{\\Top}",                                              // Unicode U+2AEA
+	"char/0x2aeb/textmode":  "{\\Bot}",                                              // Unicode U+2AEB
+	"char/0x2aec/mathmode":  "{\u2aec\\vphantom{A}}",                                // Unicode U+2AEC
+	"char/0x2aed/mathmode":  "\\mathop{\u2aed\\vphantom{A}}",                        // Unicode U+2AED
+	"char/0x2aee/mathmode":  "\\nmid",                                               // Unicode U+2AEE
+	"char/0x2aef/mathmode":  "\\mathrel{\u2aef\\vphantom{A}}",                       // Unicode U+2AEF
+	"char/0x2af0/mathmode":  "\\mathrel{\u2af0\\vphantom{A}}",                       // Unicode U+2AF0
+	"char/0x2af1/mathmode":  "{\u2af1\\vphantom{A}}",                                // Unicode U+2AF1
+	"char/0x2af2/mathmode":  "\\mathrel{\u2af2\\vphantom{A}}",                       // Unicode U+2AF2
+	"char/0x2af3/mathmode":  "\\mathrel{\u2af3\\vphantom{A}}",                       // Unicode U+2AF3
+	"char/0x2af4/textmode":  "{\\interleave}",                                       // Unicode U+2AF4
+	"char/0x2afc/textmode":  "{\\biginterleave}",                                    // Unicode U+2AFC
+	"char/0x2afd/textmode":  "{\\sslash}",                                           // Unicode U+2AFD
+	"char/0x2afe/textmode":  "{\\talloblong}",                                       // Unicode U+2AFE
+	"char/0x2b1b/textmode":  "{\\blacksquare}",                                      // Unicode U+2B1B
+	"char/0x2b1c/textmode":  "{\\square}",                                           // Unicode U+2B1C
+	"char/0x2b1d/textmode":  "{\\blacksquare}",                                      // Unicode U+2B1D
+	"char/0x2b27/textmode":  "{\\blacklozenge}",                                     // Unicode U+2B27
+	"char/0x2b28/textmode":  "{\\lozenge}",                                          // Unicode U+2B28
+	"char/0x2e2f/mathmode":  "{\u2e2f\\vphantom{A}}",                                // Unicode U+2E2F
+	"char/0x300a/mathmode":  "\\mathopen{\\langle\\!\\langle}",                      // Unicode U+300A
+	"char/0x300b/mathmode":  "\\mathclose{\\rangle\\!\\rangle}",                     // Unicode U+300B
+	"char/0x3014/mathmode":  "\\lgroup",                                             // Unicode U+3014
+	"char/0x3015/mathmode":  "\\rgroup",                                             // Unicode U+3015
+	"char/0x3018/mathmode":  "\\mathopen{\u3018\\vphantom{A}}",                      // Unicode U+3018
+	"char/0x3019/mathmode":  "\\mathclose{\u3019\\vphantom{A}}",                     // Unicode U+3019
+	"char/0x301a/mathmode":  "\\mathopen{\u301a\\vphantom{A}}",                      // Unicode U+301A
+	"char/0x301b/mathmode":  "\\mathclose{\u301b\\vphantom{A}}",                     // Unicode U+301B
+	"char/0xa648/mathmode":  "{\ua648\\vphantom{A}}",                                // Unicode U+A648
+	"char/0xa649/mathmode":  "{\ua649\\vphantom{A}}",                                // Unicode U+A649
+	"char/0xa652/mathmode":  "{\ua652\\vphantom{A}}",                                // Unicode U+A652
+	"char/0xa653/mathmode":  "{\ua653\\vphantom{A}}",                                // Unicode U+A653
+	"char/0xa656/mathmode":  "{\ua656\\vphantom{A}}",                                // Unicode U+A656
+	"char/0xa657/mathmode":  "{\ua657\\vphantom{A}}",                                // Unicode U+A657
+	"char/0xa65a/mathmode":  "{\ua65a\\vphantom{A}}",                                // Unicode U+A65A
+	"char/0xa65b/mathmode":  "{\ua65b\\vphantom{A}}",                                // Unicode U+A65B
+	"char/0xa67f/mathmode":  "{\ua67f\\vphantom{A}}",                                // Unicode U+A67F
+	"char/0xe540/mathmode":  "{fj}",                                                 // Unicode U+E540
+	"char/0xe612/mathmode":  "\\mathrel{\\bcancel{\\=}}",                            // Unicode U+E612
+	"char/0xe613/mathmode":  "\\mathrel{\\bcancel{\u2261}}",                         // Unicode U+E613
+	"char/0xe651/mathmode":  "\\dot{\\neq}",                                         // Unicode U+E651
+	"char/0xe659/mathmode":  "\\dot{\\notin}",                                       // Unicode U+E659
+	"char/0xe65a/mathmode":  "\\mathrel{\\bcancel{\\mathrel{\u22f9\\vphantom{A}}}}", // Unicode U+E65A
+	"char/0xe662/mathmode":  "\\mathrel{\\bcancel \u2afd}",                          // Unicode U+E662
+	"char/0xe663/mathmode":  "{\\not\\partial}",                                     // Unicode U+E663
+	"char/0xe714/mathmode":  "\\mathrel{\\not \u22d9}",                              // Unicode U+E714
+	"char/0xe71c/mathmode":  "\\mathrel{\\not \u22d8}",                              // Unicode U+E71C
+	"char/0xe746/mathmode":  "\\nsim",                                               // Unicode U+E746
+	"char/0xe831/mathmode":  "{\\not \u2220}",                                       // Unicode U+E831
+	"char/0xe90b/mathmode":  "\\mathrel{\\backslash\\subset}",                       // Unicode U+E90B
+	"char/0xe93a/mathmode":  "\\mathrel{\u22db\\vphantom{A}}",                       // Unicode U+E93A
+	"char/0xe94e/mathmode":  "\\mathrel{\u2aad\\vphantom{A}}",                       // Unicode U+E94E
+	"char/0xe957/mathmode":  "\\mathrel{\u22da\\vphantom{A}}",                       // Unicode U+E957
+	"char/0xe988/mathmode":  "\\mathrel{\u2aac\\vphantom{A}}",                       // Unicode U+E988
+	"char/0xe99c/mathmode":  "\u27c9",                                               // Unicode U+E99C
+	"char/0xea48/mathmode":  "\\mathrel{\\not \u2933}",                              // Unicode U+EA48
+	"char/0xea49/mathmode":  "\\mathrel{\\not \u219d}",                              // Unicode U+EA49
+	"char/0xeb02/mathmode":  "\\mathbin{\\underset{\\=}{\u223e}}",                   // Unicode U+EB02
+	"char/0xfb00/mathmode":  "{\ufb00\\vphantom{A}}",                                // Unicode U+FB00
+	"char/0xfb01/mathmode":  "{\ufb01\\vphantom{A}}",                                // Unicode U+FB01
+	"char/0xfb02/mathmode":  "{\ufb02\\vphantom{A}}",                                // Unicode U+FB02
+	"char/0xfb03/mathmode":  "{\ufb03\\vphantom{A}}",                                // Unicode U+FB03
+	"char/0xfb04/mathmode":  "{\ufb04\\vphantom{A}}",                                // Unicode U+FB04
+	"char/0xfffd/textmode":  "{\\blacksquare}",                                      // Unicode U+FFFD
+	"char/0x1d400/textmode": "{\\mathbf{A}}",                                        // Unicode U+1D400
+	"char/0x1d401/textmode": "{\\mathbf{B}}",                                        // Unicode U+1D401
+	"char/0x1d402/textmode": "{\\mathbf{C}}",                                        // Unicode U+1D402
+	"char/0x1d403/textmode": "{\\mathbf{D}}",                                        // Unicode U+1D403
+	"char/0x1d404/textmode": "{\\mathbf{E}}",                                        // Unicode U+1D404
+	"char/0x1d405/textmode": "{\\mathbf{F}}",                                        // Unicode U+1D405
+	"char/0x1d406/textmode": "{\\mathbf{G}}",                                        // Unicode U+1D406
+	"char/0x1d407/textmode": "{\\mathbf{H}}",                                        // Unicode U+1D407
+	"char/0x1d408/textmode": "{\\mathbf{I}}",                                        // Unicode U+1D408
+	"char/0x1d409/textmode": "{\\mathbf{J}}",                                        // Unicode U+1D409
+	"char/0x1d40a/textmode": "{\\mathbf{K}}",                                        // Unicode U+1D40A
+	"char/0x1d40b/textmode": "{\\mathbf{L}}",                                        // Unicode U+1D40B
+	"char/0x1d40c/textmode": "{\\mathbf{M}}",                                        // Unicode U+1D40C
+	"char/0x1d40d/textmode": "{\\mathbf{N}}",                                        // Unicode U+1D40D
+	"char/0x1d40e/textmode": "{\\mathbf{O}}",                                        // Unicode U+1D40E
+	"char/0x1d40f/textmode": "{\\mathbf{P}}",                                        // Unicode U+1D40F
+	"char/0x1d410/textmode": "{\\mathbf{Q}}",                                        // Unicode U+1D410
+	"char/0x1d411/textmode": "{\\mathbf{R}}",                                        // Unicode U+1D411
+	"char/0x1d412/textmode": "{\\mathbf{S}}",                                        // Unicode U+1D412
+	"char/0x1d413/textmode": "{\\mathbf{T}}",                                        // Unicode U+1D413
+	"char/0x1d414/textmode": "{\\mathbf{U}}",                                        // Unicode U+1D414
+	"char/0x1d415/textmode": "{\\mathbf{V}}",                                        // Unicode U+1D415
+	"char/0x1d416/textmode": "{\\mathbf{W}}",                                        // Unicode U+1D416
+	"char/0x1d417/textmode": "{\\mathbf{X}}",                                        // Unicode U+1D417
+	"char/0x1d418/textmode": "{\\mathbf{Y}}",                                        // Unicode U+1D418
+	"char/0x1d419/textmode": "{\\mathbf{Z}}",                                        // Unicode U+1D419
+	"char/0x1d41a/textmode": "{\\mathbf{a}}",                                        // Unicode U+1D41A
+	"char/0x1d41b/textmode": "{\\mathbf{b}}",                                        // Unicode U+1D41B
+	"char/0x1d41c/textmode": "{\\mathbf{c}}",                                        // Unicode U+1D41C
+	"char/0x1d41d/textmode": "{\\mathbf{d}}",                                        // Unicode U+1D41D
+	"char/0x1d41e/textmode": "{\\mathbf{e}}",                                        // Unicode U+1D41E
+	"char/0x1d41f/textmode": "{\\mathbf{f}}",                                        // Unicode U+1D41F
+	"char/0x1d420/textmode": "{\\mathbf{g}}",                                        // Unicode U+1D420
+	"char/0x1d421/textmode": "{\\mathbf{h}}",                                        // Unicode U+1D421
+	"char/0x1d422/textmode": "{\\mathbf{i}}",                                        // Unicode U+1D422
+	"char/0x1d423/textmode": "{\\mathbf{j}}",                                        // Unicode U+1D423
+	"char/0x1d424/textmode": "{\\mathbf{k}}",                                        // Unicode U+1D424
+	"char/0x1d425/textmode": "{\\mathbf{l}}",                                        // Unicode U+1D425
+	"char/0x1d426/textmode": "{\\mathbf{m}}",                                        // Unicode U+1D426
+	"char/0x1d427/textmode": "{\\mathbf{n}}",                                        // Unicode U+1D427
+	"char/0x1d428/textmode": "{\\mathbf{o}}",                                        // Unicode U+1D428
+	"char/0x1d429/textmode": "{\\mathbf{p}}",                                        // Unicode U+1D429
+	"char/0x1d42a/textmode": "{\\mathbf{q}}",                                        // Unicode U+1D42A
+	"char/0x1d42b/textmode": "{\\mathbf{r}}",                                        // Unicode U+1D42B
+	"char/0x1d42c/textmode": "{\\mathbf{s}}",                                        // Unicode U+1D42C
+	"char/0x1d42d/textmode": "{\\mathbf{t}}",                                        // Unicode U+1D42D
+	"char/0x1d42e/textmode": "{\\mathbf{u}}",                                        // Unicode U+1D42E
+	"char/0x1d42f/textmode": "{\\mathbf{v}}",                                        // Unicode U+1D42F
+	"char/0x1d430/textmode": "{\\mathbf{w}}",                                        // Unicode U+1D430
+	"char/0x1d431/textmode": "{\\mathbf{x}}",                                        // Unicode U+1D431
+	"char/0x1d432/textmode": "{\\mathbf{y}}",                                        // Unicode U+1D432
+	"char/0x1d433/textmode": "{\\mathbf{z}}",                                        // Unicode U+1D433
+	"char/0x1d434/textmode": "{A}",                                                  // Unicode U+1D434
+	"char/0x1d435/textmode": "{B}",                                                  // Unicode U+1D435
+	"char/0x1d436/textmode": "{C}",                                                  // Unicode U+1D436
+	"char/0x1d437/textmode": "{D}",                                                  // Unicode U+1D437
+	"char/0x1d438/textmode": "{E}",                                                  // Unicode U+1D438
+	"char/0x1d439/textmode": "{F}",                                                  // Unicode U+1D439
+	"char/0x1d43a/textmode": "{G}",                                                  // Unicode U+1D43A
+	"char/0x1d43b/textmode": "{H}",                                                  // Unicode U+1D43B
+	"char/0x1d43c/textmode": "{I}",                                                  // Unicode U+1D43C
+	"char/0x1d43d/textmode": "{J}",                                                  // Unicode U+1D43D
+	"char/0x1d43e/textmode": "{K}",                                                  // Unicode U+1D43E
+	"char/0x1d43f/textmode": "{L}",                                                  // Unicode U+1D43F
+	"char/0x1d440/textmode": "{M}",                                                  // Unicode U+1D440
+	"char/0x1d441/textmode": "{N}",                                                  // Unicode U+1D441
+	"char/0x1d442/textmode": "{O}",                                                  // Unicode U+1D442
+	"char/0x1d443/textmode": "{P}",                                                  // Unicode U+1D443
+	"char/0x1d444/textmode": "{Q}",                                                  // Unicode U+1D444
+	"char/0x1d445/textmode": "{R}",                                                  // Unicode U+1D445
+	"char/0x1d446/textmode": "{S}",                                                  // Unicode U+1D446
+	"char/0x1d447/textmode": "{T}",                                                  // Unicode U+1D447
+	"char/0x1d448/textmode": "{U}",                                                  // Unicode U+1D448
+	"char/0x1d449/textmode": "{V}",                                                  // Unicode U+1D449
+	"char/0x1d44a/textmode": "{W}",                                                  // Unicode U+1D44A
+	"char/0x1d44b/textmode": "{X}",                                                  // Unicode U+1D44B
+	"char/0x1d44c/textmode": "{Y}",                                                  // Unicode U+1D44C
+	"char/0x1d44d/textmode": "{Z}",                                                  // Unicode U+1D44D
+	"char/0x1d44e/textmode": "{a}",                                                  // Unicode U+1D44E
+	"char/0x1d44f/textmode": "{b}",                                                  // Unicode U+1D44F
+	"char/0x1d450/textmode": "{c}",                                                  // Unicode U+1D450
+	"char/0x1d451/textmode": "{d}",                                                  // Unicode U+1D451
+	"char/0x1d452/textmode": "{e}",                                                  // Unicode U+1D452
+	"char/0x1d453/textmode": "{f}",                                                  // Unicode U+1D453
+	"char/0x1d454/textmode": "{g}",                                                  // Unicode U+1D454
+	"char/0x1d456/textmode": "{i}",                                                  // Unicode U+1D456
+	"char/0x1d457/textmode": "{j}",                                                  // Unicode U+1D457
+	"char/0x1d458/textmode": "{k}",                                                  // Unicode U+1D458
+	"char/0x1d459/textmode": "{l}",                                                  // Unicode U+1D459
+	"char/0x1d45a/textmode": "{m}",                                                  // Unicode U+1D45A
+	"char/0x1d45b/textmode": "{n}",                                                  // Unicode U+1D45B
+	"char/0x1d45c/textmode": "{o}",                                                  // Unicode U+1D45C
+	"char/0x1d45d/textmode": "{p}",                                                  // Unicode U+1D45D
+	"char/0x1d45e/textmode": "{q}",                                                  // Unicode U+1D45E
+	"char/0x1d45f/textmode": "{r}",                                                  // Unicode U+1D45F
+	"char/0x1d460/textmode": "{s}",                                                  // Unicode U+1D460
+	"char/0x1d461/textmode": "{t}",                                                  // Unicode U+1D461
+	"char/0x1d462/textmode": "{u}",                                                  // Unicode U+1D462
+	"char/0x1d463/textmode": "{v}",                                                  // Unicode U+1D463
+	"char/0x1d464/textmode": "{w}",                                                  // Unicode U+1D464
+	"char/0x1d465/textmode": "{x}",                                                  // Unicode U+1D465
+	"char/0x1d466/textmode": "{y}",                                                  // Unicode U+1D466
+	"char/0x1d467/textmode": "{z}",                                                  // Unicode U+1D467
+	"char/0x1d468/textmode": "{\\mathbfit{A}}",                                      // Unicode U+1D468
+	"char/0x1d469/textmode": "{\\mathbfit{B}}",                                      // Unicode U+1D469
+	"char/0x1d46a/textmode": "{\\mathbfit{C}}",                                      // Unicode U+1D46A
+	"char/0x1d46b/textmode": "{\\mathbfit{D}}",                                      // Unicode U+1D46B
+	"char/0x1d46c/textmode": "{\\mathbfit{E}}",                                      // Unicode U+1D46C
+	"char/0x1d46d/textmode": "{\\mathbfit{F}}",                                      // Unicode U+1D46D
+	"char/0x1d46e/textmode": "{\\mathbfit{G}}",                                      // Unicode U+1D46E
+	"char/0x1d46f/textmode": "{\\mathbfit{H}}",                                      // Unicode U+1D46F
+	"char/0x1d470/textmode": "{\\mathbfit{I}}",                                      // Unicode U+1D470
+	"char/0x1d471/textmode": "{\\mathbfit{J}}",                                      // Unicode U+1D471
+	"char/0x1d472/textmode": "{\\mathbfit{K}}",                                      // Unicode U+1D472
+	"char/0x1d473/textmode": "{\\mathbfit{L}}",                                      // Unicode U+1D473
+	"char/0x1d474/textmode": "{\\mathbfit{M}}",                                      // Unicode U+1D474
+	"char/0x1d475/textmode": "{\\mathbfit{N}}",                                      // Unicode U+1D475
+	"char/0x1d476/textmode": "{\\mathbfit{O}}",                                      // Unicode U+1D476
+	"char/0x1d477/textmode": "{\\mathbfit{P}}",                                      // Unicode U+1D477
+	"char/0x1d478/textmode": "{\\mathbfit{Q}}",                                      // Unicode U+1D478
+	"char/0x1d479/textmode": "{\\mathbfit{R}}",                                      // Unicode U+1D479
+	"char/0x1d47a/textmode": "{\\mathbfit{S}}",                                      // Unicode U+1D47A
+	"char/0x1d47b/textmode": "{\\mathbfit{T}}",                                      // Unicode U+1D47B
+	"char/0x1d47c/textmode": "{\\mathbfit{U}}",                                      // Unicode U+1D47C
+	"char/0x1d47d/textmode": "{\\mathbfit{V}}",                                      // Unicode U+1D47D
+	"char/0x1d47e/textmode": "{\\mathbfit{W}}",                                      // Unicode U+1D47E
+	"char/0x1d47f/textmode": "{\\mathbfit{X}}",                                      // Unicode U+1D47F
+	"char/0x1d480/textmode": "{\\mathbfit{Y}}",                                      // Unicode U+1D480
+	"char/0x1d481/textmode": "{\\mathbfit{Z}}",                                      // Unicode U+1D481
+	"char/0x1d482/textmode": "{\\mathbfit{a}}",                                      // Unicode U+1D482
+	"char/0x1d483/textmode": "{\\mathbfit{b}}",                                      // Unicode U+1D483
+	"char/0x1d484/textmode": "{\\mathbfit{c}}",                                      // Unicode U+1D484
+	"char/0x1d485/textmode": "{\\mathbfit{d}}",                                      // Unicode U+1D485
+	"char/0x1d486/textmode": "{\\mathbfit{e}}",                                      // Unicode U+1D486
+	"char/0x1d487/textmode": "{\\mathbfit{f}}",                                      // Unicode U+1D487
+	"char/0x1d488/textmode": "{\\mathbfit{g}}",                                      // Unicode U+1D488
+	"char/0x1d489/textmode": "{\\mathbfit{h}}",                                      // Unicode U+1D489
+	"char/0x1d48a/textmode": "{\\mathbfit{i}}",                                      // Unicode U+1D48A
+	"char/0x1d48b/textmode": "{\\mathbfit{j}}",                                      // Unicode U+1D48B
+	"char/0x1d48c/textmode": "{\\mathbfit{k}}",                                      // Unicode U+1D48C
+	"char/0x1d48d/textmode": "{\\mathbfit{l}}",                                      // Unicode U+1D48D
+	"char/0x1d48e/textmode": "{\\mathbfit{m}}",                                      // Unicode U+1D48E
+	"char/0x1d48f/textmode": "{\\mathbfit{n}}",                                      // Unicode U+1D48F
+	"char/0x1d490/textmode": "{\\mathbfit{o}}",                                      // Unicode U+1D490
+	"char/0x1d491/textmode": "{\\mathbfit{p}}",                                      // Unicode U+1D491
+	"char/0x1d492/textmode": "{\\mathbfit{q}}",                                      // Unicode U+1D492
+	"char/0x1d493/textmode": "{\\mathbfit{r}}",                                      // Unicode U+1D493
+	"char/0x1d494/textmode": "{\\mathbfit{s}}",                                      // Unicode U+1D494
+	"char/0x1d495/textmode": "{\\mathbfit{t}}",                                      // Unicode U+1D495
+	"char/0x1d496/textmode": "{\\mathbfit{u}}",                                      // Unicode U+1D496
+	"char/0x1d497/textmode": "{\\mathbfit{v}}",                                      // Unicode U+1D497
+	"char/0x1d498/textmode": "{\\mathbfit{w}}",                                      // Unicode U+1D498
+	"char/0x1d499/textmode": "{\\mathbfit{x}}",                                      // Unicode U+1D499
+	"char/0x1d49a/textmode": "{\\mathbfit{y}}",                                      // Unicode U+1D49A
+	"char/0x1d49b/textmode": "{\\mathbfit{z}}",                                      // Unicode U+1D49B
+	"char/0x1d49c/textmode": "{\\mathcal{A}}",                                       // Unicode U+1D49C
+	"char/0x1d49e/textmode": "{\\mathcal{C}}",                                       // Unicode U+1D49E
+	"char/0x1d49f/textmode": "{\\mathcal{D}}",                                       // Unicode U+1D49F
+	"char/0x1d4a2/textmode": "{\\mathcal{G}}",                                       // Unicode U+1D4A2
+	"char/0x1d4a5/textmode": "{\\mathcal{J}}",                                       // Unicode U+1D4A5
+	"char/0x1d4a6/textmode": "{\\mathcal{K}}",                                       // Unicode U+1D4A6
+	"char/0x1d4a9/textmode": "{\\mathcal{N}}",                                       // Unicode U+1D4A9
+	"char/0x1d4aa/textmode": "{\\mathcal{O}}",                                       // Unicode U+1D4AA
+	"char/0x1d4ab/textmode": "{\\mathcal{P}}",                                       // Unicode U+1D4AB
+	"char/0x1d4ac/textmode": "{\\mathcal{Q}}",                                       // Unicode U+1D4AC
+	"char/0x1d4ae/textmode": "{\\mathcal{S}}",                                       // Unicode U+1D4AE
+	"char/0x1d4af/textmode": "{\\mathcal{T}}",                                       // Unicode U+1D4AF
+	"char/0x1d4b0/textmode": "{\\mathcal{U}}",                                       // Unicode U+1D4B0
+	"char/0x1d4b1/textmode": "{\\mathcal{V}}",                                       // Unicode U+1D4B1
+	"char/0x1d4b2/textmode": "{\\mathcal{W}}",                                       // Unicode U+1D4B2
+	"char/0x1d4b3/textmode": "{\\mathcal{X}}",                                       // Unicode U+1D4B3
+	"char/0x1d4b4/textmode": "{\\mathcal{Y}}",                                       // Unicode U+1D4B4
+	"char/0x1d4b5/textmode": "{\\mathcal{Z}}",                                       // Unicode U+1D4B5
+	"char/0x1d4b6/textmode": "{\\mathcal{a}}",                                       // Unicode U+1D4B6
+	"char/0x1d4b7/textmode": "{\\mathcal{b}}",                                       // Unicode U+1D4B7
+	"char/0x1d4b8/textmode": "{\\mathcal{c}}",                                       // Unicode U+1D4B8
+	"char/0x1d4b9/textmode": "{\\mathcal{d}}",                                       // Unicode U+1D4B9
+	"char/0x1d4bb/textmode": "{\\mathcal{f}}",                                       // Unicode U+1D4BB
+	"char/0x1d4bd/textmode": "{\\mathcal{h}}",                                       // Unicode U+1D4BD
+	"char/0x1d4be/textmode": "{\\mathcal{i}}",                                       // Unicode U+1D4BE
+	"char/0x1d4bf/textmode": "{\\mathcal{j}}",                                       // Unicode U+1D4BF
+	"char/0x1d4c0/textmode": "{\\mathcal{k}}",                                       // Unicode U+1D4C0
+	"char/0x1d4c1/textmode": "{\\ell}",                                              // Unicode U+1D4C1
+	"char/0x1d4c2/textmode": "{\\mathcal{m}}",                                       // Unicode U+1D4C2
+	"char/0x1d4c3/textmode": "{\\mathcal{n}}",                                       // Unicode U+1D4C3
+	"char/0x1d4c5/textmode": "{\\mathcal{p}}",                                       // Unicode U+1D4C5
+	"char/0x1d4c6/textmode": "{\\mathcal{q}}",                                       // Unicode U+1D4C6
+	"char/0x1d4c7/textmode": "{\\mathcal{r}}",                                       // Unicode U+1D4C7
+	"char/0x1d4c8/textmode": "{\\mathcal{s}}",                                       // Unicode U+1D4C8
+	"char/0x1d4c9/textmode": "{\\mathcal{t}}",                                       // Unicode U+1D4C9
+	"char/0x1d4ca/textmode": "{\\mathcal{u}}",                                       // Unicode U+1D4CA
+	"char/0x1d4cb/textmode": "{\\mathcal{v}}",                                       // Unicode U+1D4CB
+	"char/0x1d4cc/textmode": "{\\mathcal{w}}",                                       // Unicode U+1D4CC
+	"char/0x1d4cd/textmode": "{\\mathcal{x}}",                                       // Unicode U+1D4CD
+	"char/0x1d4ce/textmode": "{\\mathcal{y}}",                                       // Unicode U+1D4CE
+	"char/0x1d4cf/textmode": "{\\mathcal{z}}",                                       // Unicode U+1D4CF
+	"char/0x1d504/textmode": "{\\mathfrak{A}}",                                      // Unicode U+1D504
+	"char/0x1d505/textmode": "{\\mathfrak{B}}",                                      // Unicode U+1D505
+	"char/0x1d507/textmode": "{\\mathfrak{D}}",                                      // Unicode U+1D507
+	"char/0x1d508/textmode": "{\\mathfrak{E}}",                                      // Unicode U+1D508
+	"char/0x1d509/textmode": "{\\mathfrak{F}}",                                      // Unicode U+1D509
+	"char/0x1d50a/textmode": "{\\mathfrak{G}}",                                      // Unicode U+1D50A
+	"char/0x1d50d/textmode": "{\\mathfrak{J}}",                                      // Unicode U+1D50D
+	"char/0x1d50e/textmode": "{\\mathfrak{K}}",                                      // Unicode U+1D50E
+	"char/0x1d50f/textmode": "{\\mathfrak{L}}",                                      // Unicode U+1D50F
+	"char/0x1d510/textmode": "{\\mathfrak{M}}",                                      // Unicode U+1D510
+	"char/0x1d511/textmode": "{\\mathfrak{N}}",                                      // Unicode U+1D511
+	"char/0x1d512/textmode": "{\\mathfrak{O}}",                                      // Unicode U+1D512
+	"char/0x1d513/textmode": "{\\mathfrak{P}}",                                      // Unicode U+1D513
+	"char/0x1d514/textmode": "{\\mathfrak{Q}}",                                      // Unicode U+1D514
+	"char/0x1d516/textmode": "{\\mathfrak{S}}",                                      // Unicode U+1D516
+	"char/0x1d517/textmode": "{\\mathfrak{T}}",                                      // Unicode U+1D517
+	"char/0x1d518/textmode": "{\\mathfrak{U}}",                                      // Unicode U+1D518
+	"char/0x1d519/textmode": "{\\mathfrak{V}}",                                      // Unicode U+1D519
+	"char/0x1d51a/textmode": "{\\mathfrak{W}}",                                      // Unicode U+1D51A
+	"char/0x1d51b/textmode": "{\\mathfrak{X}}",                                      // Unicode U+1D51B
+	"char/0x1d51c/textmode": "{\\mathfrak{Y}}",                                      // Unicode U+1D51C
+	"char/0x1d51e/textmode": "{\\mathfrak{a}}",                                      // Unicode U+1D51E
+	"char/0x1d51f/textmode": "{\\mathfrak{b}}",                                      // Unicode U+1D51F
+	"char/0x1d520/textmode": "{\\mathfrak{c}}",                                      // Unicode U+1D520
+	"char/0x1d521/textmode": "{\\mathfrak{d}}",                                      // Unicode U+1D521
+	"char/0x1d522/textmode": "{\\mathfrak{e}}",                                      // Unicode U+1D522
+	"char/0x1d523/textmode": "{\\mathfrak{f}}",                                      // Unicode U+1D523
+	"char/0x1d524/textmode": "{\\mathfrak{g}}",                                      // Unicode U+1D524
+	"char/0x1d525/textmode": "{\\mathfrak{h}}",                                      // Unicode U+1D525
+	"char/0x1d526/textmode": "{\\mathfrak{i}}",                                      // Unicode U+1D526
+	"char/0x1d527/textmode": "{\\mathfrak{j}}",                                      // Unicode U+1D527
+	"char/0x1d528/textmode": "{\\mathfrak{k}}",                                      // Unicode U+1D528
+	"char/0x1d529/textmode": "{\\mathfrak{l}}",                                      // Unicode U+1D529
+	"char/0x1d52a/textmode": "{\\mathfrak{m}}",                                      // Unicode U+1D52A
+	"char/0x1d52b/textmode": "{\\mathfrak{n}}",                                      // Unicode U+1D52B
+	"char/0x1d52c/textmode": "{\\mathfrak{o}}",                                      // Unicode U+1D52C
+	"char/0x1d52d/textmode": "{\\mathfrak{p}}",                                      // Unicode U+1D52D
+	"char/0x1d52e/textmode": "{\\mathfrak{q}}",                                      // Unicode U+1D52E
+	"char/0x1d52f/textmode": "{\\mathfrak{r}}",                                      // Unicode U+1D52F
+	"char/0x1d530/textmode": "{\\mathfrak{s}}",                                      // Unicode U+1D530
+	"char/0x1d531/textmode": "{\\mathfrak{t}}",                                      // Unicode U+1D531
+	"char/0x1d532/textmode": "{\\mathfrak{u}}",                                      // Unicode U+1D532
+	"char/0x1d533/textmode": "{\\mathfrak{v}}",                                      // Unicode U+1D533
+	"char/0x1d534/textmode": "{\\mathfrak{w}}",                                      // Unicode U+1D534
+	"char/0x1d535/textmode": "{\\mathfrak{x}}",                                      // Unicode U+1D535
+	"char/0x1d536/textmode": "{\\mathfrak{y}}",                                      // Unicode U+1D536
+	"char/0x1d537/textmode": "{\\mathfrak{z}}",                                      // Unicode U+1D537
+	"char/0x1d538/textmode": "{\\mathbb{A}}",                                        // Unicode U+1D538
+	"char/0x1d539/textmode": "{\\mathbb{B}}",                                        // Unicode U+1D539
+	"char/0x1d53b/textmode": "{\\mathbb{D}}",                                        // Unicode U+1D53B
+	"char/0x1d53c/textmode": "{\\mathbb{E}}",                                        // Unicode U+1D53C
+	"char/0x1d53d/textmode": "{\\mathbb{F}}",                                        // Unicode U+1D53D
+	"char/0x1d53e/textmode": "{\\mathbb{G}}",                                        // Unicode U+1D53E
+	"char/0x1d540/textmode": "{\\mathbb{I}}",                                        // Unicode U+1D540
+	"char/0x1d541/textmode": "{\\mathbb{J}}",                                        // Unicode U+1D541
+	"char/0x1d542/textmode": "{\\mathbb{K}}",                                        // Unicode U+1D542
+	"char/0x1d543/textmode": "{\\mathbb{L}}",                                        // Unicode U+1D543
+	"char/0x1d544/textmode": "{\\mathbb{M}}",                                        // Unicode U+1D544
+	"char/0x1d546/textmode": "{\\mathbb{O}}",                                        // Unicode U+1D546
+	"char/0x1d54a/textmode": "{\\mathbb{S}}",                                        // Unicode U+1D54A
+	"char/0x1d54b/textmode": "{\\mathbb{T}}",                                        // Unicode U+1D54B
+	"char/0x1d54c/textmode": "{\\mathbb{U}}",                                        // Unicode U+1D54C
+	"char/0x1d54d/textmode": "{\\mathbb{V}}",                                        // Unicode U+1D54D
+	"char/0x1d54e/textmode": "{\\mathbb{W}}",                                        // Unicode U+1D54E
+	"char/0x1d54f/textmode": "{\\mathbb{X}}",                                        // Unicode U+1D54F
+	"char/0x1d550/textmode": "{\\mathbb{Y}}",                                        // Unicode U+1D550
+	"char/0x1d552/textmode": "{\\mathbb{a}}",                                        // Unicode U+1D552
+	"char/0x1d553/textmode": "{\\mathbb{b}}",                                        // Unicode U+1D553
+	"char/0x1d554/textmode": "{\\mathbb{c}}",                                        // Unicode U+1D554
+	"char/0x1d555/textmode": "{\\mathbb{d}}",                                        // Unicode U+1D555
+	"char/0x1d556/textmode": "{\\mathbb{e}}",                                        // Unicode U+1D556
+	"char/0x1d557/textmode": "{\\mathbb{f}}",                                        // Unicode U+1D557
+	"char/0x1d558/textmode": "{\\mathbb{g}}",                                        // Unicode U+1D558
+	"char/0x1d559/textmode": "{\\mathbb{h}}",                                        // Unicode U+1D559
+	"char/0x1d55a/textmode": "{\\mathbb{i}}",                                        // Unicode U+1D55A
+	"char/0x1d55b/textmode": "{\\mathbb{j}}",                                        // Unicode U+1D55B
+	"char/0x1d55c/textmode": "{\\mathbb{k}}",                                        // Unicode U+1D55C
+	"char/0x1d55d/textmode": "{\\mathbb{l}}",                                        // Unicode U+1D55D
+	"char/0x1d55e/textmode": "{\\mathbb{m}}",                                        // Unicode U+1D55E
+	"char/0x1d55f/textmode": "{\\mathbb{n}}",                                        // Unicode U+1D55F
+	"char/0x1d560/textmode": "{\\mathbb{o}}",                                        // Unicode U+1D560
+	"char/0x1d561/textmode": "{\\mathbb{p}}",                                        // Unicode U+1D561
+	"char/0x1d562/textmode": "{\\mathbb{q}}",                                        // Unicode U+1D562
+	"char/0x1d563/textmode": "{\\mathbb{r}}",                                        // Unicode U+1D563
+	"char/0x1d564/textmode": "{\\mathbb{s}}",                                        // Unicode U+1D564
+	"char/0x1d565/textmode": "{\\mathbb{t}}",                                        // Unicode U+1D565
+	"char/0x1d566/textmode": "{\\mathbb{u}}",                                        // Unicode U+1D566
+	"char/0x1d567/textmode": "{\\mathbb{v}}",                                        // Unicode U+1D567
+	"char/0x1d568/textmode": "{\\mathbb{w}}",                                        // Unicode U+1D568
+	"char/0x1d569/textmode": "{\\mathbb{x}}",                                        // Unicode U+1D569
+	"char/0x1d56a/textmode": "{\\mathbb{y}}",                                        // Unicode U+1D56A
+	"char/0x1d56b/textmode": "{\\mathbb{z}}",                                        // Unicode U+1D56B
+	"char/0x1d5a0/textmode": "{\\mathsf{A}}",                                        // Unicode U+1D5A0
+	"char/0x1d5a1/textmode": "{\\mathsf{B}}",                                        // Unicode U+1D5A1
+	"char/0x1d5a2/textmode": "{\\mathsf{C}}",                                        // Unicode U+1D5A2
+	"char/0x1d5a3/textmode": "{\\mathsf{D}}",                                        // Unicode U+1D5A3
+	"char/0x1d5a4/textmode": "{\\mathsf{E}}",                                        // Unicode U+1D5A4
+	"char/0x1d5a5/textmode": "{\\mathsf{F}}",                                        // Unicode U+1D5A5
+	"char/0x1d5a6/textmode": "{\\mathsf{G}}",                                        // Unicode U+1D5A6
+	"char/0x1d5a7/textmode": "{\\mathsf{H}}",                                        // Unicode U+1D5A7
+	"char/0x1d5a8/textmode": "{\\mathsf{I}}",                                        // Unicode U+1D5A8
+	"char/0x1d5a9/textmode": "{\\mathsf{J}}",                                        // Unicode U+1D5A9
+	"char/0x1d5aa/textmode": "{\\mathsf{K}}",                                        // Unicode U+1D5AA
+	"char/0x1d5ab/textmode": "{\\mathsf{L}}",                                        // Unicode U+1D5AB
+	"char/0x1d5ac/textmode": "{\\mathsf{M}}",                                        // Unicode U+1D5AC
+	"char/0x1d5ad/textmode": "{\\mathsf{N}}",                                        // Unicode U+1D5AD
+	"char/0x1d5ae/textmode": "{\\mathsf{O}}",                                        // Unicode U+1D5AE
+	"char/0x1d5af/textmode": "{\\mathsf{P}}",                                        // Unicode U+1D5AF
+	"char/0x1d5b0/textmode": "{\\mathsf{Q}}",                                        // Unicode U+1D5B0
+	"char/0x1d5b1/textmode": "{\\mathsf{R}}",                                        // Unicode U+1D5B1
+	"char/0x1d5b2/textmode": "{\\mathsf{S}}",                                        // Unicode U+1D5B2
+	"char/0x1d5b3/textmode": "{\\mathsf{T}}",                                        // Unicode U+1D5B3
+	"char/0x1d5b4/textmode": "{\\mathsf{U}}",                                        // Unicode U+1D5B4
+	"char/0x1d5b5/textmode": "{\\mathsf{V}}",                                        // Unicode U+1D5B5
+	"char/0x1d5b6/textmode": "{\\mathsf{W}}",                                        // Unicode U+1D5B6
+	"char/0x1d5b7/textmode": "{\\mathsf{X}}",                                        // Unicode U+1D5B7
+	"char/0x1d5b8/textmode": "{\\mathsf{Y}}",                                        // Unicode U+1D5B8
+	"char/0x1d5b9/textmode": "{\\mathsf{Z}}",                                        // Unicode U+1D5B9
+	"char/0x1d5ba/textmode": "{\\mathsf{a}}",                                        // Unicode U+1D5BA
+	"char/0x1d5bb/textmode": "{\\mathsf{b}}",                                        // Unicode U+1D5BB
+	"char/0x1d5bc/textmode": "{\\mathsf{c}}",                                        // Unicode U+1D5BC
+	"char/0x1d5bd/textmode": "{\\mathsf{d}}",                                        // Unicode U+1D5BD
+	"char/0x1d5be/textmode": "{\\mathsf{e}}",                                        // Unicode U+1D5BE
+	"char/0x1d5bf/textmode": "{\\mathsf{f}}",                                        // Unicode U+1D5BF
+	"char/0x1d5c0/textmode": "{\\mathsf{g}}",                                        // Unicode U+1D5C0
+	"char/0x1d5c1/textmode": "{\\mathsf{h}}",                                        // Unicode U+1D5C1
+	"char/0x1d5c2/textmode": "{\\mathsf{i}}",                                        // Unicode U+1D5C2
+	"char/0x1d5c3/textmode": "{\\mathsf{j}}",                                        // Unicode U+1D5C3
+	"char/0x1d5c4/textmode": "{\\mathsf{k}}",                                        // Unicode U+1D5C4
+	"char/0x1d5c5/textmode": "{\\mathsf{l}}",                                        // Unicode U+1D5C5
+	"char/0x1d5c6/textmode": "{\\mathsf{m}}",                                        // Unicode U+1D5C6
+	"char/0x1d5c7/textmode": "{\\mathsf{n}}",                                        // Unicode U+1D5C7
+	"char/0x1d5c8/textmode": "{\\mathsf{o}}",                                        // Unicode U+1D5C8
+	"char/0x1d5c9/textmode": "{\\mathsf{p}}",                                        // Unicode U+1D5C9
+	"char/0x1d5ca/textmode": "{\\mathsf{q}}",                                        // Unicode U+1D5CA
+	"char/0x1d5cb/textmode": "{\\mathsf{r}}",                                        // Unicode U+1D5CB
+	"char/0x1d5cc/textmode": "{\\mathsf{s}}",                                        // Unicode U+1D5CC
+	"char/0x1d5cd/textmode": "{\\mathsf{t}}",                                        // Unicode U+1D5CD
+	"char/0x1d5ce/textmode": "{\\mathsf{u}}",                                        // Unicode U+1D5CE
+	"char/0x1d5cf/textmode": "{\\mathsf{v}}",                                        // Unicode U+1D5CF
+	"char/0x1d5d0/textmode": "{\\mathsf{w}}",                                        // Unicode U+1D5D0
+	"char/0x1d5d1/textmode": "{\\mathsf{x}}",                                        // Unicode U+1D5D1
+	"char/0x1d5d2/textmode": "{\\mathsf{y}}",                                        // Unicode U+1D5D2
+	"char/0x1d5d3/textmode": "{\\mathsf{z}}",                                        // Unicode U+1D5D3
+	"char/0x1d5d4/textmode": "{\\mathsfbf{A}}",                                      // Unicode U+1D5D4
+	"char/0x1d5d5/textmode": "{\\mathsfbf{B}}",                                      // Unicode U+1D5D5
+	"char/0x1d5d6/textmode": "{\\mathsfbf{C}}",                                      // Unicode U+1D5D6
+	"char/0x1d5d7/textmode": "{\\mathsfbf{D}}",                                      // Unicode U+1D5D7
+	"char/0x1d5d8/textmode": "{\\mathsfbf{E}}",                                      // Unicode U+1D5D8
+	"char/0x1d5d9/textmode": "{\\mathsfbf{F}}",                                      // Unicode U+1D5D9
+	"char/0x1d5da/textmode": "{\\mathsfbf{G}}",                                      // Unicode U+1D5DA
+	"char/0x1d5db/textmode": "{\\mathsfbf{H}}",                                      // Unicode U+1D5DB
+	"char/0x1d5dc/textmode": "{\\mathsfbf{I}}",                                      // Unicode U+1D5DC
+	"char/0x1d5dd/textmode": "{\\mathsfbf{J}}",                                      // Unicode U+1D5DD
+	"char/0x1d5de/textmode": "{\\mathsfbf{K}}",                                      // Unicode U+1D5DE
+	"char/0x1d5df/textmode": "{\\mathsfbf{L}}",                                      // Unicode U+1D5DF
+	"char/0x1d5e0/textmode": "{\\mathsfbf{M}}",                                      // Unicode U+1D5E0
+	"char/0x1d5e1/textmode": "{\\mathsfbf{N}}",                                      // Unicode U+1D5E1
+	"char/0x1d5e2/textmode": "{\\mathsfbf{O}}",                                      // Unicode U+1D5E2
+	"char/0x1d5e3/textmode": "{\\mathsfbf{P}}",                                      // Unicode U+1D5E3
+	"char/0x1d5e4/textmode": "{\\mathsfbf{Q}}",                                      // Unicode U+1D5E4
+	"char/0x1d5e5/textmode": "{\\mathsfbf{R}}",                                      // Unicode U+1D5E5
+	"char/0x1d5e6/textmode": "{\\mathsfbf{S}}",                                      // Unicode U+1D5E6
+	"char/0x1d5e7/textmode": "{\\mathsfbf{T}}",                                      // Unicode U+1D5E7
+	"char/0x1d5e8/textmode": "{\\mathsfbf{U}}",                                      // Unicode U+1D5E8
+	"char/0x1d5e9/textmode": "{\\mathsfbf{V}}",                                      // Unicode U+1D5E9
+	"char/0x1d5ea/textmode": "{\\mathsfbf{W}}",                                      // Unicode U+1D5EA
+	"char/0x1d5eb/textmode": "{\\mathsfbf{X}}",                                      // Unicode U+1D5EB
+	"char/0x1d5ec/textmode": "{\\mathsfbf{Y}}",                                      // Unicode U+1D5EC
+	"char/0x1d5ed/textmode": "{\\mathsfbf{Z}}",                                      // Unicode U+1D5ED
+	"char/0x1d5ee/textmode": "{\\mathsfbf{a}}",                                      // Unicode U+1D5EE
+	"char/0x1d5ef/textmode": "{\\mathsfbf{b}}",                                      // Unicode U+1D5EF
+	"char/0x1d5f0/textmode": "{\\mathsfbf{c}}",                                      // Unicode U+1D5F0
+	"char/0x1d5f1/textmode": "{\\mathsfbf{d}}",                                      // Unicode U+1D5F1
+	"char/0x1d5f2/textmode": "{\\mathsfbf{e}}",                                      // Unicode U+1D5F2
+	"char/0x1d5f3/textmode": "{\\mathsfbf{f}}",                                      // Unicode U+1D5F3
+	"char/0x1d5f4/textmode": "{\\mathsfbf{g}}",                                      // Unicode U+1D5F4
+	"char/0x1d5f5/textmode": "{\\mathsfbf{h}}",                                      // Unicode U+1D5F5
+	"char/0x1d5f6/textmode": "{\\mathsfbf{i}}",                                      // Unicode U+1D5F6
+	"char/0x1d5f7/textmode": "{\\mathsfbf{j}}",                                      // Unicode U+1D5F7
+	"char/0x1d5f8/textmode": "{\\mathsfbf{k}}",                                      // Unicode U+1D5F8
+	"char/0x1d5f9/textmode": "{\\mathsfbf{l}}",                                      // Unicode U+1D5F9
+	"char/0x1d5fa/textmode": "{\\mathsfbf{m}}",                                      // Unicode U+1D5FA
+	"char/0x1d5fb/textmode": "{\\mathsfbf{n}}",                                      // Unicode U+1D5FB
+	"char/0x1d5fc/textmode": "{\\mathsfbf{o}}",                                      // Unicode U+1D5FC
+	"char/0x1d5fd/textmode": "{\\mathsfbf{p}}",                                      // Unicode U+1D5FD
+	"char/0x1d5fe/textmode": "{\\mathsfbf{q}}",                                      // Unicode U+1D5FE
+	"char/0x1d5ff/textmode": "{\\mathsfbf{r}}",                                      // Unicode U+1D5FF
+	"char/0x1d600/textmode": "{\\mathsfbf{s}}",                                      // Unicode U+1D600
+	"char/0x1d601/textmode": "{\\mathsfbf{t}}",                                      // Unicode U+1D601
+	"char/0x1d602/textmode": "{\\mathsfbf{u}}",                                      // Unicode U+1D602
+	"char/0x1d603/textmode": "{\\mathsfbf{v}}",                                      // Unicode U+1D603
+	"char/0x1d604/textmode": "{\\mathsfbf{w}}",                                      // Unicode U+1D604
+	"char/0x1d605/textmode": "{\\mathsfbf{x}}",                                      // Unicode U+1D605
+	"char/0x1d606/textmode": "{\\mathsfbf{y}}",                                      // Unicode U+1D606
+	"char/0x1d607/textmode": "{\\mathsfbf{z}}",                                      // Unicode U+1D607
+	"char/0x1d608/textmode": "{\\mathsfit{A}}",                                      // Unicode U+1D608
+	"char/0x1d609/textmode": "{\\mathsfit{B}}",                                      // Unicode U+1D609
+	"char/0x1d60a/textmode": "{\\mathsfit{C}}",                                      // Unicode U+1D60A
+	"char/0x1d60b/textmode": "{\\mathsfit{D}}",                                      // Unicode U+1D60B
+	"char/0x1d60c/textmode": "{\\mathsfit{E}}",                                      // Unicode U+1D60C
+	"char/0x1d60d/textmode": "{\\mathsfit{F}}",                                      // Unicode U+1D60D
+	"char/0x1d60e/textmode": "{\\mathsfit{G}}",                                      // Unicode U+1D60E
+	"char/0x1d60f/textmode": "{\\mathsfit{H}}",                                      // Unicode U+1D60F
+	"char/0x1d610/textmode": "{\\mathsfit{I}}",                                      // Unicode U+1D610
+	"char/0x1d611/textmode": "{\\mathsfit{J}}",                                      // Unicode U+1D611
+	"char/0x1d612/textmode": "{\\mathsfit{K}}",                                      // Unicode U+1D612
+	"char/0x1d613/textmode": "{\\mathsfit{L}}",                                      // Unicode U+1D613
+	"char/0x1d614/textmode": "{\\mathsfit{M}}",                                      // Unicode U+1D614
+	"char/0x1d615/textmode": "{\\mathsfit{N}}",                                      // Unicode U+1D615
+	"char/0x1d616/textmode": "{\\mathsfit{O}}",                                      // Unicode U+1D616
+	"char/0x1d617/textmode": "{\\mathsfit{P}}",                                      // Unicode U+1D617
+	"char/0x1d618/textmode": "{\\mathsfit{Q}}",                                      // Unicode U+1D618
+	"char/0x1d619/textmode": "{\\mathsfit{R}}",                                      // Unicode U+1D619
+	"char/0x1d61a/textmode": "{\\mathsfit{S}}",                                      // Unicode U+1D61A
+	"char/0x1d61b/textmode": "{\\mathsfit{T}}",                                      // Unicode U+1D61B
+	"char/0x1d61c/textmode": "{\\mathsfit{U}}",                                      // Unicode U+1D61C
+	"char/0x1d61d/textmode": "{\\mathsfit{V}}",                                      // Unicode U+1D61D
+	"char/0x1d61e/textmode": "{\\mathsfit{W}}",                                      // Unicode U+1D61E
+	"char/0x1d61f/textmode": "{\\mathsfit{X}}",                                      // Unicode U+1D61F
+	"char/0x1d620/textmode": "{\\mathsfit{Y}}",                                      // Unicode U+1D620
+	"char/0x1d621/textmode": "{\\mathsfit{Z}}",                                      // Unicode U+1D621
+	"char/0x1d622/textmode": "{\\mathsfit{a}}",                                      // Unicode U+1D622
+	"char/0x1d623/textmode": "{\\mathsfit{b}}",                                      // Unicode U+1D623
+	"char/0x1d624/textmode": "{\\mathsfit{c}}",                                      // Unicode U+1D624
+	"char/0x1d625/textmode": "{\\mathsfit{d}}",                                      // Unicode U+1D625
+	"char/0x1d626/textmode": "{\\mathsfit{e}}",                                      // Unicode U+1D626
+	"char/0x1d627/textmode": "{\\mathsfit{f}}",                                      // Unicode U+1D627
+	"char/0x1d628/textmode": "{\\mathsfit{g}}",                                      // Unicode U+1D628
+	"char/0x1d629/textmode": "{\\mathsfit{h}}",                                      // Unicode U+1D629
+	"char/0x1d62a/textmode": "{\\mathsfit{i}}",                                      // Unicode U+1D62A
+	"char/0x1d62b/textmode": "{\\mathsfit{j}}",                                      // Unicode U+1D62B
+	"char/0x1d62c/textmode": "{\\mathsfit{k}}",                                      // Unicode U+1D62C
+	"char/0x1d62d/textmode": "{\\mathsfit{l}}",                                      // Unicode U+1D62D
+	"char/0x1d62e/textmode": "{\\mathsfit{m}}",                                      // Unicode U+1D62E
+	"char/0x1d62f/textmode": "{\\mathsfit{n}}",                                      // Unicode U+1D62F
+	"char/0x1d630/textmode": "{\\mathsfit{o}}",                                      // Unicode U+1D630
+	"char/0x1d631/textmode": "{\\mathsfit{p}}",                                      // Unicode U+1D631
+	"char/0x1d632/textmode": "{\\mathsfit{q}}",                                      // Unicode U+1D632
+	"char/0x1d633/textmode": "{\\mathsfit{r}}",                                      // Unicode U+1D633
+	"char/0x1d634/textmode": "{\\mathsfit{s}}",                                      // Unicode U+1D634
+	"char/0x1d635/textmode": "{\\mathsfit{t}}",                                      // Unicode U+1D635
+	"char/0x1d636/textmode": "{\\mathsfit{u}}",                                      // Unicode U+1D636
+	"char/0x1d637/textmode": "{\\mathsfit{v}}",                                      // Unicode U+1D637
+	"char/0x1d638/textmode": "{\\mathsfit{w}}",                                      // Unicode U+1D638
+	"char/0x1d639/textmode": "{\\mathsfit{x}}",                                      // Unicode U+1D639
+	"char/0x1d63a/textmode": "{\\mathsfit{y}}",                                      // Unicode U+1D63A
+	"char/0x1d63b/textmode": "{\\mathsfit{z}}",                                      // Unicode U+1D63B
+	"char/0x1d63c/textmode": "{\\mathsfbfit{A}}",                                    // Unicode U+1D63C
+	"char/0x1d63d/textmode": "{\\mathsfbfit{B}}",                                    // Unicode U+1D63D
+	"char/0x1d63e/textmode": "{\\mathsfbfit{C}}",                                    // Unicode U+1D63E
+	"char/0x1d63f/textmode": "{\\mathsfbfit{D}}",                                    // Unicode U+1D63F
+	"char/0x1d640/textmode": "{\\mathsfbfit{E}}",                                    // Unicode U+1D640
+	"char/0x1d641/textmode": "{\\mathsfbfit{F}}",                                    // Unicode U+1D641
+	"char/0x1d642/textmode": "{\\mathsfbfit{G}}",                                    // Unicode U+1D642
+	"char/0x1d643/textmode": "{\\mathsfbfit{H}}",                                    // Unicode U+1D643
+	"char/0x1d644/textmode": "{\\mathsfbfit{I}}",                                    // Unicode U+1D644
+	"char/0x1d645/textmode": "{\\mathsfbfit{J}}",                                    // Unicode U+1D645
+	"char/0x1d646/textmode": "{\\mathsfbfit{K}}",                                    // Unicode U+1D646
+	"char/0x1d647/textmode": "{\\mathsfbfit{L}}",                                    // Unicode U+1D647
+	"char/0x1d648/textmode": "{\\mathsfbfit{M}}",                                    // Unicode U+1D648
+	"char/0x1d649/textmode": "{\\mathsfbfit{N}}",                                    // Unicode U+1D649
+	"char/0x1d64a/textmode": "{\\mathsfbfit{O}}",                                    // Unicode U+1D64A
+	"char/0x1d64b/textmode": "{\\mathsfbfit{P}}",                                    // Unicode U+1D64B
+	"char/0x1d64c/textmode": "{\\mathsfbfit{Q}}",                                    // Unicode U+1D64C
+	"char/0x1d64d/textmode": "{\\mathsfbfit{R}}",                                    // Unicode U+1D64D
+	"char/0x1d64e/textmode": "{\\mathsfbfit{S}}",                                    // Unicode U+1D64E
+	"char/0x1d64f/textmode": "{\\mathsfbfit{T}}",                                    // Unicode U+1D64F
+	"char/0x1d650/textmode": "{\\mathsfbfit{U}}",                                    // Unicode U+1D650
+	"char/0x1d651/textmode": "{\\mathsfbfit{V}}",                                    // Unicode U+1D651
+	"char/0x1d652/textmode": "{\\mathsfbfit{W}}",                                    // Unicode U+1D652
+	"char/0x1d653/textmode": "{\\mathsfbfit{X}}",                                    // Unicode U+1D653
+	"char/0x1d654/textmode": "{\\mathsfbfit{Y}}",                                    // Unicode U+1D654
+	"char/0x1d655/textmode": "{\\mathsfbfit{Z}}",                                    // Unicode U+1D655
+	"char/0x1d656/textmode": "{\\mathsfbfit{a}}",                                    // Unicode U+1D656
+	"char/0x1d657/textmode": "{\\mathsfbfit{b}}",                                    // Unicode U+1D657
+	"char/0x1d658/textmode": "{\\mathsfbfit{c}}",                                    // Unicode U+1D658
+	"char/0x1d659/textmode": "{\\mathsfbfit{d}}",                                    // Unicode U+1D659
+	"char/0x1d65a/textmode": "{\\mathsfbfit{e}}",                                    // Unicode U+1D65A
+	"char/0x1d65b/textmode": "{\\mathsfbfit{f}}",                                    // Unicode U+1D65B
+	"char/0x1d65c/textmode": "{\\mathsfbfit{g}}",                                    // Unicode U+1D65C
+	"char/0x1d65d/textmode": "{\\mathsfbfit{h}}",                                    // Unicode U+1D65D
+	"char/0x1d65e/textmode": "{\\mathsfbfit{i}}",                                    // Unicode U+1D65E
+	"char/0x1d65f/textmode": "{\\mathsfbfit{j}}",                                    // Unicode U+1D65F
+	"char/0x1d660/textmode": "{\\mathsfbfit{k}}",                                    // Unicode U+1D660
+	"char/0x1d661/textmode": "{\\mathsfbfit{l}}",                                    // Unicode U+1D661
+	"char/0x1d662/textmode": "{\\mathsfbfit{m}}",                                    // Unicode U+1D662
+	"char/0x1d663/textmode": "{\\mathsfbfit{n}}",                                    // Unicode U+1D663
+	"char/0x1d664/textmode": "{\\mathsfbfit{o}}",                                    // Unicode U+1D664
+	"char/0x1d665/textmode": "{\\mathsfbfit{p}}",                                    // Unicode U+1D665
+	"char/0x1d666/textmode": "{\\mathsfbfit{q}}",                                    // Unicode U+1D666
+	"char/0x1d667/textmode": "{\\mathsfbfit{r}}",                                    // Unicode U+1D667
+	"char/0x1d668/textmode": "{\\mathsfbfit{s}}",                                    // Unicode U+1D668
+	"char/0x1d669/textmode": "{\\mathsfbfit{t}}",                                    // Unicode U+1D669
+	"char/0x1d66a/textmode": "{\\mathsfbfit{u}}",                                    // Unicode U+1D66A
+	"char/0x1d66b/textmode": "{\\mathsfbfit{v}}",                                    // Unicode U+1D66B
+	"char/0x1d66c/textmode": "{\\mathsfbfit{w}}",                                    // Unicode U+1D66C
+	"char/0x1d66d/textmode": "{\\mathsfbfit{x}}",                                    // Unicode U+1D66D
+	"char/0x1d66e/textmode": "{\\mathsfbfit{y}}",                                    // Unicode U+1D66E
+	"char/0x1d66f/textmode": "{\\mathsfbfit{z}}",                                    // Unicode U+1D66F
+	"char/0x1d670/textmode": "{\\mathtt{A}}",                                        // Unicode U+1D670
+	"char/0x1d671/textmode": "{\\mathtt{B}}",                                        // Unicode U+1D671
+	"char/0x1d672/textmode": "{\\mathtt{C}}",                                        // Unicode U+1D672
+	"char/0x1d673/textmode": "{\\mathtt{D}}",                                        // Unicode U+1D673
+	"char/0x1d674/textmode": "{\\mathtt{E}}",                                        // Unicode U+1D674
+	"char/0x1d675/textmode": "{\\mathtt{F}}",                                        // Unicode U+1D675
+	"char/0x1d676/textmode": "{\\mathtt{G}}",                                        // Unicode U+1D676
+	"char/0x1d677/textmode": "{\\mathtt{H}}",                                        // Unicode U+1D677
+	"char/0x1d678/textmode": "{\\mathtt{I}}",                                        // Unicode U+1D678
+	"char/0x1d679/textmode": "{\\mathtt{J}}",                                        // Unicode U+1D679
+	"char/0x1d67a/textmode": "{\\mathtt{K}}",                                        // Unicode U+1D67A
+	"char/0x1d67b/textmode": "{\\mathtt{L}}",                                        // Unicode U+1D67B
+	"char/0x1d67c/textmode": "{\\mathtt{M}}",                                        // Unicode U+1D67C
+	"char/0x1d67d/textmode": "{\\mathtt{N}}",                                        // Unicode U+1D67D
+	"char/0x1d67e/textmode": "{\\mathtt{O}}",                                        // Unicode U+1D67E
+	"char/0x1d67f/textmode": "{\\mathtt{P}}",                                        // Unicode U+1D67F
+	"char/0x1d680/textmode": "{\\mathtt{Q}}",                                        // Unicode U+1D680
+	"char/0x1d681/textmode": "{\\mathtt{R}}",                                        // Unicode U+1D681
+	"char/0x1d682/textmode": "{\\mathtt{S}}",                                        // Unicode U+1D682
+	"char/0x1d683/textmode": "{\\mathtt{T}}",                                        // Unicode U+1D683
+	"char/0x1d684/textmode": "{\\mathtt{U}}",                                        // Unicode U+1D684
+	"char/0x1d685/textmode": "{\\mathtt{V}}",                                        // Unicode U+1D685
+	"char/0x1d686/textmode": "{\\mathtt{W}}",                                        // Unicode U+1D686
+	"char/0x1d687/textmode": "{\\mathtt{X}}",                                        // Unicode U+1D687
+	"char/0x1d688/textmode": "{\\mathtt{Y}}",                                        // Unicode U+1D688
+	"char/0x1d689/textmode": "{\\mathtt{Z}}",                                        // Unicode U+1D689
+	"char/0x1d68a/textmode": "{\\mathtt{a}}",                                        // Unicode U+1D68A
+	"char/0x1d68b/textmode": "{\\mathtt{b}}",                                        // Unicode U+1D68B
+	"char/0x1d68c/textmode": "{\\mathtt{c}}",                                        // Unicode U+1D68C
+	"char/0x1d68d/textmode": "{\\mathtt{d}}",                                        // Unicode U+1D68D
+	"char/0x1d68e/textmode": "{\\mathtt{e}}",                                        // Unicode U+1D68E
+	"char/0x1d68f/textmode": "{\\mathtt{f}}",                                        // Unicode U+1D68F
+	"char/0x1d690/textmode": "{\\mathtt{g}}",                                        // Unicode U+1D690
+	"char/0x1d691/textmode": "{\\mathtt{h}}",                                        // Unicode U+1D691
+	"char/0x1d692/textmode": "{\\mathtt{i}}",                                        // Unicode U+1D692
+	"char/0x1d693/textmode": "{\\mathtt{j}}",                                        // Unicode U+1D693
+	"char/0x1d694/textmode": "{\\mathtt{k}}",                                        // Unicode U+1D694
+	"char/0x1d695/textmode": "{\\mathtt{l}}",                                        // Unicode U+1D695
+	"char/0x1d696/textmode": "{\\mathtt{m}}",                                        // Unicode U+1D696
+	"char/0x1d697/textmode": "{\\mathtt{n}}",                                        // Unicode U+1D697
+	"char/0x1d698/textmode": "{\\mathtt{o}}",                                        // Unicode U+1D698
+	"char/0x1d699/textmode": "{\\mathtt{p}}",                                        // Unicode U+1D699
+	"char/0x1d69a/textmode": "{\\mathtt{q}}",                                        // Unicode U+1D69A
+	"char/0x1d69b/textmode": "{\\mathtt{r}}",                                        // Unicode U+1D69B
+	"char/0x1d69c/textmode": "{\\mathtt{s}}",                                        // Unicode U+1D69C
+	"char/0x1d69d/textmode": "{\\mathtt{t}}",                                        // Unicode U+1D69D
+	"char/0x1d69e/textmode": "{\\mathtt{u}}",                                        // Unicode U+1D69E
+	"char/0x1d69f/textmode": "{\\mathtt{v}}",                                        // Unicode U+1D69F
+	"char/0x1d6a0/textmode": "{\\mathtt{w}}",                                        // Unicode U+1D6A0
+	"char/0x1d6a1/textmode": "{\\mathtt{x}}",                                        // Unicode U+1D6A1
+	"char/0x1d6a2/textmode": "{\\mathtt{y}}",                                        // Unicode U+1D6A2
+	"char/0x1d6a3/textmode": "{\\mathtt{z}}",                                        // Unicode U+1D6A3
+	"char/0x1d6a4/textmode": "{\\imath}",                                            // Unicode U+1D6A4
+	"char/0x1d6a5/textmode": "{\\jmath}",                                            // Unicode U+1D6A5
+	"char/0x1d6aa/textmode": "{\\mathbf{\\Gamma}}",                                  // Unicode U+1D6AA
+	"char/0x1d6ab/textmode": "{\\mathbf{\\Delta}}",                                  // Unicode U+1D6AB
+	"char/0x1d6af/textmode": "{\\mathbf{\\Theta}}",                                  // Unicode U+1D6AF
+	"char/0x1d6b2/textmode": "{\\mathbf{\\Lambda}}",                                 // Unicode U+1D6B2
+	"char/0x1d6b5/textmode": "{\\mathbf{\\Xi}}",                                     // Unicode U+1D6B5
+	"char/0x1d6b7/textmode": "{\\mathbf{\\Pi}}",                                     // Unicode U+1D6B7
+	"char/0x1d6ba/textmode": "{\\mathbf{\\Sigma}}",                                  // Unicode U+1D6BA
+	"char/0x1d6bc/textmode": "{\\mathbf{\\Upsilon}}",                                // Unicode U+1D6BC
+	"char/0x1d6bd/textmode": "{\\mathbf{\\Phi}}",                                    // Unicode U+1D6BD
+	"char/0x1d6bf/textmode": "{\\mathbf{\\Psi}}",                                    // Unicode U+1D6BF
+	"char/0x1d6c0/textmode": "{\\mathbf{\\Omega}}",                                  // Unicode U+1D6C0
+	"char/0x1d6c2/textmode": "{\\mathbf{\\alpha}}",                                  // Unicode U+1D6C2
+	"char/0x1d6c3/textmode": "{\\mathbf{\\beta}}",                                   // Unicode U+1D6C3
+	"char/0x1d6c4/textmode": "{\\mathbf{\\gamma}}",                                  // Unicode U+1D6C4
+	"char/0x1d6c5/textmode": "{\\mathbf{\\delta}}",                                  // Unicode U+1D6C5
+	"char/0x1d6c6/textmode": "{\\mathbf{\\varepsilon}}",                             // Unicode U+1D6C6
+	"char/0x1d6c7/textmode": "{\\mathbf{\\zeta}}",                                   // Unicode U+1D6C7
+	"char/0x1d6c8/textmode": "{\\mathbf{\\eta}}",                                    // Unicode U+1D6C8
+	"char/0x1d6c9/textmode": "{\\mathbf{\\theta}}",                                  // Unicode U+1D6C9
+	"char/0x1d6ca/textmode": "{\\mathbf{\\iota}}",                                   // Unicode U+1D6CA
+	"char/0x1d6cb/textmode": "{\\mathbf{\\kappa}}",                                  // Unicode U+1D6CB
+	"char/0x1d6cc/textmode": "{\\mathbf{\\lambda}}",                                 // Unicode U+1D6CC
+	"char/0x1d6cd/textmode": "{\\mathbf{\\mu}}",                                     // Unicode U+1D6CD
+	"char/0x1d6ce/textmode": "{\\mathbf{\\nu}}",                                     // Unicode U+1D6CE
+	"char/0x1d6cf/textmode": "{\\mathbf{\\xi}}",                                     // Unicode U+1D6CF
+	"char/0x1d6d1/textmode": "{\\mathbf{\\pi}}",                                     // Unicode U+1D6D1
+	"char/0x1d6d2/textmode": "{\\mathbf{\\rho}}",                                    // Unicode U+1D6D2
+	"char/0x1d6d3/textmode": "{\\mathbf{\\varsigma}}",                               // Unicode U+1D6D3
+	"char/0x1d6d4/textmode": "{\\mathbf{\\sigma}}",                                  // Unicode U+1D6D4
+	"char/0x1d6d5/textmode": "{\\mathbf{\\tau}}",                                    // Unicode U+1D6D5
+	"char/0x1d6d6/textmode": "{\\mathbf{\\upsilon}}",                                // Unicode U+1D6D6
+	"char/0x1d6d7/textmode": "{\\mathbf{\\varphi}}",                                 // Unicode U+1D6D7
+	"char/0x1d6d8/textmode": "{\\mathbf{\\chi}}",                                    // Unicode U+1D6D8
+	"char/0x1d6d9/textmode": "{\\mathbf{\\psi}}",                                    // Unicode U+1D6D9
+	"char/0x1d6da/textmode": "{\\mathbf{\\omega}}",                                  // Unicode U+1D6DA
+	"char/0x1d6dc/textmode": "{\\mathbf{\\epsilon}}",                                // Unicode U+1D6DC
+	"char/0x1d6dd/textmode": "{\\mathbf{\\vartheta}}",                               // Unicode U+1D6DD
+	"char/0x1d6df/textmode": "{\\mathbf{\\phi}}",                                    // Unicode U+1D6DF
+	"char/0x1d6e0/textmode": "{\\mathbf{\\varrho}}",                                 // Unicode U+1D6E0
+	"char/0x1d6e1/textmode": "{\\mathbf{\\varpi}}",                                  // Unicode U+1D6E1
+	"char/0x1d6e4/textmode": "{\\Gamma}",                                            // Unicode U+1D6E4
+	"char/0x1d6e5/textmode": "{\\Delta}",                                            // Unicode U+1D6E5
+	"char/0x1d6e9/textmode": "{\\Theta}",                                            // Unicode U+1D6E9
+	"char/0x1d6ec/textmode": "{\\Lambda}",                                           // Unicode U+1D6EC
+	"char/0x1d6ef/textmode": "{\\Xi}",                                               // Unicode U+1D6EF
+	"char/0x1d6f1/textmode": "{\\Pi}",                                               // Unicode U+1D6F1
+	"char/0x1d6f4/textmode": "{\\Sigma}",                                            // Unicode U+1D6F4
+	"char/0x1d6f6/textmode": "{\\Upsilon}",                                          // Unicode U+1D6F6
+	"char/0x1d6f7/textmode": "{\\Phi}",                                              // Unicode U+1D6F7
+	"char/0x1d6f9/textmode": "{\\Psi}",                                              // Unicode U+1D6F9
+	"char/0x1d6fa/textmode": "{\\Omega}",                                            // Unicode U+1D6FA
+	"char/0x1d6fc/textmode": "{\\alpha}",                                            // Unicode U+1D6FC
+	"char/0x1d6fd/textmode": "{\\beta}",                                             // Unicode U+1D6FD
+	"char/0x1d6fe/textmode": "{\\gamma}",                                            // Unicode U+1D6FE
+	"char/0x1d6ff/textmode": "{\\delta}",                                            // Unicode U+1D6FF
+	"char/0x1d700/textmode": "\u1d700",                                              // Unicode U+1D700
+	"char/0x1d701/textmode": "{\\zeta}",                                             // Unicode U+1D701
+	"char/0x1d702/textmode": "{\\eta}",                                              // Unicode U+1D702
+	"char/0x1d703/textmode": "{\\theta}",                                            // Unicode U+1D703
+	"char/0x1d704/textmode": "{\\iota}",                                             // Unicode U+1D704
+	"char/0x1d705/textmode": "{\\kappa}",                                            // Unicode U+1D705
+	"char/0x1d706/textmode": "{\\lambda}",                                           // Unicode U+1D706
+	"char/0x1d707/textmode": "{\\mu}",                                               // Unicode U+1D707
+	"char/0x1d708/textmode": "{\\nu}",                                               // Unicode U+1D708
+	"char/0x1d709/textmode": "{\\xi}",                                               // Unicode U+1D709
+	"char/0x1d70b/textmode": "{\\pi}",                                               // Unicode U+1D70B
+	"char/0x1d70c/textmode": "{\\rho}",                                              // Unicode U+1D70C
+	"char/0x1d70d/textmode": "{\\varsigma}",                                         // Unicode U+1D70D
+	"char/0x1d70e/textmode": "{\\sigma}",                                            // Unicode U+1D70E
+	"char/0x1d70f/textmode": "{\\tau}",                                              // Unicode U+1D70F
+	"char/0x1d710/textmode": "{\\upsilon}",                                          // Unicode U+1D710
+	"char/0x1d711/textmode": "{\\varphi}",                                           // Unicode U+1D711
+	"char/0x1d712/textmode": "{\\chi}",                                              // Unicode U+1D712
+	"char/0x1d713/textmode": "{\\psi}",                                              // Unicode U+1D713
+	"char/0x1d714/textmode": "{\\omega}",                                            // Unicode U+1D714
+	"char/0x1d715/textmode": "{\\partial}",                                          // Unicode U+1D715
+	"char/0x1d716/textmode": "{\\epsilon}",                                          // Unicode U+1D716
+	"char/0x1d717/textmode": "{\\vartheta}",                                         // Unicode U+1D717
+	"char/0x1d718/textmode": "{\\varkappa}",                                         // Unicode U+1D718
+	"char/0x1d719/textmode": "{\\phi}",                                              // Unicode U+1D719
+	"char/0x1d71a/textmode": "{\\varrho}",                                           // Unicode U+1D71A
+	"char/0x1d71b/textmode": "{\\varpi}",                                            // Unicode U+1D71B
+	"char/0x1d71e/textmode": "{\\mathbfit{\\Gamma}}",                                // Unicode U+1D71E
+	"char/0x1d71f/textmode": "{\\mathbfit{\\Delta}}",                                // Unicode U+1D71F
+	"char/0x1d723/textmode": "{\\mathbfit{\\Theta}}",                                // Unicode U+1D723
+	"char/0x1d726/textmode": "{\\mathbfit{\\Lambda}}",                               // Unicode U+1D726
+	"char/0x1d729/textmode": "{\\mathbfit{\\Xi}}",                                   // Unicode U+1D729
+	"char/0x1d72b/textmode": "{\\mathbfit{\\Pi}}",                                   // Unicode U+1D72B
+	"char/0x1d72e/textmode": "{\\mathbfit{\\Sigma}}",                                // Unicode U+1D72E
+	"char/0x1d730/textmode": "{\\mathbfit{\\Upsilon}}",                              // Unicode U+1D730
+	"char/0x1d731/textmode": "{\\mathbfit{\\Phi}}",                                  // Unicode U+1D731
+	"char/0x1d733/textmode": "{\\mathbfit{\\Psi}}",                                  // Unicode U+1D733
+	"char/0x1d734/textmode": "{\\mathbfit{\\Omega}}",                                // Unicode U+1D734
+	"char/0x1d736/textmode": "{\\mathbfit{\\alpha}}",                                // Unicode U+1D736
+	"char/0x1d737/textmode": "{\\mathbfit{\\beta}}",                                 // Unicode U+1D737
+	"char/0x1d738/textmode": "{\\mathbfit{\\gamma}}",                                // Unicode U+1D738
+	"char/0x1d739/textmode": "{\\mathbfit{\\delta}}",                                // Unicode U+1D739
+	"char/0x1d73a/textmode": "{\\mathbfit{\\varepsilon}}",                           // Unicode U+1D73A
+	"char/0x1d73b/textmode": "{\\mathbfit{\\zeta}}",                                 // Unicode U+1D73B
+	"char/0x1d73c/textmode": "{\\mathbfit{\\eta}}",                                  // Unicode U+1D73C
+	"char/0x1d73d/textmode": "{\\mathbfit{\\theta}}",                                // Unicode U+1D73D
+	"char/0x1d73e/textmode": "{\\mathbfit{\\iota}}",                                 // Unicode U+1D73E
+	"char/0x1d73f/textmode": "{\\mathbfit{\\kappa}}",                                // Unicode U+1D73F
+	"char/0x1d740/textmode": "{\\mathbfit{\\lambda}}",                               // Unicode U+1D740
+	"char/0x1d741/textmode": "{\\mathbfit{\\mu}}",                                   // Unicode U+1D741
+	"char/0x1d742/textmode": "{\\mathbfit{\\nu}}",                                   // Unicode U+1D742
+	"char/0x1d743/textmode": "{\\mathbfit{\\xi}}",                                   // Unicode U+1D743
+	"char/0x1d745/textmode": "{\\mathbfit{\\pi}}",                                   // Unicode U+1D745
+	"char/0x1d746/textmode": "{\\mathbfit{\\rho}}",                                  // Unicode U+1D746
+	"char/0x1d747/textmode": "{\\mathbfit{\\varsigma}}",                             // Unicode U+1D747
+	"char/0x1d748/textmode": "{\\mathbfit{\\sigma}}",                                // Unicode U+1D748
+	"char/0x1d749/textmode": "{\\mathbfit{\\tau}}",                                  // Unicode U+1D749
+	"char/0x1d74a/textmode": "{\\mathbfit{\\upsilon}}",                              // Unicode U+1D74A
+	"char/0x1d74b/textmode": "{\\mathbfit{\\varphi}}",                               // Unicode U+1D74B
+	"char/0x1d74c/textmode": "{\\mathbfit{\\chi}}",                                  // Unicode U+1D74C
+	"char/0x1d74d/textmode": "{\\mathbfit{\\psi}}",                                  // Unicode U+1D74D
+	"char/0x1d74e/textmode": "{\\mathbfit{\\omega}}",                                // Unicode U+1D74E
+	"char/0x1d750/textmode": "{\\mathbfit{\\epsilon}}",                              // Unicode U+1D750
+	"char/0x1d751/textmode": "{\\mathbfit{\\vartheta}}",                             // Unicode U+1D751
+	"char/0x1d753/textmode": "{\\mathbfit{\\phi}}",                                  // Unicode U+1D753
+	"char/0x1d754/textmode": "{\\mathbfit{\\varrho}}",                               // Unicode U+1D754
+	"char/0x1d755/textmode": "{\\mathbfit{\\varpi}}",                                // Unicode U+1D755
+	"char/0x1d758/textmode": "{\\mathsfbf{\\Gamma}}",                                // Unicode U+1D758
+	"char/0x1d759/textmode": "{\\mathsfbf{\\Delta}}",                                // Unicode U+1D759
+	"char/0x1d75d/textmode": "{\\mathsfbf{\\Theta}}",                                // Unicode U+1D75D
+	"char/0x1d760/textmode": "{\\mathsfbf{\\Lambda}}",                               // Unicode U+1D760
+	"char/0x1d763/textmode": "{\\mathsfbf{\\Xi}}",                                   // Unicode U+1D763
+	"char/0x1d765/textmode": "{\\mathsfbf{\\Pi}}",                                   // Unicode U+1D765
+	"char/0x1d768/textmode": "{\\mathsfbf{\\Sigma}}",                                // Unicode U+1D768
+	"char/0x1d76a/textmode": "{\\mathsfbf{\\Upsilon}}",                              // Unicode U+1D76A
+	"char/0x1d76b/textmode": "{\\mathsfbf{\\Phi}}",                                  // Unicode U+1D76B
+	"char/0x1d76d/textmode": "{\\mathsfbf{\\Psi}}",                                  // Unicode U+1D76D
+	"char/0x1d76e/textmode": "{\\mathsfbf{\\Omega}}",                                // Unicode U+1D76E
+	"char/0x1d770/textmode": "{\\mathsfbf{\\alpha}}",                                // Unicode U+1D770
+	"char/0x1d771/textmode": "{\\mathsfbf{\\beta}}",                                 // Unicode U+1D771
+	"char/0x1d772/textmode": "{\\mathsfbf{\\gamma}}",                                // Unicode U+1D772
+	"char/0x1d773/textmode": "{\\mathsfbf{\\delta}}",                                // Unicode U+1D773
+	"char/0x1d774/textmode": "{\\mathsfbf{\\varepsilon}}",                           // Unicode U+1D774
+	"char/0x1d775/textmode": "{\\mathsfbf{\\zeta}}",                                 // Unicode U+1D775
+	"char/0x1d776/textmode": "{\\mathsfbf{\\eta}}",                                  // Unicode U+1D776
+	"char/0x1d777/textmode": "{\\mathsfbf{\\theta}}",                                // Unicode U+1D777
+	"char/0x1d778/textmode": "{\\mathsfbf{\\iota}}",                                 // Unicode U+1D778
+	"char/0x1d779/textmode": "{\\mathsfbf{\\kappa}}",                                // Unicode U+1D779
+	"char/0x1d77a/textmode": "{\\mathsfbf{\\lambda}}",                               // Unicode U+1D77A
+	"char/0x1d77b/textmode": "{\\mathsfbf{\\mu}}",                                   // Unicode U+1D77B
+	"char/0x1d77c/textmode": "{\\mathsfbf{\\nu}}",                                   // Unicode U+1D77C
+	"char/0x1d77d/textmode": "{\\mathsfbf{\\xi}}",                                   // Unicode U+1D77D
+	"char/0x1d77f/textmode": "{\\mathsfbf{\\pi}}",                                   // Unicode U+1D77F
+	"char/0x1d780/textmode": "{\\mathsfbf{\\rho}}",                                  // Unicode U+1D780
+	"char/0x1d781/textmode": "{\\mathsfbf{\\varsigma}}",                             // Unicode U+1D781
+	"char/0x1d782/textmode": "{\\mathsfbf{\\sigma}}",                                // Unicode U+1D782
+	"char/0x1d783/textmode": "{\\mathsfbf{\\tau}}",                                  // Unicode U+1D783
+	"char/0x1d784/textmode": "{\\mathsfbf{\\upsilon}}",                              // Unicode U+1D784
+	"char/0x1d785/textmode": "{\\mathsfbf{\\varphi}}",                               // Unicode U+1D785
+	"char/0x1d786/textmode": "{\\mathsfbf{\\chi}}",                                  // Unicode U+1D786
+	"char/0x1d787/textmode": "{\\mathsfbf{\\psi}}",                                  // Unicode U+1D787
+	"char/0x1d788/textmode": "{\\mathsfbf{\\omega}}",                                // Unicode U+1D788
+	"char/0x1d78a/textmode": "{\\mathsfbf{\\epsilon}}",                              // Unicode U+1D78A
+	"char/0x1d78b/textmode": "{\\mathsfbf{\\vartheta}}",                             // Unicode U+1D78B
+	"char/0x1d78d/textmode": "{\\mathsfbf{\\phi}}",                                  // Unicode U+1D78D
+	"char/0x1d78e/textmode": "{\\mathsfbf{\\varrho}}",                               // Unicode U+1D78E
+	"char/0x1d78f/textmode": "{\\mathsfbf{\\varpi}}",                                // Unicode U+1D78F
+	"char/0x1d792/textmode": "{\\mathsfbfit{\\Gamma}}",                              // Unicode U+1D792
+	"char/0x1d793/textmode": "{\\mathsfbfit{\\Delta}}",                              // Unicode U+1D793
+	"char/0x1d797/textmode": "{\\mathsfbfit{\\Theta}}",                              // Unicode U+1D797
+	"char/0x1d79a/textmode": "{\\mathsfbfit{\\Lambda}}",                             // Unicode U+1D79A
+	"char/0x1d79d/textmode": "{\\mathsfbfit{\\Xi}}",                                 // Unicode U+1D79D
+	"char/0x1d79f/textmode": "{\\mathsfbfit{\\Pi}}",                                 // Unicode U+1D79F
+	"char/0x1d7a2/textmode": "{\\mathsfbfit{\\Sigma}}",                              // Unicode U+1D7A2
+	"char/0x1d7a4/textmode": "{\\mathsfbfit{\\Upsilon}}",                            // Unicode U+1D7A4
+	"char/0x1d7a5/textmode": "{\\mathsfbfit{\\Phi}}",                                // Unicode U+1D7A5
+	"char/0x1d7a7/textmode": "{\\mathsfbfit{\\Psi}}",                                // Unicode U+1D7A7
+	"char/0x1d7a8/textmode": "{\\mathsfbfit{\\Omega}}",                              // Unicode U+1D7A8
+	"char/0x1d7aa/textmode": "{\\mathsfbfit{\\alpha}}",                              // Unicode U+1D7AA
+	"char/0x1d7ab/textmode": "{\\mathsfbfit{\\beta}}",                               // Unicode U+1D7AB
+	"char/0x1d7ac/textmode": "{\\mathsfbfit{\\gamma}}",                              // Unicode U+1D7AC
+	"char/0x1d7ad/textmode": "{\\mathsfbfit{\\delta}}",                              // Unicode U+1D7AD
+	"char/0x1d7ae/textmode": "{\\mathsfbfit{\\varepsilon}}",                         // Unicode U+1D7AE
+	"char/0x1d7af/textmode": "{\\mathsfbfit{\\zeta}}",                               // Unicode U+1D7AF
+	"char/0x1d7b0/textmode": "{\\mathsfbfit{\\eta}}",                                // Unicode U+1D7B0
+	"char/0x1d7b1/textmode": "{\\mathsfbfit{\\theta}}",                              // Unicode U+1D7B1
+	"char/0x1d7b2/textmode": "{\\mathsfbfit{\\iota}}",                               // Unicode U+1D7B2
+	"char/0x1d7b3/textmode": "{\\mathsfbfit{\\kappa}}",                              // Unicode U+1D7B3
+	"char/0x1d7b4/textmode": "{\\mathsfbfit{\\lambda}}",                             // Unicode U+1D7B4
+	"char/0x1d7b5/textmode": "{\\mathsfbfit{\\mu}}",                                 // Unicode U+1D7B5
+	"char/0x1d7b6/textmode": "{\\mathsfbfit{\\nu}}",                                 // Unicode U+1D7B6
+	"char/0x1d7b7/textmode": "{\\mathsfbfit{\\xi}}",                                 // Unicode U+1D7B7
+	"char/0x1d7b9/textmode": "{\\mathsfbfit{\\pi}}",                                 // Unicode U+1D7B9
+	"char/0x1d7ba/textmode": "{\\mathsfbfit{\\rho}}",                                // Unicode U+1D7BA
+	"char/0x1d7bb/textmode": "{\\mathsfbfit{\\varsigma}}",                           // Unicode U+1D7BB
+	"char/0x1d7bc/textmode": "{\\mathsfbfit{\\sigma}}",                              // Unicode U+1D7BC
+	"char/0x1d7bd/textmode": "{\\mathsfbfit{\\tau}}",                                // Unicode U+1D7BD
+	"char/0x1d7be/textmode": "{\\mathsfbfit{\\upsilon}}",                            // Unicode U+1D7BE
+	"char/0x1d7bf/textmode": "{\\mathsfbfit{\\varphi}}",                             // Unicode U+1D7BF
+	"char/0x1d7c0/textmode": "{\\mathsfbfit{\\chi}}",                                // Unicode U+1D7C0
+	"char/0x1d7c1/textmode": "{\\mathsfbfit{\\psi}}",                                // Unicode U+1D7C1
+	"char/0x1d7c2/textmode": "{\\mathsfbfit{\\omega}}",                              // Unicode U+1D7C2
+	"char/0x1d7c4/textmode": "{\\mathsfbfit{\\epsilon}}",                            // Unicode U+1D7C4
+	"char/0x1d7c5/textmode": "{\\mathsfbfit{\\vartheta}}",                           // Unicode U+1D7C5
+	"char/0x1d7c7/textmode": "{\\mathsfbfit{\\phi}}",                                // Unicode U+1D7C7
+	"char/0x1d7c8/textmode": "{\\mathsfbfit{\\varrho}}",                             // Unicode U+1D7C8
+	"char/0x1d7c9/textmode": "{\\mathsfbfit{\\varpi}}",                              // Unicode U+1D7C9
+	"char/0x1d7ce/textmode": "{\\mathbf{0}}",                                        // Unicode U+1D7CE
+	"char/0x1d7cf/textmode": "{\\mathbf{1}}",                                        // Unicode U+1D7CF
+	"char/0x1d7d0/textmode": "{\\mathbf{2}}",                                        // Unicode U+1D7D0
+	"char/0x1d7d1/textmode": "{\\mathbf{3}}",                                        // Unicode U+1D7D1
+	"char/0x1d7d2/textmode": "{\\mathbf{4}}",                                        // Unicode U+1D7D2
+	"char/0x1d7d3/textmode": "{\\mathbf{5}}",                                        // Unicode U+1D7D3
+	"char/0x1d7d4/textmode": "{\\mathbf{6}}",                                        // Unicode U+1D7D4
+	"char/0x1d7d5/textmode": "{\\mathbf{7}}",                                        // Unicode U+1D7D5
+	"char/0x1d7d6/textmode": "{\\mathbf{8}}",                                        // Unicode U+1D7D6
+	"char/0x1d7d7/textmode": "{\\mathbf{9}}",                                        // Unicode U+1D7D7
+	"char/0x1d7d8/textmode": "{\\mathbb{0}}",                                        // Unicode U+1D7D8
+	"char/0x1d7d9/textmode": "{\\mathbb{1}}",                                        // Unicode U+1D7D9
+	"char/0x1d7da/textmode": "{\\mathbb{2}}",                                        // Unicode U+1D7DA
+	"char/0x1d7db/textmode": "{\\mathbb{3}}",                                        // Unicode U+1D7DB
+	"char/0x1d7dc/textmode": "{\\mathbb{4}}",                                        // Unicode U+1D7DC
+	"char/0x1d7dd/textmode": "{\\mathbb{5}}",                                        // Unicode U+1D7DD
+	"char/0x1d7de/textmode": "{\\mathbb{6}}",                                        // Unicode U+1D7DE
+	"char/0x1d7df/textmode": "{\\mathbb{7}}",                                        // Unicode U+1D7DF
+	"char/0x1d7e0/textmode": "{\\mathbb{8}}",                                        // Unicode U+1D7E0
+	"char/0x1d7e1/textmode": "{\\mathbb{9}}",                                        // Unicode U+1D7E1
+	"char/0x1d7e2/textmode": "{\\mathsf{0}}",                                        // Unicode U+1D7E2
+	"char/0x1d7e3/textmode": "{\\mathsf{1}}",                                        // Unicode U+1D7E3
+	"char/0x1d7e4/textmode": "{\\mathsf{2}}",                                        // Unicode U+1D7E4
+	"char/0x1d7e5/textmode": "{\\mathsf{3}}",                                        // Unicode U+1D7E5
+	"char/0x1d7e6/textmode": "{\\mathsf{4}}",                                        // Unicode U+1D7E6
+	"char/0x1d7e7/textmode": "{\\mathsf{5}}",                                        // Unicode U+1D7E7
+	"char/0x1d7e8/textmode": "{\\mathsf{6}}",                                        // Unicode U+1D7E8
+	"char/0x1d7e9/textmode": "{\\mathsf{7}}",                                        // Unicode U+1D7E9
+	"char/0x1d7ea/textmode": "{\\mathsf{8}}",                                        // Unicode U+1D7EA
+	"char/0x1d7eb/textmode": "{\\mathsf{9}}",                                        // Unicode U+1D7EB
+	"char/0x1d7ec/textmode": "{\\mathsfbf{0}}",                                      // Unicode U+1D7EC
+	"char/0x1d7ed/textmode": "{\\mathsfbf{1}}",                                      // Unicode U+1D7ED
+	"char/0x1d7ee/textmode": "{\\mathsfbf{2}}",                                      // Unicode U+1D7EE
+	"char/0x1d7ef/textmode": "{\\mathsfbf{3}}",                                      // Unicode U+1D7EF
+	"char/0x1d7f0/textmode": "{\\mathsfbf{4}}",                                      // Unicode U+1D7F0
+	"char/0x1d7f1/textmode": "{\\mathsfbf{5}}",                                      // Unicode U+1D7F1
+	"char/0x1d7f2/textmode": "{\\mathsfbf{6}}",                                      // Unicode U+1D7F2
+	"char/0x1d7f3/textmode": "{\\mathsfbf{7}}",                                      // Unicode U+1D7F3
+	"char/0x1d7f4/textmode": "{\\mathsfbf{8}}",                                      // Unicode U+1D7F4
+	"char/0x1d7f5/textmode": "{\\mathsfbf{9}}",                                      // Unicode U+1D7F5
+	"char/0x1d7f6/textmode": "{\\mathtt{0}}",                                        // Unicode U+1D7F6
+	"char/0x1d7f7/textmode": "{\\mathtt{1}}",                                        // Unicode U+1D7F7
+	"char/0x1d7f8/textmode": "{\\mathtt{2}}",                                        // Unicode U+1D7F8
+	"char/0x1d7f9/textmode": "{\\mathtt{3}}",                                        // Unicode U+1D7F9
+	"char/0x1d7fa/textmode": "{\\mathtt{4}}",                                        // Unicode U+1D7FA
+	"char/0x1d7fb/textmode": "{\\mathtt{5}}",                                        // Unicode U+1D7FB
+	"char/0x1d7fc/textmode": "{\\mathtt{6}}",                                        // Unicode U+1D7FC
+	"char/0x1d7fd/textmode": "{\\mathtt{7}}",                                        // Unicode U+1D7FD
+	"char/0x1d7fe/textmode": "{\\mathtt{8}}",                                        // Unicode U+1D7FE
+	"char/0x1d7ff/textmode": "{\\mathtt{9}}",                                        // Unicode U+1D7FF
+	"char/0x1f514/textmode": "{\\bell}",                                             // Unicode U+1F514
+	"char/0x1f868/textmode": "{\\leftarrow}",                                        // Unicode U+1F868
+	"char/0x1f869/textmode": "{\\uparrow}",                                          // Unicode U+1F869
+	"char/0x1f86a/textmode": "{\\rightarrow}",                                       // Unicode U+1F86A
+	"char/0x1f86b/textmode": "{\\downarrow}",                                        // Unicode U+1F86B
+	"char/0xe901/mathmode":  "\\mathbin{\u2a72\\vphantom{A}}",                       // MTCode 0xE901 -> U+2A72
+	"char/0xe902/mathmode":  "\\mathbin{\u2a71\\vphantom{A}}",                       // MTCode 0xE902 -> U+2A71
+	"char/0xe903/mathmode":  "\\mathbin{\u2a26\\vphantom{A}}",                       // MTCode 0xE903 -> U+2A26
+	"char/0xe904/mathmode":  "\\tilde{+}",                                           // MTCode 0xE904 -> U+2A24
+	"char/0xe90a/mathmode":  "\\mathrel{\\bar{\\not\\in}}",                          // MTCode 0xE90A -> U+22FE
+	"char/0xe90b/textmode":  "{\\supseteq}",                                         // MTCode 0xE90B -> U+2287
+	"char/0xe90c/textmode":  "{\\subseteq}",                                         // MTCode 0xE90C -> U+2286
+	"char/0xe912/mathmode":  "\\mathrel{\\bar{\\in}}",                               // MTCode 0xE912 -> U+22F7
+	"char/0xe913/mathmode":  "\\mathrel{\u2a9a\\vphantom{A}}",                       // MTCode 0xE913 -> U+2A9A
+	"char/0xe914/mathmode":  "\\mathrel{\u2ac8\\vphantom{A}}",                       // MTCode 0xE914 -> U+2AC8
+	"char/0xe915/mathmode":  "\\mathrel{\\stackrel{\\subset}{\\sim}}",               // MTCode 0xE915 -> U+2AC7
+	"char/0xe916/mathmode":  "\\mathbin{\u2abe\\vphantom{A}}",                       // MTCode 0xE916 -> U+2ABE
+	"char/0xe917/mathmode":  "\\mathbin{\u2abd\\vphantom{A}}",                       // MTCode 0xE917 -> U+2ABD
+	"char/0xe918/mathmode":  "\\mathrel{\u2a66\\vphantom{A}}",                       // MTCode 0xE918 -> U+2A66
+	"char/0xe922/textmode":  "{\\lesseqgtr}",                                        // MTCode 0xE922 -> U+22DA
+	"char/0xe924/mathmode":  "\\mathrel{\u2a6a\\vphantom{A}}",                       // MTCode 0xE924 -> U+2A6A
+	"char/0xe926/textmode":  "{\\lesseqqgtr}",                                       // MTCode 0xE926 -> U+2A8B
+	"char/0xe927/textmode":  "{\\gtreqqless}",                                       // MTCode 0xE927 -> U+2A8C
+	"char/0xe928/textmode":  "{\\lesssim}",                                          // MTCode 0xE928 -> U+2272
+	"char/0xe929/textmode":  "{\\gtrsim}",                                           // MTCode 0xE929 -> U+2273
+	"char/0xe92d/textmode":  "{\\gtreqless}",                                        // MTCode 0xE92D -> U+22DB
+	"char/0xe92e/textmode":  "{\\textbar}",                                          // MTCode 0xE92E -> U+007C
+	"char/0xe930/textmode":  "{\\biginterleave}",                                    // MTCode 0xE930 -> U+2AFC
+	"char/0xe932/textmode":  "{\\lesssim}",                                          // MTCode 0xE932 -> U+2272
+	"char/0xe933/textmode":  "{\\gtrsim}",                                           // MTCode 0xE933 -> U+2273
+	"char/0xe936/textmode":  "{\\NestedLessLess}",                                   // MTCode 0xE936 -> U+2AA1
+	"char/0xe937/textmode":  "{\\NestedGreaterGreater}",                             // MTCode 0xE937 -> U+2AA2
+	"char/0xe93a/textmode":  "{\\precapprox}",                                       // MTCode 0xE93A -> U+2AB7
+	"char/0xe93b/textmode":  "{\\succapprox}",                                       // MTCode 0xE93B -> U+2AB8
+	"char/0xe940/textmode":  "{\\preceqq}",                                          // MTCode 0xE940 -> U+2AB3
+	"char/0xe941/textmode":  "{\\succeqq}",                                          // MTCode 0xE941 -> U+2AB4
+	"char/0xe948/mathmode":  "\\mathrel{\u2ae4\\vphantom{A}}",                       // MTCode 0xE948 -> U+2AE4
+	"char/0xe949/mathmode":  "\\mathrel{\u223e\\vphantom{A}}",                       // MTCode 0xE949 -> U+223E
+	"char/0xe94a/textmode":  "{\\dashv}",                                            // MTCode 0xE94A -> U+22A3
+	"char/0xe94b/textmode":  "{\\Equal}",                                            // MTCode 0xE94B -> U+2A75
+	"char/0xe94c/textmode":  "{\\Same}",                                             // MTCode 0xE94C -> U+2A76
+	"char/0xe94e/textmode":  "{\\equiv}",                                            // MTCode 0xE94E -> U+2261
+	"char/0xe950/textmode":  "{\\LeftTriangleBar}",                                  // MTCode 0xE950 -> U+29CF
+	"char/0xe951/textmode":  "{\\RightTriangleBar}",                                 // MTCode 0xE951 -> U+29D0
+	"char/0xe954/textmode":  "{\\supset}",                                           // MTCode 0xE954 -> U+2283
+	"char/0xe955/textmode":  "{\\smile}",                                            // MTCode 0xE955 -> U+2323
+	"char/0xe956/textmode":  "{\\frown}",                                            // MTCode 0xE956 -> U+2322
+	"char/0xe959/mathmode":  "\\mathrel{\u2a90\\vphantom{A}}",                       // MTCode 0xE959 -> U+2A90
+	"char/0xe95a/mathmode":  "\\mathrel{\u2a8f\\vphantom{A}}",                       // MTCode 0xE95A -> U+2A8F
+	"char/0xe95c/mathmode":  "\\mathrel{\u2a53\\vphantom{A}}",                       // MTCode 0xE95C -> U+2A53
+	"char/0xe95d/mathmode":  "\\mathrel{\u2a54\\vphantom{A}}",                       // MTCode 0xE95D -> U+2A54
+	"char/0xe962/mathmode":  "\\mathrel{\\not \u2a70}",                              // MTCode 0xE962 -> U+2A70
+	"char/0xe966/mathmode":  "\\mathrel{\u2a78\\vphantom{A}}",                       // MTCode 0xE966 -> U+2A78
+	"char/0xe96d/textmode":  "{\\bumpeq}",                                           // MTCode 0xE96D -> U+224F
+	"char/0xe96e/mathmode":  "\\mathrel{\u2aa4\\vphantom{A}}",                       // MTCode 0xE96E -> U+2AA4
+	"char/0xe970/mathmode":  "\\mathrel{\u2ad6\\vphantom{A}}",                       // MTCode 0xE970 -> U+2AD6
+	"char/0xe971/mathmode":  "\\mathrel{\u2ad5\\vphantom{A}}",                       // MTCode 0xE971 -> U+2AD5
+	"char/0xe972/mathmode":  "\\mathrel{\u2ad4\\vphantom{A}}",                       // MTCode 0xE972 -> U+2AD4
+	"char/0xe973/mathmode":  "\\mathrel{\u2ad3\\vphantom{A}}",                       // MTCode 0xE973 -> U+2AD3
+	"char/0xe979/textmode":  "{\\interleave}",                                       // MTCode 0xE979 -> U+2AF4
+	"char/0xe97b/mathmode":  "\\mathrel{\u2ae8\\vphantom{A}}",                       // MTCode 0xE97B -> U+2AE8
+	"char/0xe97e/mathmode":  "\\mathrel{\u2ae9\\vphantom{A}}",                       // MTCode 0xE97E -> U+2AE9
+	"char/0xe97f/mathmode":  "\\mathrel{\u2ae4\\vphantom{A}}",                       // MTCode 0xE97F -> U+2AE4
+	"char/0xe981/textmode":  "{\\sslash}",                                           // MTCode 0xE981 -> U+2AFD
+	"char/0xe982/mathmode":  "{\u299c\\vphantom{A}}",                                // MTCode 0xE982 -> U+299C
+	"char/0xe984/mathmode":  "\\mathbin{\u29b6\\vphantom{A}}",                       // MTCode 0xE984 -> U+29B6
+	"char/0xe985/mathmode":  "\\mathbin{\u2a38\\vphantom{A}}",                       // MTCode 0xE985 -> U+2A38
+	"char/0xe98e/mathmode":  "\\mathrel{\u297e\\vphantom{A}}",                       // MTCode 0xE98E -> U+297E
+	"char/0xe98f/textmode":  "{\\spot}",                                             // MTCode 0xE98F -> U+2981
+	"char/0xe992/mathmode":  "\\mathbin{\u2a33\\vphantom{A}}",                       // MTCode 0xE992 -> U+2A33
+	"char/0xe994/mathmode":  "\\mathrel{\u29e5\\vphantom{A}}",                       // MTCode 0xE994 -> U+29E5
+	"char/0xe996/mathmode":  "\\mathrel{\u2af0\\vphantom{A}}",                       // MTCode 0xE996 -> U+2AF0
+	"char/0xe998/textmode":  "{\\leftmoon}",                                         // MTCode 0xE998 -> U+263E
+	"char/0xe999/textmode":  "{\\smiley}",                                           // MTCode 0xE999 -> U+263A
+	"char/0xe9a6/mathmode":  "\\tilde{+}",                                           // MTCode 0xE9A6 -> U+2A24
+	"char/0xe9a7/mathmode":  "\\mathbin{\u2a26\\vphantom{A}}",                       // MTCode 0xE9A7 -> U+2A26
+	"char/0xeb01/textmode":  "\\hspace{0pt}",                                        // MTCode 0xEB01 -> U+200B
+	"char/0xeb02/textmode":  "\\,",                                                  // MTCode 0xEB02 -> U+2009
+	"char/0xeb03/textmode":  "\\,",                                                  // MTCode 0xEB03 -> U+2005
+	"char/0xeb04/textmode":  "\\,",                                                  // MTCode 0xEB04 -> U+2004
+	"char/0xeb05/textmode":  "{\\quad}",                                             // MTCode 0xEB05 -> U+2003
+	"char/0xeb06/textmode":  "{\\quad}",                                             // MTCode 0xEB06 -> U+2003
+	"char/0xeb07/textmode":  "\\,",                                                  // MTCode 0xEB07 -> U+2009
+	"char/0xeb08/textmode":  "{\\enspace}",                                          // MTCode 0xEB08 -> U+2002
+	"char/0xed01/textmode":  "{\\Game}",                                             // MTCode 0xED01 -> U+2141
+	"char/0xed02/textmode":  "{\\jmath}",                                            // MTCode 0xED02 -> U+1D6A5
+	"char/0xed03/textmode":  "\\boldsymbol{\\digamma}",                              // MTCode 0xED03 -> U+03DD
+	"char/0xed04/textmode":  "{\\DifferentialD}",                                    // MTCode 0xED04 -> U+2146
+	"char/0xed05/textmode":  "{\\ExponetialE}",                                      // MTCode 0xED05 -> U+2147
+	"char/0xed06/textmode":  "{\\ComplexI}",                                         // MTCode 0xED06 -> U+2148
+	"char/0xed07/textmode":  "{\\ComplexJ}",                                         // MTCode 0xED07 -> U+2149
+	"char/0xed08/textmode":  "{\\CapitalDifferentialD}",                             // MTCode 0xED08 -> U+2145
+	"char/0xef01/textmode":  "\\hspace{0pt}",                                        // MTCode 0xEF01 -> U+200B
+	"char/0xef02/textmode":  "\\,",                                                  // MTCode 0xEF02 -> U+2009
+	"char/0xef03/textmode":  "\\,",                                                  // MTCode 0xEF03 -> U+2005
+	"char/0xef04/textmode":  "\\,",                                                  // MTCode 0xEF04 -> U+2004
+	"char/0xef05/textmode":  "{\\quad}",                                             // MTCode 0xEF05 -> U+2003
+	"char/0xef06/textmode":  "{\\quad}",                                             // MTCode 0xEF06 -> U+2003
+	"char/0xef07/textmode":  "\\,",                                                  // MTCode 0xEF07 -> U+2009
+	"char/0xef08/textmode":  "{\\enspace}",                                          // MTCode 0xEF08 -> U+2002
+	"char/0xef80/textmode":  "{\\varointclockwise}",                                 // MTCode 0xEF80 -> U+2232
+	"char/0xef81/textmode":  "{\\sqint}",                                            // MTCode 0xEF81 -> U+2A16
+	"char/0xef82/textmode":  "{\\fint}",                                             // MTCode 0xEF82 -> U+2A0F
+	"char/0x0022/textmode":  "{\\forall}",                                           // Symbol 0x0022 -> U+2200
+	"char/0x0024/textmode":  "{\\exists}",                                           // Symbol 0x0024 -> U+2203
+	"char/0x0027/textmode":  "{\\ni}",                                               // Symbol 0x0027 -> U+220D
+	"char/0x002a/textmode":  "{\\ast}",                                              // Symbol 0x002A -> U+2217
+	"char/0x002d/textmode":  "{-}",                                                  // Symbol 0x002D -> U+2212
+	"char/0x0040/textmode":  "{\\cong}",                                             // Symbol 0x0040 -> U+2245
+	"char/0x0041/textmode":  "A",                                                    // Symbol 0x0041 -> U+0391
+	"char/0x0042/textmode":  "B",                                                    // Symbol 0x0042 -> U+0392
+	"char/0x0043/textmode":  "\u03a7",                                               // Symbol 0x0043 -> U+03A7
+	"char/0x0044/textmode":  "{\\Delta}",                                            // Symbol 0x0044 -> U+0394
+	"char/0x0045/textmode":  "E",                                                    // Symbol 0x0045 -> U+0395
+	"char/0x0046/textmode":  "{\\Phi}",                                              // Symbol 0x0046 -> U+03A6
+	"char/0x0047/textmode":  "{\\Gamma}",                                            // Symbol 0x0047 -> U+0393
+	"char/0x0048/textmode":  "H",                                                    // Symbol 0x0048 -> U+0397
+	"char/0x0049/textmode":  "I",                                                    // Symbol 0x0049 -> U+0399
+	"char/0x004a/textmode":  "{\\vartheta}",                                         // Symbol 0x004A -> U+03D1
+	"char/0x004b/textmode":  "K",                                                    // Symbol 0x004B -> U+039A
+	"char/0x004c/textmode":  "{\\Lambda}",                                           // Symbol 0x004C -> U+039B
+	"char/0x004d/textmode":  "M",                                                    // Symbol 0x004D -> U+039C
+	"char/0x004e/textmode":  "N",                                                    // Symbol 0x004E -> U+039D
+	"char/0x004f/textmode":  "O",                                                    // Symbol 0x004F -> U+039F
+	"char/0x0050/textmode":  "{\\Pi}",                                               // Symbol 0x0050 -> U+03A0
+	"char/0x0051/textmode":  "{\\Theta}",                                            // Symbol 0x0051 -> U+0398
+	"char/0x0052/textmode":  "P",                                                    // Symbol 0x0052 -> U+03A1
+	"char/0x0053/textmode":  "{\\Sigma}",                                            // Symbol 0x0053 -> U+03A3
+	"char/0x0054/textmode":  "T",                                                    // Symbol 0x0054 -> U+03A4
+	"char/0x0055/textmode":  "{\\Upsilon}",                                          // Symbol 0x0055 -> U+03A5
+	"char/0x0056/textmode":  "{\\varsigma}",                                         // Symbol 0x0056 -> U+03C2
+	"char/0x0057/textmode":  "{\\Omega}",                                            // Symbol 0x0057 -> U+03A9
+	"char/0x0058/textmode":  "{\\Xi}",                                               // Symbol 0x0058 -> U+039E
+	"char/0x0059/textmode":  "{\\Psi}",                                              // Symbol 0x0059 -> U+03A8
+	"char/0x005a/textmode":  "\u0396",                                               // Symbol 0x005A -> U+0396
+	"char/0x005c/textmode":  "{\\therefore}",                                        // Symbol 0x005C -> U+2234
+	"char/0x0061/textmode":  "{\\alpha}",                                            // Symbol 0x0061 -> U+03B1
+	"char/0x0062/textmode":  "{\\beta}",                                             // Symbol 0x0062 -> U+03B2
+	"char/0x0063/textmode":  "{\\chi}",                                              // Symbol 0x0063 -> U+03C7
+	"char/0x0064/textmode":  "{\\delta}",                                            // Symbol 0x0064 -> U+03B4
+	"char/0x0065/textmode":  "{\\varepsilon}",                                       // Symbol 0x0065 -> U+03B5
+	"char/0x0066/textmode":  "{\\phi}",                                              // Symbol 0x0066 -> U+03D5
+	"char/0x0067/textmode":  "{\\gamma}",                                            // Symbol 0x0067 -> U+03B3
+	"char/0x0068/textmode":  "{\\eta}",                                              // Symbol 0x0068 -> U+03B7
+	"char/0x0069/textmode":  "{\\iota}",                                             // Symbol 0x0069 -> U+03B9
+	"char/0x006a/textmode":  "{\\varphi}",                                           // Symbol 0x006A -> U+03C6
+	"char/0x006b/textmode":  "{\\kappa}",                                            // Symbol 0x006B -> U+03BA
+	"char/0x006c/textmode":  "{\\lambda}",                                           // Symbol 0x006C -> U+03BB
+	"char/0x006d/textmode":  "{\\mu}",                                               // Symbol 0x006D -> U+03BC
+	"char/0x006e/textmode":  "{\\nu}",                                               // Symbol 0x006E -> U+03BD
+	"char/0x006f/textmode":  "o",                                                    // Symbol 0x006F -> U+03BF
+	"char/0x0070/textmode":  "{\\pi}",                                               // Symbol 0x0070 -> U+03C0
+	"char/0x0071/textmode":  "{\\theta}",                                            // Symbol 0x0071 -> U+03B8
+	"char/0x0072/textmode":  "{\\rho}",                                              // Symbol 0x0072 -> U+03C1
+	"char/0x0073/textmode":  "{\\sigma}",                                            // Symbol 0x0073 -> U+03C3
+	"char/0x0074/textmode":  "{\\tau}",                                              // Symbol 0x0074 -> U+03C4
+	"char/0x0075/textmode":  "{\\upsilon}",                                          // Symbol 0x0075 -> U+03C5
+	"char/0x0076/textmode":  "{\\varpi}",                                            // Symbol 0x0076 -> U+03D6
+	"char/0x0077/textmode":  "{\\omega}",                                            // Symbol 0x0077 -> U+03C9
+	"char/0x0078/textmode":  "{\\xi}",                                               // Symbol 0x0078 -> U+03BE
+	"char/0x0079/textmode":  "{\\psi}",                                              // Symbol 0x0079 -> U+03C8
+	"char/0x007a/textmode":  "{\\zeta}",                                             // Symbol 0x007A -> U+03B6
+	"char/0x0080/textmode":  "{\\Square}",                                           // Symbol 0x0080 -> U+2610
+	"char/0x00a1/mathmode":  "\\Upsilon",                                            // Symbol 0x00A1 -> U+03D2
+	"char/0x00a6/textmode":  "{\\mathit{f}}",                                        // Symbol 0x00A6 -> U+0192
+	"char/0x00a8/textmode":  "{\\blacklozenge}",                                     // Symbol 0x00A8 -> U+2666
+	"char/0x00aa/textmode":  "{\\spadesuit}",                                        // Symbol 0x00AA -> U+2660
+	"char/0x00af/textmode":  "{\\downarrow}",                                        // Symbol 0x00AF -> U+2193
+	"char/0x00b4/textmode":  "{\\times}",                                            // Symbol 0x00B4 -> U+00D7
+	"char/0x00b7/textmode":  "{\\textbullet}",                                       // Symbol 0x00B7 -> U+2022
+	"char/0x00b8/textmode":  "{\\div}",                                              // Symbol 0x00B8 -> U+00F7
+	"char/0x00bc/textmode":  "{\\ldots}",                                            // Symbol 0x00BC -> U+2026
+	"char/0x00c0/textmode":  "{\\aleph}",                                            // Symbol 0x00C0 -> U+2135
+	"char/0x00c1/textmode":  "{\\Im}",                                               // Symbol 0x00C1 -> U+2111
+	"char/0x00c2/textmode":  "{\\Re}",                                               // Symbol 0x00C2 -> U+211C
+	"char/0x00c3/textmode":  "{\\wp}",                                               // Symbol 0x00C3 -> U+2118
+	"char/0x00c7/textmode":  "{\\cap}",                                              // Symbol 0x00C7 -> U+2229
+	"char/0x00c8/textmode":  "{\\cup}",                                              // Symbol 0x00C8 -> U+222A
+	"char/0x00c9/textmode":  "{\\supset}",                                           // Symbol 0x00C9 -> U+2283
+	"char/0x00ca/textmode":  "{\\supseteq}",                                         // Symbol 0x00CA -> U+2287
+	"char/0x00cb/textmode":  "{\\nsubset}",                                          // Symbol 0x00CB -> U+2284
+	"char/0x00cc/textmode":  "{\\subset}",                                           // Symbol 0x00CC -> U+2282
+	"char/0x00cd/textmode":  "{\\subseteq}",                                         // Symbol 0x00CD -> U+2286
+	"char/0x00ce/textmode":  "{\\in}",                                               // Symbol 0x00CE -> U+2208
+	"char/0x00cf/textmode":  "{\\notin}",                                            // Symbol 0x00CF -> U+2209
+	"char/0x00d0/textmode":  "{\\angle}",                                            // Symbol 0x00D0 -> U+2220
+	"char/0x00d1/textmode":  "{\\nabla}",                                            // Symbol 0x00D1 -> U+2207
+	"char/0x00d2/textmode":  "{\\textregistered}",                                   // Symbol 0x00D2 -> U+00AE
+	"char/0x00d3/textmode":  "{\\textcopyright}",                                    // Symbol 0x00D3 -> U+00A9
+	"char/0x00d4/textmode":  "{\\texttrademark}",                                    // Symbol 0x00D4 -> U+2122
+	"char/0x00d5/textmode":  "{\\prod}",                                             // Symbol 0x00D5 -> U+220F
+	"char/0x00d9/textmode":  "{\\wedge}",                                            // Symbol 0x00D9 -> U+2227
+	"char/0x00da/textmode":  "{\\vee}",                                              // Symbol 0x00DA -> U+2228
+	"char/0x00db/textmode":  "{\\Leftrightarrow}",                                   // Symbol 0x00DB -> U+21D4
+	"char/0x00dd/textmode":  "{\\Uparrow}",                                          // Symbol 0x00DD -> U+21D1
+	"char/0x00de/textmode":  "{\\Rightarrow}",                                       // Symbol 0x00DE -> U+21D2
+	"char/0x00e0/textmode":  "{\\diamond}",                                          // Symbol 0x00E0 -> U+22C4
+	"char/0x00e1/textmode":  "{\\langle}",                                           // Symbol 0x00E1 -> U+2329
+	"char/0x00e2/textmode":  "{\\textregistered}",                                   // Symbol 0x00E2 -> U+00AE
+	"char/0x00e3/textmode":  "{\\textcopyright}",                                    // Symbol 0x00E3 -> U+00A9
+	"char/0x00f1/textmode":  "{\\rangle}",                                           // Symbol 0x00F1 -> U+232A
+	"char/0x00f2/textmode":  "{\\int}",                                              // Symbol 0x00F2 -> U+222B
+	"char/0x00f3/textmode":  "{\\inttop}",                                           // Symbol 0x00F3 -> U+2320
+	"char/0x00f5/textmode":  "{\\intbottom}",                                        // Symbol 0x00F5 -> U+2321
+	"char/0x00ff/textmode":  "{\\Square}",                                           // Symbol 0x00FF -> U+2610
+	"char/0xf021/textmode":  "!",                                                    // Symbol 0xF021 -> U+0021
+	"char/0xf022/textmode":  "{\\forall}",                                           // Symbol 0xF022 -> U+2200
+	"char/0xf023/mathmode":  "\\#",                                                  // Symbol 0xF023 -> U+0023
+	"char/0xf024/textmode":  "{\\exists}",                                           // Symbol 0xF024 -> U+2203
+	"char/0xf025/mathmode":  "\\%",                                                  // Symbol 0xF025 -> U+0025
+	"char/0xf026/mathmode":  "\\&",                                                  // Symbol 0xF026 -> U+0026
+	"char/0xf027/textmode":  "{\\ni}",                                               // Symbol 0xF027 -> U+220D
+	"char/0xf028/mathmode":  "(",                                                    // Symbol 0xF028 -> U+0028
+	"char/0xf029/mathmode":  ")",                                                    // Symbol 0xF029 -> U+0029
+	"char/0xf02a/textmode":  "{\\ast}",                                              // Symbol 0xF02A -> U+2217
+	"char/0xf02b/mathmode":  "+",                                                    // Symbol 0xF02B -> U+002B
+	"char/0xf02c/mathmode":  "\\text{,}",                                            // Symbol 0xF02C -> U+002C
+	"char/0xf02d/textmode":  "{-}",                                                  // Symbol 0xF02D -> U+2212
+	"char/0xf02e/mathmode":  "\\text{.}",                                            // Symbol 0xF02E -> U+002E
+	"char/0xf02f/mathmode":  "/",                                                    // Symbol 0xF02F -> U+002F
+	"char/0xf03a/textmode":  "\\colon",                                              // Symbol 0xF03A -> U+003A
+	"char/0xf03b/mathmode":  "\\text{;}",                                            // Symbol 0xF03B -> U+003B
+	"char/0xf03c/textmode":  "{\\textless}",                                         // Symbol 0xF03C -> U+003C
+	"char/0xf03d/mathmode":  "=",                                                    // Symbol 0xF03D -> U+003D
+	"char/0xf03e/textmode":  "{\\textgreater}",                                      // Symbol 0xF03E -> U+003E
+	"char/0xf03f/mathmode":  "\\text{?}",                                            // Symbol 0xF03F -> U+003F
+	"char/0xf040/textmode":  "{\\cong}",                                             // Symbol 0xF040 -> U+2245
+	"char/0xf041/textmode":  "A",                                                    // Symbol 0xF041 -> U+0391
+	"char/0xf042/textmode":  "B",                                                    // Symbol 0xF042 -> U+0392
+	"char/0xf043/textmode":  "\u03a7",                                               // Symbol 0xF043 -> U+03A7
+	"char/0xf044/textmode":  "{\\Delta}",                                            // Symbol 0xF044 -> U+0394
+	"char/0xf045/textmode":  "E",                                                    // Symbol 0xF045 -> U+0395
+	"char/0xf046/textmode":  "{\\Phi}",                                              // Symbol 0xF046 -> U+03A6
+	"char/0xf047/textmode":  "{\\Gamma}",                                            // Symbol 0xF047 -> U+0393
+	"char/0xf048/textmode":  "H",                                                    // Symbol 0xF048 -> U+0397
+	"char/0xf049/textmode":  "I",                                                    // Symbol 0xF049 -> U+0399
+	"char/0xf04a/textmode":  "{\\vartheta}",                                         // Symbol 0xF04A -> U+03D1
+	"char/0xf04b/textmode":  "K",                                                    // Symbol 0xF04B -> U+039A
+	"char/0xf04c/textmode":  "{\\Lambda}",                                           // Symbol 0xF04C -> U+039B
+	"char/0xf04d/textmode":  "M",                                                    // Symbol 0xF04D -> U+039C
+	"char/0xf04e/textmode":  "N",                                                    // Symbol 0xF04E -> U+039D
+	"char/0xf04f/textmode":  "O",                                                    // Symbol 0xF04F -> U+039F
+	"char/0xf050/textmode":  "{\\Pi}",                                               // Symbol 0xF050 -> U+03A0
+	"char/0xf051/textmode":  "{\\Theta}",                                            // Symbol 0xF051 -> U+0398
+	"char/0xf052/textmode":  "P",                                                    // Symbol 0xF052 -> U+03A1
+	"char/0xf053/textmode":  "{\\Sigma}",                                            // Symbol 0xF053 -> U+03A3
+	"char/0xf054/textmode":  "T",                                                    // Symbol 0xF054 -> U+03A4
+	"char/0xf055/textmode":  "{\\Upsilon}",                                          // Symbol 0xF055 -> U+03A5
+	"char/0xf056/textmode":  "{\\varsigma}",                                         // Symbol 0xF056 -> U+03C2
+	"char/0xf057/textmode":  "{\\Omega}",                                            // Symbol 0xF057 -> U+03A9
+	"char/0xf058/textmode":  "{\\Xi}",                                               // Symbol 0xF058 -> U+039E
+	"char/0xf059/textmode":  "{\\Psi}",                                              // Symbol 0xF059 -> U+03A8
+	"char/0xf05a/textmode":  "\u0396",                                               // Symbol 0xF05A -> U+0396
+	"char/0xf05b/mathmode":  "[",                                                    // Symbol 0xF05B -> U+005B
+	"char/0xf05c/textmode":  "{\\therefore}",                                        // Symbol 0xF05C -> U+2234
+	"char/0xf05d/mathmode":  "]",                                                    // Symbol 0xF05D -> U+005D
+	"char/0xf05e/textmode":  "{\\bot}",                                              // Symbol 0xF05E -> U+22A5
+	"char/0xf05f/mathmode":  "\\_",                                                  // Symbol 0xF05F -> U+005F
+	"char/0xf061/textmode":  "{\\alpha}",                                            // Symbol 0xF061 -> U+03B1
+	"char/0xf062/textmode":  "{\\beta}",                                             // Symbol 0xF062 -> U+03B2
+	"char/0xf063/textmode":  "{\\chi}",                                              // Symbol 0xF063 -> U+03C7
+	"char/0xf064/textmode":  "{\\delta}",                                            // Symbol 0xF064 -> U+03B4
+	"char/0xf065/textmode":  "{\\varepsilon}",                                       // Symbol 0xF065 -> U+03B5
+	"char/0xf066/textmode":  "{\\phi}",                                              // Symbol 0xF066 -> U+03D5
+	"char/0xf067/textmode":  "{\\gamma}",                                            // Symbol 0xF067 -> U+03B3
+	"char/0xf068/textmode":  "{\\eta}",                                              // Symbol 0xF068 -> U+03B7
+	"char/0xf069/textmode":  "{\\iota}",                                             // Symbol 0xF069 -> U+03B9
+	"char/0xf06a/textmode":  "{\\varphi}",                                           // Symbol 0xF06A -> U+03C6
+	"char/0xf06b/textmode":  "{\\kappa}",                                            // Symbol 0xF06B -> U+03BA
+	"char/0xf06c/textmode":  "{\\lambda}",                                           // Symbol 0xF06C -> U+03BB
+	"char/0xf06d/textmode":  "{\\mu}",                                               // Symbol 0xF06D -> U+03BC
+	"char/0xf06e/textmode":  "{\\nu}",                                               // Symbol 0xF06E -> U+03BD
+	"char/0xf06f/textmode":  "o",                                                    // Symbol 0xF06F -> U+03BF
+	"char/0xf070/textmode":  "{\\pi}",                                               // Symbol 0xF070 -> U+03C0
+	"char/0xf071/textmode":  "{\\theta}",                                            // Symbol 0xF071 -> U+03B8
+	"char/0xf072/textmode":  "{\\rho}",                                              // Symbol 0xF072 -> U+03C1
+	"char/0xf073/textmode":  "{\\sigma}",                                            // Symbol 0xF073 -> U+03C3
+	"char/0xf074/textmode":  "{\\tau}",                                              // Symbol 0xF074 -> U+03C4
+	"char/0xf075/textmode":  "{\\upsilon}",                                          // Symbol 0xF075 -> U+03C5
+	"char/0xf076/textmode":  "{\\varpi}",                                            // Symbol 0xF076 -> U+03D6
+	"char/0xf077/textmode":  "{\\omega}",                                            // Symbol 0xF077 -> U+03C9
+	"char/0xf078/textmode":  "{\\xi}",                                               // Symbol 0xF078 -> U+03BE
+	"char/0xf079/textmode":  "{\\psi}",                                              // Symbol 0xF079 -> U+03C8
+	"char/0xf07a/textmode":  "{\\zeta}",                                             // Symbol 0xF07A -> U+03B6
+	"char/0xf07c/textmode":  "{\\textbar}",                                          // Symbol 0xF07C -> U+007C
+	"char/0xf07e/textmode":  "{\\sim}",                                              // Symbol 0xF07E -> U+223C
+	"char/0xf080/textmode":  "{\\Square}",                                           // Symbol 0xF080 -> U+2610
+	"char/0xf0a0/textmode":  "{\\square}",                                           // Symbol 0xF0A0 -> U+25A1
+	"char/0xf0a1/mathmode":  "\\Upsilon",                                            // Symbol 0xF0A1 -> U+03D2
+	"char/0xf0a2/textmode":  "^{\\prime}",                                           // Symbol 0xF0A2 -> U+2032
+	"char/0xf0a3/textmode":  "{\\leq}",                                              // Symbol 0xF0A3 -> U+2264
+	"char/0xf0a5/textmode":  "{\\infty}",                                            // Symbol 0xF0A5 -> U+221E
+	"char/0xf0a6/textmode":  "{\\mathit{f}}",                                        // Symbol 0xF0A6 -> U+0192
+	"char/0xf0a7/textmode":  "{\\clubsuit}",                                         // Symbol 0xF0A7 -> U+2663
+	"char/0xf0a8/textmode":  "{\\blacklozenge}",                                     // Symbol 0xF0A8 -> U+2666
+	"char/0xf0a9/textmode":  "{\\varheartsuit}",                                     // Symbol 0xF0A9 -> U+2665
+	"char/0xf0aa/textmode":  "{\\spadesuit}",                                        // Symbol 0xF0AA -> U+2660
+	"char/0xf0ab/textmode":  "{\\leftrightarrow}",                                   // Symbol 0xF0AB -> U+2194
+	"char/0xf0ac/textmode":  "{\\leftarrow}",                                        // Symbol 0xF0AC -> U+2190
+	"char/0xf0ad/textmode":  "{\\uparrow}",                                          // Symbol 0xF0AD -> U+2191
+	"char/0xf0ae/textmode":  "{\\rightarrow}",                                       // Symbol 0xF0AE -> U+2192
+	"char/0xf0af/textmode":  "{\\downarrow}",                                        // Symbol 0xF0AF -> U+2193
+	"char/0xf0b0/textmode":  "^{\\circ}",                                            // Symbol 0xF0B0 -> U+00B0
+	"char/0xf0b1/textmode":  "{\\pm}",                                               // Symbol 0xF0B1 -> U+00B1
+	"char/0xf0b2/textmode":  "^{\\prime\\prime}",                                    // Symbol 0xF0B2 -> U+2033
+	"char/0xf0b3/textmode":  "{\\geq}",                                              // Symbol 0xF0B3 -> U+2265
+	"char/0xf0b4/textmode":  "{\\times}",                                            // Symbol 0xF0B4 -> U+00D7
+	"char/0xf0b5/textmode":  "{\\propto}",                                           // Symbol 0xF0B5 -> U+221D
+	"char/0xf0b6/textmode":  "{\\partial}",                                          // Symbol 0xF0B6 -> U+2202
+	"char/0xf0b7/textmode":  "{\\textbullet}",                                       // Symbol 0xF0B7 -> U+2022
+	"char/0xf0b8/textmode":  "{\\div}",                                              // Symbol 0xF0B8 -> U+00F7
+	"char/0xf0b9/textmode":  "{\\neq}",                                              // Symbol 0xF0B9 -> U+2260
+	"char/0xf0ba/textmode":  "{\\equiv}",                                            // Symbol 0xF0BA -> U+2261
+	"char/0xf0bb/textmode":  "{\\approx}",                                           // Symbol 0xF0BB -> U+2248
+	"char/0xf0bc/textmode":  "{\\ldots}",                                            // Symbol 0xF0BC -> U+2026
+	"char/0xf0bd/mathmode":  "|",                                                    // Symbol 0xF0BD -> U+23D0
+	"char/0xf0c0/textmode":  "{\\aleph}",                                            // Symbol 0xF0C0 -> U+2135
+	"char/0xf0c1/textmode":  "{\\Im}",                                               // Symbol 0xF0C1 -> U+2111
+	"char/0xf0c2/textmode":  "{\\Re}",                                               // Symbol 0xF0C2 -> U+211C
+	"char/0xf0c3/textmode":  "{\\wp}",                                               // Symbol 0xF0C3 -> U+2118
+	"char/0xf0c4/textmode":  "{\\otimes}",                                           // Symbol 0xF0C4 -> U+2297
+	"char/0xf0c5/textmode":  "{\\oplus}",                                            // Symbol 0xF0C5 -> U+2295
+	"char/0xf0c6/textmode":  "{\\varnothing}",                                       // Symbol 0xF0C6 -> U+2205
+	"char/0xf0c7/textmode":  "{\\cap}",                                              // Symbol 0xF0C7 -> U+2229
+	"char/0xf0c8/textmode":  "{\\cup}",                                              // Symbol 0xF0C8 -> U+222A
+	"char/0xf0c9/textmode":  "{\\supset}",                                           // Symbol 0xF0C9 -> U+2283
+	"char/0xf0ca/textmode":  "{\\supseteq}",                                         // Symbol 0xF0CA -> U+2287
+	"char/0xf0cb/textmode":  "{\\nsubset}",                                          // Symbol 0xF0CB -> U+2284
+	"char/0xf0cc/textmode":  "{\\subset}",                                           // Symbol 0xF0CC -> U+2282
+	"char/0xf0cd/textmode":  "{\\subseteq}",                                         // Symbol 0xF0CD -> U+2286
+	"char/0xf0ce/textmode":  "{\\in}",                                               // Symbol 0xF0CE -> U+2208
+	"char/0xf0cf/textmode":  "{\\notin}",                                            // Symbol 0xF0CF -> U+2209
+	"char/0xf0d0/textmode":  "{\\angle}",                                            // Symbol 0xF0D0 -> U+2220
+	"char/0xf0d1/textmode":  "{\\nabla}",                                            // Symbol 0xF0D1 -> U+2207
+	"char/0xf0d2/textmode":  "{\\textregistered}",                                   // Symbol 0xF0D2 -> U+00AE
+	"char/0xf0d3/textmode":  "{\\textcopyright}",                                    // Symbol 0xF0D3 -> U+00A9
+	"char/0xf0d4/textmode":  "{\\texttrademark}",                                    // Symbol 0xF0D4 -> U+2122
+	"char/0xf0d5/textmode":  "{\\prod}",                                             // Symbol 0xF0D5 -> U+220F
+	"char/0xf0d6/textmode":  "{\\sqrt{}}",                                           // Symbol 0xF0D6 -> U+221A
+	"char/0xf0d7/textmode":  "{\\cdot}",                                             // Symbol 0xF0D7 -> U+22C5
+	"char/0xf0d8/textmode":  "{\\neg}",                                              // Symbol 0xF0D8 -> U+00AC
+	"char/0xf0d9/textmode":  "{\\wedge}",                                            // Symbol 0xF0D9 -> U+2227
+	"char/0xf0da/textmode":  "{\\vee}",                                              // Symbol 0xF0DA -> U+2228
+	"char/0xf0db/textmode":  "{\\Leftrightarrow}",                                   // Symbol 0xF0DB -> U+21D4
+	"char/0xf0dc/textmode":  "{\\Leftarrow}",                                        // Symbol 0xF0DC -> U+21D0
+	"char/0xf0dd/textmode":  "{\\Uparrow}",                                          // Symbol 0xF0DD -> U+21D1
+	"char/0xf0de/textmode":  "{\\Rightarrow}",                                       // Symbol 0xF0DE -> U+21D2
+	"char/0xf0df/textmode":  "{\\Downarrow}",                                        // Symbol 0xF0DF -> U+21D3
+	"char/0xf0e0/textmode":  "{\\diamond}",                                          // Symbol 0xF0E0 -> U+22C4
+	"char/0xf0e1/textmode":  "{\\langle}",                                           // Symbol 0xF0E1 -> U+2329
+	"char/0xf0e2/textmode":  "{\\textregistered}",                                   // Symbol 0xF0E2 -> U+00AE
+	"char/0xf0e3/textmode":  "{\\textcopyright}",                                    // Symbol 0xF0E3 -> U+00A9
+	"char/0xf0e4/textmode":  "{\\texttrademark}",                                    // Symbol 0xF0E4 -> U+2122
+	"char/0xf0e5/textmode":  "{\\sum}",                                              // Symbol 0xF0E5 -> U+2211
+	"char/0xf0f0/textmode":  "{\\texteuro}",                                         // Symbol 0xF0F0 -> U+20AC
+	"char/0xf0f1/textmode":  "{\\rangle}",                                           // Symbol 0xF0F1 -> U+232A
+	"char/0xf0f2/textmode":  "{\\int}",                                              // Symbol 0xF0F2 -> U+222B
+	"char/0xf0f3/textmode":  "{\\inttop}",                                           // Symbol 0xF0F3 -> U+2320
+	"char/0xf0f5/textmode":  "{\\intbottom}",                                        // Symbol 0xF0F5 -> U+2321
+	"char/0xf0ff/textmode":  "{\\Square}",                                           // Symbol 0xF0FF -> U+2610
 }
-
-

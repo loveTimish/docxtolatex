@@ -8,10 +8,10 @@ import (
 )
 
 type Config struct {
-	Document DocumentConfig `json:"document"`
+	Document DocumentConfig    `json:"document"`
 	Styles   map[string]string `json:"styles"`
-	Image    ImageConfig    `json:"image"`
-	Report   ReportConfig   `json:"report"`
+	Image    ImageConfig       `json:"image"`
+	Report   ReportConfig      `json:"report"`
 }
 
 type DocumentConfig struct {
@@ -30,10 +30,10 @@ type ReportConfig struct {
 }
 
 type rawConfig struct {
-	Document *DocumentConfig    `json:"document"`
-	Styles   map[string]string  `json:"styles"`
-	Image    *ImageConfig       `json:"image"`
-	Report   *ReportConfig      `json:"report"`
+	Document *DocumentConfig   `json:"document"`
+	Styles   map[string]string `json:"styles"`
+	Image    *ImageConfig      `json:"image"`
+	Report   *ReportConfig     `json:"report"`
 }
 
 func DefaultConfig() Config {
@@ -49,16 +49,20 @@ func DefaultConfig() Config {
 			},
 		},
 		Styles: normalizeStyleMap(map[string]string{
-			"Title":         `\\section*{%s}`,
-			"Subtitle":      `\\subsection*{%s}`,
-			"Heading 1":     `\\section{%s}`,
-			"Heading1":      `\\section{%s}`,
-			"Heading 2":     `\\subsection{%s}`,
-			"Heading2":      `\\subsection{%s}`,
-			"Heading 3":     `\\subsubsection{%s}`,
-			"Heading3":      `\\subsubsection{%s}`,
-			"Quote":         "\\begin{quote}\n%s\n\\end{quote}",
-			"Intense Quote": "\\begin{quote}\n%s\n\\end{quote}",
+			"Title":     `\section*{%s}`,
+			"Subtitle":  `\subsection*{%s}`,
+			"Heading 1": `\section{%s}`,
+			"Heading1":  `\section{%s}`,
+			"Heading 2": `\subsection{%s}`,
+			"Heading2":  `\subsection{%s}`,
+			"Heading 3": `\subsubsection{%s}`,
+			"Heading3":  `\subsubsection{%s}`,
+			"Quote": `\begin{quote}
+%s
+\end{quote}`,
+			"Intense Quote": `\begin{quote}
+%s
+\end{quote}`,
 		}),
 		Image: ImageConfig{
 			Mode:     "placeholder",
