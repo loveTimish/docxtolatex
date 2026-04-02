@@ -78,19 +78,20 @@ func TestListEnvironmentForBullet(t *testing.T) {
 func TestParseTextualListMarker(t *testing.T) {
 	cases := []struct {
 		in   string
+		kind string
 		n    int
 		out  string
 		want bool
 	}{
-		{"1、第一题", 1, "第一题", true},
-		{"（2）第二问", 2, "第二问", true},
-		{"3. third item", 3, "third item", true},
-		{"1.5 不是列表", 0, "", false},
+		{"1、第一题", "arabic-comma", 1, "第一题", true},
+		{"（2）第二问", "paren", 2, "第二问", true},
+		{"3. third item", "dot", 3, "third item", true},
+		{"1.5 不是列表", "", 0, "", false},
 	}
 	for _, tc := range cases {
-		n, out, ok := parseTextualListMarker(tc.in)
-		if ok != tc.want || n != tc.n || out != tc.out {
-			t.Fatalf("parseTextualListMarker(%q) = (%d, %q, %v), want (%d, %q, %v)", tc.in, n, out, ok, tc.n, tc.out, tc.want)
+		marker, ok := parseTextualListMarker(tc.in)
+		if ok != tc.want || marker.Kind != tc.kind || marker.Number != tc.n || marker.Body != tc.out {
+			t.Fatalf("parseTextualListMarker(%q) = (%#v, %v), want kind=%q num=%d body=%q ok=%v", tc.in, marker, ok, tc.kind, tc.n, tc.out, tc.want)
 		}
 	}
 }
@@ -140,4 +141,26 @@ func TestPromoteTextualListsNeedsLongerRunOutsideWorksheet(t *testing.T) {
 	if got[0].List != nil || got[1].List != nil {
 		t.Fatalf("expected no promotion outside worksheet for short run, got %#v %#v", got[0], got[1])
 	}
+}
+
+func TestIsWorksheetSectionTitleRecognizesComprehensiveSection(t *testing.T) {
+	if !isWorksheetSectionTitle("综合题（第一题8分，第二题10分，共18分）") {
+		t.Fatal("expected comprehensive worksheet title to be recognized")
+	}
+}
+
+func TestAllowTextualListMarkerRejectsAnswerSubItemsInWorksheet(t *testing.T) {
+	cfg := DefaultConfig()
+	paragraphs := []paragraphBlock{
+		{Content: "解答题（每题7分，共14分）"},
+		{Content: "（1）第一问"},
+		{Content: "（2）第二问"},
+		{Content: "【答案】(1)32"},
+		{Content: "（2）16/3"},
+	}
+	got := promoteTextualLists(paragraphs, cfg)
+	if got[4].List != nil {
+		t.Fatalf("expected answer-area sub-item to stay plain paragraph, got %#v", got[4])
+	}
+	_ = cfg
 }

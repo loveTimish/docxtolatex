@@ -11,6 +11,11 @@ var (
 	arabicListMarkerRe = regexp.MustCompile(`^\s*(\d{1,2})[、]\s*(.+)$`)
 	parenListMarkerRe  = regexp.MustCompile(`^\s*[（(](\d{1,2})[）)]\s*(.+)$`)
 	dotListMarkerRe    = regexp.MustCompile(`^\s*(\d{1,2})[\.．]\s+(.+)$`)
+
+	answerContextMarkers = []string{
+		"【答案】", "【详解】", "【解析】", "【解答】", "【证明】",
+		"答案：", "详解：", "解析：", "解答：", "证明：", "解：",
+	}
 )
 
 func renderParagraphBlocks(paragraphs []paragraphBlock, cfg Config, report *ConversionReport) string {
@@ -130,8 +135,8 @@ func promoteTextualLists(paragraphs []paragraphBlock, cfg Config) []paragraphBlo
 			continue
 		}
 
-		firstNum, firstBody, ok := parseTextualListMarker(trimmed)
-		if !ok {
+		firstMarker, ok := parseTextualListMarker(trimmed)
+		if !ok || !allowTextualListMarker(out, i, firstMarker, inWorksheetSection) {
 			i++
 			continue
 		}
@@ -142,8 +147,8 @@ func promoteTextualLists(paragraphs []paragraphBlock, cfg Config) []paragraphBlo
 		}
 
 		itemStarts := []int{i}
-		itemBodies := []string{firstBody}
-		lastNum := firstNum
+		itemBodies := []string{firstMarker.Body}
+		lastNum := firstMarker.Number
 		boundary := len(out)
 		cursor := i + 1
 		for cursor < len(out) {
@@ -152,16 +157,16 @@ func promoteTextualLists(paragraphs []paragraphBlock, cfg Config) []paragraphBlo
 				boundary = cursor
 				break
 			}
-			nextNum, nextBody, nextOK := parseTextualListMarker(candidate)
-			if nextOK {
-				if nextNum == lastNum+1 {
+			nextMarker, nextOK := parseTextualListMarker(candidate)
+			if nextOK && allowTextualListMarker(out, cursor, nextMarker, inWorksheetSection) {
+				if nextMarker.Number == lastNum+1 {
 					itemStarts = append(itemStarts, cursor)
-					itemBodies = append(itemBodies, nextBody)
-					lastNum = nextNum
+					itemBodies = append(itemBodies, nextMarker.Body)
+					lastNum = nextMarker.Number
 					cursor++
 					continue
 				}
-				if nextNum <= lastNum {
+				if nextMarker.Number <= lastNum {
 					boundary = cursor
 					break
 				}
@@ -174,7 +179,7 @@ func promoteTextualLists(paragraphs []paragraphBlock, cfg Config) []paragraphBlo
 			continue
 		}
 
-		listDef := &listRef{NumID: "textual-decimal", Level: 0, Def: numberingLevel{NumFmt: "decimal", Environment: "enumerate"}}
+		listDef := &listRef{NumID: "textual-" + firstMarker.Kind, Level: 0, Def: numberingLevel{NumFmt: "decimal", Environment: "enumerate"}}
 		for idx, paraIdx := range itemStarts {
 			out[paraIdx].Content = itemBodies[idx]
 			out[paraIdx].List = listDef
@@ -185,6 +190,10 @@ func promoteTextualLists(paragraphs []paragraphBlock, cfg Config) []paragraphBlo
 				end = itemStarts[idx+1]
 			}
 			for k := paraIdx + 1; k < end; k++ {
+				contTrimmed := strings.TrimSpace(out[k].Content)
+				if listDef.NumID != "textual-arabic-comma" && hasAnswerPrefix(contTrimmed) {
+					break
+				}
 				out[k].List = listDef
 				out[k].ListContinuation = true
 			}
@@ -195,13 +204,27 @@ func promoteTextualLists(paragraphs []paragraphBlock, cfg Config) []paragraphBlo
 	return out
 }
 
-func parseTextualListMarker(content string) (int, string, bool) {
+type textualListMarker struct {
+	Kind   string
+	Number int
+	Body   string
+}
+
+func parseTextualListMarker(content string) (textualListMarker, bool) {
 	trimmed := strings.TrimSpace(content)
 	if trimmed == "" {
-		return 0, "", false
+		return textualListMarker{}, false
 	}
-	for _, re := range []*regexp.Regexp{arabicListMarkerRe, parenListMarkerRe, dotListMarkerRe} {
-		m := re.FindStringSubmatch(trimmed)
+	cases := []struct {
+		kind string
+		re   *regexp.Regexp
+	}{
+		{kind: "arabic-comma", re: arabicListMarkerRe},
+		{kind: "paren", re: parenListMarkerRe},
+		{kind: "dot", re: dotListMarkerRe},
+	}
+	for _, c := range cases {
+		m := c.re.FindStringSubmatch(trimmed)
 		if len(m) != 3 {
 			continue
 		}
@@ -213,9 +236,50 @@ func parseTextualListMarker(content string) (int, string, bool) {
 		if body == "" {
 			continue
 		}
-		return n, body, true
+		return textualListMarker{Kind: c.kind, Number: n, Body: body}, true
 	}
-	return 0, "", false
+	return textualListMarker{}, false
+}
+
+func allowTextualListMarker(paragraphs []paragraphBlock, idx int, marker textualListMarker, inWorksheetSection bool) bool {
+	if hasAnswerPrefix(marker.Body) {
+		return false
+	}
+	if marker.Kind == "arabic-comma" {
+		return true
+	}
+	if !inWorksheetSection {
+		return true
+	}
+	return !hasRecentAnswerContext(paragraphs, idx)
+}
+
+func hasAnswerPrefix(content string) bool {
+	trimmed := strings.TrimSpace(content)
+	for _, marker := range answerContextMarkers {
+		if strings.HasPrefix(trimmed, marker) {
+			return true
+		}
+	}
+	return false
+}
+
+func hasRecentAnswerContext(paragraphs []paragraphBlock, idx int) bool {
+	seen := 0
+	for i := idx; i >= 0 && seen < 4; i-- {
+		trimmed := strings.TrimSpace(paragraphs[i].Content)
+		if trimmed == "" {
+			continue
+		}
+		if isWorksheetSectionTitle(trimmed) {
+			break
+		}
+		if hasAnswerPrefix(trimmed) {
+			return true
+		}
+		seen++
+	}
+	return false
 }
 
 func isWorksheetSectionTitle(content string) bool {
@@ -225,6 +289,13 @@ func isWorksheetSectionTitle(content string) bool {
 	}
 	if strings.Contains(trimmed, "（每题") || strings.Contains(trimmed, "(每题") {
 		return strings.Contains(trimmed, "题")
+	}
+	if strings.Contains(trimmed, "（") || strings.Contains(trimmed, "(") {
+		for _, keyword := range []string{"计算题", "填空题", "解答题", "综合题", "选择题", "证明题", "应用题", "实验题"} {
+			if strings.Contains(trimmed, keyword) {
+				return true
+			}
+		}
 	}
 	return false
 }
