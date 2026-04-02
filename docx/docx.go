@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"sort"
+	"strconv"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -54,6 +55,10 @@ func (c *Converter) Convert() (int, error) {
 	}
 
 	rels, err := loadRels(files)
+	if err != nil {
+		return 0, err
+	}
+	numbering, err := loadNumbering(files)
 	if err != nil {
 		return 0, err
 	}
@@ -111,7 +116,11 @@ func (c *Converter) Convert() (int, error) {
 	dec := xml.NewDecoder(docReader)
 
 	var para strings.Builder
+	paragraphs := make([]paragraphBlock, 0, 256)
 	currentParagraphStyle := ""
+	currentNumID := ""
+	currentListLevel := 0
+	currentHasNumPr := false
 	eqnCache := make(map[string]string)
 	imgCache := make(map[string]string)
 	equationCount := 0
@@ -150,8 +159,19 @@ func (c *Converter) Convert() (int, error) {
 			case "p":
 				para.Reset()
 				currentParagraphStyle = ""
+				currentNumID = ""
+				currentListLevel = 0
+				currentHasNumPr = false
 			case "pStyle":
 				currentParagraphStyle = resolveStyleName(getAttr(el.Attr, "val"), styleMap)
+			case "numPr":
+				currentHasNumPr = true
+			case "numId":
+				currentNumID = strings.TrimSpace(getAttr(el.Attr, "val"))
+			case "ilvl":
+				if level, convErr := strconv.Atoi(strings.TrimSpace(getAttr(el.Attr, "val"))); convErr == nil {
+					currentListLevel = level
+				}
 			case "t":
 				flushImages()
 				var txt string
@@ -174,7 +194,7 @@ func (c *Converter) Convert() (int, error) {
 				}
 
 				rel, hasRel := rels[rid]
-				latex, err := resolveEquation(rid, rels, files, eqnCache)
+				latex, err := resolveEquation(rid, rels, files, eqnCache, appendWarning)
 				conversionErrorReason := ""
 				if err != nil {
 					appendWarning(fmt.Sprintf("OLE convert failed in paragraph %d (%s): %v", paragraphCount+1, rid, err))
@@ -255,7 +275,7 @@ func (c *Converter) Convert() (int, error) {
 					continue
 				}
 				if isOle(relType(rels, rid)) {
-					latex, err := resolveEquation(rid, rels, files, eqnCache)
+					latex, err := resolveEquation(rid, rels, files, eqnCache, appendWarning)
 					if err != nil {
 						appendWarning(fmt.Sprintf("inline OLE convert failed in paragraph %d (%s): %v", paragraphCount+1, rid, err))
 						latex = ""
@@ -297,11 +317,20 @@ func (c *Converter) Convert() (int, error) {
 				flushImages()
 				paragraphCount++
 				report.Summary.Paragraphs = paragraphCount
-				buf.WriteString(renderParagraph(para.String(), currentParagraphStyle, cfg))
+				block := paragraphBlock{Content: para.String(), Style: currentParagraphStyle}
+				if currentHasNumPr && currentNumID != "" {
+					if def, ok := numbering.resolve(currentNumID, currentListLevel); ok {
+						block.List = &listRef{NumID: currentNumID, Level: currentListLevel, Def: def}
+					} else if strings.TrimSpace(block.Content) != "" {
+						appendWarning(fmt.Sprintf("list numbering unresolved in paragraph %d: numId=%s level=%d", paragraphCount, currentNumID, currentListLevel))
+					}
+				}
+				paragraphs = append(paragraphs, block)
 			}
 		}
 	}
 
+	buf.WriteString(renderParagraphBlocks(paragraphs, cfg, &report))
 	buf.WriteString("\\end{document}\n")
 
 	outBytes := []byte(buf.String())
@@ -435,7 +464,7 @@ func isImage(relType string) bool {
 	return strings.Contains(relType, "image")
 }
 
-func resolveEquation(rid string, rels map[string]relInfo, files map[string]*zip.File, cache map[string]string) (string, error) {
+func resolveEquation(rid string, rels map[string]relInfo, files map[string]*zip.File, cache map[string]string, appendWarning func(string)) (string, error) {
 	rel, ok := rels[rid]
 	if !ok {
 		return "", nil
@@ -616,7 +645,7 @@ func addCommandSpacing(s string) string {
 			}
 			continue
 		}
-		b.WriteRune(r)
+		b.WriteRune(runes[i])
 		i++
 	}
 	return b.String()

@@ -18,13 +18,15 @@ type ConversionReport struct {
 }
 
 type ReportSummary struct {
-	Paragraphs       int `json:"paragraphs"`
-	Equations        int `json:"equations"`
-	ConvertedOLE     int `json:"convertedOle"`
-	FallbackImages   int `json:"fallbackImages"`
-	ConvertedOMML    int `json:"convertedOmml"`
-	ExtractedImages  int `json:"extractedImages"`
-	UnsupportedNodes int `json:"unsupportedNodes"`
+	Paragraphs        int `json:"paragraphs"`
+	Equations         int `json:"equations"`
+	ConvertedOLE      int `json:"convertedOle"`
+	FallbackImages    int `json:"fallbackImages"`
+	ConvertedOMML     int `json:"convertedOmml"`
+	ExtractedImages   int `json:"extractedImages"`
+	UnsupportedNodes  int `json:"unsupportedNodes"`
+	ListItems         int `json:"listItems"`
+	WorksheetSections int `json:"worksheetSections"`
 }
 
 type EquationReport struct {
