@@ -80,14 +80,33 @@ func main() {
 				WriteReport: writeReport,
 			}
 
-			start := time.Now()
-			count, err := converter.Convert()
-			if err != nil {
-				return err
+			// capture and discard noise prints from underlying eqn package / stdlib logger
+			stdout := os.Stdout
+			stderr := os.Stderr
+			prevLogWriter := log.Writer()
+			devNull, err := os.OpenFile(os.DevNull, os.O_WRONLY, 0644)
+			if err == nil {
+				os.Stdout = devNull
+				os.Stderr = devNull
+				log.SetOutput(devNull)
 			}
 
-			fmt.Printf("Converted %d equations to %s in %s\n", count, converter.Output, time.Since(start))
-			return nil
+			start := time.Now()
+			count, err := converter.Convert()
+
+			// restore stdout/stderr before printing our final output
+			os.Stdout = stdout
+			os.Stderr = stderr
+			log.SetOutput(prevLogWriter)
+			if devNull != nil {
+				devNull.Close()
+			}
+
+			if err == nil {
+				fmt.Printf("Converted %d equations to %s in %s\n", count, converter.Output, time.Since(start))
+			}
+
+			return err
 		}
 
 		return errors.New("please specify either --filepath for a single OLE object or --wordDocx for a .docx file")
