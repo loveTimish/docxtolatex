@@ -175,8 +175,11 @@ func (c *Converter) Convert() (int, error) {
 
 				rel, hasRel := rels[rid]
 				latex, err := resolveEquation(rid, rels, files, eqnCache)
+				conversionErrorReason := ""
 				if err != nil {
-					return 0, err
+					appendWarning(fmt.Sprintf("OLE convert failed in paragraph %d (%s): %v", paragraphCount+1, rid, err))
+					conversionErrorReason = "convert-error"
+					latex = ""
 				}
 
 				entry := EquationReport{
@@ -191,7 +194,9 @@ func (c *Converter) Convert() (int, error) {
 				if bad, reason := isBadLatex(latex); latex == "" || bad {
 					entry.Status = "skipped"
 					entry.Reason = reason
-					if latex == "" {
+					if conversionErrorReason != "" {
+						entry.Reason = conversionErrorReason
+					} else if latex == "" {
 						entry.Reason = "empty-output"
 					}
 					if pendingOlePreviewRid != "" && isImage(relType(rels, pendingOlePreviewRid)) {
@@ -252,7 +257,8 @@ func (c *Converter) Convert() (int, error) {
 				if isOle(relType(rels, rid)) {
 					latex, err := resolveEquation(rid, rels, files, eqnCache)
 					if err != nil {
-						return 0, err
+						appendWarning(fmt.Sprintf("inline OLE convert failed in paragraph %d (%s): %v", paragraphCount+1, rid, err))
+						latex = ""
 					}
 					if latex != "" {
 						para.WriteString(addCommandSpacing(latex))

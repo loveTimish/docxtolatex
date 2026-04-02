@@ -45,10 +45,20 @@ func ConvertReader(reader io.ReadSeeker) (string, error) {
 
 // ConvertReaderWithContext converts a MathType OLE object provided by a reader/seekable stream to LaTeX,
 // attaching a debug context label when DOCXTOLATEX_DEBUG_AST is enabled.
-func ConvertReaderWithContext(reader io.ReadSeeker, context string) (string, error) {
+func ConvertReaderWithContext(reader io.ReadSeeker, context string) (latex string, err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			err = fmt.Errorf("panic while parsing OLE/MTEF (%s): %v", context, r)
+			latex = ""
+		}
+	}()
+
 	mtef, err := Open(reader)
 	if err != nil {
 		return "", err
+	}
+	if mtef == nil {
+		return "", fmt.Errorf("invalid OLE/MTEF payload (%s)", context)
 	}
 	mtef.DebugContext = context
 	return mtef.Translate(), nil
