@@ -11,6 +11,7 @@ var (
 	arabicListMarkerRe = regexp.MustCompile(`^\s*(\d{1,2})[、]\s*(.+)$`)
 	parenListMarkerRe  = regexp.MustCompile(`^\s*[（(](\d{1,2})[）)]\s*(.+)$`)
 	dotListMarkerRe    = regexp.MustCompile(`^\s*(\d{1,2})[\.．]\s+(.+)$`)
+	tightDotListMarkerRe = regexp.MustCompile(`^\s*(\d{1,2})[\.．]([^\d\s].*)$`)
 
 	answerContextMarkers = []string{
 		"【答案】", "【详解】", "【解析】", "【解答】", "【证明】",
@@ -191,7 +192,7 @@ func promoteTextualLists(paragraphs []paragraphBlock, cfg Config) []paragraphBlo
 			}
 			for k := paraIdx + 1; k < end; k++ {
 				contTrimmed := strings.TrimSpace(out[k].Content)
-				if listDef.NumID != "textual-arabic-comma" && hasAnswerPrefix(contTrimmed) {
+				if listDef.NumID == "textual-paren" && hasAnswerPrefix(contTrimmed) {
 					break
 				}
 				out[k].List = listDef
@@ -222,6 +223,7 @@ func parseTextualListMarker(content string) (textualListMarker, bool) {
 		{kind: "arabic-comma", re: arabicListMarkerRe},
 		{kind: "paren", re: parenListMarkerRe},
 		{kind: "dot", re: dotListMarkerRe},
+		{kind: "dot", re: tightDotListMarkerRe},
 	}
 	for _, c := range cases {
 		m := c.re.FindStringSubmatch(trimmed)
@@ -245,7 +247,7 @@ func allowTextualListMarker(paragraphs []paragraphBlock, idx int, marker textual
 	if hasAnswerPrefix(marker.Body) {
 		return false
 	}
-	if marker.Kind == "arabic-comma" {
+	if marker.Kind == "arabic-comma" || marker.Kind == "dot" {
 		return true
 	}
 	if !inWorksheetSection {

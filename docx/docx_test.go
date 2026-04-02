@@ -86,6 +86,7 @@ func TestParseTextualListMarker(t *testing.T) {
 		{"1、第一题", "arabic-comma", 1, "第一题", true},
 		{"（2）第二问", "paren", 2, "第二问", true},
 		{"3. third item", "dot", 3, "third item", true},
+		{"1.$$ x+y $$", "dot", 1, "$$ x+y $$", true},
 		{"1.5 不是列表", "", 0, "", false},
 	}
 	for _, tc := range cases {
@@ -128,6 +129,27 @@ func TestPromoteTextualListsAllowsContinuationBetweenItems(t *testing.T) {
 	}
 	if !got[2].ListContinuation || !got[4].ListContinuation {
 		t.Fatalf("expected continuation paragraphs, got %#v %#v", got[2], got[4])
+	}
+}
+
+func TestPromoteTextualDotListsKeepAnswerContinuationInWorksheet(t *testing.T) {
+	cfg := DefaultConfig()
+	paragraphs := []paragraphBlock{
+		{Content: "计算题（每题4分，共40分）"},
+		{Content: "1.$$ x $$"},
+		{Content: "【解答】$$ =1 $$"},
+		{Content: "2.$$ y $$"},
+		{Content: "【解答】$$ =2 $$"},
+	}
+	got := promoteTextualLists(paragraphs, cfg)
+	if got[1].List == nil || got[3].List == nil {
+		t.Fatalf("expected dot-style worksheet items to be promoted, got %#v %#v", got[1], got[3])
+	}
+	if got[1].Content != "$$ x $$" || got[3].Content != "$$ y $$" {
+		t.Fatalf("expected dot markers to be stripped, got %q and %q", got[1].Content, got[3].Content)
+	}
+	if !got[2].ListContinuation || !got[4].ListContinuation {
+		t.Fatalf("expected answer paragraphs to stay inside list item, got %#v %#v", got[2], got[4])
 	}
 }
 
