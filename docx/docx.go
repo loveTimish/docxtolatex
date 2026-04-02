@@ -57,6 +57,10 @@ func (c *Converter) Convert() (int, error) {
 	if err != nil {
 		return 0, err
 	}
+	styleMap, err := loadStyleNames(files)
+	if err != nil {
+		return 0, err
+	}
 
 	docFile, ok := files["word/document.xml"]
 	if !ok {
@@ -147,7 +151,7 @@ func (c *Converter) Convert() (int, error) {
 				para.Reset()
 				currentParagraphStyle = ""
 			case "pStyle":
-				currentParagraphStyle = normalizeStyleName(getAttr(el.Attr, "val"))
+				currentParagraphStyle = resolveStyleName(getAttr(el.Attr, "val"), styleMap)
 			case "t":
 				flushImages()
 				var txt string
@@ -348,6 +352,66 @@ func loadRels(files map[string]*zip.File) (map[string]relInfo, error) {
 		rels[r.ID] = relInfo{target: r.Target, relType: r.Type}
 	}
 	return rels, nil
+}
+
+func loadStyleNames(files map[string]*zip.File) (map[string]string, error) {
+	styles := make(map[string]string)
+	styleFile, ok := files["word/styles.xml"]
+	if !ok {
+		return styles, nil
+	}
+
+	rc, err := styleFile.Open()
+	if err != nil {
+		return nil, fmt.Errorf("open styles: %w", err)
+	}
+	defer rc.Close()
+
+	dec := xml.NewDecoder(rc)
+	for {
+		tok, err := dec.Token()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, fmt.Errorf("decode styles: %w", err)
+		}
+		start, ok := tok.(xml.StartElement)
+		if !ok || start.Name.Local != "style" {
+			continue
+		}
+		styleID := getAttr(start.Attr, "styleId")
+		styleName, err := readStyleName(dec)
+		if err != nil {
+			return nil, err
+		}
+		if styleID != "" {
+			styles[normalizeStyleName(styleID)] = normalizeStyleName(styleName)
+		}
+	}
+	return styles, nil
+}
+
+func readStyleName(dec *xml.Decoder) (string, error) {
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			if err == io.EOF {
+				return "", nil
+			}
+			return "", fmt.Errorf("read style name: %w", err)
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			if el.Name.Local == "name" {
+				return getAttr(el.Attr, "val"), nil
+			}
+		case xml.EndElement:
+			if el.Name.Local == "style" {
+				return "", nil
+			}
+		}
+	}
 }
 
 func relType(rels map[string]relInfo, rid string) string {
@@ -587,6 +651,17 @@ func renderParagraph(content string, style string, cfg Config) string {
 
 func normalizeStyleName(style string) string {
 	return strings.ToLower(strings.TrimSpace(style))
+}
+
+func resolveStyleName(style string, styleMap map[string]string) string {
+	normalized := normalizeStyleName(style)
+	if normalized == "" {
+		return ""
+	}
+	if resolved, ok := styleMap[normalized]; ok && resolved != "" {
+		return resolved
+	}
+	return normalized
 }
 
 func renderUsePackage(pkg string) string {

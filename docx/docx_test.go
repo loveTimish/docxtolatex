@@ -13,6 +13,13 @@ func TestRenderParagraphUsesStyleMapping(t *testing.T) {
 	}
 }
 
+func TestResolveStyleNameUsesStylesXMLMap(t *testing.T) {
+	resolved := resolveStyleName("2", map[string]string{"2": "heading 1"})
+	if resolved != "heading 1" {
+		t.Fatalf("expected style id to resolve via styles.xml map, got %q", resolved)
+	}
+}
+
 func TestRenderImageRefsIncludeGraphicsMode(t *testing.T) {
 	got := renderImageRefs([]string{"img-a.png", "img-b.png"}, ImageConfig{Mode: "includegraphics"})
 	if !strings.Contains(got, `\includegraphics{img-a.png}`) || !strings.Contains(got, `\includegraphics{img-b.png}`) {
