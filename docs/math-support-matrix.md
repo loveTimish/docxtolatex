@@ -27,7 +27,7 @@
    - 典型“混合大量坏 OLE 的试卷”
    - `convertedOle=278`，`fallbackImages=99`
 
-说明：这两份样本几乎都走 **MathType OLE**，`convertedOmml=0`。因此 **OMML 基线目前主要来自源码审阅与单测**。本轮已补上最小 `MathIR` 与 `omml/ir_test.go`，但仍然缺一份真实 OMML 文档回归样本。
+说明：这两份样本几乎都走 **MathType OLE**，`convertedOmml=0`。因此 **OMML 基线仍明显弱于 OLE**。当前除了源码审阅与 XML/IR 单测外，仓库里已补上一条程序化生成的最小 DOCX 文档级回归（`docx/TestConvertGeneratedOMMLRegressionDocx`）；但仍然缺一份人工从 Word 导出的真实 OMML 文档样本。
 
 ## 合并支持矩阵
 
@@ -68,8 +68,9 @@
 
 ## 当前最明显的缺口
 
-1. **缺真实 OMML 回归文档**
-   - 现在 OMML 已经有最小 `MathIR` 和 XML 单测，但还不能算“有样本级工程基线”。
+1. **仍缺真实 Word 导出的 OMML 回归文档**
+   - 现在 OMML 已经有最小 `MathIR`、XML 单测，以及程序化生成的最小 DOCX 文档级夹具。
+   - 但这还不能替代真实生产者样本，只能算“最小可重复工程基线”。
 2. **MathType 能力还没有 feature-by-feature 拆账**
    - 目前只能从真实试卷整体可用性反推，缺少“分式/矩阵/限/符号”级别的精确矩阵。
 3. **fallback 只覆盖 OLE**
