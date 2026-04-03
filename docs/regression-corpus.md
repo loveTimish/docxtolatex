@@ -117,7 +117,8 @@
 ### 明显未覆盖
 
 - **真实 OMML 文档**
-- OLE / OMML 的特性级最小样本（frac、matrix、fence、nary、cases 等）
+- OLE 的特性级最小样本（当前 OLE 仍主要依赖真实试卷回归）
+- OMML 更复杂的特性级样本（当前已补最小 XML 单测，覆盖 frac/subsup/fence/rad fallback）
 - 表格、脚注、复杂版式
 - 同一能力的“正例 + 反例 + 边界例”三件套
 
@@ -141,10 +142,10 @@
 
 ### 做 OMML 改动时
 
-当前光看现有 `compare-*` 不够，因为它们几乎不覆盖 OMML。应补：
+当前光看现有 `compare-*` 不够，因为它们几乎不覆盖 OMML。现在仓库里已经有一层最小 XML / IR 单测（`omml/ir_test.go`），但还应继续补：
 
-1. 最小 XML 单测
-2. 一份真实 OMML DOCX 回归样本
+1. 一份真实 OMML DOCX 回归样本
+2. 更复杂结构的 XML 单测（如 nary、matrix、eqArr、accent）
 3. 然后再把样本输出沉成新的 `compare-*` 目录
 
 ## 下一步最值得补的语料

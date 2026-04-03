@@ -27,7 +27,7 @@
    - 典型“混合大量坏 OLE 的试卷”
    - `convertedOle=278`，`fallbackImages=99`
 
-说明：这两份样本几乎都走 **MathType OLE**，`convertedOmml=0`。因此 **OMML 基线目前主要来自源码审阅与单测**，还缺一份真实 OMML 文档回归样本。
+说明：这两份样本几乎都走 **MathType OLE**，`convertedOmml=0`。因此 **OMML 基线目前主要来自源码审阅与单测**。本轮已补上最小 `MathIR` 与 `omml/ir_test.go`，但仍然缺一份真实 OMML 文档回归样本。
 
 ## 合并支持矩阵
 
@@ -45,7 +45,7 @@
 | 矩阵 / cases / 对齐 | partial | partial | OMML 有 `m/eqArr`，但 cases/aligned 仍偏启发式；OLE 侧缺明确能力拆分 |
 | 重音 / bar / accent | partial | partial | OMML 已实现 `bar/acc/groupChr`，但未系统回归；OLE 侧现状未量化 |
 | 纯文本/几何符号短片段 | partial | partial | 现有链路会输出，但质量不稳定，且 OLE 有大量“碎片公式”现象 |
-| 语义层 IR | unsupported | partial | 本轮起步前：OLE 无；OMML 旧路径仅直接吐字符串 |
+| 语义层 IR | unsupported | partial | OLE 仍无统一 IR；OMML 已有最小 `MathIR`（`token/group/frac/subsup/fence/raw-latex`），但默认转换仍走旧字符串链路 |
 | report reason taxonomy | partial | partial | 本轮已开始统一 reason 常量和分类，但还未覆盖所有转换阶段 |
 
 ## 两份真实样本的结论
@@ -69,7 +69,7 @@
 ## 当前最明显的缺口
 
 1. **缺真实 OMML 回归文档**
-   - 现在 OMML 只能算“有实现”，还不能算“有样本级工程基线”。
+   - 现在 OMML 已经有最小 `MathIR` 和 XML 单测，但还不能算“有样本级工程基线”。
 2. **MathType 能力还没有 feature-by-feature 拆账**
    - 目前只能从真实试卷整体可用性反推，缺少“分式/矩阵/限/符号”级别的精确矩阵。
 3. **fallback 只覆盖 OLE**
