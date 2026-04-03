@@ -60,6 +60,14 @@ func parseNodeFromStart(start xml.StartElement, dec *xml.Decoder) (*mathir.Node,
 		return parseFence(dec)
 	case "rad":
 		return parseRad(dec)
+	case "nary":
+		return parseNary(start, dec)
+	case "m", "matrix":
+		return parseMatrixIR(start.Name.Local, dec)
+	case "eqArr":
+		return parseEqArr(dec)
+	case "acc":
+		return parseAccent(dec)
 	default:
 		return fallbackRawNode(start, dec)
 	}
@@ -228,6 +236,213 @@ func parseRad(dec *xml.Decoder) (*mathir.Node, error) {
 				return mathir.RawLatex(`\sqrt{` + mathir.RenderLatex(inner) + `}`), nil
 			}
 		}
+	}
+}
+
+func parseNary(start xml.StartElement, dec *xml.Decoder) (*mathir.Node, error) {
+	operator := mapNarySymbol(start)
+	var lower, upper, body *mathir.Node
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return nil, err
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			switch el.Name.Local {
+			case "naryPr":
+				if chr := parseNaryChr(dec); chr != "" {
+					operator = mapNaryChr(chr)
+				}
+			case "sub":
+				lower, err = parseContainer("sub", dec)
+			case "sup":
+				upper, err = parseContainer("sup", dec)
+			case "e":
+				body, err = parseContainer("e", dec)
+			default:
+				_, err = parseNodeFromStart(el, dec)
+			}
+			if err != nil {
+				return nil, err
+			}
+		case xml.EndElement:
+			if el.Name.Local == "nary" {
+				return mathir.Nary(operator, lower, upper, body), nil
+			}
+		}
+	}
+}
+
+func parseMatrixIR(local string, dec *xml.Decoder) (*mathir.Node, error) {
+	env := "matrix"
+	rows := make([][]*mathir.Node, 0, 2)
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return nil, err
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			switch el.Name.Local {
+			case "mPr":
+				env, err = parseMatrixProps(dec)
+			case "mr":
+				var row []*mathir.Node
+				row, err = parseMatrixRow(dec)
+				if err == nil {
+					rows = append(rows, row)
+				}
+			default:
+				_, err = parseNodeFromStart(el, dec)
+			}
+			if err != nil {
+				return nil, err
+			}
+		case xml.EndElement:
+			if el.Name.Local == local {
+				return mathir.Matrix(env, rows), nil
+			}
+		}
+	}
+}
+
+func parseMatrixProps(dec *xml.Decoder) (string, error) {
+	brk := ""
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return "matrix", err
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			if el.Name.Local == "brk" {
+				brk = attrVal(el.Attr, "val")
+				if err := dec.Skip(); err != nil {
+					return "matrix", err
+				}
+			} else if err := dec.Skip(); err != nil {
+				return "matrix", err
+			}
+		case xml.EndElement:
+			if el.Name.Local == "mPr" {
+				return matrixEnv(brk), nil
+			}
+		}
+	}
+}
+
+func parseMatrixRow(dec *xml.Decoder) ([]*mathir.Node, error) {
+	row := make([]*mathir.Node, 0, 2)
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return nil, err
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			var cell *mathir.Node
+			switch el.Name.Local {
+			case "e":
+				cell, err = parseContainer("e", dec)
+			default:
+				cell, err = parseNodeFromStart(el, dec)
+			}
+			if err != nil {
+				return nil, err
+			}
+			if cell != nil {
+				row = append(row, cell)
+			}
+		case xml.EndElement:
+			if el.Name.Local == "mr" {
+				return row, nil
+			}
+		}
+	}
+}
+
+func parseEqArr(dec *xml.Decoder) (*mathir.Node, error) {
+	rows := make([][]*mathir.Node, 0, 2)
+	loose := make([]*mathir.Node, 0, 2)
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return nil, err
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			switch el.Name.Local {
+			case "mr":
+				var row []*mathir.Node
+				row, err = parseMatrixRow(dec)
+				if err != nil {
+					return nil, err
+				}
+				rows = append(rows, row)
+			case "e":
+				var cell *mathir.Node
+				cell, err = parseContainer("e", dec)
+				if err != nil {
+					return nil, err
+				}
+				if cell != nil {
+					loose = append(loose, cell)
+				}
+			default:
+				_, err = parseNodeFromStart(el, dec)
+				if err != nil {
+					return nil, err
+				}
+			}
+		case xml.EndElement:
+			if el.Name.Local == "eqArr" {
+				if len(loose) > 0 {
+					rows = append(rows, loose)
+				}
+				return mathir.EqArray(rows), nil
+			}
+		}
+	}
+}
+
+func parseAccent(dec *xml.Decoder) (*mathir.Node, error) {
+	command := `\bar`
+	var operand *mathir.Node
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return nil, err
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			switch el.Name.Local {
+			case "accPr":
+				command = accentCommand(parseAccPr(dec))
+			case "e":
+				operand, err = parseContainer("e", dec)
+			default:
+				_, err = parseNodeFromStart(el, dec)
+			}
+			if err != nil {
+				return nil, err
+			}
+		case xml.EndElement:
+			if el.Name.Local == "acc" {
+				return mathir.Accent(command, operand), nil
+			}
+		}
+	}
+}
+
+func accentCommand(accent string) string {
+	switch accent {
+	case "^":
+		return `\hat`
+	case "\u2192", "\u20d7":
+		return `\vec`
+	default:
+		return `\bar`
 	}
 }
 

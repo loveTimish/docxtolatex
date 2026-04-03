@@ -118,7 +118,7 @@
 
 - **人工导出的真实 OMML 文档**
 - OLE 的特性级最小样本（当前 OLE 仍主要依赖真实试卷回归）
-- OMML 更复杂的特性级样本（当前已补最小 XML 单测，覆盖 frac/subsup/fence/rad fallback）
+- OMML 更复杂的特性级样本（当前已补最小 XML / IR 单测，覆盖 frac/subsup/fence/rad，以及 nary、matrix、eqArr、accent）
 - 表格、脚注、复杂版式
 - 同一能力的“正例 + 反例 + 边界例”三件套
 

@@ -23,3 +23,18 @@ func TestRenderLatexForRawNode(t *testing.T) {
 		t.Fatalf("RenderLatex(raw) = %q, want %q", got, `\sqrt{x}`)
 	}
 }
+
+func TestRenderLatexForNaryMatrixEqArrayAndAccent(t *testing.T) {
+	node := Group(
+		Nary(`\sum`, Token("i=1"), Token("n"), Token("x_i")),
+		Matrix("pmatrix", [][]*Node{{Token("a"), Token("b")}, {Token("c"), Token("d")}}),
+		EqArray([][]*Node{{Token("x"), Token("1")}, {Token("y"), Token("2")}}),
+		Accent(`\vec`, Token("v")),
+	)
+
+	got := RenderLatex(node)
+	want := `\sum_{i=1}^{n}{x_i}\begin{pmatrix}a & b\\c & d\end{pmatrix}x = 1\\y = 2\vec{v}`
+	if got != want {
+		t.Fatalf("RenderLatex() = %q, want %q", got, want)
+	}
+}

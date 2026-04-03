@@ -92,3 +92,47 @@ func TestConvertElementToIRWorksWithStreamingDecoder(t *testing.T) {
 		}
 	}
 }
+
+func TestParseToIRNary(t *testing.T) {
+	input := `<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:nary><m:naryPr><m:chr m:val="∑"/></m:naryPr><m:sub><m:r><m:t>i=1</m:t></m:r></m:sub><m:sup><m:r><m:t>n</m:t></m:r></m:sup><m:e><m:r><m:t>x</m:t></m:r></m:e></m:nary></m:oMath>`
+	node, err := ParseToIRString(input)
+	if err != nil {
+		t.Fatalf("ParseToIRString returned error: %v", err)
+	}
+	if got := mathir.RenderLatex(node); got != `\sum_{i=1}^{n}{x}` {
+		t.Fatalf("expected nary latex, got %q", got)
+	}
+}
+
+func TestParseToIRMatrix(t *testing.T) {
+	input := `<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:m><m:mPr><m:brk m:val="["/></m:mPr><m:mr><m:e><m:r><m:t>a</m:t></m:r></m:e><m:e><m:r><m:t>b</m:t></m:r></m:e></m:mr><m:mr><m:e><m:r><m:t>c</m:t></m:r></m:e><m:e><m:r><m:t>d</m:t></m:r></m:e></m:mr></m:m></m:oMath>`
+	node, err := ParseToIRString(input)
+	if err != nil {
+		t.Fatalf("ParseToIRString returned error: %v", err)
+	}
+	if got := mathir.RenderLatex(node); got != `\begin{bmatrix}a & b\\c & d\end{bmatrix}` {
+		t.Fatalf("expected matrix latex, got %q", got)
+	}
+}
+
+func TestParseToIREqArray(t *testing.T) {
+	input := `<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:eqArr><m:mr><m:e><m:r><m:t>x</m:t></m:r></m:e><m:e><m:r><m:t>1</m:t></m:r></m:e></m:mr><m:mr><m:e><m:r><m:t>y</m:t></m:r></m:e><m:e><m:r><m:t>2</m:t></m:r></m:e></m:mr></m:eqArr></m:oMath>`
+	node, err := ParseToIRString(input)
+	if err != nil {
+		t.Fatalf("ParseToIRString returned error: %v", err)
+	}
+	if got := mathir.RenderLatex(node); got != `x = 1\\y = 2` {
+		t.Fatalf("expected eqArr latex, got %q", got)
+	}
+}
+
+func TestParseToIRAccent(t *testing.T) {
+	input := `<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:acc><m:accPr><m:chr m:val="→"/></m:accPr><m:e><m:r><m:t>AB</m:t></m:r></m:e></m:acc></m:oMath>`
+	node, err := ParseToIRString(input)
+	if err != nil {
+		t.Fatalf("ParseToIRString returned error: %v", err)
+	}
+	if got := mathir.RenderLatex(node); got != `\vec{AB}` {
+		t.Fatalf("expected accent latex, got %q", got)
+	}
+}

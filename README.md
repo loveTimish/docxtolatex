@@ -9,7 +9,7 @@
 
 转换时会直接读取 `.docx` 压缩包内容，尽量在内存中完成解析；如果文档里包含图片，也会一并提取到输出目录。
 
-> 仓库已开始引入最小 `MathIR` 方向：当前先让 OMML 能产出基础语义节点（`token/group/frac/subsup/fence/raw-latex`），但默认文档转换仍继续走现有字符串输出路径，避免一次性大重构。
+> 仓库已开始引入最小 `MathIR` 方向：当前先让 OMML 能产出基础语义节点（`token/group/frac/subsup/fence/nary/matrix/eq-array/accent/raw-latex`），但默认文档转换仍继续走现有字符串输出路径，避免一次性大重构。
 
 ## 功能概览
 

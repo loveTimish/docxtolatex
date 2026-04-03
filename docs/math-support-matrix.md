@@ -41,11 +41,11 @@
 | 上下标 | implemented | implemented | OLE 在样本中高频；OMML 有 `sSup/sSub/sSubSup` |
 | 定界符 / 括号栅栏 | partial | partial | OLE 有基础输出但仍常见符号粘连/语义不稳；OMML 有 `d` 但复杂分隔符仍靠启发式 |
 | 根式 | partial | implemented | OMML 有 `rad`；OLE 样本中能见到部分输出，但缺系统矩阵 |
-| n-ary 运算（求和/积分/连乘） | partial | partial | OMML 有 `nary/limLow/limUpp`；OLE 真实样本可转部分常见表达式，但未建立特性级回归 |
-| 矩阵 / cases / 对齐 | partial | partial | OMML 有 `m/eqArr`，但 cases/aligned 仍偏启发式；OLE 侧缺明确能力拆分 |
-| 重音 / bar / accent | partial | partial | OMML 已实现 `bar/acc/groupChr`，但未系统回归；OLE 侧现状未量化 |
+| n-ary 运算（求和/积分/连乘） | partial | partial | OMML 有 `nary/limLow/limUpp`；本轮已补 `nary -> MathIR` XML/IR 单测，但默认文档主链仍走旧字符串输出 |
+| 矩阵 / cases / 对齐 | partial | partial | OMML 有 `m/eqArr`；本轮已补 `matrix/eqArr -> MathIR` XML/IR 单测，但 cases/aligned 仍偏启发式 |
+| 重音 / bar / accent | partial | partial | OMML 已实现 `bar/acc/groupChr`；本轮已补 `acc -> MathIR` XML/IR 单测，`bar/groupChr` 仍待语义化 |
 | 纯文本/几何符号短片段 | partial | partial | 现有链路会输出，但质量不稳定，且 OLE 有大量“碎片公式”现象 |
-| 语义层 IR | unsupported | partial | OLE 仍无统一 IR；OMML 已有最小 `MathIR`（`token/group/frac/subsup/fence/raw-latex`），但默认转换仍走旧字符串链路 |
+| 语义层 IR | unsupported | partial | OLE 仍无统一 IR；OMML 已有最小 `MathIR`（`token/group/frac/subsup/fence/nary/matrix/eq-array/accent/raw-latex`），但默认转换仍走旧字符串链路 |
 | report reason taxonomy | partial | partial | 本轮已开始统一 reason 常量和分类，但还未覆盖所有转换阶段 |
 
 ## 两份真实样本的结论
