@@ -19,6 +19,7 @@
 - 基于段落样式做基础结构映射（如标题、引用）
 - 支持 JSON 配置文档类、包、样式映射和图片渲染方式
 - 可选输出 JSON 转换报告，便于排查失败公式和回退原因
+- report `reason` 已开始收敛为稳定 taxonomy（如 `invalid-ole`、`mtef-open-panic`、`empty-output`）
 
 ## 环境要求
 
@@ -115,6 +116,10 @@ xuekewang/
   - OMML 到 LaTeX 的解析逻辑
 - `latexmap/`
   - Unicode / 字符映射，辅助 OMML 和符号转换
+- `docs/math-support-matrix.md`
+  - 当前 MathType OLE / OMML 支持矩阵与样本结论
+- `docs/regression-corpus.md`
+  - `compare-*` 样本、报告与真实文档输出快照说明
 
 ## 当前行为说明
 

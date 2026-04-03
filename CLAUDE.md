@@ -169,6 +169,16 @@
 - warnings
 - 每个公式的索引、来源、状态、原因
 
+当前 `reason` 已开始向稳定 taxonomy 收敛，至少包括：
+- `convert-error`
+- `invalid-ole`
+- `mtef-open-panic`
+- `empty-output`
+- `tiny-nonlatex-fragment`
+- 以及若干 LaTeX 结果体检类 reason
+
+这还不是最终版，但后续新增原因时应优先复用 / 扩展现有常量，而不是在不同调用点随手写新字符串。
+
 ## 5.7 坏 OLE 容错
 这是目前非常重要的一项改动：
 
@@ -328,7 +338,16 @@
 
 ---
 
-# 10. 当前可用命令
+# 10. 支撑文档
+
+- `docs/math-support-matrix.md`
+  - 当前 MathType OLE / OMML 支持矩阵、状态定义、样本级结论
+- `docs/regression-corpus.md`
+  - `compare-*` 样本与 `.report.json` 的用途说明
+
+这两份文档应随着真实样本与数学能力推进一起更新，不要只改代码不改基线说明。
+
+# 11. 当前可用命令
 
 ```bash
 # 运行单元测试
@@ -349,7 +368,7 @@ go run . --wordDocx sample.docx --config config.example.json
 
 ---
 
-# 11. 当前最值得优先做的事
+# 12. 当前最值得优先做的事
 
 如果只选一件事继续往下做，建议优先做：
 
@@ -362,7 +381,7 @@ go run . --wordDocx sample.docx --config config.example.json
 
 ---
 
-# 12. 不建议现在就做的事
+# 13. 不建议现在就做的事
 
 短期内不建议优先投入：
 - 复杂嵌套表格的高保真支持
@@ -374,7 +393,7 @@ go run . --wordDocx sample.docx --config config.example.json
 
 ---
 
-# 13. 当前结论
+# 14. 当前结论
 
 `docxtolatex` 已经从一个“只会简单抽取公式”的工具，走到了一个更像样的工程化转换器雏形：
 

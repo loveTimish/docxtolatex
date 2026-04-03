@@ -195,10 +195,10 @@ func (c *Converter) Convert() (int, error) {
 
 				rel, hasRel := rels[rid]
 				latex, err := resolveEquation(rid, rels, files, eqnCache, appendWarning)
-				conversionErrorReason := ""
+				conversionErrorReason := EquationReasonUnknown
 				if err != nil {
 					appendWarning(fmt.Sprintf("OLE convert failed in paragraph %d (%s): %v", paragraphCount+1, rid, err))
-					conversionErrorReason = "convert-error"
+					conversionErrorReason = classifyOLEError(err)
 					latex = ""
 				}
 
@@ -212,12 +212,12 @@ func (c *Converter) Convert() (int, error) {
 				}
 
 				if bad, reason := isBadLatex(latex); latex == "" || bad {
-					entry.Status = "skipped"
+					entry.Status = EquationStatusSkipped
 					entry.Reason = reason
-					if conversionErrorReason != "" {
+					if conversionErrorReason != EquationReasonUnknown {
 						entry.Reason = conversionErrorReason
 					} else if latex == "" {
-						entry.Reason = "empty-output"
+						entry.Reason = EquationReasonEmptyOutput
 					}
 					if pendingOlePreviewRid != "" && isImage(relType(rels, pendingOlePreviewRid)) {
 						previewRel := rels[pendingOlePreviewRid]
@@ -227,7 +227,7 @@ func (c *Converter) Convert() (int, error) {
 						}
 						if name != "" {
 							para.WriteString(renderImageRefs([]string{name}, cfg.Image))
-							entry.Status = "fallback-image"
+							entry.Status = EquationStatusFallbackImage
 							entry.Output = name
 							equationCount++
 							report.Summary.FallbackImages++
@@ -239,7 +239,7 @@ func (c *Converter) Convert() (int, error) {
 
 				para.WriteString(addCommandSpacing(latex))
 				equationCount++
-				entry.Status = "converted"
+				entry.Status = EquationStatusConverted
 				entry.Output = latex
 				report.Equations = append(report.Equations, entry)
 				report.Summary.ConvertedOLE++
@@ -262,7 +262,7 @@ func (c *Converter) Convert() (int, error) {
 					Index:     len(report.Equations) + 1,
 					Kind:      map[bool]string{true: "omml-display", false: "omml-inline"}[display],
 					Paragraph: paragraphCount + 1,
-					Status:    "converted",
+					Status:    EquationStatusConverted,
 					Output:    latex,
 				})
 				report.Summary.ConvertedOMML++
@@ -287,7 +287,7 @@ func (c *Converter) Convert() (int, error) {
 							Index:     len(report.Equations) + 1,
 							Kind:      "ole-inline",
 							Paragraph: paragraphCount + 1,
-							Status:    "converted",
+							Status:    EquationStatusConverted,
 							Output:    latex,
 						})
 						report.Summary.ConvertedOLE++
@@ -566,10 +566,10 @@ func escapeLatex(s string) string {
 	return replacer.Replace(s)
 }
 
-func isBadLatex(latex string) (bool, string) {
+func isBadLatex(latex string) (bool, EquationReason) {
 	s := strings.TrimSpace(latex)
 	if s == "" {
-		return true, "empty-output"
+		return true, EquationReasonEmptyOutput
 	}
 	inner := s
 	if strings.HasPrefix(inner, "$$") && strings.HasSuffix(inner, "$$") && len(inner) >= 4 {
@@ -578,43 +578,43 @@ func isBadLatex(latex string) (bool, string) {
 		inner = strings.TrimSpace(inner[1 : len(inner)-1])
 	}
 	if inner == "" {
-		return true, "empty-math-body"
+		return true, EquationReasonEmptyMathBody
 	}
 	if strings.ContainsRune(inner, '\uFFFD') {
-		return true, "replacement-char"
+		return true, EquationReasonReplacementChar
 	}
 	if strings.ContainsRune(inner, '□') {
-		return true, "placeholder-box"
+		return true, EquationReasonPlaceholderBox
 	}
 	for _, r := range inner {
 		if r == '\n' || r == '\r' || r == '\t' {
 			continue
 		}
 		if !unicode.IsPrint(r) && !unicode.IsSpace(r) {
-			return true, "non-printable-rune"
+			return true, EquationReasonNonPrintableRune
 		}
 	}
 	if !strings.Contains(inner, "\\") && utf8.RuneCountInString(inner) <= 2 {
 		for _, r := range inner {
 			if r > 127 && (unicode.IsLetter(r) || unicode.IsSymbol(r) || unicode.IsMark(r)) {
-				return true, "tiny-nonlatex-fragment"
+				return true, EquationReasonTinyNonLatex
 			}
 		}
 	}
 	if badFracRe.MatchString(inner) {
-		return true, "broken-frac"
+		return true, EquationReasonBrokenFrac
 	}
 	if repeatedOpsRe.MatchString(inner) {
-		return true, "repeated-operators"
+		return true, EquationReasonRepeatedOperators
 	}
 	if tinyBraceRe.MatchString(inner) {
-		return true, "truncated-brace-group"
+		return true, EquationReasonTruncatedBrace
 	}
 	arrowOnly := strings.TrimSpace(strings.ReplaceAll(inner, `\rightarrow`, ""))
 	if arrowOnly == "" && strings.Contains(inner, `\rightarrow`) {
-		return true, "arrow-only"
+		return true, EquationReasonArrowOnly
 	}
-	return false, ""
+	return false, EquationReasonUnknown
 }
 
 // addCommandSpacing inserts a space after a backslash-led command when it is immediately

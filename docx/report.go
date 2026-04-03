@@ -5,8 +5,58 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 )
+
+type EquationStatus string
+
+const (
+	EquationStatusConverted     EquationStatus = "converted"
+	EquationStatusSkipped       EquationStatus = "skipped"
+	EquationStatusFallbackImage EquationStatus = "fallback-image"
+)
+
+type EquationReason string
+
+const (
+	EquationReasonUnknown            EquationReason = ""
+	EquationReasonConvertError       EquationReason = "convert-error"
+	EquationReasonInvalidOLE         EquationReason = "invalid-ole"
+	EquationReasonMTEFOpenPanic      EquationReason = "mtef-open-panic"
+	EquationReasonEmptyOutput        EquationReason = "empty-output"
+	EquationReasonEmptyMathBody      EquationReason = "empty-math-body"
+	EquationReasonReplacementChar    EquationReason = "replacement-char"
+	EquationReasonPlaceholderBox     EquationReason = "placeholder-box"
+	EquationReasonNonPrintableRune   EquationReason = "non-printable-rune"
+	EquationReasonTinyNonLatex       EquationReason = "tiny-nonlatex-fragment"
+	EquationReasonBrokenFrac         EquationReason = "broken-frac"
+	EquationReasonRepeatedOperators  EquationReason = "repeated-operators"
+	EquationReasonTruncatedBrace     EquationReason = "truncated-brace-group"
+	EquationReasonArrowOnly          EquationReason = "arrow-only"
+)
+
+type EquationReasonDefinition struct {
+	Reason      EquationReason `json:"reason"`
+	Category    string         `json:"category"`
+	Description string         `json:"description"`
+}
+
+var equationReasonCatalog = []EquationReasonDefinition{
+	{Reason: EquationReasonConvertError, Category: "ole", Description: "OLE conversion failed but did not match a more specific classifier."},
+	{Reason: EquationReasonInvalidOLE, Category: "ole", Description: "Input is not a readable OLE/MTEF payload."},
+	{Reason: EquationReasonMTEFOpenPanic, Category: "ole", Description: "Underlying OLE/MTEF open/parse path panicked and was recovered."},
+	{Reason: EquationReasonEmptyOutput, Category: "sanity", Description: "Converter returned an empty LaTeX string."},
+	{Reason: EquationReasonEmptyMathBody, Category: "sanity", Description: "LaTeX wrapper exists but the math body is empty."},
+	{Reason: EquationReasonReplacementChar, Category: "sanity", Description: "Output contains Unicode replacement characters, suggesting broken decoding."},
+	{Reason: EquationReasonPlaceholderBox, Category: "sanity", Description: "Output still contains placeholder box glyphs."},
+	{Reason: EquationReasonNonPrintableRune, Category: "sanity", Description: "Output contains non-printable runes."},
+	{Reason: EquationReasonTinyNonLatex, Category: "sanity", Description: "Tiny non-LaTeX fragment that is usually safer to fall back as an image."},
+	{Reason: EquationReasonBrokenFrac, Category: "sanity", Description: "Fraction body looks truncated or malformed."},
+	{Reason: EquationReasonRepeatedOperators, Category: "sanity", Description: "Repeated operators suggest parser corruption."},
+	{Reason: EquationReasonTruncatedBrace, Category: "sanity", Description: "Brace group looks truncated."},
+	{Reason: EquationReasonArrowOnly, Category: "sanity", Description: "Output collapsed to an arrow-only fragment."},
+}
 
 type ConversionReport struct {
 	Source      string           `json:"source"`
@@ -30,13 +80,34 @@ type ReportSummary struct {
 }
 
 type EquationReport struct {
-	Index     int    `json:"index"`
-	Kind      string `json:"kind"`
-	Source    string `json:"source,omitempty"`
-	Status    string `json:"status"`
-	Reason    string `json:"reason,omitempty"`
-	Output    string `json:"output,omitempty"`
-	Paragraph int    `json:"paragraph,omitempty"`
+	Index     int            `json:"index"`
+	Kind      string         `json:"kind"`
+	Source    string         `json:"source,omitempty"`
+	Status    EquationStatus `json:"status"`
+	Reason    EquationReason `json:"reason,omitempty"`
+	Output    string         `json:"output,omitempty"`
+	Paragraph int            `json:"paragraph,omitempty"`
+}
+
+func EquationReasonCatalog() []EquationReasonDefinition {
+	out := make([]EquationReasonDefinition, len(equationReasonCatalog))
+	copy(out, equationReasonCatalog)
+	return out
+}
+
+func classifyOLEError(err error) EquationReason {
+	if err == nil {
+		return EquationReasonUnknown
+	}
+	msg := strings.ToLower(err.Error())
+	switch {
+	case strings.Contains(msg, "invalid ole/mtef payload"):
+		return EquationReasonInvalidOLE
+	case strings.Contains(msg, "panic while parsing ole/mtef"):
+		return EquationReasonMTEFOpenPanic
+	default:
+		return EquationReasonConvertError
+	}
 }
 
 func newReport(source string) ConversionReport {
