@@ -20,20 +20,20 @@ const (
 type EquationReason string
 
 const (
-	EquationReasonUnknown            EquationReason = ""
-	EquationReasonConvertError       EquationReason = "convert-error"
-	EquationReasonInvalidOLE         EquationReason = "invalid-ole"
-	EquationReasonMTEFOpenPanic      EquationReason = "mtef-open-panic"
-	EquationReasonEmptyOutput        EquationReason = "empty-output"
-	EquationReasonEmptyMathBody      EquationReason = "empty-math-body"
-	EquationReasonReplacementChar    EquationReason = "replacement-char"
-	EquationReasonPlaceholderBox     EquationReason = "placeholder-box"
-	EquationReasonNonPrintableRune   EquationReason = "non-printable-rune"
-	EquationReasonTinyNonLatex       EquationReason = "tiny-nonlatex-fragment"
-	EquationReasonBrokenFrac         EquationReason = "broken-frac"
-	EquationReasonRepeatedOperators  EquationReason = "repeated-operators"
-	EquationReasonTruncatedBrace     EquationReason = "truncated-brace-group"
-	EquationReasonArrowOnly          EquationReason = "arrow-only"
+	EquationReasonUnknown           EquationReason = ""
+	EquationReasonConvertError      EquationReason = "convert-error"
+	EquationReasonInvalidOLE        EquationReason = "invalid-ole"
+	EquationReasonMTEFOpenPanic     EquationReason = "mtef-open-panic"
+	EquationReasonEmptyOutput       EquationReason = "empty-output"
+	EquationReasonEmptyMathBody     EquationReason = "empty-math-body"
+	EquationReasonReplacementChar   EquationReason = "replacement-char"
+	EquationReasonPlaceholderBox    EquationReason = "placeholder-box"
+	EquationReasonNonPrintableRune  EquationReason = "non-printable-rune"
+	EquationReasonTinyNonLatex      EquationReason = "tiny-nonlatex-fragment"
+	EquationReasonBrokenFrac        EquationReason = "broken-frac"
+	EquationReasonRepeatedOperators EquationReason = "repeated-operators"
+	EquationReasonTruncatedBrace    EquationReason = "truncated-brace-group"
+	EquationReasonArrowOnly         EquationReason = "arrow-only"
 )
 
 type EquationReasonDefinition struct {

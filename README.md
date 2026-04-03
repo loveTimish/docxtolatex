@@ -9,6 +9,8 @@
 
 转换时会直接读取 `.docx` 压缩包内容，尽量在内存中完成解析；如果文档里包含图片，也会一并提取到输出目录。
 
+> 仓库已开始引入最小 `MathIR` 方向：当前先让 OMML 能产出基础语义节点（`token/group/frac/subsup/fence/raw-latex`），但默认文档转换仍继续走现有字符串输出路径，避免一次性大重构。
+
 ## 功能概览
 
 - 将单个 `oleObject*.bin` 转成 LaTeX
@@ -113,7 +115,9 @@ xuekewang/
 - `eqn/`
   - MathType / MTEF 到 LaTeX 的核心转换逻辑
 - `omml/`
-  - OMML 到 LaTeX 的解析逻辑
+  - OMML 到 LaTeX 的解析逻辑，以及最小 OMML → MathIR 入口
+- `mathir/`
+  - 公式统一语义层的最小节点定义与 LaTeX 回渲染
 - `latexmap/`
   - Unicode / 字符映射，辅助 OMML 和符号转换
 - `docs/math-support-matrix.md`

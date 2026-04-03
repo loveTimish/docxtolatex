@@ -69,7 +69,10 @@
 │   ├── chars_extended.go   # 扩展字符映射
 │   └── docx2tex_katex_chars.go
 ├── omml/
-│   └── omml.go             # OMML → LaTeX
+│   ├── omml.go             # OMML → LaTeX
+│   └── ir.go               # 最小 OMML → MathIR 入口（保留旧字符串路径）
+├── mathir/
+│   └── mathir.go           # 公式统一语义层的最小节点定义与回渲染
 └── latexmap/
     └── latexmap.go         # Unicode / LaTeX 映射辅助
 ```
@@ -125,6 +128,8 @@
 ## 5.2 OMML 公式转换
 - 支持 Word 原生 OMML 节点转换
 - 支持基础分式、上下标、根式、定界符、矩阵、对齐等结构
+- 已开始提供最小 `MathIR` 入口：当前先覆盖 `token / group / frac / subsup / fence / raw-latex`
+- 默认文档转换仍沿用原有字符串链路；`MathIR` 目前主要用于后续统一语义层演进和测试落脚点
 
 ## 5.3 基础样式与结构恢复
 当前已支持：
