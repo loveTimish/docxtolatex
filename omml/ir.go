@@ -60,8 +60,14 @@ func parseNodeFromStart(start xml.StartElement, dec *xml.Decoder) (*mathir.Node,
 		return parseFence(dec)
 	case "rad":
 		return parseRad(dec)
+	case "bar":
+		return parseBar(start, dec)
 	case "nary":
 		return parseNary(start, dec)
+	case "limLow", "limUpp":
+		return parseLimits(start.Name.Local, dec)
+	case "groupChr":
+		return parseGroupChr(start, dec)
 	case "m", "matrix":
 		return parseMatrixIR(start.Name.Local, dec)
 	case "eqArr":
@@ -239,6 +245,37 @@ func parseRad(dec *xml.Decoder) (*mathir.Node, error) {
 	}
 }
 
+func parseBar(start xml.StartElement, dec *xml.Decoder) (*mathir.Node, error) {
+	pos := strings.ToLower(attrVal(start.Attr, "pos"))
+	var operand *mathir.Node
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return nil, err
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			switch el.Name.Local {
+			case "barPr":
+				if parsed := parseBarPr(dec); parsed != "" {
+					pos = parsed
+				}
+			case "e":
+				operand, err = parseContainer("e", dec)
+			default:
+				_, err = parseNodeFromStart(el, dec)
+			}
+			if err != nil {
+				return nil, err
+			}
+		case xml.EndElement:
+			if el.Name.Local == "bar" {
+				return mathir.Accent(barCommand(pos), operand), nil
+			}
+		}
+	}
+}
+
 func parseNary(start xml.StartElement, dec *xml.Decoder) (*mathir.Node, error) {
 	operator := mapNarySymbol(start)
 	var lower, upper, body *mathir.Node
@@ -269,6 +306,73 @@ func parseNary(start xml.StartElement, dec *xml.Decoder) (*mathir.Node, error) {
 		case xml.EndElement:
 			if el.Name.Local == "nary" {
 				return mathir.Nary(operator, lower, upper, body), nil
+			}
+		}
+	}
+}
+
+func parseLimits(local string, dec *xml.Decoder) (*mathir.Node, error) {
+	var base, limit *mathir.Node
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return nil, err
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			switch el.Name.Local {
+			case "e":
+				base, err = parseContainer("e", dec)
+			case "lim":
+				limit, err = parseContainer("lim", dec)
+			default:
+				_, err = parseNodeFromStart(el, dec)
+			}
+			if err != nil {
+				return nil, err
+			}
+		case xml.EndElement:
+			if el.Name.Local == local {
+				if local == "limLow" {
+					return mathir.Limits(base, limit, nil), nil
+				}
+				return mathir.Limits(base, nil, limit), nil
+			}
+		}
+	}
+}
+
+func parseGroupChr(start xml.StartElement, dec *xml.Decoder) (*mathir.Node, error) {
+	pos := strings.ToLower(attrVal(start.Attr, "pos"))
+	chr := attrVal(start.Attr, "chr")
+	var operand *mathir.Node
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return nil, err
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			switch el.Name.Local {
+			case "groupChrPr":
+				parsedPos, parsedChr := parseGroupChrPr(dec)
+				if parsedPos != "" {
+					pos = parsedPos
+				}
+				if parsedChr != "" {
+					chr = parsedChr
+				}
+			case "e":
+				operand, err = parseContainer("e", dec)
+			default:
+				_, err = parseNodeFromStart(el, dec)
+			}
+			if err != nil {
+				return nil, err
+			}
+		case xml.EndElement:
+			if el.Name.Local == "groupChr" {
+				return mathir.Accent(groupChrCommand(pos, chr), operand), nil
 			}
 		}
 	}

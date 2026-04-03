@@ -24,16 +24,17 @@ func TestRenderLatexForRawNode(t *testing.T) {
 	}
 }
 
-func TestRenderLatexForNaryMatrixEqArrayAndAccent(t *testing.T) {
+func TestRenderLatexForNaryLimitsMatrixEqArrayAndAccent(t *testing.T) {
 	node := Group(
 		Nary(`\sum`, Token("i=1"), Token("n"), Token("x_i")),
+		Limits(Token(`\lim`), Token(`x\to 0`), nil),
 		Matrix("pmatrix", [][]*Node{{Token("a"), Token("b")}, {Token("c"), Token("d")}}),
 		EqArray([][]*Node{{Token("x"), Token("1")}, {Token("y"), Token("2")}}),
 		Accent(`\vec`, Token("v")),
 	)
 
 	got := RenderLatex(node)
-	want := `\sum_{i=1}^{n}{x_i}\begin{pmatrix}a & b\\c & d\end{pmatrix}x = 1\\y = 2\vec{v}`
+	want := `\sum_{i=1}^{n}{x_i}\mathop{\lim}\limits_{x\to 0}\begin{pmatrix}a & b\\c & d\end{pmatrix}x = 1\\y = 2\vec{v}`
 	if got != want {
 		t.Fatalf("RenderLatex() = %q, want %q", got, want)
 	}

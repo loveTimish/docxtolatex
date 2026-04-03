@@ -11,6 +11,7 @@ const (
 	NodeSubSup   NodeKind = "subsup"
 	NodeFence    NodeKind = "fence"
 	NodeNary     NodeKind = "nary"
+	NodeLimits   NodeKind = "limits"
 	NodeMatrix   NodeKind = "matrix"
 	NodeEqArray  NodeKind = "eq-array"
 	NodeAccent   NodeKind = "accent"
@@ -66,6 +67,10 @@ func Fence(open, close string, inner *Node) *Node {
 
 func Nary(operator string, lower, upper, body *Node) *Node {
 	return &Node{Kind: NodeNary, Operator: operator, Lower: lower, Upper: upper, Operand: body}
+}
+
+func Limits(base, lower, upper *Node) *Node {
+	return &Node{Kind: NodeLimits, Base: base, Lower: lower, Upper: upper}
 }
 
 func Matrix(environment string, rows [][]*Node) *Node {
@@ -146,6 +151,22 @@ func RenderLatex(node *Node) string {
 		b.WriteString("{")
 		b.WriteString(RenderLatex(node.Operand))
 		b.WriteString("}")
+		return b.String()
+	case NodeLimits:
+		var b strings.Builder
+		b.WriteString(`\mathop{`)
+		b.WriteString(RenderLatex(node.Base))
+		b.WriteString(`}\limits`)
+		if node.Lower != nil {
+			b.WriteString("_{")
+			b.WriteString(RenderLatex(node.Lower))
+			b.WriteString("}")
+		}
+		if node.Upper != nil {
+			b.WriteString("^{")
+			b.WriteString(RenderLatex(node.Upper))
+			b.WriteString("}")
+		}
 		return b.String()
 	case NodeMatrix:
 		env := node.Environment

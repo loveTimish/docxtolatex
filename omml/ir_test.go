@@ -8,6 +8,26 @@ import (
 	"github.com/zhexiao/mtef-go/mathir"
 )
 
+func renderStringPathFromSnippet(t *testing.T, input string) string {
+	t.Helper()
+	dec := xml.NewDecoder(strings.NewReader(input))
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			t.Fatalf("decoder error before OMML root: %v", err)
+		}
+		start, ok := tok.(xml.StartElement)
+		if !ok {
+			continue
+		}
+		latex, err := ConvertElement(start, dec)
+		if err != nil {
+			t.Fatalf("ConvertElement returned error: %v", err)
+		}
+		return latex
+	}
+}
+
 func TestParseToIRFraction(t *testing.T) {
 	input := `<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:f><m:num><m:r><m:t>a</m:t></m:r></m:num><m:den><m:r><m:t>b</m:t></m:r></m:den></m:f></m:oMath>`
 	node, err := ParseToIRString(input)
@@ -134,5 +154,48 @@ func TestParseToIRAccent(t *testing.T) {
 	}
 	if got := mathir.RenderLatex(node); got != `\vec{AB}` {
 		t.Fatalf("expected accent latex, got %q", got)
+	}
+}
+
+func TestParseToIRBarMatchesStringPath(t *testing.T) {
+	input := `<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:bar><m:barPr><m:pos m:val="bot"/></m:barPr><m:e><m:r><m:t>x</m:t></m:r></m:e></m:bar></m:oMath>`
+	node, err := ParseToIRString(input)
+	if err != nil {
+		t.Fatalf("ParseToIRString returned error: %v", err)
+	}
+	got := mathir.RenderLatex(node)
+	want := `\underline{x}`
+	if got != want {
+		t.Fatalf("expected bar latex, got %q", got)
+	}
+	if legacy := renderStringPathFromSnippet(t, input); legacy != want {
+		t.Fatalf("string path = %q, want %q", legacy, want)
+	}
+}
+
+func TestParseToIRGroupChrMatchesStringPath(t *testing.T) {
+	input := `<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:groupChr><m:groupChrPr><m:chr m:val="⏞"/><m:pos m:val="top"/></m:groupChrPr><m:e><m:r><m:t>ab</m:t></m:r></m:e></m:groupChr></m:oMath>`
+	node, err := ParseToIRString(input)
+	if err != nil {
+		t.Fatalf("ParseToIRString returned error: %v", err)
+	}
+	got := mathir.RenderLatex(node)
+	want := `\overbrace{ab}`
+	if got != want {
+		t.Fatalf("expected groupChr latex, got %q", got)
+	}
+	if legacy := renderStringPathFromSnippet(t, input); legacy != want {
+		t.Fatalf("string path = %q, want %q", legacy, want)
+	}
+}
+
+func TestParseToIRLimits(t *testing.T) {
+	input := `<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:limLow><m:e><m:r><m:t>lim</m:t></m:r></m:e><m:lim><m:r><m:t>x→0</m:t></m:r></m:lim></m:limLow></m:oMath>`
+	node, err := ParseToIRString(input)
+	if err != nil {
+		t.Fatalf("ParseToIRString returned error: %v", err)
+	}
+	if got := mathir.RenderLatex(node); got != `\mathop{lim}\limits_{x{\rightarrow}0}` {
+		t.Fatalf("expected limits latex, got %q", got)
 	}
 }

@@ -106,6 +106,84 @@ func TestConvertGeneratedOMMLRegressionDocx(t *testing.T) {
 	}
 }
 
+func TestConvertProducerShapedOMMLRegressionDocx(t *testing.T) {
+	tempDir := t.TempDir()
+	source := filepath.Join(tempDir, "producer-shaped-omml.docx")
+	outputDir := filepath.Join(tempDir, "producer-shaped-omml-out")
+
+	writeMinimalDocxFixture(t, source, `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+            xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+  <w:body>
+    <w:p>
+      <w:r><w:t>decor </w:t></w:r>
+      <m:oMath>
+        <m:bar>
+          <m:barPr><m:pos m:val="bot"/></m:barPr>
+          <m:e><m:r><m:t>x</m:t></m:r></m:e>
+        </m:bar>
+      </m:oMath>
+    </w:p>
+    <w:p>
+      <m:oMath>
+        <m:groupChr>
+          <m:groupChrPr><m:chr m:val="⏞"/><m:pos m:val="top"/></m:groupChrPr>
+          <m:e><m:r><m:t>ab</m:t></m:r></m:e>
+        </m:groupChr>
+      </m:oMath>
+    </w:p>
+    <w:p>
+      <m:oMathPara>
+        <m:oMath>
+          <m:limLow>
+            <m:e><m:r><m:t>lim</m:t></m:r></m:e>
+            <m:lim><m:r><m:t>x→0</m:t></m:r></m:lim>
+          </m:limLow>
+        </m:oMath>
+      </m:oMathPara>
+    </w:p>
+  </w:body>
+</w:document>`)
+
+	converter := &Converter{Source: source, Output: outputDir, WriteReport: true}
+	count, err := converter.Convert()
+	if err != nil {
+		t.Fatalf("Convert() returned error: %v", err)
+	}
+	if count != 3 {
+		t.Fatalf("Convert() equation count = %d, want 3", count)
+	}
+
+	tex, err := os.ReadFile(converter.Output)
+	if err != nil {
+		t.Fatalf("ReadFile(%s) returned error: %v", converter.Output, err)
+	}
+	texStr := string(tex)
+	for _, want := range []string{
+		`decor $\underline{x}$`,
+		`$\overbrace{ab}$`,
+		`$$ \lim_{x{\rightarrow}0}lim $$`,
+	} {
+		if !strings.Contains(texStr, want) {
+			t.Fatalf("expected converted tex to contain %q, got:\n%s", want, texStr)
+		}
+	}
+
+	reportPath := filepath.Join(outputDir, "producer-shaped-omml-out.report.json")
+	reportData, err := os.ReadFile(reportPath)
+	if err != nil {
+		t.Fatalf("ReadFile(%s) returned error: %v", reportPath, err)
+	}
+
+	var report ConversionReport
+	if err := json.Unmarshal(reportData, &report); err != nil {
+		t.Fatalf("json.Unmarshal(report) returned error: %v", err)
+	}
+	if report.Summary.ConvertedOMML != 3 || report.Summary.ConvertedOLE != 0 {
+		t.Fatalf("unexpected report summary: %#v", report.Summary)
+	}
+}
+
 func writeMinimalDocxFixture(t *testing.T, path string, documentXML string) {
 	t.Helper()
 

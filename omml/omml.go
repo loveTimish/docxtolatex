@@ -116,16 +116,37 @@ func walk(buf *bytes.Buffer, start xml.StartElement, dec *xml.Decoder) error {
 			buf.WriteString(`\sqrt{` + e.String() + `}`)
 		}
 	case "bar": // overline/underline
-		dir := attrVal(start.Attr, "pos")
+		dir := strings.ToLower(attrVal(start.Attr, "pos"))
 		var e bytes.Buffer
-		if err := consumeTo(&e, dec, "e"); err != nil {
-			return err
+		for {
+			tok, err := dec.Token()
+			if err != nil {
+				return err
+			}
+			switch el := tok.(type) {
+			case xml.StartElement:
+				switch el.Name.Local {
+				case "barPr":
+					if pos := parseBarPr(dec); pos != "" {
+						dir = pos
+					}
+				case "e":
+					if err := walk(&e, el, dec); err != nil {
+						return err
+					}
+				default:
+					if err := walk(&e, el, dec); err != nil {
+						return err
+					}
+				}
+			case xml.EndElement:
+				if el.Name.Local == "bar" {
+					goto doneBar
+				}
+			}
 		}
-		if dir == "top" || dir == "" {
-			buf.WriteString(`\overline{` + e.String() + `}`)
-		} else {
-			buf.WriteString(`\underline{` + e.String() + `}`)
-		}
+	doneBar:
+		buf.WriteString(barCommand(dir) + `{` + e.String() + `}`)
 	case "acc": // accent
 		var e bytes.Buffer
 		accent := ""
@@ -289,25 +310,42 @@ func walk(buf *bytes.Buffer, start xml.StartElement, dec *xml.Decoder) error {
 		}
 		buf.WriteString(`_{` + sub.String() + `}^{` + sup.String() + `}` + e.String())
 	case "groupChr": // overbrace/underbrace
-		pos := attrVal(start.Attr, "pos")
+		pos := strings.ToLower(attrVal(start.Attr, "pos"))
 		chr := attrVal(start.Attr, "chr")
 		var e bytes.Buffer
-		if err := consumeTo(&e, dec, "e"); err != nil {
-			return err
-		}
-		if pos == "top" {
-			if chr == "\u2322" {
-				buf.WriteString(`\overbrace{` + e.String() + `}`)
-			} else {
-				buf.WriteString(`\overline{` + e.String() + `}`)
+		for {
+			tok, err := dec.Token()
+			if err != nil {
+				return err
 			}
-		} else {
-			if chr == "\u2322" {
-				buf.WriteString(`\underbrace{` + e.String() + `}`)
-			} else {
-				buf.WriteString(`\underline{` + e.String() + `}`)
+			switch el := tok.(type) {
+			case xml.StartElement:
+				switch el.Name.Local {
+				case "groupChrPr":
+					parsedPos, parsedChr := parseGroupChrPr(dec)
+					if parsedPos != "" {
+						pos = parsedPos
+					}
+					if parsedChr != "" {
+						chr = parsedChr
+					}
+				case "e":
+					if err := walk(&e, el, dec); err != nil {
+						return err
+					}
+				default:
+					if err := walk(&e, el, dec); err != nil {
+						return err
+					}
+				}
+			case xml.EndElement:
+				if el.Name.Local == "groupChr" {
+					goto doneGroupChr
+				}
 			}
 		}
+	doneGroupChr:
+		buf.WriteString(groupChrCommand(pos, chr) + `{` + e.String() + `}`)
 	case "m", "matrix": // matrix
 		rows, brk := parseMatrix(dec)
 		if shouldFlattenMatrix(rows) {
@@ -611,6 +649,73 @@ func parseAccPr(dec *xml.Decoder) string {
 			}
 		}
 	}
+}
+
+func parseBarPr(dec *xml.Decoder) string {
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return ""
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			switch el.Name.Local {
+			case "pos":
+				return strings.ToLower(attrVal(el.Attr, "val"))
+			default:
+				_ = dec.Skip()
+			}
+		case xml.EndElement:
+			if el.Name.Local == "barPr" {
+				return ""
+			}
+		}
+	}
+}
+
+func parseGroupChrPr(dec *xml.Decoder) (pos string, chr string) {
+	for {
+		tok, err := dec.Token()
+		if err != nil {
+			return pos, chr
+		}
+		switch el := tok.(type) {
+		case xml.StartElement:
+			switch el.Name.Local {
+			case "pos":
+				pos = strings.ToLower(attrVal(el.Attr, "val"))
+			case "chr":
+				chr = attrVal(el.Attr, "val")
+			default:
+				_ = dec.Skip()
+			}
+		case xml.EndElement:
+			if el.Name.Local == "groupChrPr" {
+				return pos, chr
+			}
+		}
+	}
+}
+
+func barCommand(pos string) string {
+	if strings.EqualFold(pos, "bot") {
+		return `\underline`
+	}
+	return `\overline`
+}
+
+func groupChrCommand(pos string, chr string) string {
+	brace := chr == "" || chr == "\u2322" || chr == "\u23de" || chr == "\u23df"
+	if strings.EqualFold(pos, "top") {
+		if brace {
+			return `\overbrace`
+		}
+		return `\overline`
+	}
+	if brace {
+		return `\underbrace`
+	}
+	return `\underline`
 }
 
 // parseDelimPr reads dPr to find begChr/endChr/sepChr values.
