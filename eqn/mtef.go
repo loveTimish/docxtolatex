@@ -29,12 +29,102 @@ type MTEFv5 struct {
 
 	ast   *MtAST
 	nodes []*MtAST
+	trace []string
 
 	//是否合法，顺利解析
 	Valid bool
 
 	// DebugContext is an optional label (e.g., OLE target path) used in debug output.
 	DebugContext string
+}
+
+func (m *MTEFv5) DebugSummary(maxNodes int) string {
+	var b strings.Builder
+	b.WriteString(fmt.Sprintf("valid=%v mtef=%d platform=%d product=%d version=%d sub=%d app=%q inline=%d nodes=%d\n",
+		m.Valid, m.mMtefVer, m.mPlatform, m.mProduct, m.mVersion, m.mVersionSub, m.mApplication, m.mInline, len(m.nodes)))
+	for _, line := range m.trace {
+		b.WriteString(line)
+		b.WriteByte('\n')
+	}
+	if maxNodes <= 0 || maxNodes > len(m.nodes) {
+		maxNodes = len(m.nodes)
+	}
+	for i := 0; i < maxNodes; i++ {
+		n := m.nodes[i]
+		b.WriteString(fmt.Sprintf("%03d %s\n", i, debugNodeSummary(n)))
+	}
+	if m.ast != nil {
+		nodes := 0
+		m.dumpAST(m.ast, 0, 8, 200, &nodes, &b)
+	}
+	return b.String()
+}
+
+func debugNodeSummary(n *MtAST) string {
+	if n == nil {
+		return "<nil>"
+	}
+	switch n.tag {
+	case CHAR:
+		c := n.value.(*MtChar)
+		return fmt.Sprintf("CHAR typeface=%d mtcode=%d bits8=%d bits16=%d", c.typeface, c.mtcode, c.bits8, c.bits16)
+	case LINE:
+		l := n.value.(*MtLine)
+		return fmt.Sprintf("LINE null=%v", l.null)
+	case TMPL:
+		t := n.value.(*MtTmpl)
+		return fmt.Sprintf("TMPL selector=%d variation=%d options=%d", t.selector, t.variation, t.options)
+	case FONT_DEF:
+		f := n.value.(*MtfontDef)
+		return fmt.Sprintf("FONT_DEF enc=%d name=%q", f.encDefIndex, f.name)
+	case ENCODING_DEF:
+		return fmt.Sprintf("ENCODING_DEF %q", n.value)
+	default:
+		return fmt.Sprintf("RECORD %d", n.tag)
+	}
+}
+
+func isIgnorableMathTypeChar(mtcode uint16, typeface uint8) bool {
+	if mtcode == 0 {
+		return true
+	}
+	if mtcode == 0x0004 || mtcode == 0x200d || mtcode == 0xfeff {
+		return true
+	}
+	if mtcode >= 0xE000 && mtcode <= 0xF8FF {
+		return true
+	}
+	return false
+}
+
+func isCharCode(ast *MtAST, code uint16) bool {
+	if ast == nil || ast.tag != CHAR {
+		return false
+	}
+	return ast.value.(*MtChar).mtcode == code
+}
+
+func isEmptyLine(ast *MtAST) bool {
+	if ast == nil || ast.tag != LINE {
+		return false
+	}
+	return len(ast.children) == 0
+}
+
+func isSimpleNumericLine(ast *MtAST) bool {
+	if ast == nil || ast.tag != LINE || len(ast.children) == 0 {
+		return false
+	}
+	for _, child := range ast.children {
+		if child.tag != CHAR {
+			return false
+		}
+		mtcode := child.value.(*MtChar).mtcode
+		if mtcode < '0' || mtcode > '9' {
+			return false
+		}
+	}
+	return true
 }
 
 func envBool(key string) bool {
@@ -157,6 +247,7 @@ func (m *MTEFv5) readRecord() (err error) {
 
 	// Body (v4/v5+)
 	for {
+		pos, _ := m.reader.Seek(0, io.SeekCurrent)
 		record := RecordType(0)
 		err = binary.Read(m.reader, binary.LittleEndian, &record)
 
@@ -185,6 +276,9 @@ func (m *MTEFv5) readRecord() (err error) {
 
 		if err != nil {
 			break
+		}
+		if envBool("DOCXTOLATEX_TRACE_RECORDS") {
+			m.trace = append(m.trace, fmt.Sprintf("@%04x record=%d", pos, record))
 		}
 		switch record {
 		case END:
@@ -244,9 +338,7 @@ func (m *MTEFv5) readRecord() (err error) {
 			//读取字节，但是不关心数据，注释
 			//m.nodes = append(m.nodes, &MtAST{FONT_STYLE_DEF, fsDef, nil})
 		case SIZE:
-			mtSize := new(MtSize)
-			_ = binary.Read(m.reader, binary.LittleEndian, &mtSize.lsize)
-			_ = binary.Read(m.reader, binary.LittleEndian, &mtSize.dsize)
+			_ = m.readSize()
 		case SUB:
 			m.nodes = append(m.nodes, &MtAST{SUB, nil, nil})
 		case SUB2:
@@ -296,6 +388,20 @@ func (m *MTEFv5) readRecord() (err error) {
 	return nil
 }
 
+func (m *MTEFv5) readSize() error {
+	size := uint8(0)
+	if err := binary.Read(m.reader, binary.LittleEndian, &size); err != nil {
+		return err
+	}
+	// MathType MTEF SIZE records are variable length. Values 100 and 101 carry
+	// an additional 16-bit value (large delta / explicit point size).
+	if size == 100 || size == 101 {
+		var extended uint16
+		return binary.Read(m.reader, binary.LittleEndian, &extended)
+	}
+	return nil
+}
+
 // TagTypeV3 option bits (stored in the high 4 bits of the tag byte)
 const (
 	v3XfNULL   uint8 = 0x1 // LINE placeholder only
@@ -322,7 +428,7 @@ func (m *MTEFv5) readBodyV3() error {
 
 		// These readers expect to read the tag byte themselves (to get options).
 		switch recType {
-		case LINE, CHAR, TMPL, PILE, MATRIX, EMBELL:
+		case LINE, CHAR, TMPL, PILE, MATRIX, EMBELL, FONT_STYLE_DEF:
 			_, _ = m.reader.Seek(-1, io.SeekCurrent)
 		}
 
@@ -372,6 +478,12 @@ func (m *MTEFv5) readBodyV3() error {
 				return err
 			}
 			m.nodes = append(m.nodes, &MtAST{tag: EMBELL, value: embell, children: nil})
+		case FONT_STYLE_DEF:
+			font := new(MtfontStyleDef)
+			if err := m.readFontV3(font); err != nil {
+				m.Valid = false
+				return err
+			}
 		case SIZE:
 			// v3 SIZE: 2 bytes (lsize,dsize)
 			var b [2]byte
@@ -392,6 +504,22 @@ func (m *MTEFv5) readBodyV3() error {
 			return fmt.Errorf("unknown v3 record type %d (tag=0x%02x)", recType, tagByte)
 		}
 	}
+	return nil
+}
+
+func (m *MTEFv5) readFontV3(font *MtfontStyleDef) error {
+	var tag uint8
+	if err := binary.Read(m.reader, binary.LittleEndian, &tag); err != nil {
+		return err
+	}
+	recType := tag & 0x0F
+	if recType != uint8(FONT_STYLE_DEF) {
+		return fmt.Errorf("readFontV3: unexpected recType=%d", recType)
+	}
+	_ = binary.Read(m.reader, binary.LittleEndian, &font.fontDefIndex)
+	var style uint8
+	_ = binary.Read(m.reader, binary.LittleEndian, &style)
+	font.name, _ = m.readNullTerminatedString()
 	return nil
 }
 
@@ -1092,7 +1220,7 @@ func (m *MTEFv5) makeAST() (err error) {
 			//如果与0 <nil> 匹配，则需要入栈
 			stack.PushBack(node)
 		case END:
-			if stack.Len() > 0 {
+			if stack.Len() > 1 {
 				ele := stack.Back()
 				stack.Remove(ele)
 			}
@@ -1193,6 +1321,33 @@ func (m *MTEFv5) makeLatex(ast *MtAST) (latex string, err error) {
 		for i := 0; i < len(ast.children); i++ {
 			cur := ast.children[i]
 
+			if isEmptyLine(cur) {
+				continue
+			}
+
+			// Legacy Equation Editor streams sometimes encode visually stacked fractions
+			// as adjacent LINE siblings with no TMPL record. Limit this to simple numeric
+			// line pairs so ordinary multi-line constructs are left alone.
+			if isSimpleNumericLine(cur) && i+1 < len(ast.children) && isSimpleNumericLine(ast.children[i+1]) {
+				numer, _ := m.makeLatex(cur)
+				denom, _ := m.makeLatex(ast.children[i+1])
+				buf.WriteString(fmt.Sprintf("\\frac{%s}{%s}", strings.TrimSpace(numer), strings.TrimSpace(denom)))
+				i++
+				continue
+			}
+
+			if isCharCode(cur, '(') && i+1 < len(ast.children) && isCharCode(ast.children[i+1], ')') {
+				if i+2 < len(ast.children) && isCharCode(ast.children[i+2], 215) && buf.Len() > 0 {
+					content := strings.TrimSpace(buf.String())
+					buf.Reset()
+					buf.WriteString("(")
+					buf.WriteString(content)
+					buf.WriteString(")")
+					i++
+					continue
+				}
+			}
+
 			// Collapse repeated + / - tokens that sometimes appear due to slot parsing drift.
 			// This helps avoid generating "+++" in output and keeps KaTeX happy.
 			if cur.tag == CHAR && i+1 < len(ast.children) {
@@ -1259,6 +1414,9 @@ func (m *MTEFv5) makeLatex(ast *MtAST) (latex string, err error) {
 	case CHAR:
 		mtcode := ast.value.(*MtChar).mtcode
 		typeface := ast.value.(*MtChar).typeface
+		if isIgnorableMathTypeChar(mtcode, typeface) {
+			return "", nil
+		}
 		// mtcode is a character code; convert explicitly to a rune to avoid Go vet warning.
 		char := string(rune(mtcode))
 
@@ -1363,6 +1521,9 @@ func (m *MTEFv5) makeLatex(ast *MtAST) (latex string, err error) {
 							content = s
 							break
 						}
+					}
+					if content == "" {
+						return "", nil
 					}
 					if variation == 0 {
 						buf.WriteString(fmt.Sprintf("^{%v}", content))
@@ -2091,7 +2252,8 @@ func (m *MTEFv5) makeLatex(ast *MtAST) (latex string, err error) {
 			}
 			return buf.String(), nil
 		default:
-			m.Valid = false
+			// Preserve any readable child content for templates we do not yet render
+			// structurally. The caller still applies sanity checks before accepting it.
 			log.Println("TMPL NOT IMPLEMENT", tmpl.selector, tmpl.variation)
 		}
 		for _, _ast := range ast.children {
@@ -2283,12 +2445,12 @@ func Open(reader io.ReadSeeker) (eqn *MTEFv5, err error) {
 	//parse `mtef` stream from `ole` object
 	ole, err := ole2.Open(reader, "")
 	if err != nil {
-		fmt.Println(err)
+		return nil, fmt.Errorf("open OLE storage: %w", err)
 	}
 
 	dir, err := ole.ListDir()
 	if err != nil {
-		fmt.Println(err)
+		return nil, fmt.Errorf("list OLE directory: %w", err)
 	}
 
 	for _, file := range dir {
@@ -2326,5 +2488,5 @@ func Open(reader io.ReadSeeker) (eqn *MTEFv5, err error) {
 			return nil, err
 		}
 	}
-	return nil, err
+	return nil, fmt.Errorf("Equation Native stream not found")
 }

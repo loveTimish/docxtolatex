@@ -27,6 +27,153 @@ func TestRenderImageRefsIncludeGraphicsMode(t *testing.T) {
 	}
 }
 
+func TestFinalizeParagraphMathChoosesInlineOrDisplay(t *testing.T) {
+	report := newReport("test")
+	report.Equations = append(report.Equations, EquationReport{Kind: "ole", Output: "$$ x+y $$"})
+
+	content := "已知 \x00MATH0\x00，求值"
+	got := finalizeParagraphMath(content, []mathSegment{{
+		Latex:       "$$ x+y $$",
+		DisplayHint: true,
+		ReportIndex: 0,
+		InlineKind:  "ole-inline",
+		DisplayKind: "ole",
+	}}, &report)
+	if got != "已知 $x+y$，求值" {
+		t.Fatalf("expected inline math in mixed paragraph, got %q", got)
+	}
+	if report.Equations[0].Kind != "ole-inline" || report.Equations[0].Output != "x+y" {
+		t.Fatalf("unexpected report equation: %#v", report.Equations[0])
+	}
+
+	got = finalizeParagraphMath("\x00MATH0\x00", []mathSegment{{
+		Latex:       "x+y",
+		DisplayHint: false,
+		ReportIndex: -1,
+		InlineKind:  "omml-inline",
+		DisplayKind: "omml-display",
+	}}, nil)
+	if got != "$$ x+y $$" {
+		t.Fatalf("expected display math in math-only paragraph, got %q", got)
+	}
+
+	got = finalizeParagraphMath("decor \x00MATH0\x00", []mathSegment{{
+		Latex:       "x",
+		DisplayHint: false,
+		ReportIndex: -1,
+		InlineKind:  "omml-inline",
+		DisplayKind: "omml-display",
+	}}, nil)
+	if got != "decor $x$" {
+		t.Fatalf("expected word prefix to keep inline math, got %q", got)
+	}
+
+	got = finalizeParagraphMath("\x00MATH0\x00\x00MATH1\x00", []mathSegment{
+		{Latex: "a=13", ReportIndex: -1, InlineKind: "ole-inline", DisplayKind: "ole"},
+		{Latex: "b=53", ReportIndex: -1, InlineKind: "ole-inline", DisplayKind: "ole"},
+	}, nil)
+	if got != "$$ a=13 $$\n$$ b=53 $$" {
+		t.Fatalf("unexpected math-only display handling: %q", got)
+	}
+
+	got = finalizeParagraphMath("则\x00MATH0\x00\x00MATH1\x00", []mathSegment{
+		{Latex: "a=13", ReportIndex: -1, InlineKind: "ole-inline", DisplayKind: "ole"},
+		{Latex: "b=53", ReportIndex: -1, InlineKind: "ole-inline", DisplayKind: "ole"},
+	}, nil)
+	if got != "则$a=13 b=53$" {
+		t.Fatalf("expected adjacent inline math to be merged, got %q", got)
+	}
+
+	got = finalizeParagraphMath("共\x00MATH0\x00（元\x00MATH1\x00", []mathSegment{
+		{Latex: "1096", ReportIndex: -1, InlineKind: "ole-inline", DisplayKind: "ole"},
+		{Latex: ")", ReportIndex: -1, InlineKind: "ole-inline", DisplayKind: "ole"},
+	}, nil)
+	if got != "共$1096$（元）" {
+		t.Fatalf("expected punctuation-only math to become text, got %q", got)
+	}
+
+	got = finalizeParagraphMath("余\x00MATH0\x00（个\x00MATH1\x00", []mathSegment{
+		{Latex: "56\\div 12=4", ReportIndex: -1, InlineKind: "ole-inline", DisplayKind: "ole"},
+		{Latex: ")\\ldots \\ldots 8", ReportIndex: -1, InlineKind: "ole-inline", DisplayKind: "ole"},
+	}, nil)
+	if got != "余$56\\div 12=4$（个）$\\ldots \\ldots 8$" {
+		t.Fatalf("expected leading right paren to become text, got %q", got)
+	}
+
+	got = finalizeParagraphMath("式\x00MATH0\x00", []mathSegment{
+		{Latex: "(x+1)", ReportIndex: -1, InlineKind: "ole-inline", DisplayKind: "ole"},
+	}, nil)
+	if got != "式$(x+1)$" {
+		t.Fatalf("expected paired parentheses to stay in math, got %q", got)
+	}
+
+	got = finalizeParagraphMath("\x00MATH0\x00", []mathSegment{{
+		Latex:       "=2025+2024++\\ldots +1",
+		ReportIndex: -1,
+		InlineKind:  "ole-inline",
+		DisplayKind: "ole",
+	}}, nil)
+	if got != "$$ =2025+2024+\\ldots +1 $$" {
+		t.Fatalf("expected duplicate plus before dots to be collapsed, got %q", got)
+	}
+
+	got = finalizeParagraphMath("竖式\x00MATH0\x00", []mathSegment{{
+		Latex:       `a\\`,
+		ReportIndex: -1,
+		InlineKind:  "ole-inline",
+		DisplayKind: "ole",
+	}}, nil)
+	if got != `竖式$a\\$` {
+		t.Fatalf("expected even trailing slash run to keep delimiter intact, got %q", got)
+	}
+
+	got = finalizeParagraphMath("竖式\x00MATH0\x00", []mathSegment{{
+		Latex:       `a\`,
+		ReportIndex: -1,
+		InlineKind:  "ole-inline",
+		DisplayKind: "ole",
+	}}, nil)
+	if got != `竖式$a\ $` {
+		t.Fatalf("expected odd trailing slash run to be separated from delimiter, got %q", got)
+	}
+}
+
+func TestAppendTextWithRawMathPreservesLiteralLatex(t *testing.T) {
+	var para strings.Builder
+	var segments []mathSegment
+	appendTextWithRawMath(&para, &segments, `解：$1\div 72=\frac{1}{72}$（天$)$`)
+
+	got := finalizeParagraphMath(para.String(), segments, nil)
+	if got != `解：$1\div 72=\frac{1}{72}$（天）` {
+		t.Fatalf("expected raw latex math to be preserved, got %q", got)
+	}
+}
+
+func TestAppendTextWithRawMathLeavesPlainDollarTextEscaped(t *testing.T) {
+	var para strings.Builder
+	var segments []mathSegment
+	appendTextWithRawMath(&para, &segments, "price is $5 and code is $abc")
+
+	got := finalizeParagraphMath(para.String(), segments, nil)
+	if got != `price is \$5 and code is \$abc` {
+		t.Fatalf("expected plain dollar text to stay escaped, got %q", got)
+	}
+}
+
+func TestRestoreEscapedRawMathAcrossTextRuns(t *testing.T) {
+	got := restoreEscapedRawMath(`解：\$1\textbackslash{}div 72=\textbackslash{}frac\{1\}\{72\}\$`)
+	if got != `解：$1\div 72=\frac{1}{72}$` {
+		t.Fatalf("expected escaped raw math to be restored, got %q", got)
+	}
+}
+
+func TestNormalizeRenderedTextArtifactsFixesUnitParen(t *testing.T) {
+	got := normalizeRenderedTextArtifacts(`$20\div 7=2$（组$)\ldots \ldots 6$（天）`)
+	if got != `$20\div 7=2$（组）$\ldots \ldots 6$（天）` {
+		t.Fatalf("expected unit paren artifact to be normalized, got %q", got)
+	}
+}
+
 func TestUniqueAssetNameAvoidsCollisionsForDifferentTargets(t *testing.T) {
 	data := []byte("same-bytes")
 	a := uniqueAssetName("media/image1.png", data)

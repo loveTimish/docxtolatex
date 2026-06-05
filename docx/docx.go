@@ -33,9 +33,16 @@ type relInfo struct {
 }
 
 var (
-	badFracRe     = regexp.MustCompile(`\\frac\{[^}]*\}\{\s*[\+\-*/]\s*\}|\\frac\{\s*[\+\-*/]\s*\}\{[^}]*\}`)
-	repeatedOpsRe = regexp.MustCompile(`[\+\-]{3,}`)
-	tinyBraceRe   = regexp.MustCompile(`\{\s*\d+\s*\+\s*\}`)
+	badFracRe                       = regexp.MustCompile(`\\frac\{[^}]*\}\{\s*[\+\-*/]\s*\}|\\frac\{\s*[\+\-*/]\s*\}\{[^}]*\}`)
+	repeatedOpsRe                   = regexp.MustCompile(`[\+\-]{3,}`)
+	doublePlusDotsRe                = regexp.MustCompile(`\+{2,}\s*(\\(?:l|c)dots)`)
+	tinyBraceRe                     = regexp.MustCompile(`\{\s*\d+\s*\+\s*\}`)
+	mathSlotRe                      = regexp.MustCompile(`\x00MATH(\d+)\x00`)
+	equationLabelRe                 = regexp.MustCompile(`^\\?\(?\s*(?:\d+|[A-Za-z]|[一二三四五六七八九十]+)(?:[.\-–—:：])?\s*\\?\)?$`)
+	rawMathOpRe                     = regexp.MustCompile(`[0-9][+\-*/]`)
+	escapedRawMathRe                = regexp.MustCompile(`\\\$([^$\n]*?(?:\\textbackslash\{\}|\\[{}$#_%&])[^$\n]*?)\\\$`)
+	unitDollarParenBeforeMathTailRe = regexp.MustCompile(`（([^（）$\n]{1,6})\$\)(\\(?:l|c)dots)`)
+	unitDollarParenRe               = regexp.MustCompile(`（([^（）$\n]{1,6})\$\)`)
 )
 
 // Convert walks the docx body in order and writes a UTF-8 LaTeX document
@@ -116,6 +123,7 @@ func (c *Converter) Convert() (int, error) {
 	dec := xml.NewDecoder(docReader)
 
 	var para strings.Builder
+	var paraMath []mathSegment
 	paragraphs := make([]paragraphBlock, 0, 256)
 	currentParagraphStyle := ""
 	currentNumID := ""
@@ -158,6 +166,7 @@ func (c *Converter) Convert() (int, error) {
 				pendingOlePreviewRid = ""
 			case "p":
 				para.Reset()
+				paraMath = paraMath[:0]
 				currentParagraphStyle = ""
 				currentNumID = ""
 				currentListLevel = 0
@@ -178,7 +187,7 @@ func (c *Converter) Convert() (int, error) {
 				if err := dec.DecodeElement(&txt, &el); err != nil {
 					return 0, fmt.Errorf("decode text: %w", err)
 				}
-				para.WriteString(escapeLatex(txt))
+				appendTextWithRawMath(&para, &paraMath, txt)
 			case "tab":
 				flushImages()
 				para.WriteString("\t")
@@ -237,10 +246,16 @@ func (c *Converter) Convert() (int, error) {
 					continue
 				}
 
-				para.WriteString(addCommandSpacing(latex))
+				appendMathSegment(&para, &paraMath, mathSegment{
+					Latex:       addCommandSpacing(latex),
+					DisplayHint: true,
+					ReportIndex: len(report.Equations),
+					InlineKind:  "ole-inline",
+					DisplayKind: "ole",
+				})
 				equationCount++
 				entry.Status = EquationStatusConverted
-				entry.Output = latex
+				entry.Output = addCommandSpacing(latex)
 				report.Equations = append(report.Equations, entry)
 				report.Summary.ConvertedOLE++
 			case "oMath", "oMathPara":
@@ -255,8 +270,13 @@ func (c *Converter) Convert() (int, error) {
 				}
 				latex = addCommandSpacing(latex)
 				display := el.Name.Local == "oMathPara"
-				wrapped := wrapMath(latex, display)
-				para.WriteString(wrapped)
+				appendMathSegment(&para, &paraMath, mathSegment{
+					Latex:       latex,
+					DisplayHint: display,
+					ReportIndex: len(report.Equations),
+					InlineKind:  "omml-inline",
+					DisplayKind: "omml-display",
+				})
 				equationCount++
 				report.Equations = append(report.Equations, EquationReport{
 					Index:     len(report.Equations) + 1,
@@ -281,7 +301,13 @@ func (c *Converter) Convert() (int, error) {
 						latex = ""
 					}
 					if latex != "" {
-						para.WriteString(addCommandSpacing(latex))
+						appendMathSegment(&para, &paraMath, mathSegment{
+							Latex:       addCommandSpacing(latex),
+							DisplayHint: false,
+							ReportIndex: len(report.Equations),
+							InlineKind:  "ole-inline",
+							DisplayKind: "ole",
+						})
 						equationCount++
 						report.Equations = append(report.Equations, EquationReport{
 							Index:     len(report.Equations) + 1,
@@ -317,7 +343,8 @@ func (c *Converter) Convert() (int, error) {
 				flushImages()
 				paragraphCount++
 				report.Summary.Paragraphs = paragraphCount
-				block := paragraphBlock{Content: para.String(), Style: currentParagraphStyle}
+				content := finalizeParagraphMath(para.String(), paraMath, &report)
+				block := paragraphBlock{Content: content, Style: currentParagraphStyle}
 				if currentHasNumPr && currentNumID != "" {
 					if def, ok := numbering.resolve(currentNumID, currentListLevel); ok {
 						block.List = &listRef{NumID: currentNumID, Level: currentListLevel, Def: def}
@@ -566,6 +593,105 @@ func escapeLatex(s string) string {
 	return replacer.Replace(s)
 }
 
+func appendTextWithRawMath(para *strings.Builder, segments *[]mathSegment, text string) {
+	ranges := rawMathRanges(text)
+	if len(ranges) == 0 {
+		para.WriteString(escapeLatex(text))
+		return
+	}
+	last := 0
+	for _, r := range ranges {
+		para.WriteString(escapeLatex(text[last:r.Start]))
+		appendMathSegment(para, segments, mathSegment{
+			Latex:       text[r.ContentStart:r.ContentEnd],
+			DisplayHint: r.Display,
+			ReportIndex: -1,
+			InlineKind:  "text-inline",
+			DisplayKind: "text-display",
+		})
+		last = r.End
+	}
+	para.WriteString(escapeLatex(text[last:]))
+}
+
+type rawMathRange struct {
+	Start        int
+	End          int
+	ContentStart int
+	ContentEnd   int
+	Display      bool
+}
+
+func rawMathRanges(text string) []rawMathRange {
+	var ranges []rawMathRange
+	for i := 0; i < len(text); {
+		if text[i] != '$' || isEscapedByte(text, i) {
+			i++
+			continue
+		}
+		display := i+1 < len(text) && text[i+1] == '$'
+		openLen := 1
+		if display {
+			openLen = 2
+		}
+		close := findRawMathClose(text, i+openLen, openLen)
+		if close == -1 {
+			break
+		}
+		inner := strings.TrimSpace(text[i+openLen : close])
+		if inner == "" || !looksLikeRawLatexMath(inner) {
+			i += openLen
+			continue
+		}
+		ranges = append(ranges, rawMathRange{
+			Start:        i,
+			End:          close + openLen,
+			ContentStart: i + openLen,
+			ContentEnd:   close,
+			Display:      display,
+		})
+		i = close + openLen
+	}
+	return ranges
+}
+
+func findRawMathClose(text string, start int, delimLen int) int {
+	for i := start; i < len(text); i++ {
+		if text[i] != '$' || isEscapedByte(text, i) {
+			continue
+		}
+		if delimLen == 2 {
+			if i+1 < len(text) && text[i+1] == '$' {
+				return i
+			}
+			continue
+		}
+		if i+1 < len(text) && text[i+1] == '$' {
+			i++
+			continue
+		}
+		return i
+	}
+	return -1
+}
+
+func isEscapedByte(s string, idx int) bool {
+	backslashes := 0
+	for i := idx - 1; i >= 0 && s[i] == '\\'; i-- {
+		backslashes++
+	}
+	return backslashes%2 == 1
+}
+
+func looksLikeRawLatexMath(inner string) bool {
+	if _, ok := inlineMathAsText(inner); ok {
+		return true
+	}
+	return strings.Contains(inner, `\`) ||
+		strings.ContainsAny(inner, "^_{}=<>±×÷") ||
+		rawMathOpRe.MatchString(inner)
+}
+
 func isBadLatex(latex string) (bool, EquationReason) {
 	s := strings.TrimSpace(latex)
 	if s == "" {
@@ -652,14 +778,10 @@ func addCommandSpacing(s string) string {
 }
 
 func wrapMath(latex string, display bool) string {
+	latex = unwrapMath(latex)
 	latex = normalizeMathSpaces(latex)
-	trimmed := strings.TrimSpace(latex)
-	if strings.HasPrefix(trimmed, "$$") && strings.HasSuffix(trimmed, "$$") && len(trimmed) >= 4 {
-		return latex
-	}
-	if strings.HasPrefix(trimmed, "$") && strings.HasSuffix(trimmed, "$") && len(trimmed) >= 2 {
-		return latex
-	}
+	latex = normalizeMathArtifacts(latex)
+	latex = protectClosingMathDelimiter(latex)
 	if display {
 		return "$$ " + latex + " $$"
 	}
@@ -668,6 +790,264 @@ func wrapMath(latex string, display bool) string {
 
 func normalizeMathSpaces(latex string) string {
 	return strings.ReplaceAll(latex, "\u3000", " ")
+}
+
+func normalizeMathArtifacts(latex string) string {
+	return doublePlusDotsRe.ReplaceAllString(latex, `+$1`)
+}
+
+func protectClosingMathDelimiter(latex string) string {
+	if endsWithOddBackslashRun(latex) {
+		return latex + " "
+	}
+	return latex
+}
+
+func endsWithOddBackslashRun(s string) bool {
+	count := 0
+	for i := len(s) - 1; i >= 0 && s[i] == '\\'; i-- {
+		count++
+	}
+	return count%2 == 1
+}
+
+func unwrapMath(latex string) string {
+	trimmed := strings.TrimSpace(latex)
+	if strings.HasPrefix(trimmed, "$$") && strings.HasSuffix(trimmed, "$$") && len(trimmed) >= 4 {
+		return strings.TrimSpace(trimmed[2 : len(trimmed)-2])
+	}
+	if strings.HasPrefix(trimmed, "$") && strings.HasSuffix(trimmed, "$") && len(trimmed) >= 2 {
+		return strings.TrimSpace(trimmed[1 : len(trimmed)-1])
+	}
+	return latex
+}
+
+func appendMathSegment(para *strings.Builder, segments *[]mathSegment, segment mathSegment) {
+	idx := len(*segments)
+	*segments = append(*segments, segment)
+	para.WriteString(fmt.Sprintf("\x00MATH%d\x00", idx))
+}
+
+func finalizeParagraphMath(content string, segments []mathSegment, report *ConversionReport) string {
+	if len(segments) == 0 {
+		return restoreEscapedRawMath(content)
+	}
+	displayParagraph := isDisplayMathParagraph(content)
+	var out strings.Builder
+	matches := mathSlotRe.FindAllStringSubmatchIndex(content, -1)
+	last := 0
+	previousMath := false
+	previousDisplayMath := false
+	for _, match := range matches {
+		if len(match) < 4 {
+			continue
+		}
+		between := content[last:match[0]]
+		out.WriteString(between)
+		adjacentToPreviousMath := previousMath && strings.TrimSpace(between) == ""
+
+		idxText := content[match[2]:match[3]]
+		idx, err := strconv.Atoi(idxText)
+		if err != nil || idx < 0 || idx >= len(segments) {
+			out.WriteString(content[match[0]:match[1]])
+			last = match[1]
+			previousMath = false
+			previousDisplayMath = false
+			continue
+		}
+
+		segment := segments[idx]
+		display := displayParagraph || segment.DisplayHint
+		if !displayParagraph && hasNonMathText(content) {
+			display = false
+		}
+		if !display {
+			if text, ok := inlineMathAsText(segment.Latex); ok {
+				out.WriteString(fitInlineTextToContext(out.String(), text))
+				if report != nil && segment.ReportIndex >= 0 && segment.ReportIndex < len(report.Equations) {
+					report.Equations[segment.ReportIndex].Kind = segment.InlineKind
+					report.Equations[segment.ReportIndex].Output = unwrapMath(segment.Latex)
+				}
+				last = match[1]
+				previousMath = false
+				previousDisplayMath = false
+				continue
+			}
+		}
+		latex := segment.Latex
+		prefixText, trimmedLatex, suffixText := splitInlineMathEdgeText(latex, display)
+		if prefixText != "" {
+			out.WriteString(fitInlineTextToContext(out.String(), prefixText))
+			adjacentToPreviousMath = false
+		}
+		latex = trimmedLatex
+		if adjacentToPreviousMath {
+			if display || previousDisplayMath {
+				out.WriteString("\n")
+			} else {
+				merged := mergeAdjacentInlineMath(&out, latex)
+				if merged {
+					last = match[1]
+					previousMath = true
+					previousDisplayMath = false
+					if report != nil && segment.ReportIndex >= 0 && segment.ReportIndex < len(report.Equations) {
+						report.Equations[segment.ReportIndex].Kind = segment.InlineKind
+						report.Equations[segment.ReportIndex].Output = unwrapMath(latex)
+					}
+					continue
+				}
+				out.WriteString(" ")
+			}
+		}
+		out.WriteString(wrapMath(latex, display))
+		if suffixText != "" {
+			out.WriteString(fitInlineTextToContext(out.String(), suffixText))
+		}
+		if report != nil && segment.ReportIndex >= 0 && segment.ReportIndex < len(report.Equations) {
+			if display {
+				report.Equations[segment.ReportIndex].Kind = segment.DisplayKind
+			} else {
+				report.Equations[segment.ReportIndex].Kind = segment.InlineKind
+			}
+			report.Equations[segment.ReportIndex].Output = unwrapMath(latex)
+		}
+		last = match[1]
+		previousMath = true
+		previousDisplayMath = display
+	}
+	out.WriteString(content[last:])
+	return restoreEscapedRawMath(out.String())
+}
+
+func restoreEscapedRawMath(content string) string {
+	restored := escapedRawMathRe.ReplaceAllStringFunc(content, func(match string) string {
+		inner := strings.TrimSuffix(strings.TrimPrefix(match, `\$`), `\$`)
+		decoded := unescapeRawMathText(inner)
+		if !looksLikeRawLatexMath(decoded) {
+			return match
+		}
+		return wrapMath(decoded, false)
+	})
+	return normalizeRenderedTextArtifacts(restored)
+}
+
+func normalizeRenderedTextArtifacts(content string) string {
+	content = unitDollarParenBeforeMathTailRe.ReplaceAllString(content, `（$1）$$$2`)
+	return unitDollarParenRe.ReplaceAllString(content, `（$1）`)
+}
+
+func unescapeRawMathText(s string) string {
+	replacer := strings.NewReplacer(
+		`\textbackslash{}`, `\`,
+		`\{`, `{`,
+		`\}`, `}`,
+		`\$`, `$`,
+		`\#`, `#`,
+		`\_`, `_`,
+		`\%`, `%`,
+		`\&`, `&`,
+	)
+	return replacer.Replace(s)
+}
+
+func inlineMathAsText(latex string) (string, bool) {
+	inner := strings.TrimSpace(unwrapMath(latex))
+	switch inner {
+	case "(", ")", "[", "]", "（", "）", "，", "。", ",", ".", "：", ":", "；", ";":
+		return inner, true
+	case `\left (`, `\right )`, `\left[`, `\right]`:
+		replacer := strings.NewReplacer(`\left `, "", `\right `, "")
+		return replacer.Replace(inner), true
+	default:
+		return "", false
+	}
+}
+
+func splitInlineMathEdgeText(latex string, display bool) (string, string, string) {
+	if display {
+		return "", latex, ""
+	}
+	inner := strings.TrimSpace(unwrapMath(latex))
+	if inner == "" {
+		return "", latex, ""
+	}
+	prefix := ""
+	for {
+		trimmed := strings.TrimSpace(inner)
+		if len([]rune(trimmed)) <= 1 {
+			break
+		}
+		first, size := utf8.DecodeRuneInString(trimmed)
+		if first != ')' && first != ']' && first != '）' {
+			break
+		}
+		prefix += string(first)
+		inner = strings.TrimSpace(trimmed[size:])
+	}
+
+	suffix := ""
+	for {
+		trimmed := strings.TrimSpace(inner)
+		if len([]rune(trimmed)) <= 1 {
+			break
+		}
+		last, size := utf8.DecodeLastRuneInString(trimmed)
+		if last != ')' && last != ']' && last != '）' {
+			break
+		}
+		if strings.ContainsAny(trimmed[:len(trimmed)-size], "([（") {
+			break
+		}
+		suffix = string(last) + suffix
+		inner = strings.TrimSpace(trimmed[:len(trimmed)-size])
+	}
+	if prefix == "" && suffix == "" {
+		return "", latex, ""
+	}
+	return prefix, inner, suffix
+}
+
+func fitInlineTextToContext(context string, text string) string {
+	if text == ")" && hasUnclosedFullwidthParen(context) {
+		return "）"
+	}
+	return text
+}
+
+func hasUnclosedFullwidthParen(s string) bool {
+	lastOpen := strings.LastIndex(s, "（")
+	if lastOpen == -1 {
+		return false
+	}
+	lastClose := strings.LastIndex(s, "）")
+	return lastClose < lastOpen
+}
+
+func mergeAdjacentInlineMath(out *strings.Builder, latex string) bool {
+	current := out.String()
+	if !strings.HasSuffix(current, "$") {
+		return false
+	}
+	out.Reset()
+	out.WriteString(strings.TrimSuffix(current, "$"))
+	out.WriteString(" ")
+	out.WriteString(unwrapMath(latex))
+	out.WriteString("$")
+	return true
+}
+
+func isDisplayMathParagraph(content string) bool {
+	withoutMath := strings.TrimSpace(mathSlotRe.ReplaceAllString(content, ""))
+	if withoutMath == "" {
+		return true
+	}
+	withoutMath = strings.ReplaceAll(withoutMath, `\(`, "(")
+	withoutMath = strings.ReplaceAll(withoutMath, `\)`, ")")
+	return equationLabelRe.MatchString(withoutMath)
+}
+
+func hasNonMathText(content string) bool {
+	return strings.TrimSpace(mathSlotRe.ReplaceAllString(content, "")) != ""
 }
 
 func renderParagraph(content string, style string, cfg Config) string {

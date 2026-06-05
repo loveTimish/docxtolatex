@@ -26,6 +26,14 @@ type paragraphBlock struct {
 	ListContinuation bool
 }
 
+type mathSegment struct {
+	Latex       string
+	DisplayHint bool
+	ReportIndex int
+	InlineKind  string
+	DisplayKind string
+}
+
 type listRef struct {
 	NumID string
 	Level int

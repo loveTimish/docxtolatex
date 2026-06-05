@@ -23,6 +23,7 @@ const (
 	EquationReasonUnknown           EquationReason = ""
 	EquationReasonConvertError      EquationReason = "convert-error"
 	EquationReasonInvalidOLE        EquationReason = "invalid-ole"
+	EquationReasonMissingNative     EquationReason = "missing-equation-native"
 	EquationReasonMTEFOpenPanic     EquationReason = "mtef-open-panic"
 	EquationReasonEmptyOutput       EquationReason = "empty-output"
 	EquationReasonEmptyMathBody     EquationReason = "empty-math-body"
@@ -45,6 +46,7 @@ type EquationReasonDefinition struct {
 var equationReasonCatalog = []EquationReasonDefinition{
 	{Reason: EquationReasonConvertError, Category: "ole", Description: "OLE conversion failed but did not match a more specific classifier."},
 	{Reason: EquationReasonInvalidOLE, Category: "ole", Description: "Input is not a readable OLE/MTEF payload."},
+	{Reason: EquationReasonMissingNative, Category: "ole", Description: "OLE storage is readable, but it does not contain a MathType Equation Native stream."},
 	{Reason: EquationReasonMTEFOpenPanic, Category: "ole", Description: "Underlying OLE/MTEF open/parse path panicked and was recovered."},
 	{Reason: EquationReasonEmptyOutput, Category: "sanity", Description: "Converter returned an empty LaTeX string."},
 	{Reason: EquationReasonEmptyMathBody, Category: "sanity", Description: "LaTeX wrapper exists but the math body is empty."},
@@ -103,6 +105,8 @@ func classifyOLEError(err error) EquationReason {
 	switch {
 	case strings.Contains(msg, "invalid ole/mtef payload"):
 		return EquationReasonInvalidOLE
+	case strings.Contains(msg, "equation native stream not found"):
+		return EquationReasonMissingNative
 	case strings.Contains(msg, "panic while parsing ole/mtef"):
 		return EquationReasonMTEFOpenPanic
 	default:

@@ -73,7 +73,7 @@ func TestConvertGeneratedOMMLRegressionDocx(t *testing.T) {
 	for _, want := range []string{
 		`inline ${x}_{i}$ tail`,
 		`$$ \frac{a}{b} $$`,
-		`$\begin{bmatrix}a & b\\c & d\end{bmatrix}$`,
+		`$$ \begin{bmatrix}a & b\\c & d\end{bmatrix} $$`,
 	} {
 		if !strings.Contains(texStr, want) {
 			t.Fatalf("expected converted tex to contain %q, got:\n%s", want, texStr)
@@ -96,7 +96,7 @@ func TestConvertGeneratedOMMLRegressionDocx(t *testing.T) {
 	if len(report.Equations) != 3 {
 		t.Fatalf("expected 3 equation entries, got %d", len(report.Equations))
 	}
-	if got := []string{report.Equations[0].Kind, report.Equations[1].Kind, report.Equations[2].Kind}; strings.Join(got, ",") != "omml-inline,omml-display,omml-inline" {
+	if got := []string{report.Equations[0].Kind, report.Equations[1].Kind, report.Equations[2].Kind}; strings.Join(got, ",") != "omml-inline,omml-display,omml-display" {
 		t.Fatalf("unexpected equation kinds: %v", got)
 	}
 	for i, eq := range report.Equations {
@@ -161,7 +161,7 @@ func TestConvertProducerShapedOMMLRegressionDocx(t *testing.T) {
 	texStr := string(tex)
 	for _, want := range []string{
 		`decor $\underline{x}$`,
-		`$\overbrace{ab}$`,
+		`$$ \overbrace{ab} $$`,
 		`$$ \lim_{x{\rightarrow}0}lim $$`,
 	} {
 		if !strings.Contains(texStr, want) {
